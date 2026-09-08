@@ -665,9 +665,11 @@ POSTS = [
 ]
 
 def post_card(p, preview):
-    return (f'<li><div><span class="t"><a href="{href("b-"+p["slug"], preview)}">{p["title"]}</a></span>'
-            f'<div class="d">{p["excerpt"]}</div></div>'
-            f'<span class="who">{p["tag"]} &middot; {p["date"]}</span></li>')
+    return (f'<a class="card" href="{href("b-"+p["slug"], preview)}"><div class="card-inner">'
+            f'<div class="thumb"><img src="web/{p["img"]}.jpg" alt="{p.get("imgcap", p["title"])}" loading="lazy"></div>'
+            f'<div class="card-body"><h3>{p["title"]}</h3><p>{p["excerpt"]}</p>'
+            f'<div class="chips"><span class="chip">{p["tag"]}</span><span class="chip blush">{p["date"]}</span></div>'
+            f'<span class="card-more">Read the story &rarr;</span></div></div></a>')
 
 def body_blog(preview):
     items = ''.join(post_card(p, preview) for p in POSTS)
@@ -678,7 +680,7 @@ def body_blog(preview):
   <p class="sub">Stories from scanning trips, exhibitions, and life between Tunisia and the U.S.</p>
 </div></div>
 <section class="block" style="padding-top:36px"><div class="wrap">
-  <ul class="list">{items}</ul>
+  <div class="cards two">{items}</div>
 </div></section>
 <div class="band blush"><div class="wrap" style="text-align:center">
   <h2 class="sec-title" style="margin-bottom:10px">Art, XR &amp; Impact Opportunities</h2>
@@ -793,6 +795,17 @@ def body_home(preview):
   </figure>
 </div></div></div>
 
+<section class="block"><div class="wrap">
+  <h2 class="sec-title">Life in the field</h2>
+  <p class="sec-sub">Where the work actually happens — dig sites, stages, oceans, and classrooms.</p>
+  <div class="gallery" style="grid-template-columns:repeat(4,1fr);margin:0">
+    <figure><img src="web/neapolis-swim.jpg" alt="Searching the sea above the sunken city of Neapolis" loading="lazy"><figcaption>Hunting a sunken city.</figcaption></figure>
+    <figure><img src="web/statue-pose.jpg" alt="Matching poses with an ancient statue in Tunisia" loading="lazy"><figcaption>Meeting the locals, est. 200 AD.</figcaption></figure>
+    <figure><img src="web/froliq-playground.jpg" alt="The Froliq team at the AWE playground" loading="lazy"><figcaption>Game day at AWE.</figcaption></figure>
+    <figure><img src="web/workshop.jpg" alt="Teaching a classroom workshop" loading="lazy"><figcaption>Passing it on.</figcaption></figure>
+  </div>
+</div></section>
+
 <div class="band blush"><div class="wrap" style="text-align:center">
   <p class="kicker" style="justify-content:center">Nonprofit</p>
   <h2 class="sec-title" style="margin-bottom:10px">Support Tanit XR 🏺</h2>
@@ -893,6 +906,8 @@ def body_about(preview):
     <figure><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>El Jem — our largest reconstruction, and a 3rd-century office view.</figcaption></figure>
     <figure><img src="web/workshop.jpg" alt="Ines Said leading a classroom workshop"><figcaption>Workshops and mentoring for emerging artists and technologists.</figcaption></figure>
     <figure><img src="web/ets-fireside.jpg" alt="Ines Said on stage at the Energy Thought Summit"><figcaption>Talking energy and photogrammetry at ETS 2026.</figcaption></figure>
+    <figure><img src="web/coast-walk.jpg" alt="Ines Said walking coastal ruins in Tunisia"><figcaption>Field walks — half survey, half joy.</figcaption></figure>
+    <figure><img src="web/neapolis-4.jpg" alt="The Neapolis expedition paddle boat, mermaid tail included"><figcaption>Serious research vessel (mermaid tail included).</figcaption></figure>
   </div>
 </div></section>
 """
@@ -1022,6 +1037,10 @@ def body_press(preview):
     <li><div><span class="t"><a href="https://arts.ufl.edu/in-the-loop/news/midas-cohort-builds-track-record-of-hackathon-success/">MiDAS cohort builds track record of hackathon success</a></span></div><span class="who">UF Arts</span></li>
     <li><div><span class="t"><a href="https://medium.com/women-write/tanit-xr-preserving-tunisias-heritage-through-immersive-technology-c9238dab7675">Tanit XR — in her own words (Women Write)</a></span></div><span class="who">Medium &middot; Writing</span></li>
   </ul>
+  <div class="media-strip">
+    <figure><img src="web/news-abc.jpg" alt="Local TV news segment covering the Covid Reflections launch"><figcaption>Covid Reflections on the evening news.</figcaption></figure>
+    <figure><img src="web/carthage-mag.jpg" alt="Carthage Magazine feature on Tanit XR"><figcaption>Tanit XR in Carthage Magazine.</figcaption></figure>
+  </div>
 </div></section>
 """
 
@@ -1050,7 +1069,10 @@ PERSON_JSONLD = """<script type="application/ld+json">
     {"@type": "CollegeOrUniversity", "name": "University of South Florida"}
   ],
   "email": "mailto:ines@tanitxr.org",
-  "knowsAbout": ["Extended Reality", "Augmented Reality", "Virtual Reality", "Cultural Heritage Preservation", "3D Scanning", "Photogrammetry", "Climate Art", "Unity"],
+  "knowsAbout": ["Extended Reality", "Augmented Reality", "Virtual Reality", "Cultural Heritage Preservation", "3D Scanning", "Photogrammetry", "Gaussian Splatting", "Climate Art", "Unity"],
+  "knowsLanguage": ["English", "Arabic", "French"],
+  "nationality": {"@type": "Country", "name": "Tunisia"},
+  "homeLocation": [{"@type": "Place", "name": "Washington, D.C. area"}, {"@type": "Place", "name": "Tunisia"}],
   "award": ["EE 30 Under 30, Class of 2025 (NAAEE)", "IEEE Best Paper Award", "GFAA Biennial Excellence Award", "Auggie Awards Finalist, Best Societal Impact (2026)"],
   "sameAs": [
     "https://www.linkedin.com/in/inessaid/",
