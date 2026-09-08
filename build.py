@@ -1337,6 +1337,25 @@ def build_site():
                     f'<link rel="canonical" href="{BASE_URL}/{new}">'
                     f'<title>Redirecting</title></head>'
                     f'<body><a href="{target}">This page has moved</a></body></html>')
+    # smart 404: catches any unmapped old Wix URL and routes it sensibly
+    with open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8') as f:
+        f.write(f'''<!doctype html><html lang="en"><head>{HEAD}<title>Ines Said</title>{FONTS}<style>{CSS}</style>
+<script>
+(function(){{
+  var p = location.pathname.toLowerCase();
+  var map = [[/\\/post\\//,'/blog.html'],[/\\/blog/,'/blog.html'],[/\\/projects/,'/projects.html'],
+             [/awards/,'/awards.html'],[/talks|media|speak/,'/speaking.html'],[/press/,'/press.html'],
+             [/opportun/,'/opportunities.html'],[/about/,'/about.html']];
+  for (var i=0;i<map.length;i++) if (map[i][0].test(p)) {{ location.replace(map[i][1]); return; }}
+}})();
+</script></head><body>
+{nav_html('home', False)}
+<div class="wrap"><div class="page-head">
+  <p class="kicker">Page moved</p>
+  <h1>This page has a new home.</h1>
+  <p class="sub">The site was rebuilt — everything is still here. Try <a href="/">the homepage</a>,
+  <a href="/projects.html">projects</a>, or <a href="/blog.html">the blog</a>.</p>
+</div></div>{FOOTER}</body></html>''')
     # sitemap + robots for search engines
     urls = (['index.html'] + [pg + '.html' for pg in PAGES[1:]] +
             [f'project-{p["slug"]}.html' for p in PROJECTS] +
