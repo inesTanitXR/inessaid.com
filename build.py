@@ -1313,6 +1313,30 @@ def build_site():
                 f'{nav_html("awards", False)}{body_detail(a, False, "awards", "All awards")}{FOOTER}</body></html>')
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
             f.write(html)
+    # legacy Wix URL redirects (protect indexed URLs + knowledge panel)
+    LEGACY = {
+        'about': 'about.html', 'projects': 'projects.html',
+        'awards-recognition': 'awards.html', 'press': 'press.html',
+        'talks-media': 'speaking.html', 'blog': 'blog.html',
+        'art-xr-and-impact-opportunities': 'opportunities.html',
+        'projects/tanit-xr---cultural-heritage': 'project-tanit-xr.html',
+        'projects/covid-reflections': 'project-covid-reflections.html',
+        'projects/shadows-of-tomorrow': 'project-shadows-of-tomorrow.html',
+        'projects/oracle-connected-hub-ar-application': 'project-oracle-connected-hub.html',
+        'projects/sparc': 'project-sparc.html',
+        'post/ines-said-an-xr-immersive-artist-technologist': 'about.html',
+    }
+    for old, new in LEGACY.items():
+        d = os.path.join(OUT, old)
+        os.makedirs(d, exist_ok=True)
+        depth = old.count('/') + 1
+        target = '../' * depth + new
+        with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
+            f.write(f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
+                    f'<meta http-equiv="refresh" content="0;url={target}">'
+                    f'<link rel="canonical" href="{BASE_URL}/{new}">'
+                    f'<title>Redirecting</title></head>'
+                    f'<body><a href="{target}">This page has moved</a></body></html>')
     # sitemap + robots for search engines
     urls = (['index.html'] + [pg + '.html' for pg in PAGES[1:]] +
             [f'project-{p["slug"]}.html' for p in PROJECTS] +
