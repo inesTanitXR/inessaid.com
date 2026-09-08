@@ -182,6 +182,23 @@ footer{background:var(--tint-lav);margin-top:72px;padding:52px 0 44px}
 .foot-grid p{margin:0;color:var(--body);font-size:.92rem;max-width:34ch}
 .legal{border-top:1px solid #ddd0f0;margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.8rem}
 @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+/* opportunities board */
+.opp-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.opp-table th{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  text-align:left;padding:10px 14px;border-bottom:2px solid var(--line)}
+.opp-table td{padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+.opp-table td a{color:var(--ink)}
+.opp-table td a:hover{color:var(--lav-deep)}
+.opp-desc{font-size:.85rem;color:var(--muted);max-width:46ch;margin-top:3px}
+.opp-amount{font-weight:800;color:var(--lav-deep);white-space:nowrap}
+.opp-date{white-space:nowrap;color:var(--body);font-variant-numeric:tabular-nums}
+.opp-badge{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.04em;border-radius:999px;padding:4px 12px;white-space:nowrap}
+.opp-badge.open{background:var(--tint-lav);color:var(--lav-deep)}
+.opp-badge.soon{background:var(--tint-blush);color:var(--pink)}
+.opp-badge.closed{background:var(--soft);color:var(--muted)}
+tr.opp-closed{display:none;opacity:.55}
+.opp-table.show-closed tr.opp-closed{display:table-row}
+
 /* contact form */
 .contact-form{background:var(--soft);border:1px solid var(--line);border-radius:24px;padding:34px 36px;max-width:640px}
 .contact-form label{display:block;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
@@ -199,13 +216,16 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
          'family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&'
          'family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,700;0,6..12,800;1,6..12,400&display=swap">')
 
-PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'press', 'blog']
+PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'opportunities', 'press', 'blog']
 LABEL = {'home': 'Home', 'about': 'About', 'projects': 'Projects', 'awards': 'Awards',
-         'speaking': 'Speaking', 'press': 'Press', 'blog': 'Blog'}
+         'speaking': 'Speaking', 'opportunities': 'Opportunities', 'press': 'Press', 'blog': 'Blog'}
 TITLE = {'home': 'Ines Said | XR Immersive Artist and Technologist',
          'about': 'About | Ines Said', 'projects': 'Projects | Ines Said',
          'awards': 'Awards & Recognition | Ines Said', 'speaking': 'Speaking & Media | Ines Said',
+         'opportunities': 'Art, XR & Impact Opportunities | Ines Said',
          'press': 'Press | Ines Said', 'blog': 'Blog | Ines Said'}
+
+NEWSLETTER_URL = 'https://www.linkedin.com/newsletters/art-xr-impact-opportunities-7370189407523454976/'
 
 def href(page, preview):
     if preview:
@@ -695,9 +715,11 @@ def body_blog(preview):
 <div class="band blush"><div class="wrap" style="text-align:center">
   <h2 class="sec-title" style="margin-bottom:10px">Art, XR &amp; Impact Opportunities</h2>
   <p style="max-width:56ch;margin:0 auto 24px">My weekly round-up of grants, residencies, fellowships,
-  and open calls at the intersection of creative practice and technology — published as a
-  newsletter on LinkedIn.</p>
-  <a class="btn" href="https://www.linkedin.com/in/inessaid/">Subscribe on LinkedIn</a>
+  and open calls at the intersection of creative practice and technology.</p>
+  <div class="btn-row" style="justify-content:center">
+    <a class="btn" href="{NEWSLETTER_URL}">Subscribe on LinkedIn</a>
+    <a class="btn ghost" href="{href('opportunities', preview)}">Browse the deadline board</a>
+  </div>
 </div></div>
 """
 
@@ -886,7 +908,7 @@ def body_about(preview):
   <div class="now-grid">
     <div class="now"><b>Founder</b><span>Tanit XR — open-source heritage archive (2025–)</span></div>
     <div class="now"><b>Lead XR Developer</b><span>Froliq (2023–)</span></div>
-    <div class="now"><b>Newsletter Author</b><span>Art, XR &amp; Impact Opportunities — weekly, on LinkedIn</span></div>
+    <div class="now"><b>Newsletter Author</b><span><a href="{NEWSLETTER_URL}">Art, XR &amp; Impact Opportunities</a> — weekly, on LinkedIn</span></div>
     <div class="now"><b>Based in</b><span>Washington, D.C. area &amp; Tunisia</span></div>
   </div>
 
@@ -1108,8 +1130,85 @@ def body_press(preview):
 </div></section>
 """
 
+# ---------------- opportunities board ----------------
+# Update this list (or tell Claude the new edition) and rebuild — the page computes
+# countdowns and open/closed automatically from the deadline dates.
+OPPS = [
+ ('ISO Immersive Media Fund — Indigenous Creators', 'Fund', '$500K CAD', '2026-06-30', 'https://www.agog.world/', 'For US Indigenous XR storytellers, presented with Agog'),
+ ('AWS She Builds Mentorship', 'Mentorship', 'Free', '2026-06-30', 'https://aws.amazon.com/', '12-week mentorship pairing women in tech with a dedicated AWS mentor'),
+ ('Global Good Fund Fellowship 2027', 'Fellowship', '$10K + coaching', '2026-06-30', 'https://globalgoodfund.org/', 'Leadership grant and executive coaching for social entrepreneurs worldwide'),
+ ('NEW INC — New Museum Incubator', 'Residency', 'Year-long', '2026-07-08', 'https://www.newinc.org/', 'Art + design + tech incubator with an Extended Realities track'),
+ ('UNESCO Youth for Peace — Intercultural Leadership', 'Grant', '$10K seed', '2026-07-19', 'https://www.unesco.org/', 'Seed funding + training for emerging leaders 25–45; 2026 theme: human connection in the age of AI'),
+ ('VH AWARD (7th Edition) — Hyundai', 'Award', 'Production grant', '2026-07-21', 'https://vhaward.com/', 'Production grant + Ars Electronica online residency for emerging media artists of Asian descent or the diaspora'),
+ ('TED × POSCA Global Artist Residency', 'Residency', '$15K', '2026-07-31', 'https://www.ted.com/', 'Four artists fund community-rooted public art on repair and resilience — open worldwide'),
+ ('Global Innovation Challenge 2026', 'Grant', 'up to $15K', '2026-08-31', 'https://www.globalinnovationchallenge.org/', 'Grants for youth changemakers 18–30 solving social and environmental problems'),
+ ('WomenTech Network Global Awards 2026', 'Award', 'Recognition', '2026-10-01', 'https://www.womentech.net/', 'Nominate yourself or someone shaping tech'),
+ ('AWE USA 2027 — Call for Speakers', 'Speaking', 'Stage', '2027-01-31', 'https://www.awexr.com/', "Speak, demo, or exhibit at next year's biggest XR conference — get in early"),
+ ('Climate Change AI Summer School', 'Program', '~$10', '2026-07-19', 'https://www.climatechange.ai/', 'Virtual summer school on climate + machine learning; newcomers welcome'),
+]
+
+def body_opportunities(preview):
+    rows = []
+    for name, cat, amount, deadline, url, desc in OPPS:
+        rows.append(
+            f'<tr data-deadline="{deadline}">'
+            f'<td><a href="{url}"><b>{name}</b></a><div class="opp-desc">{desc}</div></td>'
+            f'<td><span class="chip">{cat}</span></td>'
+            f'<td class="opp-amount">{amount}</td>'
+            f'<td class="opp-date">{deadline}</td>'
+            f'<td class="opp-left">—</td></tr>')
+    return f"""
+<div class="wrap"><div class="page-head">
+  <p class="kicker">Newsletter</p>
+  <h1>Art, XR &amp; Impact Opportunities</h1>
+  <p class="sub">Grants, residencies, fellowships, and open calls at the intersection of creative
+  practice and technology — curated weekly. Deadlines below update their countdowns automatically.</p>
+</div></div>
+<section class="block" style="padding-top:28px"><div class="wrap">
+  <div class="btn-row" style="margin-bottom:28px">
+    <a class="btn" href="{NEWSLETTER_URL}">Subscribe to the weekly newsletter</a>
+    <button class="btn ghost" id="opp-toggle" type="button">Show closed deadlines</button>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="opp-table" id="opp-table">
+      <thead><tr><th>Opportunity</th><th>Type</th><th>Amount</th><th>Deadline</th><th>Time left</th></tr></thead>
+      <tbody>{''.join(rows)}</tbody>
+    </table>
+  </div>
+  <p style="color:var(--muted);font-size:.85rem;margin-top:24px">From the latest editions of the
+  newsletter — full details and links in each <a href="{NEWSLETTER_URL}">edition on LinkedIn</a>.</p>
+</div></section>
+<script>
+(function(){{
+  var tbl = document.getElementById('opp-table');
+  if (!tbl || tbl.dataset.done) return; tbl.dataset.done = 1;
+  var rows = [...tbl.tBodies[0].rows], now = new Date();
+  rows.forEach(function(r){{
+    var d = new Date(r.dataset.deadline + 'T23:59:59');
+    var days = Math.ceil((d - now) / 86400000);
+    var cell = r.querySelector('.opp-left');
+    if (days < 0) {{ cell.innerHTML = '<span class="opp-badge closed">Closed</span>'; r.classList.add('opp-closed'); }}
+    else if (days <= 14) {{ cell.innerHTML = '<span class="opp-badge soon">' + days + ' days</span>'; }}
+    else {{ cell.innerHTML = '<span class="opp-badge open">' + days + ' days</span>'; }}
+    r.dataset.days = days;
+  }});
+  rows.sort(function(a,b){{
+    var da = +a.dataset.days, db = +b.dataset.days;
+    return (da < 0) - (db < 0) || da - db;
+  }}).forEach(function(r){{ tbl.tBodies[0].appendChild(r); }});
+  var btn = document.getElementById('opp-toggle'), showing = false;
+  btn.addEventListener('click', function(){{
+    showing = !showing;
+    tbl.classList.toggle('show-closed', showing);
+    btn.textContent = showing ? 'Hide closed deadlines' : 'Show closed deadlines';
+  }});
+}})();
+</script>
+"""
+
 BODIES = {'home': body_home, 'about': body_about, 'projects': body_projects,
-          'awards': body_awards, 'speaking': body_speaking, 'press': body_press, 'blog': body_blog}
+          'awards': body_awards, 'speaking': body_speaking,
+          'opportunities': body_opportunities, 'press': body_press, 'blog': body_blog}
 
 HEAD = ('<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">')
 
