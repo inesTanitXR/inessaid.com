@@ -9,7 +9,7 @@ Outputs:
 import base64, os, re, shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(ROOT, 'docs')
+OUT = os.path.join(ROOT, 'site')
 
 CSS = r"""
 :root{
@@ -287,6 +287,7 @@ PROJECTS = [
           ('Archive', '80+ artifacts, 20 sites, open access'),
           ('Partners', "Sketchfab Cultural Heritage Program, USF, INP, Tunisian Federation of Travel Agencies, AAAS, Unique Mappers"),
           ('Education', 'Free "Splats With Phones" course by Mark Jeffcock; research paper published in English, French &amp; Tunisian Arabic'),
+          ('Hackathons', "Sponsored a Tunisian-heritage track at ImmerseGT 2026, Georgia Tech's 36-hour XR hackathon"),
           ('Recognition', 'Auggie Awards finalist, Best Societal Impact (AWE 2026); featured by Al Jazeera and Niantic Spatial')],
    embeds_heading='Watch &amp; explore in 3D',
    embeds=[dict(kind='linkedin', id='7488488682652495873', title='Niantic Spatial features our El Jem Amphitheater reconstruction'),
@@ -544,15 +545,17 @@ AWARDS = [
    gallery=[('rh-hack-table', 'Community hacking at MIT Reality Hack.'),
             ('rh-snow-1', 'Boston in January — worth it.')]),
 
- dict(slug='g4c-juror', title='Juror — Games for Change Student Challenge',
-   category='Games for Change', img='workshop',
+ dict(slug='g4c-judge', title='Judge — Games for Change',
+   category='Games for Change · Awards & Student Challenge', img='workshop',
    alt='Ines Said leading a classroom workshop',
-   card="Invited to judge the country's biggest student game-design competition about real-world issues.",
-   chips=['Games for learning', 'Mentorship'],
+   card='Invited to judge both the Games for Change Awards — the top honors for games with real-world impact — and their national Student Challenge.',
+   chips=['Games for impact', 'Jury service'],
    paras=[
-     "Games for Change runs the largest student game-design competition in the U.S., inviting young people to build games about real-world issues. I served as a juror for the Student Challenge — reviewing and scoring games made by students tackling everything from climate to community health.",
-     "It's the mentorship side of my work in concentrated form: the same belief that drives the Froliq education games and Tanit XR's volunteer programs — that young people learn best by making, and that games are a serious way to think about serious things."],
-   facts=[('Organization', 'Games for Change'), ('Role', 'Juror, Student Challenge')],
+     "Games for Change is the home of games that take on real-world problems, and I've had the honor of judging on both sides of it: the Games for Change Awards, which recognize the best impact-driven games in the industry, and the Student Challenge, the largest student game-design competition in the U.S.",
+     "Judging the industry awards means weighing work from studios around the world; judging the students means spotting the sparks — young people building games about climate, health, and their own communities. I love both for the same reason: it's a front-row seat to where games-for-impact is heading.",
+     "It's also the mentorship side of my work in concentrated form — the same belief that drives the Froliq education games and Tanit XR's volunteer programs: people learn best by making, and games are a serious way to think about serious things."],
+   facts=[('Organization', 'Games for Change'),
+          ('Roles', 'Judge — Games for Change Awards; Judge — Student Challenge')],
    links=[('Games for Change', 'https://www.gamesforchange.org/')],
    gallery=[]),
 
@@ -769,6 +772,7 @@ def body_home(preview):
     <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/">El Jem Amphitheater — largest reconstruction to date</a></span><div class="d">Tanit XR's multi-scan 3D reconstruction of the iconic Roman amphitheater was featured by Niantic Spatial as a benchmark for large-scale reality capture — watch their video.</div></div><span class="who">Niantic Spatial</span></li>
     <li><div><span class="t"><a href="https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/">Free course: Splats With Phones</a></span><div class="d">A free 6-week live course with Tanit XR, led by XR educator Mark Jeffcock — 3D scanning with your phone, Gaussian splats, and publishing explorable environments. No experience required.</div></div><span class="who">Tanit XR</span></li>
     <li><div><span class="t"><a href="{href('b-sunken-city', preview)}">Searching for the underwater ruins of Neapolis</a></span><div class="d">Paddling out at 6 AM off the coast near Nabeul with visiting archaeologists to spot the submerged Roman city — roads, walls, and stairs beneath clear water.</div></div><span class="who">Field notes</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/">A Tanit XR track at Georgia Tech's ImmerseGT hackathon</a></span><div class="d">36 hours, real 3D scans of Tunisian heritage, and a winning project — "From Mystery to History" — reimagining preservation with XR and photogrammetry.</div></div><span class="who">ImmerseGT &middot; 2026</span></li>
   </ul>
 </div></div>
 
@@ -831,7 +835,9 @@ def body_about(preview):
       2023 IEEE Integrated STEM Education Conference for work on teaching through building
       mini VR game engines, with Dr. Angelos Barmpoutis and Wenbin Guo — and my projects have
       earned multiple hackathon wins supported by organizations including Google and IBM.
-      I've served as a juror for the Games for Change Student Challenge and mentor emerging
+      I'm increasingly on the judging side of the table too — the Games for Change Awards and
+      Student Challenge, the EE 30 Under 30 selection, and Tanit XR's own hackathon track at
+      Georgia Tech's ImmerseGT — and I mentor emerging
       artists and technologists through workshops and global networks.</p>
       <p>Away from the headset, I'm a certified scuba diver who's happiest hiking and
       wildlife-spotting — the same places my work tries to protect.</p>
@@ -911,6 +917,15 @@ def body_awards(preview):
 </div></div>
 <section class="block" style="padding-top:36px"><div class="wrap">
   <div class="cards two">{''.join(cards)}</div>
+
+  <h2 class="sec-title" style="margin:72px 0 8px">Judging &amp; jury service</h2>
+  <p class="sec-sub">Increasingly on the other side of the table.</p>
+  <ul class="list">
+    <li><div><span class="t"><a href="https://www.gamesforchange.org/">Judge — Games for Change Awards</a></span><div class="d">The top industry honors for games with real-world impact</div></div><span class="who">G4C</span></li>
+    <li><div><span class="t"><a href="https://www.gamesforchange.org/studentchallenge/">Judge — Games for Change Student Challenge</a></span><div class="d">The largest student game-design competition in the U.S.</div></div><span class="who">G4C</span></li>
+    <li><div><span class="t"><a href="https://naaee.org/programs/ee-30-under-30">Judge — EE 30 Under 30</a></span><div class="d">Reviewing the next class of environmental-education leaders, after being named to the Class of 2025</div></div><span class="who">NAAEE</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/">Track sponsor &amp; judge — ImmerseGT</a></span><div class="d">Tanit XR sponsored a dedicated Tunisian-heritage track at Georgia Tech's 36-hour XR hackathon, with prizes — won by "From Mystery to History"</div></div><span class="who">Georgia Tech &middot; 2026</span></li>
+  </ul>
 </div></section>
 """
 
@@ -957,10 +972,11 @@ def body_speaking(preview):
   <h2 class="sec-title" style="margin:64px 0 8px">Talks &amp; appearances</h2>
   <ul class="list">
     <li><div><span class="t"><a href="https://tanitxr.org/el-jem-conference/">Presenting Tanit XR inside the El Jem Amphitheater</a></span><div class="d">El Jem International Conference — research paper on XR and citizen science for heritage preservation, published in English, French, and Tunisian Arabic</div></div><span class="who">El Jem &middot; 2026</span></li>
+    <li><div><span class="t"><a href="https://energythoughtsummit.com/">Energy Thought Summit (ETS26) — panel &amp; live demos</a></span><div class="d">On stage and on the floor with the Oracle Utilities &amp; Froliq team, San Antonio, TX</div></div><span class="who">ETS &middot; 2026</span></li>
+    <li><div><span class="t"><a href="https://x.com/InlocoG21235/status/1989010660512985594">Inloco Gallery — MetaTalks</a></span><div class="d">Panel on immersive art and spatial storytelling, hosted by Inloco Gallery</div></div><span class="who">Inloco &middot; 2025</span></li>
     <li><div><span class="t">Beyond the Byte — panel</span><div class="d">Panel on immersive technology, in the Washington, D.C. area</div></div><span class="who">DMV &middot; 2026</span></li>
     <li><div><span class="t">XR, AI &amp; Immersive Technology — panel</span><div class="d">Panel discussion in Crystal City, Virginia</div></div><span class="who">Crystal City &middot; 2026</span></li>
     <li><div><span class="t"><a href="https://www.awexr.com/usa-2026/speakers/2677-ines-said">From Scans to XR: A Practical Pipeline for Cultural Heritage</a></span><div class="d">Augmented World Expo USA — with Margarita Johnson (Tanit XR)</div></div><span class="who">AWE &middot; 2026</span></li>
-    <li><div><span class="t"><a href="https://x.com/InlocoG21235/status/1989010660512985594">Immersive Tech for Cultural Heritage</a></span><div class="d">Inloco MetaTalks panel</div></div><span class="who">Inloco &middot; 2025</span></li>
     <li><div><span class="t"><a href="https://www.youtube.com/watch?v=88-GTiDBTCc">Faster Iteration in AR Using Unity</a></span><div class="d">Augmented World Expo</div></div><span class="who">AWE &middot; 2022</span></li>
     <li><div><span class="t"><a href="https://www.youtube.com/watch?v=RNaUaQgXaio">Playful Resilience</a></span><div class="d">Games for Change</div></div><span class="who">G4C &middot; 2022</span></li>
     <li><div><span class="t"><a href="https://www.youtube.com/watch?v=FMcdT8H5ffE">AR in Public Health Awareness</a></span><div class="d">Global XR Conference</div></div><span class="who">2022</span></li>
@@ -1110,8 +1126,6 @@ def build_site():
     entries = ''.join(f'<url><loc>{BASE_URL}/{u if u != "index.html" else ""}</loc></url>' for u in urls)
     with open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{entries}</urlset>')
-    with open(os.path.join(OUT, 'CNAME'), 'w', encoding='utf-8') as f:
-        f.write('www.inessaid.com\n')
     with open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8') as f:
         f.write(f'User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n')
     print('site/ written:', len(PAGES), 'pages +', len(PROJECTS), 'project pages + sitemap.xml + robots.txt')
