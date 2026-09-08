@@ -9,7 +9,7 @@ Outputs:
 import base64, os, re, shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(ROOT, 'docs')
+OUT = os.path.join(ROOT, 'site')
 
 CSS = r"""
 :root{
@@ -776,16 +776,22 @@ def body_home(preview):
   </ul>
 </div></div>
 
-<div class="band lav"><div class="wrap" style="text-align:center">
-  <p class="kicker" style="justify-content:center">Speaking</p>
-  <h2 class="sec-title" style="margin-bottom:10px">Bring XR to your next event.</h2>
-  <p style="max-width:58ch;margin:0 auto 24px">Keynotes, panels, and workshops on cultural heritage,
-  climate, and immersive technology — from the Smithsonian to a Roman colosseum, in person or virtual.</p>
-  <div class="btn-row" style="justify-content:center">
-    <a class="btn" href="mailto:ines@tanitxr.org?subject=Speaking%20inquiry">Book me to speak</a>
-    <a class="btn ghost" href="{href('speaking', preview)}">Topics &amp; past talks</a>
+<div class="band lav"><div class="wrap"><div class="two-col" style="align-items:center">
+  <div>
+    <p class="kicker">Speaking</p>
+    <h2 class="sec-title" style="margin-bottom:10px">Bring XR to your next event.</h2>
+    <p style="max-width:56ch;margin:0 0 24px">Keynotes, panels, and workshops on cultural heritage,
+    climate, and immersive technology — from the Smithsonian to a Roman colosseum to the Energy
+    Thought Summit main stage. In person or virtual, in English, Arabic, or French.</p>
+    <div class="btn-row">
+      <a class="btn" href="mailto:ines@tanitxr.org?subject=Speaking%20inquiry">Book me to speak</a>
+      <a class="btn ghost" href="{href('speaking', preview)}">Topics &amp; past talks</a>
+    </div>
   </div>
-</div></div>
+  <figure class="side-photo" style="margin:0">
+    <img src="web/ets-stage.jpg" alt="Ines Said presenting on the Energy Thought Summit main stage" style="max-height:420px;object-fit:cover">
+  </figure>
+</div></div></div>
 
 <div class="band blush"><div class="wrap" style="text-align:center">
   <p class="kicker" style="justify-content:center">Nonprofit</p>
@@ -883,8 +889,10 @@ def body_about(preview):
     </div>
   </div>
   <div class="media-strip">
-    <figure><img src="web/workshop.jpg" alt="Ines Said leading a classroom workshop"><figcaption>Workshops and mentoring for emerging artists and technologists.</figcaption></figure>
     <figure><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"><figcaption>A mosaic wall thousands of years old, smart glasses on standby.</figcaption></figure>
+    <figure><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>El Jem — our largest reconstruction, and a 3rd-century office view.</figcaption></figure>
+    <figure><img src="web/workshop.jpg" alt="Ines Said leading a classroom workshop"><figcaption>Workshops and mentoring for emerging artists and technologists.</figcaption></figure>
+    <figure><img src="web/ets-fireside.jpg" alt="Ines Said on stage at the Energy Thought Summit"><figcaption>Talking energy and photogrammetry at ETS 2026.</figcaption></figure>
   </div>
 </div></section>
 """
@@ -958,8 +966,8 @@ def body_speaking(preview):
       </div>
     </div>
     <figure class="side-photo">
-      <img src="web/speaker-card.jpg" alt="AWE USA 2026 speaker card for Ines Said">
-      <figcaption>Speaker — Augmented World Expo USA 2026.</figcaption>
+      <img src="web/ets-stage.jpg" alt="Ines Said presenting her photogrammetry work on the Energy Thought Summit main stage, with her 3D scans on the big screens">
+      <figcaption>On the main stage at the Energy Thought Summit 2026 — Tunisia's scans on the big screens.</figcaption>
     </figure>
   </div>
   {embeds_block([
@@ -972,7 +980,7 @@ def body_speaking(preview):
   <h2 class="sec-title" style="margin:64px 0 8px">Talks &amp; appearances</h2>
   <ul class="list">
     <li><div><span class="t"><a href="https://tanitxr.org/el-jem-conference/">Presenting Tanit XR inside the El Jem Amphitheater</a></span><div class="d">El Jem International Conference — research paper on XR and citizen science for heritage preservation, published in English, French, and Tunisian Arabic</div></div><span class="who">El Jem &middot; 2026</span></li>
-    <li><div><span class="t"><a href="https://energythoughtsummit.com/">Energy Thought Summit (ETS26) — panel &amp; live demos</a></span><div class="d">On stage and on the floor with the Oracle Utilities &amp; Froliq team, San Antonio, TX</div></div><span class="who">ETS &middot; 2026</span></li>
+    <li><div><span class="t"><a href="https://energythoughtsummit.com/">Photogrammetry for Energy &amp; Heritage — main stage</a></span><div class="d">Energy Thought Summit (ETS26), San Antonio — presenting her photogrammetry work with Froliq and Tanit XR</div></div><span class="who">ETS &middot; 2026</span></li>
     <li><div><span class="t"><a href="https://x.com/InlocoG21235/status/1989010660512985594">Inloco Gallery — MetaTalks</a></span><div class="d">Panel on immersive art and spatial storytelling, hosted by Inloco Gallery</div></div><span class="who">Inloco &middot; 2025</span></li>
     <li><div><span class="t">Beyond the Byte — panel</span><div class="d">Panel on immersive technology, in the Washington, D.C. area</div></div><span class="who">DMV &middot; 2026</span></li>
     <li><div><span class="t">XR, AI &amp; Immersive Technology — panel</span><div class="d">Panel discussion in Crystal City, Virginia</div></div><span class="who">Crystal City &middot; 2026</span></li>
@@ -986,8 +994,10 @@ def body_speaking(preview):
     <li><div><span class="t"><a href="https://www.youtube.com/watch?v=PPh12oJ38rQ">The AR Minute with Nathan C</a></span><div class="d">Awesome Future — with Austin Stanbury</div></div><span class="who">Interview</span></li>
   </ul>
   <div class="media-strip">
-    <figure><img src="web/stage.jpg" alt="Ines Said speaking on stage at a summit"><figcaption>On stage — speaking on XR, art, and impact.</figcaption></figure>
+    <figure><img src="web/ets-fireside.jpg" alt="Ines Said in a fireside conversation on the colorful ETS 2026 stage"><figcaption>Fireside at the Energy Thought Summit 2026.</figcaption></figure>
     <figure><img src="web/dmv-panel.jpg" alt="Ines Said on the Beyond the Byte panel"><figcaption>On the Beyond the Byte panel in the D.C. area.</figcaption></figure>
+    <figure><img src="web/stage.jpg" alt="Ines Said speaking on stage at a summit"><figcaption>On stage — speaking on XR, art, and impact.</figcaption></figure>
+    <figure><img src="web/speaker-card.jpg" alt="AWE USA 2026 speaker card for Ines Said"><figcaption>Speaker — Augmented World Expo USA 2026.</figcaption></figure>
   </div>
 </div></section>
 """
@@ -1126,8 +1136,6 @@ def build_site():
     entries = ''.join(f'<url><loc>{BASE_URL}/{u if u != "index.html" else ""}</loc></url>' for u in urls)
     with open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{entries}</urlset>')
-    with open(os.path.join(OUT, 'CNAME'), 'w', encoding='utf-8') as f:
-        f.write('www.inessaid.com\n')
     with open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8') as f:
         f.write(f'User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n')
     print('site/ written:', len(PAGES), 'pages +', len(PROJECTS), 'project pages + sitemap.xml + robots.txt')
