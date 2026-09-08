@@ -169,6 +169,16 @@ footer{background:var(--tint-lav);margin-top:72px;padding:52px 0 44px}
 .foot-grid p{margin:0;color:var(--body);font-size:.92rem;max-width:34ch}
 .legal{border-top:1px solid #ddd0f0;margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.8rem}
 @media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+/* contact form */
+.contact-form{background:var(--soft);border:1px solid var(--line);border-radius:24px;padding:34px 36px;max-width:640px}
+.contact-form label{display:block;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  font-family:"Nunito Sans",sans-serif;font-size:1rem;color:var(--ink);background:#fff}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:2px solid var(--lav);border-color:var(--lav)}
+.contact-form button{margin-top:22px;background:var(--lav);color:#fff;font-weight:800;font-size:.95rem;
+  border:0;padding:13px 30px;border-radius:999px;cursor:pointer;font-family:"Nunito Sans",sans-serif;box-shadow:0 6px 18px #8a63d240}
+.contact-form button:hover{background:var(--lav-deep)}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style></head><body><header class="site-header"><div class="wrap"><a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="awards.html">Awards</a><a href="speaking.html" class="active">Speaking</a><a href="press.html">Press</a><a href="blog.html">Blog</a></nav></div></header>
 <div class="wrap"><div class="page-head">
@@ -194,7 +204,8 @@ footer{background:var(--tint-lav);margin-top:72px;padding:52px 0 44px}
         <span class="chip blush">STEM education through games</span>
       </div>
       <div class="btn-row">
-        <a class="btn" href="mailto:ines@tanitxr.org?subject=Speaking%20inquiry">Book me — ines@tanitxr.org</a>
+        <a class="btn" href="#book">Book me to speak</a>
+        <a class="btn ghost" href="web/ines-said-speaker.pdf">Speaker one-pager (PDF)</a>
       </div>
     </div>
     <figure class="side-photo">
@@ -226,6 +237,59 @@ footer{background:var(--tint-lav);margin-top:72px;padding:52px 0 44px}
     <figure><img src="web/stage.jpg" alt="Ines Said speaking on stage at a summit"><figcaption>On stage — speaking on XR, art, and impact.</figcaption></figure>
     <figure><img src="web/speaker-card.jpg" alt="AWE USA 2026 speaker card for Ines Said"><figcaption>Speaker — Augmented World Expo USA 2026.</figcaption></figure>
   </div>
+
+  <h2 class="sec-title" style="margin:72px 0 8px">Workshops &amp; consulting</h2>
+  <p class="sec-sub">Beyond the stage — hands-on training and XR development for teams.</p>
+  <div class="cards">
+    <div class="card"><div class="card-inner"><div class="card-body">
+      <h3>3D-scanning workshops</h3>
+      <p>Train your team to capture your collection, facility, or site in 3D — photogrammetry
+      and Gaussian splatting with the phones already in their pockets. Half-day to multi-day,
+      for museums, universities, and companies. Based on the curriculum behind Tanit XR's
+      free public courses.</p>
+      <div class="chips"><span class="chip">Photogrammetry</span><span class="chip blush">Hands-on</span></div>
+    </div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-body">
+      <h3>XR consulting &amp; development</h3>
+      <p>From concept to headset: AR, VR, and WebXR experiences on Apple Vision Pro, Meta
+      Quest, mobile, and the open web. The same pipeline behind installations for the
+      Smithsonian, Oracle Utilities, and power-industry clients.</p>
+      <div class="chips"><span class="chip">Vision Pro</span><span class="chip blush">Quest</span><span class="chip">WebXR</span></div>
+    </div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-body">
+      <h3>Heritage digitization</h3>
+      <p>End-to-end digital preservation for cultural institutions: on-site scanning,
+      open-access archives, virtual museums, and AR experiences — the Tanit XR model,
+      applied to your collection.</p>
+      <div class="chips"><span class="chip">Museums</span><span class="chip blush">Archives</span></div>
+    </div></div></div>
+  </div>
+
+  <h2 class="sec-title" id="book" style="margin:72px 0 8px">Let's talk</h2>
+  <p class="sec-sub">Booking a talk, planning a workshop, or exploring a project — this lands straight in my inbox.</p>
+  <form class="contact-form" action="https://formsubmit.co/ines@tanitxr.org" method="POST">
+    <input type="hidden" name="_subject" value="Inquiry from inessaid.com">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_honey" style="display:none">
+    <label for="cf-name">Your name</label>
+    <input id="cf-name" type="text" name="name" required>
+    <label for="cf-email">Email</label>
+    <input id="cf-email" type="email" name="email" required>
+    <label for="cf-org">Organization</label>
+    <input id="cf-org" type="text" name="organization">
+    <label for="cf-type">What are you looking for?</label>
+    <select id="cf-type" name="inquiry_type">
+      <option>Speaking — keynote or talk</option>
+      <option>Speaking — panel or guest lecture</option>
+      <option>Workshop or training</option>
+      <option>XR consulting / development</option>
+      <option>Tanit XR — partnership or press</option>
+      <option>Something else</option>
+    </select>
+    <label for="cf-msg">Tell me about it</label>
+    <textarea id="cf-msg" name="message" rows="5" required></textarea>
+    <button type="submit">Send inquiry</button>
+  </form>
 </div></section>
 
 <footer><div class="wrap">
