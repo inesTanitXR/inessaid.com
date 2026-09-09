@@ -1150,7 +1150,11 @@ def body_speaking(preview):
       university guest lectures</strong> — in person or virtual, in <strong>English, Arabic, or French</strong>.
       Recent stages include Augmented World Expo, Games for Change, the Global XR Conference, and the
       El Jem International Conference in Tunisia — where I presented inside the Roman amphitheater itself.
-      In 2025 alone, my talks and demos reached 11,000+ people across 40+ events.</p>
+      In 2025 alone, my talks and demos reached 11,000+ people across 40+ events, and my LinkedIn
+      audience of 7,000+ (167K impressions this past year) hears about every stage I'm on.</p>
+      <p style="max-width:60ch;margin:0 0 18px;font-size:.92rem;color:var(--muted)"><strong style="color:var(--ink)">Trusted by teams at:</strong>
+      Oracle Utilities &middot; Exelon &middot; Vistra &middot; New York Power Authority &middot;
+      the Smithsonian &middot; NEF</p>
       <div class="chips" style="margin:0 0 26px">
         <span class="chip">XR for cultural heritage</span>
         <span class="chip blush">Climate &amp; sustainability tech</span>
@@ -1316,9 +1320,15 @@ def body_opportunities(preview):
   practice and technology — curated weekly. Deadlines below update their countdowns automatically.</p>
 </div></div>
 <section class="block" style="padding-top:28px"><div class="wrap">
+  <div class="stats" style="text-align:left;margin-bottom:36px;grid-template-columns:repeat(3,1fr)">
+    <div><b>7,000+</b><span>LinkedIn followers receive every edition</span></div>
+    <div><b>167K</b><span>impressions in the past year, 30K+ people reached</span></div>
+    <div><b>1 in 4</b><span>readers is a founder, executive, director, or owner</span></div>
+  </div>
   <div class="btn-row" style="margin-bottom:28px">
     <a class="btn" href="{NEWSLETTER_URL}">Subscribe to the weekly newsletter</a>
     <button class="btn ghost" id="opp-toggle" type="button">Show closed deadlines</button>
+    <a class="btn ghost" href="mailto:ines@tanitxr.org?subject=Feature%20an%20opportunity">Feature your opportunity</a>
   </div>
   <div style="overflow-x:auto">
     <table class="opp-table" id="opp-table">

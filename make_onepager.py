@@ -48,6 +48,7 @@ y = label(28, y, '✦  By the numbers')
 stats = [
     ('600,000+', 'visitors to the Smithsonian FUTURES\nexhibition featuring her installation'),
     ('11,000+', 'people reached in 2025\nacross 40+ events'),
+    ('167K', 'LinkedIn impressions in the past year\n(7,000+ followers)'),
     ('30 Under 30', 'EE 30 Under 30, Class of 2025 (NAAEE)'),
     ('Auggie Finalist', 'Best Societal Impact, AWE 2026'),
 ]
