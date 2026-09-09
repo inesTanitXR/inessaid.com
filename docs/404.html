@@ -14,6 +14,35 @@ body{
 h1,h2,h3{font-weight:400 !important}
 .squiggle{display:block;width:100%;height:22px;margin:0}
 .squiggle path{stroke:var(--lav);stroke-width:2.5;fill:none;opacity:.55}
+
+/* handmade touches */
+.page-head h1::after, .sec-title::after{
+  content:"";display:block;height:12px;margin-top:12px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path d='M0 7 Q 10 1,20 7 T 40 7 T 60 7 T 80 7 T 100 7 T 120 7 T 140 7 T 160 7' fill='none' stroke='%23c08a2e' stroke-width='2.6' stroke-linecap='round'/></svg>") left center/160px 12px no-repeat}
+.page-head h1::after{width:170px}
+.sec-title::after{width:110px;background-size:110px 10px;height:10px}
+.intro-home h1::after,.hero-cine h1::after{margin-left:auto;margin-right:auto;background-position:center}
+.page-head{position:relative;z-index:0}
+.page-head::before{content:"";position:absolute;z-index:-1;width:320px;height:200px;left:-70px;top:-24px;
+  background:radial-gradient(closest-side,#f2cfdc99,transparent 72%);
+  border-radius:62% 38% 55% 45%/48% 62% 38% 52%}
+.page-head::after{content:"";position:absolute;z-index:-1;width:240px;height:160px;right:-30px;top:30px;
+  background:radial-gradient(closest-side,#ecd9a866,transparent 70%);
+  border-radius:44% 56% 38% 62%/58% 44% 56% 42%}
+/* scrapbook photos */
+.gallery figure{transition:transform .2s}
+.gallery figure:nth-child(odd){transform:rotate(-1.3deg)}
+.gallery figure:nth-child(even){transform:rotate(1.1deg)}
+.gallery figure:hover{transform:rotate(0) scale(1.02)}
+.gallery img{border:8px solid #fff;box-shadow:0 8px 24px rgba(67,32,58,.16);border-radius:4px}
+.media-strip figure:nth-child(odd){transform:rotate(-.8deg)}
+.media-strip figure:nth-child(even){transform:rotate(.7deg)}
+.media-strip img{border:8px solid #fff;box-shadow:0 8px 24px rgba(67,32,58,.14);border-radius:4px}
+.side-photo img{border-radius:18px 42px 24px 38px/34px 20px 42px 26px;border:8px solid #fff;box-shadow:0 10px 28px rgba(67,32,58,.16)}
+.detail-hero img{border-radius:22px 48px 26px 44px/40px 24px 46px 28px}
+.photo-band img{border:6px solid #fff2}
+.tanit-mark{display:block;margin:0 auto 18px;width:30px;height:38px;opacity:.9}
+.tanit-mark path,.tanit-mark circle,.tanit-mark line{stroke:#d8a9a0;stroke-width:2;fill:none;stroke-linecap:round}
 h1,h2,h3{font-family:"Yeseva One",Georgia,serif;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-wrap:balance}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 a{color:var(--lav-deep);text-decoration:none}
@@ -250,6 +279,13 @@ tr.opp-closed{display:none;opacity:.55}
   <a href="/projects.html">projects</a>, or <a href="/blog.html">the blog</a>.</p>
 </div></div>
 <footer><div class="wrap">
+  <svg class="tanit-mark" viewBox="0 0 30 38" aria-hidden="true">
+    <circle cx="15" cy="6" r="4"/>
+    <line x1="3" y1="15" x2="27" y2="15"/>
+    <line x1="3" y1="15" x2="3" y2="11"/>
+    <line x1="27" y1="15" x2="27" y2="11"/>
+    <path d="M15 12 L5 34 H25 Z"/>
+  </svg>
   <div class="foot-grid">
     <div>
       <h3>Ines Said</h3>
@@ -269,5 +305,5 @@ tr.opp-closed{display:none;opacity:.55}
       <a href="https://tanitxr.org">tanitxr.org</a>
     </div>
   </div>
-  <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>United States &middot; Tunisia</span></div>
+  <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>Made with love, between Tunisia &amp; D.C. &#10022;</span></div>
 </div></footer></body></html>
