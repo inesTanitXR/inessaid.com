@@ -453,13 +453,14 @@ PROJECTS = [
    links=[], gallery=[('oracle-demo', 'Demoing the grid simulator on the conference floor.'),
                       ('ets-stage', 'Presenting the work on the Energy Thought Summit main stage.')]),
 
- dict(slug='connected-hub-visionos', title='Connected Hub on Apple Vision Pro', category='Energy · Spatial Computing',
+ dict(slug='nypa-vision-pro', title='NYPA Grid Experience on Apple Vision Pro', category='Energy · Spatial Computing',
    img=None, alt='', ph=('visionOS', 'Apple Vision Pro', 'lav'),
-   card='Native visionOS edition of the Connected Hub grid experience, rebuilt with Unity PolySpatial for the New York Power Authority.',
+   card='A native visionOS energy-grid experience built for the New York Power Authority — a spatial cousin of the Connected Hub, living as a hologram in the room.',
    chips=['visionOS', 'Unity PolySpatial'],
    paras=[
-     "A spatial-computing edition of the Connected Hub grid experience, rebuilt natively for Apple Vision Pro with Unity PolySpatial for the New York Power Authority.",
-     "The energy-grid model lives in a bounded volume in the room — stakeholders walk around it, look into it, and interact with grid scenarios using only their eyes and hands, delivered to testers via TestFlight."],
+     "For the New York Power Authority, I built a native Apple Vision Pro app with Unity PolySpatial — a spatial-computing take on the same idea as the Oracle Connected Hub, but its own application, designed for NYPA.",
+     "The energy-grid model lives in a bounded volume in the room — stakeholders walk around it, lean into it, and interact with grid scenarios using only their eyes and hands, delivered to testers via TestFlight.",
+     "It's an earlier-stage experience than the Connected Hub family, but it answered a question worth asking out loud: what does grid visualization feel like when the computer disappears entirely?"],
    facts=[('Client', 'New York Power Authority'), ('Platform', 'Apple Vision Pro (visionOS)'),
           ('Stack', 'Unity PolySpatial, RealityKit')],
    links=[], gallery=[]),
@@ -469,10 +470,12 @@ PROJECTS = [
    card='A guided virtual safety tour of the Vistra Midlothian power plant — four interactive hazard zones, running in any browser and in VR.',
    chips=['WebXR', 'Needle Engine', 'Unity'],
    paras=[
-     "A guided, single-player virtual safety tour of the Vistra Midlothian power plant: four danger zones, each with interactive storytelling that teaches what the hazard is and how to stay safe around it.",
-     "Originally built for a dedicated VR platform, the tour was rebuilt for the open web with Unity and Needle Engine — so it now runs in any browser, on phones and laptops, and in VR headsets, with no installation required."],
-   facts=[('Client', 'Vistra'), ('Platform', 'Web, mobile, and WebXR (VR headsets)'),
-          ('Stack', 'Unity, Needle Engine, three.js')],
+     "A guided, single-player virtual tour of the Vistra Midlothian power plant: four hazard zones, each with interactive storytelling that teaches what the hazard is and how to stay safe around it. The plant's enclosures are fully modeled, animated, and functional — this isn't a slideshow, it's the plant, working.",
+     "The tour serves multiple audiences at once: internal safety training, stakeholder engagement, and career-fair buzz — and it's used by plant managers, directors, and leaders at Vistra.",
+     "Originally built for a dedicated VR platform, it was rebuilt for the open web with Unity and Needle Engine — so it now runs in any browser, on phones and laptops, and in VR headsets, with no installation required."],
+   facts=[('Client', 'Vistra'), ('Used by', 'Plant managers, directors, and leaders'),
+          ('Use cases', 'Safety training, stakeholder engagement, career fairs'),
+          ('Platform', 'Web, mobile, and WebXR (VR headsets) — Unity + Needle Engine')],
    links=[], gallery=[]),
 
  dict(slug='froliq-minigames', title='Froliq VR Mini-Game Series', category='STEM Education · VR',
@@ -480,11 +483,59 @@ PROJECTS = [
    card='VR games that teach energy and the environment: sort waste in Recyclotopia, audit home energy in BungaLoad, power towns with wind in Fantastic Winds.',
    chips=['VR', 'Unity', 'Education'],
    paras=[
-     "A series of VR mini-games for energy and environmental education, designed for classrooms and museums: race a conveyor belt sorting waste in Recyclotopia, hunt down energy waste room-by-room in BungaLoad, and physically fan wind turbines to power a town in Fantastic Winds.",
-     "The games connect through a shared social hub with leaderboards, fun energy facts, and player progress tracking — how much you recycled, how many kilowatts you saved, how many houses you powered.",
-     "A companion sustainability soccer game was showcased at the AWE 2026 playground."],
-   facts=[('Studio', 'Froliq'), ('Platform', 'Standalone VR headsets'),
-          ('Designed for', 'Classrooms and museums, with progress reporting')],
+     "A series of VR mini-games for energy and environmental education: race a conveyor belt sorting waste into recycling bins in Recyclotopia (levels get faster and add more bins every minute), hunt down energy-wasting lights, appliances, and leaky faucets room-by-room through a virtual home in BungaLoad, and physically fan wind turbines to power up a town in Fantastic Winds — watching buildings light up as the blades spin.",
+     "The games connect through a Mario Party-style VR lobby with three doors, a live leaderboard with gold-silver-bronze trophies, and a player profile that tracks everything across games: items recycled, kilowatts saved, houses powered, and facts discovered — replay enough and you earn statuses like \"Efficiency Expert.\"",
+     "Each game teaches one idea that sticks: my sorting choice matters; small savings add up room by room; X turbines spinning equals Y homes powered. The suite has been played at career fests, Texas schools, and workforce-development events, designed for stationary point-and-click play so anyone can pick it up."],
+   facts=[('Studio', 'Froliq'), ('Platform', 'Standalone VR headsets, stationary play'),
+          ('Played at', 'Career fests, Texas schools, workforce events'),
+          ('Design', 'Shared lobby, live leaderboard, cross-game player stats')],
+   links=[], gallery=[]),
+
+ dict(slug='sustainaball', title='Sustainaball', category='STEM Education · Interactive AR',
+   img='froliq-playground', alt='The Froliq team with the Sustainaball projection soccer game at the AWE playground',
+   card='A projection-based interactive soccer game with motion detection — kick a real ball at projected sustainability challenges. Played by 100+ students and showcased at the AWE 2026 playground.',
+   chips=['Projection AR', 'Motion detection', '!AWE playground'],
+   paras=[
+     "Sustainaball is a projection-based interactive soccer game: a real ball, a projected field, and motion detection that turns every kick into a sustainability challenge. It's multiplayer-friendly and physical — the rare educational game that gets a whole room moving.",
+     "We built it at Froliq for energy and environmental education, and it's been a hit with everyone from 7th graders to college students — more than 100 students have played. It was also our showcase at the Augmented World Expo 2026 playground, where the XR industry lined up to kick a ball at clean-energy trivia.",
+     "Kelly and I had entirely too much fun building this one."],
+   facts=[('Studio', 'Froliq'), ('Tech', 'Projection mapping + motion detection'),
+          ('Reach', '100+ students, grades 7 through college; AWE 2026 playground')],
+   links=[], gallery=[]),
+
+ dict(slug='stevie', title='StEVie', category='STEM Education · Mobile AR',
+   img=None, alt='', ph=('StEVie', 'AR energy storytelling', 'lav'),
+   card='Location-based augmented-reality storytelling about energy in real time — accessible anywhere, on the devices students already have.',
+   chips=['Mobile AR', 'Storytelling'],
+   paras=[
+     "StEVie is an augmented-reality storytelling experience about energy — location-based, interactive, and accessible anywhere, because it runs on the phones and tablets students already carry.",
+     "Around 30 young people from the E4 youth community have played it so far, following energy stories that unfold in real time in the world around them. It's part of the same Froliq belief that runs through all our education work: meet learners where they are, with the devices they have."],
+   facts=[('Studio', 'Froliq'), ('Tech', 'Location-based mobile AR'),
+          ('Community', 'E4 youth program')],
+   links=[], gallery=[]),
+
+ dict(slug='exelon-stem', title='Exelon STEM Program', category='Workforce · VR Simulations',
+   img=None, alt='', ph=('STEM', 'Six utilities', 'blush'),
+   card="XR simulations of real utility careers for Exelon's five-year STEM program across all six of its utilities — from career fairs to classrooms.",
+   chips=['VR', 'Workforce development'],
+   paras=[
+     "Exelon runs a five-year STEM program across all six of its utilities, and Froliq builds the immersive layer: XR and VR simulations that let students step into real utility roles — the jobs that keep the lights on — at career fairs and in classrooms.",
+     "The program pairs educator and community partnerships with hands-on XR experiences, creating a proven pathway from a student's first STEM exposure to a real career in energy. It's workforce development that starts with wonder."],
+   facts=[('Client', 'Exelon, with Froliq'), ('Scale', 'Five-year program, six utilities'),
+          ('Settings', 'Career fairs, classrooms, community events')],
+   links=[], gallery=[]),
+
+ dict(slug='nuclear-capture', title='Nuclear Plant Reality Capture', category='Energy · 3D Scanning',
+   img='portalcam', alt='Ines Said and colleague with the PortalCam LiDAR scanner',
+   card='LiDAR-scanning the Davis-Besse nuclear power plant — turbine deck to cooling tower — and rendering it as Gaussian splats for training in web, VR, and AR.',
+   chips=['LiDAR', 'Gaussian splats', 'Training'],
+   paras=[
+     "Some places are too critical, too controlled, or too complex to train in casually — a nuclear power plant is all three. At Froliq, we 3D-scanned facilities at the Davis-Besse nuclear power plant, including the turbine deck and cooling tower, using the PortalCam LiDAR scanner.",
+     "The scans render into Gaussian splats — the same technique behind Tanit XR's heritage captures — producing photoreal, explorable environments that can be deployed to web, VR, or AR for training and visual simulation. Staff can learn a space before they ever set foot in it.",
+     "It's the perfect symmetry of my work: the exact pipeline I use to preserve 3,000-year-old amphitheaters, pointed at the most modern infrastructure there is."],
+   facts=[('Client project', 'Froliq — Davis-Besse Nuclear Power Station'),
+          ('Captured', 'Turbine deck, cooling tower, and other facilities'),
+          ('Pipeline', 'PortalCam LiDAR → Gaussian splats → web/VR/AR')],
    links=[], gallery=[]),
 
  dict(slug='covid-reflections', title='Covid Reflections', category='Public Health · AR Public Art',
@@ -1029,17 +1080,32 @@ def body_about(preview):
 </div></section>
 """
 
+PROJECT_GROUPS = [
+    ('Cultural heritage', 'Preserving what time is taking.', ['tanit-xr']),
+    ('Immersive art & installations', 'Museum floors, gallery walls, and city streets.',
+     ['smithsonian-futures', 'shadows-of-tomorrow', 'covid-reflections', 'sparc']),
+    ('Energy & industry', 'Invisible infrastructure, made touchable — my client work at Froliq.',
+     ['oracle-connected-hub', 'nypa-vision-pro', 'vistra-tour', 'nuclear-capture']),
+    ('Learning & play', 'Games and experiences that turn students into makers.',
+     ['froliq-minigames', 'sustainaball', 'stevie', 'exelon-stem']),
+]
+
 def body_projects(preview):
-    cards = ''.join(card_html(p, preview) for p in PROJECTS)
+    by_slug = {p['slug']: p for p in PROJECTS}
+    sections = []
+    for title, sub, slugs in PROJECT_GROUPS:
+        cards = ''.join(card_html(by_slug[s], preview) for s in slugs if s in by_slug)
+        sections.append(
+            f'<section class="block" style="padding-top:40px"><div class="wrap">'
+            f'<h2 class="sec-title">{title}</h2><p class="sec-sub">{sub}</p>'
+            f'<div class="cards two">{cards}</div></div></section>')
     return f"""
 <div class="wrap"><div class="page-head">
   <p class="kicker">Portfolio</p>
   <h1>Projects</h1>
-  <p class="sub">Selected work across cultural heritage, climate, energy, and public health. Click any project for the full story.</p>
+  <p class="sub">Thirteen projects across heritage, art, energy, and education. Click any of them for the full story.</p>
 </div></div>
-<section class="block" style="padding-top:36px"><div class="wrap">
-  <div class="cards two">{cards}</div>
-</div></section>
+{''.join(sections)}
 """
 
 def body_awards(preview):
