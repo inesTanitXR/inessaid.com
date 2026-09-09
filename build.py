@@ -1525,8 +1525,9 @@ def build_site():
     entries = ''.join(f'<url><loc>{BASE_URL}/{u if u != "index.html" else ""}</loc></url>' for u in urls)
     with open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
         f.write(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{entries}</urlset>')
-    with open(os.path.join(OUT, 'CNAME'), 'w', encoding='utf-8') as f:
-        f.write('www.inessaid.com\n')
+    # CNAME temporarily disabled for github.io preview — RESTORE before DNS cutover:
+    # with open(os.path.join(OUT, 'CNAME'), 'w', encoding='utf-8') as f:
+    #     f.write('www.inessaid.com\n')
     with open(os.path.join(OUT, 'robots.txt'), 'w', encoding='utf-8') as f:
         f.write(f'User-agent: *\nAllow: /\nSitemap: {BASE_URL}/sitemap.xml\n')
     print('site/ written:', len(PAGES), 'pages +', len(PROJECTS), 'project pages + sitemap.xml + robots.txt')
