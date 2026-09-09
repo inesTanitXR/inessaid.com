@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ines Said</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap"><style>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ines Said</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap"><style>
 :root{
   --lav:#8e3a63; --lav-deep:#5e2246; --tint-lav:#f8e6e4; --tint-blush:#f9eeda;
   --pink:#b9486b; --gold:#c08a2e;
@@ -43,6 +43,14 @@ h1,h2,h3{font-weight:400 !important}
 .photo-band img{border:6px solid #fff2}
 .tanit-mark{display:block;margin:0 auto 18px;width:30px;height:38px;opacity:.9}
 .tanit-mark path,.tanit-mark circle,.tanit-mark line{stroke:#d8a9a0;stroke-width:2;fill:none;stroke-linecap:round}
+/* languages */
+.lang-switch{display:flex;gap:10px;align-items:center;font-size:.78rem;font-weight:700}
+.lang-switch a{color:var(--muted)}
+.lang-switch a.on{color:var(--lav-deep);border-bottom:2px solid var(--gold)}
+[dir="rtl"] body, [dir="rtl"]{font-family:"Noto Naskh Arabic","Bitter",serif}
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] .brand,[dir="rtl"] .stats b{font-family:"Aref Ruqaa",serif}
+[dir="rtl"] .kicker,[dir="rtl"] nav a,[dir="rtl"] .btn{letter-spacing:0}
+[dir="rtl"] .page-head h1::after,[dir="rtl"] .sec-title::after{background-position:right center}
 h1,h2,h3{font-family:"Yeseva One",Georgia,serif;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-wrap:balance}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 a{color:var(--lav-deep);text-decoration:none}
@@ -271,7 +279,7 @@ tr.opp-closed{display:none;opacity:.55}
   for (var i=0;i<map.length;i++) if (map[i][0].test(p)) { location.replace(map[i][1]); return; }
 })();
 </script></head><body>
-<header class="site-header"><div class="wrap"><a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="awards.html">Awards</a><a href="speaking.html">Speaking</a><a href="opportunities.html">Opportunities</a><a href="press.html">Press</a><a href="blog.html">Blog</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="awards.html">Awards</a><a href="speaking.html">Speaking</a><a href="opportunities.html">Opportunities</a><a href="press.html">Press</a><a href="blog.html">Blog</a></nav><div class="lang-switch"><a href="#" class="on">EN</a><a href="fr/">FR</a><a href="ar/">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
 <div class="wrap"><div class="page-head">
   <p class="kicker">Page moved</p>
   <h1>This page has a new home.</h1>

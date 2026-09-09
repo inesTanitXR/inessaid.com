@@ -56,6 +56,14 @@ h1,h2,h3{font-weight:400 !important}
 .photo-band img{border:6px solid #fff2}
 .tanit-mark{display:block;margin:0 auto 18px;width:30px;height:38px;opacity:.9}
 .tanit-mark path,.tanit-mark circle,.tanit-mark line{stroke:#d8a9a0;stroke-width:2;fill:none;stroke-linecap:round}
+/* languages */
+.lang-switch{display:flex;gap:10px;align-items:center;font-size:.78rem;font-weight:700}
+.lang-switch a{color:var(--muted)}
+.lang-switch a.on{color:var(--lav-deep);border-bottom:2px solid var(--gold)}
+[dir="rtl"] body, [dir="rtl"]{font-family:"Noto Naskh Arabic","Bitter",serif}
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3,[dir="rtl"] .brand,[dir="rtl"] .stats b{font-family:"Aref Ruqaa",serif}
+[dir="rtl"] .kicker,[dir="rtl"] nav a,[dir="rtl"] .btn{letter-spacing:0}
+[dir="rtl"] .page-head h1::after,[dir="rtl"] .sec-title::after{background-position:right center}
 h1,h2,h3{font-family:"Yeseva One",Georgia,serif;font-weight:600;color:var(--ink);letter-spacing:-.01em;text-wrap:balance}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 a{color:var(--lav-deep);text-decoration:none}
@@ -278,7 +286,8 @@ tr.opp-closed{display:none;opacity:.55}
 
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
          'family=Yeseva+One&'
-         'family=Bitter:ital,wght@0,400;0,600;0,700;1,400&display=swap">')
+         'family=Bitter:ital,wght@0,400;0,600;0,700;1,400&'
+         'family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">')
 
 PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'opportunities', 'press', 'blog']
 LABEL = {'home': 'Home', 'about': 'About', 'projects': 'Projects', 'awards': 'Awards',
@@ -333,14 +342,27 @@ def embeds_block(embeds, preview, heading=None):
     cls = 'embeds one' if len(embeds) == 1 else 'embeds'
     return h + f'<div class="{cls}">' + ''.join(embed_html(e, preview) for e in embeds) + '</div>'
 
-def nav_html(active, preview):
+def lang_switch(current='en', prefix=''):
+    # prefix: '' on root pages, '../' on /fr/ and /ar/ pages
+    en = f'{prefix}index.html' if prefix else 'index.html'
+    fr = f'{prefix}fr/' if prefix == '' else ('' if current == 'fr' else '../fr/')
+    ar = f'{prefix}ar/' if prefix == '' else ('' if current == 'ar' else '../ar/')
+    def a(code, url, label):
+        cls = ' class="on"' if current == code else ''
+        return f'<a href="{url or "#"}"{cls}>{label}</a>'
+    return ('<div class="lang-switch">' + a('en', en if current != 'en' else '#', 'EN') +
+            a('fr', fr if current != 'fr' else '#', 'FR') +
+            a('ar', ar if current != 'ar' else '#', '&#1593;&#1585;&#1576;&#1610;') + '</div>')
+
+def nav_html(active, preview, lang='en'):
     links = []
     for p in PAGES:
         cls = ' class="active"' if p == active else ''
         links.append(f'<a href="{href(p, preview)}"{cls}>{LABEL[p]}</a>')
+    switch = '' if preview else lang_switch('en', '')
     return ('<header class="site-header"><div class="wrap">'
             f'<a class="brand" href="{href("home", preview)}">Ines Said<em>&thinsp;&#10022;</em></a>'
-            '<nav>' + ''.join(links) + '</nav></div></header>')
+            '<nav>' + ''.join(links) + '</nav>' + switch + '</div></header>')
 
 FOOTER = """
 <footer><div class="wrap">
@@ -1577,6 +1599,182 @@ def build_preview():
         f.write(html)
     print('preview.html written:', len(html)//1024, 'KB')
 
+# ---------------- French & Arabic pages ----------------
+L10N = {
+ 'fr': dict(dir='ltr', lang='fr',
+   nav=[('index.html','Accueil'),('about.html','À propos'),('../projects.html','Projets'),
+        ('../awards.html','Prix'),('../speaking.html','Conférences'),('../opportunities.html','Opportunités'),
+        ('../press.html','Presse'),('../blog.html','Blog')],
+   home_title='Ines Said | Artiste immersive et technologue XR',
+   home_desc="Ines Said — artiste immersive et technologue XR tunisienne. Fondatrice de Tanit XR, développeuse XR principale chez Froliq. Exposée au Smithsonian et au MIT.",
+   kicker='Artiste immersive &amp; technologue XR',
+   hello='Bonjour, je suis <em>Ines Said</em>.',
+   lede="J'ai grandi à quinze minutes à pied des ruines romaines de Néapolis, en Tunisie — aujourd'hui, je préserve des lieux comme celui-là en 3D. Fondatrice de <strong>Tanit XR</strong>, premier archive open source des artefacts menacés de Tunisie, et développeuse XR principale chez <strong>Froliq</strong>. Mes installations sur le patrimoine et le climat ont été exposées dans le monde entier, du Smithsonian au MIT.",
+   btn_work='Découvrir mon travail', btn_about='En savoir plus',
+   stats=[('600 000+', "visiteurs de l'exposition FUTURES du Smithsonian, où figurait son installation"),
+          ('30 Under 30', 'EE 30 Under 30, promotion 2025 — NAAEE'),
+          ('11 000+', 'personnes touchées en 2025 lors de plus de 40 événements'),
+          ('Finaliste Auggie', 'Meilleur impact sociétal — Tanit XR, AWE 2026')],
+   featured_h='Projets phares', featured_sub='Patrimoine, climat et santé publique — en réalité augmentée et virtuelle. (Pages projets en anglais.)',
+   featured=[('../project-tanit-xr.html','Tanit XR', "Premier archive numérique open source du patrimoine tunisien : plus de 80 artefacts documentés sur 20 sites, des mosaïques à l'amphithéâtre d'El Jem."),
+             ('../project-shadows-of-tomorrow.html','Shadows of Tomorrow', "Installation XR sur le climat : seul, on voit un monde abîmé — main dans la main, il se restaure. Prix d'excellence à la biennale de la GFAA."),
+             ('../project-smithsonian-futures.html','Smithsonian FUTURES', "Installation immersive co-créée pour l'exposition FUTURES du Smithsonian à Washington — plus de 600 000 visiteurs.")],
+   speak_h='Invitez-moi sur votre scène.',
+   speak_p="Conférences, panels et ateliers sur le patrimoine culturel, le climat et les technologies immersives — du Smithsonian à un colisée romain. En présentiel ou en ligne, en français, en arabe ou en anglais.",
+   speak_btn='Réserver une intervention',
+   support_h='Soutenez Tanit XR 🏺',
+   support_p="Le patrimoine tunisien s'érode plus vite qu'on ne peut le protéger. Tanit XR est une initiative bénévole et autofinancée — vous pouvez faire un don via notre sponsor fiscal, la Florida Community Innovation Foundation, ou nous rejoindre comme bénévole.",
+   support_btn='Faire un don', volunteer_btn='Devenir bénévole',
+   about_title='À propos | Ines Said',
+   about_h1="L'art, la technologie et un peu de magie.",
+   about_sub='Artiste immersive et technologue XR tunisienne — préserver le patrimoine, affronter le climat.',
+   about_paras=[
+     "Je suis une artiste immersive et technologue XR tunisienne. Mon travail mêle art, technologie et durabilité pour préserver le patrimoine et affronter les défis mondiaux.",
+     "Avec <strong>Tanit XR</strong> — premier archive numérique open source du patrimoine tunisien, baptisé du nom de la déesse carthaginoise de la protection — j'utilise la numérisation 3D pour préserver mosaïques, statues et sites archéologiques vieux de près de 3 000 ans. Depuis sa fondation en 2025, notre équipe bénévole a documenté plus de 80 artefacts sur 20 sites, noué des partenariats avec la Fédération tunisienne des agences de voyages et le programme patrimoine culturel de Sketchfab, et réalisé la plus grande reconstruction de l'amphithéâtre d'El Jem à ce jour, mise à l'honneur par Niantic Spatial. J'ai grandi à quinze minutes à pied des ruines de la Néapolis romaine, à Nabeul — ce travail est personnel.",
+     "Mon installation climatique <strong>Shadows of Tomorrow</strong> a reçu un prix d'excellence remis par Jane Gilbert, Chief Heat Officer de Miami, et l'auteur Jeff Goodell. <strong>Covid Reflections</strong>, projet d'art public en réalité augmentée, a tourné en Floride, en Californie et au Japon aux côtés de cliniques mobiles.",
+     "Développeuse XR principale chez <strong>Froliq</strong>, je crée des expériences immersives pour l'éducation à l'énergie et à la durabilité — dont l'installation <em>Future of Energy and Water</em> pour l'exposition FUTURES du Smithsonian, vue par plus de 600 000 visiteurs.",
+     "Mes recherches sont publiées dans l'ACM et l'IEEE (Best Paper Award, IEEE ISEC 2023), et je siège de plus en plus souvent du côté des jurys — Games for Change, EE 30 Under 30, et le hackathon ImmerseGT de Georgia Tech, dont Tanit XR a parrainé une piste dédiée au patrimoine tunisien.",
+     "Loin des casques, je suis plongeuse certifiée, heureuse en randonnée et à l'affût de la faune — dans les lieux mêmes que mon travail tente de protéger."],
+   about_caption="Sur le terrain — documenter le patrimoine tunisien menacé.",
+   quote="« L'éducation doit faire sentir aux gens qu'ils sont liés à la planète, pas seulement informés à son sujet. »",
+   quote_src='Extrait de son profil EE 30 Under 30 — NAAEE',
+   full_bio='Parcours complet (en anglais) →'),
+
+ 'ar': dict(dir='rtl', lang='ar',
+   nav=[('index.html','الرئيسية'),('about.html','من أنا'),('../projects.html','المشاريع'),
+        ('../awards.html','الجوائز'),('../speaking.html','المحاضرات'),('../opportunities.html','الفرص'),
+        ('../press.html','الصحافة'),('../blog.html','المدوّنة')],
+   home_title='إيناس سعيد | فنانة غامرة وتقنية واقع ممتد',
+   home_desc='إيناس سعيد — فنانة تونسية وتقنية واقع ممتد. مؤسِّسة تانيت إكس آر وكبيرة مطوّري الواقع الممتد في Froliq. عُرضت أعمالها في متحف سميثسونيان ومعهد MIT.',
+   kicker='فنانة غامرة وتقنية واقع ممتد',
+   hello='مرحبًا، أنا <em>إيناس سعيد</em>.',
+   lede='نشأتُ على بُعد خمس عشرة دقيقة سيرًا من أطلال نيابوليس الرومانية في تونس — واليوم أحفظ أماكن مثلها بتقنيات ثلاثية الأبعاد. أنا مؤسِّسة <strong>تانيت إكس آر</strong>، أول أرشيف مفتوح المصدر للآثار المهدَّدة في تونس، وكبيرة مطوّري الواقع الممتد في <strong>Froliq</strong>. عُرضت أعمالي حول التراث والمناخ حول العالم، من متحف سميثسونيان إلى معهد MIT.',
+   btn_work='اكتشفوا أعمالي', btn_about='المزيد عنّي',
+   stats=[('+600,000', 'زائر لمعرض FUTURES في متحف سميثسونيان الذي ضمّ عملي'),
+          ('30 تحت 30', 'قائمة EE 30 Under 30 لعام 2025 — NAAEE'),
+          ('+11,000', 'شخص وصلت إليهم أعمالي في 2025 عبر أكثر من 40 فعالية'),
+          ('نهائيات جوائز Auggie', 'أفضل أثر مجتمعي — تانيت إكس آر، AWE 2026')],
+   featured_h='أبرز المشاريع', featured_sub='التراث والمناخ والصحة العامة — بالواقع المعزَّز والافتراضي. (صفحات المشاريع بالإنجليزية.)',
+   featured=[('../project-tanit-xr.html','تانيت إكس آر', 'أول أرشيف رقمي مفتوح المصدر للتراث التونسي: أكثر من 80 قطعة أثرية موثَّقة في 20 موقعًا، من الفسيفساء إلى مسرح الجم.'),
+             ('../project-shadows-of-tomorrow.html','ظلال الغد', 'عمل فني مناخي بالواقع الممتد: وحدك ترى عالمًا متضررًا — وحين تمسك يدَ شخصٍ آخر، يعود العالم إلى الحياة. جائزة التميّز في بينالي GFAA.'),
+             ('../project-smithsonian-futures.html','سميثسونيان FUTURES', 'تجربة غامرة شاركتُ في صنعها لمعرض FUTURES في واشنطن — زاره أكثر من 600,000 شخص.')],
+   speak_h='ادعوني إلى منصّتكم.',
+   speak_p='محاضرات وندوات وورشات حول التراث الثقافي والمناخ والتقنيات الغامرة — من سميثسونيان إلى مدرّج روماني في الجم. حضوريًا أو عن بُعد، بالعربية أو الفرنسية أو الإنجليزية.',
+   speak_btn='احجزوا محاضرة',
+   support_h='ادعموا تانيت إكس آر 🏺',
+   support_p='تراث تونس يتآكل أسرع مما نستطيع حمايته. «تانيت إكس آر» مبادرة تطوعية ذاتية التمويل — يمكنكم التبرّع عبر راعينا المالي Florida Community Innovation Foundation، أو الانضمام إلينا كمتطوعين. تحبّون التاريخ؟ يثير الواقع الممتد فضولكم؟ أهلًا بالجميع.',
+   support_btn='تبرّعوا الآن', volunteer_btn='انضمّوا كمتطوعين',
+   about_title='من أنا | إيناس سعيد',
+   about_h1='فنٌّ وتقنية وقليلٌ من السحر.',
+   about_sub='فنانة تونسية وتقنية واقع ممتد — أحفظ التراث وأواجه تغيّر المناخ.',
+   about_paras=[
+     'أنا فنانة غامرة وتقنية واقع ممتد من تونس. يجمع عملي بين الفن والتقنية والاستدامة لحفظ التراث ومواجهة التحديات العالمية.',
+     'عبر <strong>تانيت إكس آر</strong> — أول أرشيف رقمي مفتوح المصدر للتراث التونسي، سمّيناه على اسم الإلهة القرطاجية الحامية — أستخدم المسح ثلاثي الأبعاد لحفظ الفسيفساء والتماثيل والمواقع الأثرية التي يقارب عمرها ثلاثة آلاف سنة. منذ التأسيس في 2025، وثّق فريقنا التطوعي أكثر من 80 قطعة أثرية في 20 موقعًا، وعقد شراكات مع الجامعة التونسية لوكالات الأسفار وبرنامج التراث الثقافي في Sketchfab، وأنجز أكبر إعادة بناء رقمية لمسرح الجم حتى اليوم، وهي التي احتفت بها Niantic Spatial. نشأتُ على بُعد ربع ساعة سيرًا من أطلال نيابوليس الرومانية في نابل — هذا العمل شخصيّ بالنسبة إليّ.',
+     'نال عملي المناخي <strong>«ظلال الغد»</strong> جائزة التميّز التي سلّمتها جاين جيلبرت، مسؤولة الحرارة الأولى في ميامي، والكاتب جيف غودِل. أمّا <strong>«تأمّلات كوفيد»</strong>، وهو عمل فني عام بالواقع المعزَّز، فقد جال فلوريدا وكاليفورنيا واليابان مرافقًا عيادات صحية متنقّلة.',
+     'وبصفتي كبيرة مطوّري الواقع الممتد في <strong>Froliq</strong>، أبتكر تجارب غامرة للتثقيف في مجالي الطاقة والاستدامة — من بينها تجربة <em>مستقبل الطاقة والماء</em> لمعرض FUTURES في سميثسونيان الذي زاره أكثر من 600,000 شخص.',
+     'نُشرت أبحاثي في ACM وIEEE (جائزة أفضل ورقة بحثية، IEEE ISEC 2023)، وصرتُ أجلس أكثر فأكثر في مقاعد التحكيم — في Games for Change، وEE 30 Under 30، وهاكاثون ImmerseGT في جامعة جورجيا تك حيث رعت تانيت إكس آر مسارًا خاصًا بالتراث التونسي.',
+     'وبعيدًا عن النظارات، أنا غوّاصة معتمدة، أسعد ما أكون في رحلات المشي ومراقبة الحياة البرية — في الأماكن نفسها التي يحاول عملي حمايتها.'],
+   about_caption='في الميدان — أوثّق تراث تونس المهدَّد.',
+   quote='«على التعليم أن يجعل الناس يشعرون بارتباطهم بالكوكب، لا أن يكتفي بإخبارهم عنه.»',
+   quote_src='من ملفّها في EE 30 Under 30 — NAAEE',
+   full_bio='← السيرة الكاملة (بالإنجليزية)'),
+}
+
+def lang_nav(L, active):
+    ACT = ' class="active"'
+    links = ''.join(f'<a href="{u}"{ACT if u.endswith(active) else ""}>{t}</a>' for u, t in L['nav'])
+    return ('<header class="site-header"><div class="wrap">'
+            f'<a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a>'
+            f'<nav>{links}</nav>{lang_switch(L["lang"], "../")}</div></header>')
+
+def lang_footer(L):
+    return FOOTER.replace('href="mailto', 'href="mailto')  # same footer, contacts are universal
+
+def lang_page(L, title, desc, path, body):
+    return (f'<!doctype html><html lang="{L["lang"]}" dir="{L["dir"]}"><head>{HEAD}'
+            f'<title>{title}</title><meta name="description" content="{desc}">'
+            f'<link rel="canonical" href="{BASE_URL}/{path}">'
+            f'<link rel="alternate" hreflang="en" href="{BASE_URL}/">'
+            f'<link rel="alternate" hreflang="fr" href="{BASE_URL}/fr/">'
+            f'<link rel="alternate" hreflang="ar" href="{BASE_URL}/ar/">'
+            f'{FONTS}<style>{CSS}</style></head><body>'
+            f'{lang_nav(L, path.split("/")[-1] or "index.html")}{body}{lang_footer(L)}</body></html>')
+
+def lang_home_body(L):
+    stats = ''.join(f'<div><b>{b}</b><span>{s}</span></div>' for b, s in L['stats'])
+    cards = ''.join(
+        f'<a class="card" href="{u}"><div class="card-inner"><div class="card-body">'
+        f'<h3>{t}</h3><p>{d}</p><span class="card-more">&rarr;</span></div></div></a>'
+        for u, t, d in L['featured'])
+    return f"""
+<div class="photo-band"><div class="strip">
+  <figure><img src="../web/statue-pose.jpg" alt=""></figure>
+  <figure><img src="../web/mosaic-portrait.jpg" alt="Ines Said"></figure>
+  <figure><img src="../web/ets-fireside.jpg" alt=""></figure>
+</div></div>
+<div class="intro-home">
+  <p class="kicker">{L['kicker']}</p>
+  <h1>{L['hello']}</h1>
+  <p class="lede">{L['lede']}</p>
+  <div class="btn-row">
+    <a class="btn" href="../projects.html">{L['btn_work']}</a>
+    <a class="btn ghost" href="about.html">{L['btn_about']}</a>
+  </div>
+</div>
+<div class="band lav"><div class="wrap"><div class="stats">{stats}</div></div></div>
+{SQUIGGLE}
+<section class="block"><div class="wrap">
+  <h2 class="sec-title">{L['featured_h']}</h2><p class="sec-sub">{L['featured_sub']}</p>
+  <div class="cards">{cards}</div>
+</div></section>
+<div class="band deep"><div class="wrap" style="text-align:center">
+  <h2 class="sec-title" style="margin-bottom:10px">{L['speak_h']}</h2>
+  <p style="max-width:58ch;margin:0 auto 24px">{L['speak_p']}</p>
+  <a class="btn" href="mailto:ines@tanitxr.org?subject=Speaking%20inquiry">{L['speak_btn']}</a>
+</div></div>
+<div class="band blush"><div class="wrap" style="text-align:center">
+  <h2 class="sec-title" style="margin-bottom:10px">{L['support_h']}</h2>
+  <p style="max-width:58ch;margin:0 auto 24px">{L['support_p']}</p>
+  <div class="btn-row" style="justify-content:center">
+    <a class="btn" href="https://donors.tuesday.app/campaign/73DO5">{L['support_btn']}</a>
+    <a class="btn ghost" href="https://tanitxr.org/volunteer/">{L['volunteer_btn']}</a>
+  </div>
+</div></div>
+"""
+
+def lang_about_body(L):
+    paras = ''.join(f'<p>{t}</p>' for t in L['about_paras'])
+    return f"""
+<div class="wrap"><div class="page-head">
+  <p class="kicker">{L['kicker']}</p>
+  <h1>{L['about_h1']}</h1>
+  <p class="sub">{L['about_sub']}</p>
+</div></div>
+<section class="block" style="padding-top:36px"><div class="wrap">
+  <div class="two-col">
+    <div class="prose">{paras}
+      <p><a href="../about.html"><strong>{L['full_bio']}</strong></a></p>
+    </div>
+    <figure class="side-photo">
+      <img src="../web/statue-pose.jpg" alt="Ines Said">
+      <figcaption>{L['about_caption']}</figcaption>
+    </figure>
+  </div>
+  <div class="pull"><p>{L['quote']}</p><span>{L['quote_src']}</span></div>
+</div></section>
+"""
+
+def build_langs():
+    for code, L in L10N.items():
+        d = os.path.join(OUT, code)
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
+            f.write(lang_page(L, L['home_title'], L['home_desc'], f'{code}/', lang_home_body(L)))
+        with open(os.path.join(d, 'about.html'), 'w', encoding='utf-8') as f:
+            f.write(lang_page(L, L['about_title'], L['about_sub'], f'{code}/about.html', lang_about_body(L)))
+    print('language pages written: fr/, ar/')
+
 if __name__ == '__main__':
     build_site()
+    build_langs()
     build_preview()
