@@ -933,6 +933,10 @@ def body_home(preview):
   <a href="https://naaee.org/people/ines-said"><b>30 Under 30</b><span>EE 30 Under 30, Class of 2025 — NAAEE</span></a>
   <a href="{href('projects', preview)}"><b>11,000+</b><span>people reached in 2025 across 40+ events</span></a>
   <a href="https://www.awexr.com/blog/1382-2026-auggie-awards-finalists-announced"><b>Auggie Finalist</b><span>Best Societal Impact — Tanit XR, AWE 2026</span></a>
+  <a href="https://www.linkedin.com/in/inessaid/"><b>7,000+</b><span>followers on LinkedIn — doubled in the past year</span></a>
+  <a href="{NEWSLETTER_URL}"><b>167K</b><span>impressions this past year, 30,000+ people reached</span></a>
+  <a href="{href('speaking', preview)}"><b>1 in 4</b><span>of her audience is a founder, executive, or director</span></a>
+  <a href="{href('about', preview)}"><b>3 languages</b><span>presenting in English, Arabic &amp; French</span></a>
 </div>
 <p style="text-align:center;margin:44px 0 0;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">As featured in</p>
 <p style="text-align:center;margin:10px 0 0;font-family:"Yeseva One",serif;font-weight:600;font-size:1.05rem">
@@ -1171,9 +1175,13 @@ def body_speaking(preview):
       <p style="max-width:60ch;margin:0 0 18px">I'm available for <strong>keynotes, panels, workshops, and
       university guest lectures</strong> — in person or virtual, in <strong>English, Arabic, or French</strong>.
       Recent stages include Augmented World Expo, Games for Change, the Global XR Conference, and the
-      El Jem International Conference in Tunisia — where I presented inside the Roman amphitheater itself.
-      In 2025 alone, my talks and demos reached 11,000+ people across 40+ events, and my LinkedIn
-      audience of 7,000+ (167K impressions this past year) hears about every stage I'm on.</p>
+      El Jem International Conference in Tunisia — where I presented inside the Roman amphitheater itself.</p>
+      <div class="stats" style="text-align:left;grid-template-columns:repeat(2,1fr);gap:18px;margin:0 0 22px">
+        <div><b>11,000+</b><span>reached in person in 2025, across 40+ events</span></div>
+        <div><b>167K</b><span>LinkedIn impressions this past year</span></div>
+        <div><b>7,000+</b><span>followers — every stage I'm on, they hear about</span></div>
+        <div><b>1 in 4</b><span>of my audience is a founder, exec, or director</span></div>
+      </div>
       <p style="max-width:60ch;margin:0 0 18px;font-size:.92rem;color:var(--muted)"><strong style="color:var(--ink)">Trusted by teams at:</strong>
       Oracle Utilities &middot; Exelon &middot; Vistra &middot; New York Power Authority &middot;
       the Smithsonian &middot; NEF</p>
