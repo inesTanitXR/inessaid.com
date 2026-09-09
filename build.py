@@ -51,6 +51,19 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 .page-head h1{font-size:clamp(2.2rem,5vw,3.4rem);margin:0 0 10px}
 .page-head p.sub{max-width:62ch;color:var(--muted);font-size:1.08rem;margin:0}
 
+/* hero (home) — Xiye-style photo band + personal intro */
+.photo-band{background:var(--deep);padding:30px 0}
+.photo-band .strip{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:14px;max-width:1160px;margin:0 auto;padding:0 20px;align-items:center}
+.photo-band img{display:block;width:100%;height:360px;object-fit:cover;border-radius:6px}
+.photo-band .strip figure{margin:0}
+.photo-band .strip figure:nth-child(2) img{height:430px}
+@media(max-width:760px){.photo-band .strip{grid-template-columns:1fr}.photo-band .strip figure:nth-child(1),.photo-band .strip figure:nth-child(3){display:none}}
+.intro-home{text-align:center;padding:68px 24px 20px;max-width:760px;margin:0 auto}
+.intro-home h1{font-size:clamp(2.6rem,6vw,4rem);margin:10px 0 0;color:var(--ink)}
+.intro-home h1 em{font-style:normal;color:var(--lav)}
+.intro-home p.lede{font-size:1.13rem;margin:24px auto 30px;max-width:58ch}
+.intro-home .btn-row{justify-content:center}
+
 /* hero (home) — cinematic full-bleed */
 .hero-cine{position:relative;min-height:540px;display:flex;align-items:center;background:url(web/el-jem.jpg) center 30%/cover no-repeat #43203a}
 .hero-cine::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,14,32,.55),rgba(56,22,44,.62) 55%,rgba(56,22,44,.82))}
@@ -784,18 +797,24 @@ SQUIGGLE = ('<svg class="squiggle" viewBox="0 0 1200 22" preserveAspectRatio="no
 def body_home(preview):
     featured = ''.join(card_html(p, preview) for p in PROJECTS[:3])
     return f"""
-<div class="hero-cine"><div class="inner">
-    <p class="kicker">XR Immersive Artist &amp; Technologist</p>
-    <h1>Preserving heritage.<br>Imagining futures.</h1>
-    <p class="lede">I'm Ines Said — founder of <strong>Tanit XR</strong>, Tunisia's first
-    open-source archive of endangered artifacts, and Lead XR Developer at
-    <strong>Froliq</strong>. My installations on heritage and climate have been exhibited
-    internationally, from the Smithsonian to MIT.</p>
-    <div class="btn-row" style="justify-content:center">
-      <a class="btn" href="{href('projects', preview)}">Explore my work</a>
-      <a class="btn ghost" href="{href('about', preview)}">Meet Ines</a>
-    </div>
+<div class="photo-band"><div class="strip">
+  <figure><img src="web/statue-pose.jpg" alt="Ines Said matching poses with an ancient statue at a Tunisian dig site"></figure>
+  <figure><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"></figure>
+  <figure><img src="web/ets-fireside.jpg" alt="Ines Said speaking on the Energy Thought Summit stage"></figure>
 </div></div>
+
+<div class="intro-home">
+  <p class="kicker">XR Immersive Artist &amp; Technologist</p>
+  <h1>Hello, I'm <em>Ines Said</em>.</h1>
+  <p class="lede">I grew up a fifteen-minute walk from the ruins of Roman Neapolis in Tunisia —
+  now I preserve places like it in 3D. Founder of <strong>Tanit XR</strong>, Lead XR Developer
+  at <strong>Froliq</strong>, and maker of installations on heritage and climate shown
+  everywhere from the Smithsonian to MIT.</p>
+  <div class="btn-row">
+    <a class="btn" href="{href('projects', preview)}">Explore my work</a>
+    <a class="btn ghost" href="{href('about', preview)}">More about me</a>
+  </div>
+</div>
 
 <div class="band lav"><div class="wrap"><div class="stats">
   <a href="{href('p-smithsonian-futures', preview)}"><b>600,000+</b><span>visitors to the Smithsonian FUTURES exhibition featuring her installation</span></a>
