@@ -418,7 +418,7 @@ PROJECTS = [
            dict(kind='sketchfab', id='afe868bfb0454b0faa7d95d7961a5ba6', title='Corinthian Capital — Byrsa Hill, Carthage'),
            dict(kind='sketchfab', id='5766b06d2fc44df8bdc8319b11d49e7c', title='Bird of Prey Statue — Roman Villas of Carthage'),
            dict(kind='sketchfab', id='9027a243275242a19956a84a297d1e1e', title='Roman Column — Byrsa Hill, Carthage')],
-   links=[('Donate (via fiscal sponsor FCIF)', 'https://donors.tuesday.app/campaign/73DO5'),
+   links=[('Donate (via fiscal sponsor FCIF)', 'https://donors.tuesday.app/campaign/FIHKI'),
           ('Volunteer with Tanit XR', 'https://tanitxr.org/volunteer/'),
           ('Free course: Splats With Phones', 'https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/'),
           ('Full 3D archive on Sketchfab', 'https://sketchfab.com/TanitXR'),
@@ -1007,7 +1007,7 @@ def body_home(preview):
   Tanit XR is volunteer-run and self-funded — you can donate through our fiscal sponsor, the Florida Community
   Innovation Foundation, or join us as a volunteer. Love history? Curious about XR? All are welcome.</p>
   <div class="btn-row" style="justify-content:center">
-    <a class="btn" href="https://donors.tuesday.app/campaign/73DO5">Donate to Tanit XR</a>
+    <a class="btn" href="https://donors.tuesday.app/campaign/FIHKI">Donate to Tanit XR</a>
     <a class="btn ghost" href="https://tanitxr.org/volunteer/">Become a volunteer</a>
   </div>
 </div></div>
@@ -1744,7 +1744,7 @@ def lang_home_body(L):
   <h2 class="sec-title" style="margin-bottom:10px">{L['support_h']}</h2>
   <p style="max-width:58ch;margin:0 auto 24px">{L['support_p']}</p>
   <div class="btn-row" style="justify-content:center">
-    <a class="btn" href="https://donors.tuesday.app/campaign/73DO5">{L['support_btn']}</a>
+    <a class="btn" href="https://donors.tuesday.app/campaign/FIHKI">{L['support_btn']}</a>
     <a class="btn ghost" href="https://tanitxr.org/volunteer/">{L['volunteer_btn']}</a>
   </div>
 </div></div>
