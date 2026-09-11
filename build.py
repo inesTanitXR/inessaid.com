@@ -418,7 +418,7 @@ PROJECTS = [
            dict(kind='sketchfab', id='afe868bfb0454b0faa7d95d7961a5ba6', title='Corinthian Capital — Byrsa Hill, Carthage'),
            dict(kind='sketchfab', id='5766b06d2fc44df8bdc8319b11d49e7c', title='Bird of Prey Statue — Roman Villas of Carthage'),
            dict(kind='sketchfab', id='9027a243275242a19956a84a297d1e1e', title='Roman Column — Byrsa Hill, Carthage')],
-   links=[('Donate (via fiscal sponsor FCIF)', 'https://donors.tuesday.app/campaign/FIHKI'),
+   links=[('Donate (via fiscal sponsor FCIF)', 'https://donors.tuesday.app/campaign/73DO5'),
           ('Volunteer with Tanit XR', 'https://tanitxr.org/volunteer/'),
           ('Free course: Splats With Phones', 'https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/'),
           ('Full 3D archive on Sketchfab', 'https://sketchfab.com/TanitXR'),
@@ -659,9 +659,10 @@ AWARDS = [
    paras=[
      "Each year, the North American Association for Environmental Education (NAAEE) selects 30 leaders under 30 from around the world who are changing how people learn about the environment. I was honored to be named to the Class of 2025 for using immersive technology to turn environmental and cultural education into experiences people can feel.",
      "My selection story starts on a Florida beach, where I realized that what looked like sand was actually fragments of microplastic. That moment cemented my belief that direct observation — actually seeing and feeling a problem — changes behavior in a way statistics never will. It's the idea behind Shadows of Tomorrow, behind the Froliq education games, and behind Tanit XR's link between climate change and disappearing heritage.",
-     "Being part of this community of educators, scientists, and artists has been one of the most energizing parts of my year — and it's a reminder that the work sits exactly where I want it: between education, art, and the planet."],
+     "Being part of this community of educators, scientists, and artists has been one of the most energizing parts of my year — and the story came full circle fast: in 2026, NAAEE invited me back as a judge, helping select the next class of EE 30 Under 30 leaders."],
    facts=[('Organization', 'North American Association for Environmental Education'),
-          ('Class', '2025'), ('For', 'XR for environmental & cultural education')],
+          ('Class', '2025 honoree'), ('And then', 'Judge for the Class of 2026'),
+          ('For', 'XR for environmental & cultural education')],
    links=[('Her EE 30 Under 30 profile', 'https://naaee.org/people/ines-said')],
    gallery=[('ee30-class', 'Meet the Class of 2025.')]),
 
@@ -1007,7 +1008,7 @@ def body_home(preview):
   Tanit XR is volunteer-run and self-funded — you can donate through our fiscal sponsor, the Florida Community
   Innovation Foundation, or join us as a volunteer. Love history? Curious about XR? All are welcome.</p>
   <div class="btn-row" style="justify-content:center">
-    <a class="btn" href="https://donors.tuesday.app/campaign/FIHKI">Donate to Tanit XR</a>
+    <a class="btn" href="https://donors.tuesday.app/campaign/73DO5">Donate to Tanit XR</a>
     <a class="btn ghost" href="https://tanitxr.org/volunteer/">Become a volunteer</a>
   </div>
 </div></div>
@@ -1155,7 +1156,7 @@ def body_awards(preview):
   <ul class="list">
     <li><div><span class="t"><a href="https://www.gamesforchange.org/">Judge — Games for Change Awards</a></span><div class="d">The top industry honors for games with real-world impact</div></div><span class="who">G4C</span></li>
     <li><div><span class="t"><a href="https://www.gamesforchange.org/studentchallenge/">Judge — Games for Change Student Challenge</a></span><div class="d">The largest student game-design competition in the U.S.</div></div><span class="who">G4C</span></li>
-    <li><div><span class="t"><a href="https://naaee.org/programs/ee-30-under-30">Judge — EE 30 Under 30</a></span><div class="d">Reviewing the next class of environmental-education leaders, after being named to the Class of 2025</div></div><span class="who">NAAEE</span></li>
+    <li><div><span class="t"><a href="https://naaee.org/programs/ee-30-under-30">Judge — EE 30 Under 30, Class of 2026</a></span><div class="d">Selecting the next class of environmental-education leaders, one year after being named to the Class of 2025</div></div><span class="who">NAAEE &middot; 2026</span></li>
     <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/">Track sponsor &amp; judge — ImmerseGT</a></span><div class="d">Tanit XR sponsored a dedicated Tunisian-heritage track at Georgia Tech's 36-hour XR hackathon, with prizes — won by "From Mystery to History"</div></div><span class="who">Georgia Tech &middot; 2026</span></li>
   </ul>
 </div></section>
@@ -1744,7 +1745,7 @@ def lang_home_body(L):
   <h2 class="sec-title" style="margin-bottom:10px">{L['support_h']}</h2>
   <p style="max-width:58ch;margin:0 auto 24px">{L['support_p']}</p>
   <div class="btn-row" style="justify-content:center">
-    <a class="btn" href="https://donors.tuesday.app/campaign/FIHKI">{L['support_btn']}</a>
+    <a class="btn" href="https://donors.tuesday.app/campaign/73DO5">{L['support_btn']}</a>
     <a class="btn ghost" href="https://tanitxr.org/volunteer/">{L['volunteer_btn']}</a>
   </div>
 </div></div>
