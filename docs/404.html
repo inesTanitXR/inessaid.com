@@ -89,7 +89,7 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 .intro-home .btn-row{justify-content:center}
 
 /* hero (home) — cinematic full-bleed */
-.hero-cine{position:relative;min-height:540px;display:flex;align-items:center;background:url(web/el-jem.jpg) center 30%/cover no-repeat #43203a}
+.hero-cine{position:relative;min-height:540px;display:flex;align-items:center;background:url(/web/el-jem.jpg) center 30%/cover no-repeat #43203a}
 .hero-cine::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,14,32,.55),rgba(56,22,44,.62) 55%,rgba(56,22,44,.82))}
 .hero-cine .inner{position:relative;max-width:860px;margin:0 auto;padding:120px 24px 100px;text-align:center;color:#fdf3ee}
 .hero-cine .kicker{color:var(--gold);justify-content:center}
@@ -217,7 +217,7 @@ a.card:hover .card-inner{transform:translateY(-4px);box-shadow:0 14px 34px #8a63
 .list{list-style:none;margin:0;padding:0}
 .list li{display:grid;grid-template-columns:1fr auto;gap:6px 28px;padding:18px 2px;border-top:1px solid var(--line);align-items:baseline}
 .list li:last-child{border-bottom:1px solid var(--line)}
-.list .t{font-family:"Yeseva One",serif;font-weight:600;font-size:1.12rem;color:var(--ink)}
+.list .t{font-family:'Yeseva One',serif;font-weight:400;font-size:1.12rem;color:var(--ink)}
 .list .t a{color:var(--ink)}
 .list .t a:hover{color:var(--lav-deep)}
 .list .d{color:var(--muted);font-size:.94rem}
@@ -418,18 +418,18 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
 <script>
 (function(){
   var p = location.pathname.toLowerCase();
-  var map = [[/\/post\//,'/blog.html'],[/\/blog/,'/blog.html'],[/\/projects/,'/projects.html'],
-             [/awards/,'/awards.html'],[/talks|media|speak/,'/speaking.html'],[/press/,'/press.html'],
-             [/opportun/,'/opportunities.html'],[/about/,'/about.html']];
+  var map = [[/\/post\//,'/blog/'],[/\/blog/,'/blog/'],[/\/projects/,'/projects/'],
+             [/awards/,'/awards/'],[/talks|media|speak/,'/speaking/'],[/press/,'/press/'],
+             [/opportun/,'/opportunities/'],[/about/,'/about/']];
   for (var i=0;i<map.length;i++) if (map[i][0].test(p)) { location.replace(map[i][1]); return; }
 })();
 </script></head><body>
-<header class="site-header"><div class="wrap"><a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="awards.html">Awards</a><a href="speaking.html">Speaking</a><a href="opportunities.html">Opportunities</a><a href="press.html">Press</a><a href="blog.html">Blog</a></nav><div class="lang-switch"><a href="#" class="on">EN</a><a href="fr/">FR</a><a href="ar/">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="/" class="active">Home</a><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/awards/">Awards</a><a href="/speaking/">Speaking</a><a href="/opportunities/">Opportunities</a><a href="/press/">Press</a><a href="/blog/">Blog</a></nav><div class="lang-switch"><a href="#" class="on">EN</a><a href="/fr/">FR</a><a href="/ar/">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
 <div class="wrap"><div class="page-head">
   <p class="kicker">Page moved</p>
   <h1>This page has a new home.</h1>
-  <p class="sub">The site was rebuilt — everything is still here. Try <a href="/">the homepage</a>,
-  <a href="/projects.html">projects</a>, or <a href="/blog.html">the blog</a>.</p>
+  <p class="sub">The site got a makeover, and everything is still here. Try <a href="/">the homepage</a>,
+  <a href="/projects/">projects</a>, or <a href="/blog/">the blog</a>.</p>
 </div></div>
 <footer><div class="wrap">
   <svg class="tanit-mark" viewBox="0 0 30 38" aria-hidden="true">
@@ -442,8 +442,8 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
   <div class="foot-grid">
     <div>
       <h3>Ines Said</h3>
-      <p>XR immersive artist and technologist. Preserving heritage and confronting
-      climate challenges through augmented and virtual reality.</p>
+      <p>Immersive artist and XR developer from Tunisia. I use AR and VR to protect our
+      heritage and help people care about our planet.</p>
     </div>
     <div>
       <h3>Contact</h3>
@@ -452,10 +452,10 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
     </div>
     <div>
       <h3>Follow</h3>
-      <a href="https://www.linkedin.com/in/inessaid/">LinkedIn</a>
-      <a href="https://www.instagram.com/inessaidd/">Instagram</a>
-      <a href="https://www.facebook.com/ines1said/">Facebook</a>
-      <a href="https://tanitxr.org">tanitxr.org</a>
+      <a href="https://www.linkedin.com/in/inessaid/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/inessaidd/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/ines1said/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://tanitxr.org" target="_blank" rel="noopener">tanitxr.org</a>
     </div>
   </div>
   <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>Made with love, between Tunisia &amp; D.C. &#10022;</span></div>
