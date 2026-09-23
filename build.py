@@ -647,36 +647,43 @@ def card_html(p, preview, prefix='p-', more='View project'):
             f'<div class="card-body"><h3>{p["title"]}</h3><p>{p["card"]}</p>'
             f'<div class="chips">{ch}</div><span class="card-more">{more} &rarr;</span></div></div></a>')
 
-def banner(kicker, title, sub='', img=None, crumbs=None, pos='center 35%', preview=False):
-    style = f' style="background-image:url(web/{img}.jpg);background-position:{pos}"' if img else ''
+def _polaroids(img, img2=None, ph=None):
+    if img and img2:
+        return (f'<div class="polaroids"><figure class="pol p1"><img src="web/{img}.jpg" alt=""></figure>'
+                f'<figure class="pol p2"><img src="web/{img2}.jpg" alt=""></figure></div>')
+    if img:
+        return f'<div class="polaroids"><figure class="pol single"><img src="web/{img}.jpg" alt=""></figure></div>'
+    big, small = (ph[0], ph[1]) if ph else ('&#10022;', '')
+    return (f'<div class="polaroids"><figure class="pol single ph"><div><b>{big}</b><span>{small}</span></div></figure></div>')
+
+def banner(kicker, title, sub='', img=None, crumbs=None, pos='center 35%', preview=False, img2=None, ph=None):
     trail = ''
     if crumbs:
         parts = [f'<a href="{href(pg, preview)}">{lbl}</a>' for pg, lbl in crumbs]
         trail = '<nav class="crumbs" aria-label="Breadcrumb">' + ' &rsaquo; '.join(parts) + f' &rsaquo; <span>{title}</span></nav>'
     subp = f'<p class="sub">{sub}</p>' if sub else ''
-    return (f'<header class="banner{"" if img else " noimg"}"{style}><div class="wrap"><div class="page-head">'
-            f'{trail}<p class="kicker">{kicker}</p><h1>{title}</h1>{subp}</div></div></header>')
+    return (f'<header class="phead"><div class="wrap phead-grid"><div class="page-head">'
+            f'{trail}<p class="kicker">{kicker}</p><h1>{title}</h1>{subp}</div>{_polaroids(img, img2, ph)}</div></header>')
 
 BANNER_IMG = {
-    'about': ('statue-pose', 'center 22%'), 'projects': ('awe-team', 'center 40%'),
-    'awards': ('auggie-night', 'center 45%'), 'speaking': ('ets-stage', 'center 58%'),
-    'opportunities': ('workshop', 'center 45%'), 'press': ('news-abc', 'center 35%'),
-    'blog': ('neapolis-swim', 'center 40%'),
+    'about': ('statue-pose', 'mosaic-portrait'), 'projects': ('el-jem', 'oracle-booth'),
+    'awards': ('auggie-finalist', 'ee30'), 'speaking': ('ets-stage', 'stage'),
+    'opportunities': ('workshop', 'awe-team'), 'press': ('news-abc', 'carthage-mag'),
+    'blog': ('neapolis-swim', 'portalcam'),
 }
 
 def bannerize(page, html, preview=False):
-    """Turn a section page's plain page-head into a photo banner."""
+    """Turn a section page's plain page-head into the polaroid header."""
     if page not in BANNER_IMG:
         return html
-    img, pos = BANNER_IMG[page]
+    img, img2 = BANNER_IMG[page]
     m = re.search(r'<div class="wrap"><div class="page-head">(.*?)</div></div>', html, re.S)
     if not m:
         return html
-    inner = m.group(1)
     trail = (f'<nav class="crumbs" aria-label="Breadcrumb"><a href="{href("home", preview)}">Home</a>'
              f' &rsaquo; <span>{LABEL[page]}</span></nav>')
-    new = (f'<header class="banner" style="background-image:url(web/{img}.jpg);background-position:{pos}">'
-           f'<div class="wrap"><div class="page-head">{trail}{inner}</div></div></header>')
+    new = (f'<header class="phead"><div class="wrap phead-grid"><div class="page-head">{trail}{m.group(1)}</div>'
+           f'{_polaroids(img, img2)}</div></header>')
     return html[:m.start()] + new + html[m.end():]
 
 def related_strip(title, cards):
@@ -696,7 +703,8 @@ def cta_band(kicker, heading, text, primary, secondary=None):
 
 def body_detail(p, preview, back_page='projects', back_label='All projects'):
     is_award = back_page == 'awards'
-    head = banner(p['category'], p['title'], img=p.get('img'),
+    g2 = p['gallery'][0][0] if p.get('gallery') else None
+    head = banner(p['category'], p['title'], img=p.get('img'), img2=g2 if p.get('img') else None, ph=p.get('ph'),
                   crumbs=[('home', 'Home'), (back_page, LABEL[back_page])], preview=preview)
     paras = ''.join(f'<p>{t}</p>' for t in p['paras'])
     facts = ''.join(f'<li><b>{k}:</b> {v}</li>' for k, v in p['facts'])
@@ -981,7 +989,8 @@ def body_blog(preview):
 """
 
 def body_post(p, preview):
-    head = banner(f"{p['tag']} &middot; {p['date']}", p['title'], img=p.get('img'),
+    g2 = p['gallery'][0][0] if p.get('gallery') else None
+    head = banner(f"{p['tag']} &middot; {p['date']}", p['title'], img=p.get('img'), img2=g2,
                   crumbs=[('home', 'Home'), ('blog', 'Blog')], preview=preview)
     hero = (f'<p class="banner-cap">{p["imgcap"]}</p>' if p.get('imgcap') else '')
     paras = ''.join(f'<p>{t}</p>' for t in p['paras'])

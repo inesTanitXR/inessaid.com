@@ -301,6 +301,30 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .lightbox button{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 
+/* polaroid page header */
+.phead{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.phead-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;min-height:400px}
+.phead .page-head{padding:56px 0 48px}
+.phead .page-head h1{font-size:clamp(2.3rem,5vw,3.6rem)}
+.phead .crumbs{font-size:.8rem;margin:0 0 16px;color:var(--muted)}
+.phead .crumbs a{color:var(--gold);font-weight:700}
+.phead .crumbs span{color:var(--body)}
+.polaroids{position:relative;height:360px}
+.pol{position:absolute;margin:0;background:#fff;padding:10px 10px 36px;border-radius:3px;box-shadow:0 16px 38px rgba(67,32,58,.2);transition:transform .25s}
+.pol img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px}
+.pol::before{content:"";position:absolute;top:-13px;left:50%;width:92px;height:26px;margin-left:-46px;background:rgba(232,205,150,.75);border-radius:2px}
+.pol.p1{width:60%;height:80%;top:3%;left:2%;transform:rotate(-4deg);z-index:2}
+.pol.p2{width:50%;height:66%;bottom:0;right:3%;transform:rotate(5deg)}
+.pol.p2::before{transform:rotate(8deg)}
+.pol.single{width:70%;height:90%;top:3%;left:14%;transform:rotate(-3deg)}
+.phead:hover .pol.p1{transform:rotate(-2deg) translateY(-4px)}
+.phead:hover .pol.p2{transform:rotate(3deg) translateY(-4px)}
+.pol.ph div{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:radial-gradient(circle at 30% 30%,var(--tint-blush),var(--tint-lav));border-radius:2px}
+.pol.ph b{font-family:"Yeseva One",serif;font-weight:400;font-size:2.2rem;color:var(--lav)}
+.pol.ph span{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:820px){.phead-grid{grid-template-columns:1fr;gap:0}.phead .page-head{padding:40px 0 10px}.polaroids{height:300px;margin-bottom:36px}}
+
 /* ---------- section components ---------- */
 .band [style*="text-align:center"] .sec-title::after,.cta-end .sec-title::after,.recognized .sec-title::after{margin-left:auto;margin-right:auto}
 .cta-end + footer, .halfbleed + footer{margin-top:0}
@@ -415,7 +439,7 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
 .gallery figure:first-child{grid-column:span 2;grid-row:span 2}
 .gallery figure:first-child img{aspect-ratio:auto;height:100%;min-height:320px}
 </style></head><body><header class="site-header"><div class="wrap"><a class="brand" href="/">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="/">Home</a><a href="/about/">About</a><a href="/projects/" class="active">Projects</a><a href="/awards/">Awards</a><a href="/speaking/">Speaking</a><a href="/opportunities/">Opportunities</a><a href="/press/">Press</a><a href="/blog/">Blog</a></nav><div class="lang-switch"><a href="#" class="on">EN</a><a href="/fr/">FR</a><a href="/ar/">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
-<header class="banner" style="background-image:url(/web/oracle-booth.jpg);background-position:center 35%"><div class="wrap"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/projects/">Projects</a> &rsaquo; <span>Oracle Connected Hub</span></nav><p class="kicker">Energy · Enterprise AR</p><h1>Oracle Connected Hub</h1></div></div></header>
+<header class="phead"><div class="wrap phead-grid"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/projects/">Projects</a> &rsaquo; <span>Oracle Connected Hub</span></nav><p class="kicker">Energy · Enterprise AR</p><h1>Oracle Connected Hub</h1></div><div class="polaroids"><figure class="pol p1"><img src="/web/oracle-booth.jpg" alt=""></figure><figure class="pol p2"><img src="/web/oracle-demo.jpg" alt=""></figure></div></div></header>
 <div class="wrap">
   <div class="detail-grid">
     <div class="prose lead"><p>Oracle's Connected Hub is a scale model of a neighborhood that actually works. Real solar panels make electricity, power lines light up to show how energy moves, a wind turbine spins, and 16 little smart homes glow with what's happening inside. It's all connected to Oracle's real utility software.</p><p>At Froliq, I build the AR apps that bring it to life. Point a tablet or headset at the model, or open the digital version from anywhere, and you can watch energy flow, see outages get predicted and fixed, and charge EVs in real time.</p><p>The apps run on iPad, Windows, Meta Quest 3 and Apple Vision Pro, and they travel to events like DISTRIBUTECH, Oracle CloudWorld and the Energy Thought Summit. I love this project because it takes something people never get to see and makes it something they can play with.</p></div>
