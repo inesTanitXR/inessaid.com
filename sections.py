@@ -30,6 +30,16 @@ SECTIONS_CSS = r"""
   background:radial-gradient(circle at 30% 30%,var(--tint-blush),var(--tint-lav))}
 .pol.ph b{font-family:"Yeseva One",serif;font-weight:400;font-size:2.2rem;color:var(--lav)}
 .pol.ph span{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.polwall{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 30px;padding:20px 8px 0}
+.polwall .pol{position:relative;width:auto;transform:rotate(-3deg)}
+.polwall .pol:nth-child(4n+2){transform:rotate(2.5deg) translateY(10px)}
+.polwall .pol:nth-child(4n+3){transform:rotate(-1.5deg)}
+.polwall .pol:nth-child(4n){transform:rotate(3.5deg) translateY(6px)}
+.polwall .pol:nth-child(odd)::before{transform:rotate(-6deg)}
+.polwall .pol:nth-child(even) figcaption{color:var(--lav)}
+.polwall .pol:hover{transform:rotate(0) scale(1.05);z-index:3}
+.band.deep .polaroids{max-width:440px;width:100%;margin:0 auto}
+@media(max-width:820px){.polwall{grid-template-columns:repeat(2,1fr);gap:30px 20px}}
 @media(max-width:820px){.phead-grid{grid-template-columns:1fr;gap:0}.phead .page-head{padding:40px 0 10px}.polaroids{max-width:420px;margin:10px auto 40px;width:100%}}
 
 /* ---------- section components ---------- */

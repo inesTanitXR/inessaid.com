@@ -307,7 +307,7 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .related .cards .card-body p{font-size:.9rem}
 .cta-end{margin-top:0}
 /* gallery lightbox */
-.gallery img,.media-strip img{cursor:zoom-in}
+.gallery img,.media-strip img,.polwall img{cursor:zoom-in}
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,10,24,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
 .lightbox img{max-width:92vw;max-height:80vh;border-radius:10px;border:8px solid #fff;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .lightbox p{color:#f3dcd6;margin:16px 0 0;font-style:italic;text-align:center;max-width:60ch}
@@ -427,12 +427,12 @@ FOOTER = """
 </div></footer><script>
 (function(){
   document.addEventListener('click',function(e){
-    var img=e.target.closest('.gallery img,.media-strip img'); if(!img) return;
+    var img=e.target.closest('.gallery img,.media-strip img,.polwall img'); if(!img) return;
     var fig=img.closest('figure'), cap=fig&&fig.querySelector('figcaption');
     var box=document.createElement('div'); box.className='lightbox'; box.setAttribute('role','dialog');
     box.innerHTML='<button aria-label="Close">&times;</button><img alt=""><p></p>';
     box.querySelector('img').src=img.src; box.querySelector('img').alt=img.alt;
-    box.querySelector('p').textContent=cap?cap.textContent:'';
+    box.querySelector('p').textContent=(fig&&fig.dataset.note)||(cap?cap.textContent:'');
     function close(){box.remove();document.removeEventListener('keydown',esc)}
     function esc(k){if(k.key==='Escape')close()}
     box.addEventListener('click',function(ev){if(ev.target.tagName!=='IMG')close()});
@@ -1056,6 +1056,22 @@ SQUIGGLE = ('<svg class="squiggle" viewBox="0 0 1200 22" preserveAspectRatio="no
             'T 450 11 T 500 11 T 550 11 T 600 11 T 650 11 T 700 11 T 750 11 T 800 11 T 850 11 T 900 11 '
             'T 950 11 T 1000 11 T 1050 11 T 1100 11 T 1150 11 T 1200 11"/></svg>')
 
+HOME_WALL = [
+    ('neapolis-swim', 'Searching the sea above the sunken city of Neapolis', 'Looking for a sunken city near my hometown.'),
+    ('el-jem', 'Ines Said at the El Jem Amphitheater in Tunisia', 'The El Jem Amphitheater, one of my favorite places.'),
+    ('froliq-playground', 'The Froliq team at the AWE playground', 'Soccer day with the Froliq team at AWE!'),
+    ('workshop', 'Teaching a classroom workshop', 'Teaching a workshop.'),
+    ('auggie-night', 'Auggie Awards night at AWE 2026', 'Auggie Awards night. We were finalists!'),
+    ('eljem-conf', 'Ines Said and her sister at the El Jem conference', 'At the El Jem conference with my sister.'),
+    ('rh-snow-1', 'Snowy Boston during MIT Reality Hack', 'Boston in January for MIT Reality Hack. Worth it!'),
+    ('tanit-birthday', 'Celebrating Tanit XR turning one', 'Tanit XR turned one!'),
+]
+
+def polwall(items):
+    figs = ''.join(f'<figure class="pol" data-note="{note}"><img src="web/{img}.jpg" alt="{alt}" loading="lazy">'
+                   f'<figcaption>{POL_CAPS.get(img, "")}</figcaption></figure>' for img, alt, note in items)
+    return f'<div class="polwall">{figs}</div>'
+
 def body_home(preview):
     featured = ''.join(card_html(p, preview) for p in PROJECTS[:3])
     return f"""
@@ -1134,20 +1150,13 @@ def body_home(preview):
       <a class="btn ghost" href="{href('speaking', preview)}">Topics &amp; past talks</a>
     </div>
   </div>
-  <figure class="side-photo" style="margin:0">
-    <img src="web/ets-stage.jpg" alt="Ines Said presenting on the Energy Thought Summit main stage" style="max-height:420px;object-fit:cover">
-  </figure>
+  {_polaroids('ets-stage', 'stage')}
 </div></div></div>
 
 <section class="block"><div class="wrap">
   <h2 class="sec-title">Life in the field</h2>
   <p class="sec-sub">Some of my favorite moments: ruins, stages, the sea and classrooms.</p>
-  <div class="gallery" style="grid-template-columns:repeat(4,1fr);margin:0">
-    <figure><img src="web/neapolis-swim.jpg" alt="Searching the sea above the sunken city of Neapolis" loading="lazy"><figcaption>Looking for a sunken city.</figcaption></figure>
-    <figure><img src="web/statue-pose.jpg" alt="Matching poses with an ancient statue in Tunisia" loading="lazy"><figcaption>Copying a very old friend.</figcaption></figure>
-    <figure><img src="web/froliq-playground.jpg" alt="The Froliq team at the AWE playground" loading="lazy"><figcaption>Soccer day with the Froliq team at AWE!</figcaption></figure>
-    <figure><img src="web/workshop.jpg" alt="Teaching a classroom workshop" loading="lazy"><figcaption>Teaching a workshop.</figcaption></figure>
-  </div>
+  {polwall(HOME_WALL)}
 </div></section>
 
 <div class="band blush"><div class="wrap" style="text-align:center">
