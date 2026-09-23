@@ -1265,17 +1265,20 @@ def body_speaking(preview):
   <h2 class="sec-title" id="book" style="margin:72px 0 8px">Let's talk</h2>
   <p class="sec-sub">Booking a talk, planning a workshop, or exploring a project — this lands straight in my inbox.</p>
   <form class="contact-form" action="https://formsubmit.co/ines@tanitxr.org" method="POST">
-    <input type="hidden" name="_subject" value="Inquiry from inessaid.com">
+    <input type="hidden" name="_subject" value="New inquiry from inessaid.com">
+    <input type="hidden" name="_template" value="box">
     <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://www.inessaid.com/thanks.html">
+    <input type="hidden" name="_autoresponse" value="Thank you for reaching out! I've received your message and will get back to you within a few days. — Ines Said, www.inessaid.com">
     <input type="text" name="_honey" style="display:none">
     <label for="cf-name">Your name</label>
-    <input id="cf-name" type="text" name="name" required>
+    <input id="cf-name" type="text" name="Name" required>
     <label for="cf-email">Email</label>
     <input id="cf-email" type="email" name="email" required>
     <label for="cf-org">Organization</label>
-    <input id="cf-org" type="text" name="organization">
+    <input id="cf-org" type="text" name="Organization">
     <label for="cf-type">What are you looking for?</label>
-    <select id="cf-type" name="inquiry_type">
+    <select id="cf-type" name="Looking for">
       <option>Speaking — keynote or talk</option>
       <option>Speaking — panel or guest lecture</option>
       <option>Workshop or training</option>
@@ -1284,7 +1287,7 @@ def body_speaking(preview):
       <option>Something else</option>
     </select>
     <label for="cf-msg">Tell me about it</label>
-    <textarea id="cf-msg" name="message" rows="5" required></textarea>
+    <textarea id="cf-msg" name="Message" rows="5" required></textarea>
     <button type="submit">Send inquiry</button>
   </form>
 </div></section>
@@ -1530,6 +1533,17 @@ def build_site():
                     f'<link rel="canonical" href="{BASE_URL}/{new}">'
                     f'<title>Redirecting</title></head>'
                     f'<body><a href="{target}">This page has moved</a></body></html>')
+    # thank-you page after the contact form
+    with open(os.path.join(OUT, 'thanks.html'), 'w', encoding='utf-8') as f:
+        f.write(f'<!doctype html><html lang="en"><head>{HEAD}<title>Thank you | Ines Said</title>'
+                f'<meta name="robots" content="noindex">{FONTS}<style>{CSS}</style></head><body>'
+                f'{nav_html("speaking", False)}<div class="wrap"><div class="page-head">'
+                f'<p class="kicker">Message sent</p><h1>Thank you!</h1>'
+                f'<p class="sub">Your message is on its way to me — I read every one and will reply within a few days. '
+                f'A confirmation is waiting in your inbox.</p>'
+                f'<div class="btn-row" style="margin-top:28px"><a class="btn" href="index.html">Back to the homepage</a>'
+                f'<a class="btn ghost" href="projects.html">Explore my work</a></div>'
+                f'</div></div>{FOOTER}</body></html>')
     # smart 404: catches any unmapped old Wix URL and routes it sensibly
     with open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8') as f:
         f.write(f'''<!doctype html><html lang="en"><head>{HEAD}<title>Ines Said</title>{FONTS}<style>{CSS}</style>
