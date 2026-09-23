@@ -419,23 +419,22 @@ def body_awards(preview):
     section(timeline([
         ('2026', [('Auggie Awards Finalist — Best Societal Impact', 'Augmented World Expo · Tanit XR', H('a-auggie-finalist'), 'auggie-finalist'),
                   ('Judge — EE 30 Under 30, Class of 2026', 'NAAEE', 'https://naaee.org/programs/ee-30-under-30', 'ee30-class'),
-                  ('Judge — HICC', "UF Warrington's Heavener International Case Competition", 'https://warrington.ufl.edu/undergraduate/hicc/', None),
-                  ('Track sponsor &amp; judge — ImmerseGT', "Georgia Tech's 36-hour XR hackathon", 'https://tanitxr.org/immersegt-2026/', None)]),
-        ('2025', [('EE 30 Under 30 — Class of 2025', 'North American Association for Environmental Education', H('a-ee-30-under-30'), 'ee30')]),
+                  ]),
+        ('2025', [('EE 30 Under 30 — Class of 2025', 'North American Association for Environmental Education', H('a-ee-30-under-30'), 'ee30'),
+                  ('Judge — HICC', 'Heavener International Case Competition, University of Florida, Gainesville', 'https://warrington.ufl.edu/undergraduate/hicc/', None)]),
         ('2023', [('Best Paper Award — IEEE ISEC', 'With Dr. Angelos Barmpoutis and Wenbin Guo', H('a-ieee-best-paper'), 'vr-portrait')]),
         ('Along the way', [('Excellence Award — GFAA Biennial', 'For Shadows of Tomorrow', H('a-gfaa-excellence'), 'heat'),
                            ('XR Prize Challenge — MVP Finalist', 'Augmented World Expo', H('a-awe-xr-prize'), 'heat-door'),
                            ('Hackathon wins — Google, IBM &amp; MIT', 'MiDAS cohort and MIT Reality Hack', H('a-hackathon-wins'), 'rh-printed-award'),
                            ('Smithsonian FUTURES', '600,000+ visitors', H('p-smithsonian-futures'), 'futures-wide')]),
     ]), 'Timeline', 'All my awards', 'Click any of them to read the story behind it.', cls='tint') + \
-    stats_photo('auggie-night', [('7', 'honors &amp; recognitions'), ('5', 'judging roles'),
+    stats_photo('auggie-night', [('7', 'honors &amp; recognitions'), ('4', 'judging roles'),
                                  ('3', 'continents where my work has been shown'), ('1', 'whale sighting, just saying')]) + \
     section(icon_cards([
         ('gavel', 'Games for Change Awards', 'Judging the top industry honors for games with real-world impact.', 'https://www.gamesforchange.org/', 'Games for Change'),
         ('game', 'G4C Student Challenge', 'The largest student game-design competition in the U.S.', 'https://www.gamesforchange.org/studentchallenge/', 'The challenge'),
         ('mountain', 'EE 30 Under 30 · 2026', 'Selecting the next class of environmental-education leaders.', 'https://naaee.org/programs/ee-30-under-30', 'NAAEE'),
-        ('trophy', 'HICC', "Judging global business teams at UF's Heavener International Case Competition.", 'https://warrington.ufl.edu/undergraduate/hicc/', 'HICC'),
-        ('tanit', 'ImmerseGT track', 'Tanit XR sponsored and judged a Tunisian-heritage hackathon track.', 'https://tanitxr.org/immersegt-2026/', 'The track'),
+        ('trophy', 'HICC · 2025', "I judged student teams from around the world at UF's Heavener International Case Competition in Gainesville. Their case was all about virtual reality!", 'https://warrington.ufl.edu/undergraduate/hicc/', 'HICC'),
         ('spark', 'Need a judge?', "I'd love to help judge your competition or hackathon!", H('speaking') + ('' if preview else '#book'), 'Invite me to judge'),
     ]), 'Judging', 'I also love being a judge') + \
     cta_band('Speaking', 'Want me to speak at your event?',
