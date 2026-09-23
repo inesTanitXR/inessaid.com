@@ -1,5 +1,5 @@
 # Clean URLs: /about/ instead of about.html, /projects/<slug>/ instead of project-<slug>.html.
-# Runs after build_site() + build_langs(): moves each page into its own folder, rewrites every
+# Runs after build_site(), before translate_site(): moves each page into its own folder, rewrites every
 # internal link to root-absolute clean URLs, and leaves a redirect stub at each old .html path.
 import os, re, glob
 

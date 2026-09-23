@@ -338,6 +338,20 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .polwall .pol:hover{transform:rotate(0) scale(1.05);z-index:3}
 .band.deep .polaroids{max-width:440px;width:100%;margin:0 auto}
 @media(max-width:820px){.polwall{grid-template-columns:repeat(2,1fr);gap:30px 20px}}
+[dir="rtl"] .pol figcaption{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:1.2rem;font-size:9cqi}
+[dir="rtl"] .timeline{padding-left:0;padding-right:36px}
+[dir="rtl"] .timeline::before{left:auto;right:11px}
+[dir="rtl"] .tl-year::before{left:auto;right:-31px}
+[dir="rtl"] .tl-item{padding:12px 12px 12px 16px}
+[dir="rtl"] a.tl-item:hover{transform:translateX(-4px)}
+[dir="rtl"] .date-card .d{border-right:0;padding-right:0;border-left:1px solid var(--line);padding-left:16px}
+[dir="rtl"] .split ul.ticks li{padding-left:0;padding-right:26px}
+[dir="rtl"] .split ul.ticks li::before{left:auto;right:0}
+[dir="rtl"] .filters button .n{margin-left:0;margin-right:4px}
+[dir="rtl"] .card .cat-tag{left:auto;right:12px}
+[dir="rtl"] .stats[style*="text-align:left"]{text-align:right!important}
+[dir="rtl"] .kicker,[dir="rtl"] .tl-item b,[dir="rtl"] .date-card b,[dir="rtl"] .tl-year,[dir="rtl"] .card h3,[dir="rtl"] .sec-title{letter-spacing:0}
+[dir="rtl"] .tl-year,[dir="rtl"] .tl-item b,[dir="rtl"] .card h3,[dir="rtl"] .date-card .d b,[dir="rtl"] .pol.ph b{font-family:"Aref Ruqaa","Yeseva One",serif}
 @media(max-width:820px){.phead-grid{grid-template-columns:1fr;gap:0}.phead .page-head{padding:40px 0 10px}.polaroids{max-width:420px;margin:10px auto 40px;width:100%}}
 
 /* ---------- section components ---------- */

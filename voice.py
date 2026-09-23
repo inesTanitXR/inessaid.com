@@ -66,7 +66,7 @@ PROJECT_VOICE = {
    paras=[
      "A nuclear power plant isn't a place you can just walk around and practice in. So at Froliq, we used the PortalCam scanner to capture the Davis-Besse plant in 3D, including the turbine deck and the cooling tower.",
      "We turn the scans into Gaussian splats, the same technique I use for Tanit XR, so staff can explore a realistic version of the plant on the web, in VR or in AR before they ever step inside.",
-     "It still amazes me that I use the same tools to preserve a 3,000-year-old amphitheater and a nuclear power plant!"]),
+     "It still amazes me that I use the same tools to preserve an almost 2,000-year-old amphitheater and a nuclear power plant!"]),
  'covid-reflections': dict(
    card="AR public art that traveled with mobile health clinics across Florida, California and Japan. More than 200 people got check-ups alongside it.",
    paras=[
