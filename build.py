@@ -1514,6 +1514,11 @@ def body_opportunities(preview):
 </script>
 """
 
+_OLD_SPEAKING = body_speaking
+exec(open(os.path.join(ROOT, 'sections.py'), encoding='utf-8').read())
+CSS += SECTIONS_CSS
+FOOTER += SECTIONS_JS
+
 BODIES = {'home': body_home, 'about': body_about, 'projects': body_projects,
           'awards': body_awards, 'speaking': body_speaking,
           'opportunities': body_opportunities, 'press': body_press, 'blog': body_blog}
