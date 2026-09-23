@@ -281,6 +281,37 @@ tr.opp-closed{display:none;opacity:.55}
 .contact-form button{margin-top:22px;background:var(--lav);color:#fff;font-weight:800;font-size:.95rem;
   border:0;padding:13px 30px;border-radius:999px;cursor:pointer;font-family:"Bitter",serif;box-shadow:0 6px 18px #8a63d240}
 .contact-form button:hover{background:var(--lav-deep)}
+/* photo banners (inner pages) */
+.banner{position:relative;min-height:400px;display:flex;align-items:flex-end;background:#43203a center/cover no-repeat;overflow:hidden}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,14,32,.25) 0%,rgba(52,19,40,.55) 45%,rgba(52,19,40,.9) 100%)}
+.banner.noimg{min-height:300px;background:radial-gradient(ellipse at 20% 30%,#8e3a63 0%,#5e2246 55%,#3d1530 100%)}
+.banner.noimg::after{content:"\2726";position:absolute;right:8%;top:22%;font-size:9rem;color:#c08a2e33;line-height:1}
+.banner .wrap{position:relative;width:100%}
+.banner .page-head{padding:120px 0 44px}
+.banner .page-head::before,.banner .page-head::after{display:none}
+.banner h1{color:#fff;font-size:clamp(2.3rem,5.4vw,3.9rem);max-width:22ch;text-shadow:0 2px 20px rgba(30,8,24,.45)}
+.banner .kicker{color:var(--gold)}
+.banner p.sub{color:#f3dcd6;font-size:1.1rem}
+.crumbs{font-size:.8rem;color:#e8cfc9;margin:0 0 18px;letter-spacing:.02em}
+.crumbs a{color:var(--gold);font-weight:700}
+.crumbs span{color:#f3dcd6}
+.banner-cap{font-size:.82rem;color:var(--muted);margin:14px auto 0;max-width:720px;font-style:italic}
+/* storybook lead + drop cap */
+.prose.lead p:first-child{font-size:1.2rem;line-height:1.65;color:var(--ink)}
+html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"Yeseva One",serif;font-size:4.1em;line-height:.82;
+  padding:8px 12px 0 0;color:var(--lav)}
+.detail-grid{padding-top:56px}
+.fact-card{position:sticky;top:92px;border-top:4px solid var(--gold)}
+/* related strip + closing band */
+.related{background:var(--soft);padding:64px 0 72px;margin-top:72px}
+.related .cards .card-body p{font-size:.9rem}
+.cta-end{margin-top:0}
+/* gallery lightbox */
+.gallery img,.media-strip img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,10,24,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+.lightbox img{max-width:92vw;max-height:80vh;border-radius:10px;border:8px solid #fff;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.lightbox p{color:#f3dcd6;margin:16px 0 0;font-style:italic;text-align:center;max-width:60ch}
+.lightbox button{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 """
 
@@ -393,7 +424,22 @@ FOOTER = """
     </div>
   </div>
   <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>Made with love, between Tunisia &amp; D.C. &#10022;</span></div>
-</div></footer>"""
+</div></footer><script>
+(function(){
+  document.addEventListener('click',function(e){
+    var img=e.target.closest('.gallery img,.media-strip img'); if(!img) return;
+    var fig=img.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+    var box=document.createElement('div'); box.className='lightbox'; box.setAttribute('role','dialog');
+    box.innerHTML='<button aria-label="Close">&times;</button><img alt=""><p></p>';
+    box.querySelector('img').src=img.src; box.querySelector('img').alt=img.alt;
+    box.querySelector('p').textContent=cap?cap.textContent:'';
+    function close(){box.remove();document.removeEventListener('keydown',esc)}
+    function esc(k){if(k.key==='Escape')close()}
+    box.addEventListener('click',function(ev){if(ev.target.tagName!=='IMG')close()});
+    document.addEventListener('keydown',esc); document.body.appendChild(box);
+  });
+})();
+</script>"""
 
 # ---------------- projects data ----------------
 # img: web/<name>.jpg  |  ph: (big, small, tone) placeholder tile
@@ -601,10 +647,57 @@ def card_html(p, preview, prefix='p-', more='View project'):
             f'<div class="card-body"><h3>{p["title"]}</h3><p>{p["card"]}</p>'
             f'<div class="chips">{ch}</div><span class="card-more">{more} &rarr;</span></div></div></a>')
 
+def banner(kicker, title, sub='', img=None, crumbs=None, pos='center 35%', preview=False):
+    style = f' style="background-image:url(web/{img}.jpg);background-position:{pos}"' if img else ''
+    trail = ''
+    if crumbs:
+        parts = [f'<a href="{href(pg, preview)}">{lbl}</a>' for pg, lbl in crumbs]
+        trail = '<nav class="crumbs" aria-label="Breadcrumb">' + ' &rsaquo; '.join(parts) + f' &rsaquo; <span>{title}</span></nav>'
+    subp = f'<p class="sub">{sub}</p>' if sub else ''
+    return (f'<header class="banner{"" if img else " noimg"}"{style}><div class="wrap"><div class="page-head">'
+            f'{trail}<p class="kicker">{kicker}</p><h1>{title}</h1>{subp}</div></div></header>')
+
+BANNER_IMG = {
+    'about': ('statue-pose', 'center 22%'), 'projects': ('awe-team', 'center 40%'),
+    'awards': ('auggie-night', 'center 45%'), 'speaking': ('ets-stage', 'center 58%'),
+    'opportunities': ('workshop', 'center 45%'), 'press': ('news-abc', 'center 35%'),
+    'blog': ('neapolis-swim', 'center 40%'),
+}
+
+def bannerize(page, html, preview=False):
+    """Turn a section page's plain page-head into a photo banner."""
+    if page not in BANNER_IMG:
+        return html
+    img, pos = BANNER_IMG[page]
+    m = re.search(r'<div class="wrap"><div class="page-head">(.*?)</div></div>', html, re.S)
+    if not m:
+        return html
+    inner = m.group(1)
+    trail = (f'<nav class="crumbs" aria-label="Breadcrumb"><a href="{href("home", preview)}">Home</a>'
+             f' &rsaquo; <span>{LABEL[page]}</span></nav>')
+    new = (f'<header class="banner" style="background-image:url(web/{img}.jpg);background-position:{pos}">'
+           f'<div class="wrap"><div class="page-head">{trail}{inner}</div></div></header>')
+    return html[:m.start()] + new + html[m.end():]
+
+def related_strip(title, cards):
+    if not cards:
+        return ''
+    return (f'<section class="related"><div class="wrap"><h2 class="sec-title">{title}</h2>'
+            f'<div class="cards">{"".join(cards)}</div></div></section>')
+
+def cta_band(kicker, heading, text, primary, secondary=None):
+    sec = f'<a class="btn ghost" href="{secondary[1]}">{secondary[0]}</a>' if secondary else ''
+    return (f'<div class="band deep cta-end"><div class="wrap" style="text-align:center">'
+            f'<p class="kicker" style="justify-content:center">{kicker}</p>'
+            f'<h2 class="sec-title" style="margin-bottom:10px">{heading}</h2>'
+            f'<p style="max-width:56ch;margin:0 auto 24px">{text}</p>'
+            f'<div class="btn-row" style="justify-content:center"><a class="btn" href="{primary[1]}">{primary[0]}</a>{sec}</div>'
+            f'</div></div>')
+
 def body_detail(p, preview, back_page='projects', back_label='All projects'):
-    hero = ''
-    if p.get('img'):
-        hero = f'<div class="detail-hero"><img src="web/{p["img"]}.jpg" alt="{p["alt"]}"></div>'
+    is_award = back_page == 'awards'
+    head = banner(p['category'], p['title'], img=p.get('img'),
+                  crumbs=[('home', 'Home'), (back_page, LABEL[back_page])], preview=preview)
     paras = ''.join(f'<p>{t}</p>' for t in p['paras'])
     facts = ''.join(f'<li><b>{k}</b> — {v}</li>' for k, v in p['facts'])
     links = ''
@@ -617,21 +710,37 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
                        for g, cap in p['gallery'])
         gallery = f'<div class="gallery">{figs}</div>'
     emb = embeds_block(p.get('embeds'), preview, p.get('embeds_heading'))
+    if is_award:
+        others = [a for a in AWARDS if a['slug'] != p['slug'] and a['paras']][:3]
+        rel = related_strip('More recognition', [card_html(a, preview, prefix='a-', more='Read the story') for a in others])
+        cta = cta_band('Speaking', 'Bring this story to your stage.',
+                       'Keynotes, panels, and workshops on heritage, climate, and immersive technology — in English, Arabic, or French.',
+                       ('Book me to speak', href('speaking', preview) + ('' if preview else '#book')),
+                       ('See all awards', href('awards', preview)))
+    else:
+        group = next((g for g in PROJECT_GROUPS if p['slug'] in g[2]), None)
+        pool = [s for s in (group[2] if group else []) if s != p['slug']]
+        pool += [q['slug'] for q in PROJECTS if q['slug'] not in pool and q['slug'] != p['slug']]
+        by_slug = {q['slug']: q for q in PROJECTS}
+        rel = related_strip(f'More {group[0].lower()}' if group else 'More projects',
+                            [card_html(by_slug[s], preview) for s in pool[:3]])
+        cta = cta_band("Let's work together", 'Have a project in mind?',
+                       'From 3D-scanning a collection to building an XR experience for your museum, utility, or classroom — tell me about it.',
+                       ('Start a conversation', href('speaking', preview) + ('' if preview else '#book')),
+                       ('See all projects', href('projects', preview)))
     return f"""
+{head}
 <div class="wrap">
-  <div class="page-head">
-    <p class="kicker">{p['category']}</p>
-    <h1>{p['title']}</h1>
-  </div>
-  {hero}
   <div class="detail-grid">
-    <div class="prose">{paras}</div>
+    <div class="prose lead">{paras}</div>
     <div class="fact-card"><h3>At a glance</h3><ul>{facts}</ul>{links}</div>
   </div>
   {emb}
   {gallery}
   <a class="backlink" href="{href(back_page, preview)}">&larr; {back_label}</a>
 </div>
+{rel}
+{cta}
 """
 
 # ---------------- awards ----------------
@@ -872,11 +981,15 @@ def body_blog(preview):
 """
 
 def body_post(p, preview):
-    hero = ''
-    if p.get('img'):
-        hero = (f'<div class="detail-hero"><img src="web/{p["img"]}.jpg" alt="{p.get("imgcap", p["title"])}"></div>'
-                f'<p style="font-size:.8rem;color:var(--muted);margin:10px 0 0">{p.get("imgcap", "")}</p>')
+    head = banner(f"{p['tag']} &middot; {p['date']}", p['title'], img=p.get('img'),
+                  crumbs=[('home', 'Home'), ('blog', 'Blog')], preview=preview)
+    hero = (f'<p class="banner-cap">{p["imgcap"]}</p>' if p.get('imgcap') else '')
     paras = ''.join(f'<p>{t}</p>' for t in p['paras'])
+    others = [q for q in POSTS if q['slug'] != p['slug']][:3]
+    rel = related_strip('Keep reading', [post_card(q, preview) for q in others])
+    cta = cta_band('Newsletter', 'Art, XR &amp; Impact Opportunities',
+                   'My weekly round-up of grants, residencies, fellowships, and open calls — free, on LinkedIn.',
+                   ('Subscribe', NEWSLETTER_URL), ('Browse the deadline board', href('opportunities', preview)))
     gallery = ''
     if p.get('gallery'):
         figs = ''.join(f'<figure><img src="web/{g}.jpg" alt="{cap}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
@@ -884,20 +997,19 @@ def body_post(p, preview):
         gallery = f'<div class="gallery">{figs}</div>'
     emb = embeds_block(p.get('embeds'), preview)
     return f"""
+{head}
 <div class="wrap">
-  <div class="page-head">
-    <p class="kicker">{p['tag']} &middot; {p['date']}</p>
-    <h1>{p['title']}</h1>
-  </div>
   {hero}
-  <div class="detail-grid" style="grid-template-columns:1fr;max-width:720px">
-    <div class="prose">{paras}</div>
+  <div class="detail-grid" style="grid-template-columns:1fr;max-width:720px;margin:0 auto">
+    <div class="prose lead">{paras}</div>
   </div>
   {emb}
   {gallery}
   {f'<p style="margin:36px 0 0"><a href="{p["liurl"]}" style="font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase">Read the original post on LinkedIn &rarr;</a></p>' if p.get('liurl') else ''}
   <a class="backlink" href="{href('blog', preview)}">&larr; All posts</a>
 </div>
+{rel}
+{cta}
 """
 
 # ---------------- page bodies ----------------
@@ -1201,8 +1313,8 @@ def body_speaking(preview):
       </div>
     </div>
     <figure class="side-photo">
-      <img src="web/ets-stage.jpg" alt="Ines Said presenting her photogrammetry work on the Energy Thought Summit main stage, with her 3D scans on the big screens">
-      <figcaption>On the main stage at the Energy Thought Summit 2026 — Tunisia's scans on the big screens.</figcaption>
+      <img src="web/stage.jpg" alt="Ines Said speaking on stage at the ELLEvate Women Leaders in Tech summit">
+      <figcaption>On stage at the ELLEvate Women Leaders in Tech summit.</figcaption>
     </figure>
   </div>
   {embeds_block([
@@ -1463,7 +1575,7 @@ def seo(title, desc, path, jsonld=False):
     return tags
 
 def page_html(page):
-    body = BODIES[page](False)
+    body = bannerize(page, BODIES[page](False))
     name = 'index.html' if page == 'home' else page + '.html'
     return (f'<!doctype html><html lang="en"><head>{HEAD}'
             f'{seo(TITLE[page], DEFAULT_DESC, name, jsonld=(page in ("home", "about")))}'

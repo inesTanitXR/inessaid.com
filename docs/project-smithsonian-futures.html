@@ -268,22 +268,51 @@ tr.opp-closed{display:none;opacity:.55}
 .contact-form button{margin-top:22px;background:var(--lav);color:#fff;font-weight:800;font-size:.95rem;
   border:0;padding:13px 30px;border-radius:999px;cursor:pointer;font-family:"Bitter",serif;box-shadow:0 6px 18px #8a63d240}
 .contact-form button:hover{background:var(--lav-deep)}
+/* photo banners (inner pages) */
+.banner{position:relative;min-height:400px;display:flex;align-items:flex-end;background:#43203a center/cover no-repeat;overflow:hidden}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,14,32,.25) 0%,rgba(52,19,40,.55) 45%,rgba(52,19,40,.9) 100%)}
+.banner.noimg{min-height:300px;background:radial-gradient(ellipse at 20% 30%,#8e3a63 0%,#5e2246 55%,#3d1530 100%)}
+.banner.noimg::after{content:"\2726";position:absolute;right:8%;top:22%;font-size:9rem;color:#c08a2e33;line-height:1}
+.banner .wrap{position:relative;width:100%}
+.banner .page-head{padding:120px 0 44px}
+.banner .page-head::before,.banner .page-head::after{display:none}
+.banner h1{color:#fff;font-size:clamp(2.3rem,5.4vw,3.9rem);max-width:22ch;text-shadow:0 2px 20px rgba(30,8,24,.45)}
+.banner .kicker{color:var(--gold)}
+.banner p.sub{color:#f3dcd6;font-size:1.1rem}
+.crumbs{font-size:.8rem;color:#e8cfc9;margin:0 0 18px;letter-spacing:.02em}
+.crumbs a{color:var(--gold);font-weight:700}
+.crumbs span{color:#f3dcd6}
+.banner-cap{font-size:.82rem;color:var(--muted);margin:14px auto 0;max-width:720px;font-style:italic}
+/* storybook lead + drop cap */
+.prose.lead p:first-child{font-size:1.2rem;line-height:1.65;color:var(--ink)}
+html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"Yeseva One",serif;font-size:4.1em;line-height:.82;
+  padding:8px 12px 0 0;color:var(--lav)}
+.detail-grid{padding-top:56px}
+.fact-card{position:sticky;top:92px;border-top:4px solid var(--gold)}
+/* related strip + closing band */
+.related{background:var(--soft);padding:64px 0 72px;margin-top:72px}
+.related .cards .card-body p{font-size:.9rem}
+.cta-end{margin-top:0}
+/* gallery lightbox */
+.gallery img,.media-strip img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,10,24,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+.lightbox img{max-width:92vw;max-height:80vh;border-radius:10px;border:8px solid #fff;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.lightbox p{color:#f3dcd6;margin:16px 0 0;font-style:italic;text-align:center;max-width:60ch}
+.lightbox button{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style></head><body><header class="site-header"><div class="wrap"><a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html" class="active">Projects</a><a href="awards.html">Awards</a><a href="speaking.html">Speaking</a><a href="opportunities.html">Opportunities</a><a href="press.html">Press</a><a href="blog.html">Blog</a></nav><div class="lang-switch"><a href="#" class="on">EN</a><a href="fr/">FR</a><a href="ar/">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
+<header class="banner" style="background-image:url(web/futures-wide.jpg);background-position:center 35%"><div class="wrap"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="projects.html">Projects</a> &rsaquo; <span>Smithsonian FUTURES — Future of Energy & Water</span></nav><p class="kicker">Museum · Immersive</p><h1>Smithsonian FUTURES — Future of Energy & Water</h1></div></div></header>
 <div class="wrap">
-  <div class="page-head">
-    <p class="kicker">Museum · Immersive</p>
-    <h1>Smithsonian FUTURES — Future of Energy & Water</h1>
-  </div>
-  <div class="detail-hero"><img src="web/futures-wide.jpg" alt="The Smithsonian FUTURES exhibition hall"></div>
   <div class="detail-grid">
-    <div class="prose"><p>For the Smithsonian's FUTURES exhibition — the Institution's landmark 175th-anniversary show in Washington, D.C. — I co-created the Future of Energy and Water immersive experience with the team at Froliq.</p><p>The installation invites visitors to explore how energy and water systems could work in a sustainable future, blending art, technology, and environmental storytelling into an interactive experience. More than 10,000 visitors stepped through the experience itself, within an exhibition that welcomed over 600,000 people.</p></div>
+    <div class="prose lead"><p>For the Smithsonian's FUTURES exhibition — the Institution's landmark 175th-anniversary show in Washington, D.C. — I co-created the Future of Energy and Water immersive experience with the team at Froliq.</p><p>The installation invites visitors to explore how energy and water systems could work in a sustainable future, blending art, technology, and environmental storytelling into an interactive experience. More than 10,000 visitors stepped through the experience itself, within an exhibition that welcomed over 600,000 people.</p></div>
     <div class="fact-card"><h3>At a glance</h3><ul><li><b>Venue</b> — Smithsonian Arts + Industries Building, Washington, D.C.</li><li><b>Exhibition</b> — FUTURES — 600,000+ visitors</li><li><b>Experience</b> — 10,000+ direct participants</li></ul><h3 style="margin-top:20px">Links</h3><ul><li><a href="https://www.oracle.com/utilities/opower-energy-efficiency/future-of-energy-and-water-part-1/">Oracle: a virtual journey with the Smithsonian</a></li><li><a href="https://www.si.edu/newsdesk/releases/smithsonian-debut-groundbreaking-futures-exhibition-its-175th-anniversary">Smithsonian FUTURES announcement</a></li></ul></div>
   </div>
   
   
   <a class="backlink" href="projects.html">&larr; All projects</a>
 </div>
+<section class="related"><div class="wrap"><h2 class="sec-title">More immersive art & installations</h2><div class="cards"><a class="card" href="project-shadows-of-tomorrow.html"><div class="card-inner"><div class="thumb"><img src="web/heat.jpg" alt="Ines Said at the HEAT exhibition wall for Shadows of Tomorrow" loading="lazy"></div><div class="card-body"><h3>Shadows of Tomorrow</h3><p>XR climate installation where holding hands transforms a damaged world into a restored one. Excellence Award at the GFAA Biennial; AWE XR Prize MVP finalist.</p><div class="chips"><span class="chip">Body tracking</span><span class="chip">Unity</span><span class="chip blush">Excellence Award</span></div><span class="card-more">View project &rarr;</span></div></div></a><a class="card" href="project-covid-reflections.html"><div class="card-inner"><div class="thumb"><img src="web/covid-truck.jpg" alt="Covid Reflections AR installation presented outdoors beside a mobile vaccine clinic" loading="lazy"></div><div class="card-body"><h3>Covid Reflections</h3><p>AR public art paired with mobile health clinics, touring Florida, California, and Japan — 200+ people received check-ups alongside the installation.</p><div class="chips"><span class="chip">Mobile AR</span><span class="chip">Public art</span></div><span class="card-more">View project &rarr;</span></div></div></a><a class="card" href="project-sparc.html"><div class="card-inner"><div class="thumb ph blush"><b>spARc</b><span>AR animation tool</span></div><div class="card-body"><h3>spARc</h3><p>An immersive 3D animation tool that lets anyone animate in AR — two-handed controls, no rigging or skinning, and a radial time slider for precise keyframing.</p><div class="chips"><span class="chip">AR</span><span class="chip">HCI research</span><span class="chip blush">Published research</span></div><span class="card-more">View project &rarr;</span></div></div></a></div></div></section>
+<div class="band deep cta-end"><div class="wrap" style="text-align:center"><p class="kicker" style="justify-content:center">Let's work together</p><h2 class="sec-title" style="margin-bottom:10px">Have a project in mind?</h2><p style="max-width:56ch;margin:0 auto 24px">From 3D-scanning a collection to building an XR experience for your museum, utility, or classroom — tell me about it.</p><div class="btn-row" style="justify-content:center"><a class="btn" href="speaking.html#book">Start a conversation</a><a class="btn ghost" href="projects.html">See all projects</a></div></div></div>
 
 <footer><div class="wrap">
   <svg class="tanit-mark" viewBox="0 0 30 38" aria-hidden="true">
@@ -313,4 +342,19 @@ tr.opp-closed{display:none;opacity:.55}
     </div>
   </div>
   <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>Made with love, between Tunisia &amp; D.C. &#10022;</span></div>
-</div></footer></body></html>
+</div></footer><script>
+(function(){
+  document.addEventListener('click',function(e){
+    var img=e.target.closest('.gallery img,.media-strip img'); if(!img) return;
+    var fig=img.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+    var box=document.createElement('div'); box.className='lightbox'; box.setAttribute('role','dialog');
+    box.innerHTML='<button aria-label="Close">&times;</button><img alt=""><p></p>';
+    box.querySelector('img').src=img.src; box.querySelector('img').alt=img.alt;
+    box.querySelector('p').textContent=cap?cap.textContent:'';
+    function close(){box.remove();document.removeEventListener('keydown',esc)}
+    function esc(k){if(k.key==='Escape')close()}
+    box.addEventListener('click',function(ev){if(ev.target.tagName!=='IMG')close()});
+    document.addEventListener('keydown',esc); document.body.appendChild(box);
+  });
+})();
+</script></body></html>

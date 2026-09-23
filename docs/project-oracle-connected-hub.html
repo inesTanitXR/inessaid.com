@@ -268,22 +268,51 @@ tr.opp-closed{display:none;opacity:.55}
 .contact-form button{margin-top:22px;background:var(--lav);color:#fff;font-weight:800;font-size:.95rem;
   border:0;padding:13px 30px;border-radius:999px;cursor:pointer;font-family:"Bitter",serif;box-shadow:0 6px 18px #8a63d240}
 .contact-form button:hover{background:var(--lav-deep)}
+/* photo banners (inner pages) */
+.banner{position:relative;min-height:400px;display:flex;align-items:flex-end;background:#43203a center/cover no-repeat;overflow:hidden}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,14,32,.25) 0%,rgba(52,19,40,.55) 45%,rgba(52,19,40,.9) 100%)}
+.banner.noimg{min-height:300px;background:radial-gradient(ellipse at 20% 30%,#8e3a63 0%,#5e2246 55%,#3d1530 100%)}
+.banner.noimg::after{content:"\2726";position:absolute;right:8%;top:22%;font-size:9rem;color:#c08a2e33;line-height:1}
+.banner .wrap{position:relative;width:100%}
+.banner .page-head{padding:120px 0 44px}
+.banner .page-head::before,.banner .page-head::after{display:none}
+.banner h1{color:#fff;font-size:clamp(2.3rem,5.4vw,3.9rem);max-width:22ch;text-shadow:0 2px 20px rgba(30,8,24,.45)}
+.banner .kicker{color:var(--gold)}
+.banner p.sub{color:#f3dcd6;font-size:1.1rem}
+.crumbs{font-size:.8rem;color:#e8cfc9;margin:0 0 18px;letter-spacing:.02em}
+.crumbs a{color:var(--gold);font-weight:700}
+.crumbs span{color:#f3dcd6}
+.banner-cap{font-size:.82rem;color:var(--muted);margin:14px auto 0;max-width:720px;font-style:italic}
+/* storybook lead + drop cap */
+.prose.lead p:first-child{font-size:1.2rem;line-height:1.65;color:var(--ink)}
+html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"Yeseva One",serif;font-size:4.1em;line-height:.82;
+  padding:8px 12px 0 0;color:var(--lav)}
+.detail-grid{padding-top:56px}
+.fact-card{position:sticky;top:92px;border-top:4px solid var(--gold)}
+/* related strip + closing band */
+.related{background:var(--soft);padding:64px 0 72px;margin-top:72px}
+.related .cards .card-body p{font-size:.9rem}
+.cta-end{margin-top:0}
+/* gallery lightbox */
+.gallery img,.media-strip img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,10,24,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
+.lightbox img{max-width:92vw;max-height:80vh;border-radius:10px;border:8px solid #fff;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.lightbox p{color:#f3dcd6;margin:16px 0 0;font-style:italic;text-align:center;max-width:60ch}
+.lightbox button{position:absolute;top:18px;right:24px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style></head><body><header class="site-header"><div class="wrap"><a class="brand" href="index.html">Ines Said<em>&thinsp;&#10022;</em></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html" class="active">Projects</a><a href="awards.html">Awards</a><a href="speaking.html">Speaking</a><a href="opportunities.html">Opportunities</a><a href="press.html">Press</a><a href="blog.html">Blog</a></nav><div class="lang-switch"><a href="#" class="on">EN</a><a href="fr/">FR</a><a href="ar/">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
+<header class="banner" style="background-image:url(web/oracle-booth.jpg);background-position:center 35%"><div class="wrap"><div class="page-head"><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> &rsaquo; <a href="projects.html">Projects</a> &rsaquo; <span>Oracle Connected Hub</span></nav><p class="kicker">Energy · Enterprise AR</p><h1>Oracle Connected Hub</h1></div></div></header>
 <div class="wrap">
-  <div class="page-head">
-    <p class="kicker">Energy · Enterprise AR</p>
-    <h1>Oracle Connected Hub</h1>
-  </div>
-  <div class="detail-hero"><img src="web/oracle-booth.jpg" alt="Ines Said demonstrating the Oracle Connected Hub grid simulator in a headset"></div>
   <div class="detail-grid">
-    <div class="prose"><p>Oracle's Connected Hub is a physical scale model of a working neighborhood — and it really works: real solar panels generate electricity, laser-lit fibre-optic power lines show live power flow, a wind turbine spins, batteries charge and discharge, EVs plug in, and 16 smart homes glow with the status of their meters, thermostats, and devices — all connected to Oracle's real utility-management software, so what happens in the model happens in the software, live.</p><p>At Froliq, I build the digital-twin layer: the family of AR applications that bring the neighborhood to life. Point a device at the model — or open the fully digital version anywhere in the world — and animated overlays show energy flowing through the grid, outages being predicted and resolved, EVs charging with real-time billing, and solar and wind responding to the network. It turns invisible infrastructure into something you can watch, touch, and play with.</p><p>The app family spans iPad AR, Windows, Meta Quest 3 mixed-reality passthrough, and Apple Vision Pro, and travels with the hubs to the industry's biggest stages — DISTRIBUTECH (Orlando and Dallas), Oracle Edge, Oracle CloudWorld, and the Energy Thought Summit — reaching thousands of utility professionals.</p><p>It's my favorite kind of project: the same instinct as my heritage work, pointed at the future instead of the past. Complex systems people can't normally see, made touchable.</p></div>
+    <div class="prose lead"><p>Oracle's Connected Hub is a physical scale model of a working neighborhood — and it really works: real solar panels generate electricity, laser-lit fibre-optic power lines show live power flow, a wind turbine spins, batteries charge and discharge, EVs plug in, and 16 smart homes glow with the status of their meters, thermostats, and devices — all connected to Oracle's real utility-management software, so what happens in the model happens in the software, live.</p><p>At Froliq, I build the digital-twin layer: the family of AR applications that bring the neighborhood to life. Point a device at the model — or open the fully digital version anywhere in the world — and animated overlays show energy flowing through the grid, outages being predicted and resolved, EVs charging with real-time billing, and solar and wind responding to the network. It turns invisible infrastructure into something you can watch, touch, and play with.</p><p>The app family spans iPad AR, Windows, Meta Quest 3 mixed-reality passthrough, and Apple Vision Pro, and travels with the hubs to the industry's biggest stages — DISTRIBUTECH (Orlando and Dallas), Oracle Edge, Oracle CloudWorld, and the Energy Thought Summit — reaching thousands of utility professionals.</p><p>It's my favorite kind of project: the same instinct as my heritage work, pointed at the future instead of the past. Complex systems people can't normally see, made touchable.</p></div>
     <div class="fact-card"><h3>At a glance</h3><ul><li><b>Client</b> — Oracle Utilities, with Froliq</li><li><b>Role</b> — Lead XR Developer — the AR digital-twin app family</li><li><b>Platforms</b> — iPad AR, Windows, Meta Quest 3 passthrough, Apple Vision Pro</li><li><b>Shown at</b> — DISTRIBUTECH, Oracle Edge, Oracle CloudWorld, Energy Thought Summit</li></ul></div>
   </div>
   
   <div class="gallery"><figure><img src="web/oracle-demo.jpg" alt="Demoing the grid simulator on the conference floor." loading="lazy"><figcaption>Demoing the grid simulator on the conference floor.</figcaption></figure><figure><img src="web/ets-stage.jpg" alt="Presenting the work on the Energy Thought Summit main stage." loading="lazy"><figcaption>Presenting the work on the Energy Thought Summit main stage.</figcaption></figure></div>
   <a class="backlink" href="projects.html">&larr; All projects</a>
 </div>
+<section class="related"><div class="wrap"><h2 class="sec-title">More energy & industry</h2><div class="cards"><a class="card" href="project-nypa-vision-pro.html"><div class="card-inner"><div class="thumb ph lav"><b>visionOS</b><span>Apple Vision Pro</span></div><div class="card-body"><h3>NYPA Grid Experience on Apple Vision Pro</h3><p>A native visionOS energy-grid experience built for the New York Power Authority — a spatial cousin of the Connected Hub, living as a hologram in the room.</p><div class="chips"><span class="chip">visionOS</span><span class="chip">Unity PolySpatial</span></div><span class="card-more">View project &rarr;</span></div></div></a><a class="card" href="project-vistra-tour.html"><div class="card-inner"><div class="thumb ph blush"><b>WebXR</b><span>Power plant tour</span></div><div class="card-body"><h3>Vistra Energy Hazard Tour</h3><p>A guided virtual safety tour of the Vistra Midlothian power plant — four interactive hazard zones, running in any browser and in VR.</p><div class="chips"><span class="chip">WebXR</span><span class="chip">Needle Engine</span><span class="chip">Unity</span></div><span class="card-more">View project &rarr;</span></div></div></a><a class="card" href="project-nuclear-capture.html"><div class="card-inner"><div class="thumb"><img src="web/portalcam.jpg" alt="Ines Said and colleague with the PortalCam LiDAR scanner" loading="lazy"></div><div class="card-body"><h3>Nuclear Plant Reality Capture</h3><p>LiDAR-scanning the Davis-Besse nuclear power plant — turbine deck to cooling tower — and rendering it as Gaussian splats for training in web, VR, and AR.</p><div class="chips"><span class="chip">LiDAR</span><span class="chip">Gaussian splats</span><span class="chip">Training</span></div><span class="card-more">View project &rarr;</span></div></div></a></div></div></section>
+<div class="band deep cta-end"><div class="wrap" style="text-align:center"><p class="kicker" style="justify-content:center">Let's work together</p><h2 class="sec-title" style="margin-bottom:10px">Have a project in mind?</h2><p style="max-width:56ch;margin:0 auto 24px">From 3D-scanning a collection to building an XR experience for your museum, utility, or classroom — tell me about it.</p><div class="btn-row" style="justify-content:center"><a class="btn" href="speaking.html#book">Start a conversation</a><a class="btn ghost" href="projects.html">See all projects</a></div></div></div>
 
 <footer><div class="wrap">
   <svg class="tanit-mark" viewBox="0 0 30 38" aria-hidden="true">
@@ -313,4 +342,19 @@ tr.opp-closed{display:none;opacity:.55}
     </div>
   </div>
   <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>Made with love, between Tunisia &amp; D.C. &#10022;</span></div>
-</div></footer></body></html>
+</div></footer><script>
+(function(){
+  document.addEventListener('click',function(e){
+    var img=e.target.closest('.gallery img,.media-strip img'); if(!img) return;
+    var fig=img.closest('figure'), cap=fig&&fig.querySelector('figcaption');
+    var box=document.createElement('div'); box.className='lightbox'; box.setAttribute('role','dialog');
+    box.innerHTML='<button aria-label="Close">&times;</button><img alt=""><p></p>';
+    box.querySelector('img').src=img.src; box.querySelector('img').alt=img.alt;
+    box.querySelector('p').textContent=cap?cap.textContent:'';
+    function close(){box.remove();document.removeEventListener('keydown',esc)}
+    function esc(k){if(k.key==='Escape')close()}
+    box.addEventListener('click',function(ev){if(ev.target.tagName!=='IMG')close()});
+    document.addEventListener('keydown',esc); document.body.appendChild(box);
+  });
+})();
+</script></body></html>
