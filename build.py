@@ -316,7 +316,7 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 """
 
 FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-         'family=Yeseva+One&'
+         'family=Yeseva+One&family=Caveat:wght@500;600&'
          'family=Bitter:ital,wght@0,400;0,600;0,700;1,400&'
          'family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">')
 
@@ -647,14 +647,42 @@ def card_html(p, preview, prefix='p-', more='View project'):
             f'<div class="card-body"><h3>{p["title"]}</h3><p>{p["card"]}</p>'
             f'<div class="chips">{ch}</div><span class="card-more">{more} &rarr;</span></div></div></a>')
 
+POL_CAPS = {
+    'statue-pose': 'striking a pose', 'mosaic-portrait': 'mosaic love &#9825;',
+    'el-jem': 'El Jem, Tunisia', 'oracle-booth': 'the grid in VR',
+    'auggie-finalist': 'Auggie finalists!', 'ee30': 'EE 30 Under 30',
+    'ets-stage': 'ETS main stage', 'stage': 'ELLEvate talk',
+    'workshop': 'workshop day', 'awe-team': 'team Tanit &#9825;',
+    'news-abc': 'on the news!', 'carthage-mag': 'Carthage Magazine',
+    'neapolis-swim': 'finding Neapolis', 'portalcam': 'scanning time',
+    'tanit-archive': 'open archive', 'heat': 'my wall at HEAT', 'heat-door': 'HEAT exhibition',
+    'futures-wide': 'Smithsonian FUTURES', 'oracle-demo': 'live demo',
+    'froliq-playground': 'soccer time!', 'covid-truck': 'AR outdoors', 'covid-outdoor': 'by the clinic',
+    'vision-board': 'vision board &#9825;', 'ee30-class': 'class of 2025', 'vr-portrait': 'headset on',
+    'rh-printed-award': 'self-printed award', 'rh-hack-table': 'hacking together',
+    'neapolis-2': '6 AM swim', 'tanit-birthday': 'happy birthday Tanit!',
+    'auggie-night': 'Auggie night', 'awe-entrance': 'hello AWE!', 'eljem-conf': 'with my sister &#9825;',
+    'tanit-museum-1': 'museum sneak peek', 'tanit-museum-2': 'your guide',
+    'storm-ruins-1': 'after the storm', 'storm-ruins-2': 'ruins revealed', 'rh-snow-1': 'snowy Boston',
+}
+PH_CAPS = {
+    'Apple Vision Pro': 'Vision Pro app', 'Power plant tour': 'power plant tour', 'Educational games': 'game time!',
+    'AR energy storytelling': 'AR stories', 'Six utilities': 'STEM days', 'AR animation tool': 'AR animation',
+}
+
+def _pol(cls, inner, cap):
+    return f'<figure class="pol {cls}">{inner}<figcaption>{cap}</figcaption></figure>'
+
 def _polaroids(img, img2=None, ph=None):
+    photo = lambda i: f'<img src="web/{i}.jpg" alt="">'
     if img and img2:
-        return (f'<div class="polaroids"><figure class="pol p1"><img src="web/{img}.jpg" alt=""></figure>'
-                f'<figure class="pol p2"><img src="web/{img2}.jpg" alt=""></figure></div>')
+        return ('<div class="polaroids">' + _pol('p1', photo(img), POL_CAPS.get(img, '')) +
+                _pol('p2', photo(img2), POL_CAPS.get(img2, '')) + '</div>')
     if img:
-        return f'<div class="polaroids"><figure class="pol single"><img src="web/{img}.jpg" alt=""></figure></div>'
+        return '<div class="polaroids">' + _pol('single', photo(img), POL_CAPS.get(img, '')) + '</div>'
     big, small = (ph[0], ph[1]) if ph else ('&#10022;', '')
-    return (f'<div class="polaroids"><figure class="pol single ph"><div><b>{big}</b><span>{small}</span></div></figure></div>')
+    return ('<div class="polaroids">' + _pol('single ph', f'<div><b>{big}</b><span>{small}</span></div>',
+            PH_CAPS.get(small, '')) + '</div>')
 
 def banner(kicker, title, sub='', img=None, crumbs=None, pos='center 35%', preview=False, img2=None, ph=None):
     trail = ''
