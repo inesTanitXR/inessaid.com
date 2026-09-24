@@ -203,7 +203,12 @@ def translate_site():
     # English pages: per-page switcher + hreflang
     for rel in _en_pages():
         p = os.path.join(OUT, rel)
-        open(p, 'w', encoding='utf-8').write(_fix_chrome(open(p, encoding='utf-8').read(), _url_of(rel), 'en'))
+        html = _fix_chrome(open(p, encoding='utf-8').read(), _url_of(rel), 'en')
+        with open(p, 'w', encoding='utf-8') as f:
+            f.write(html)
+    empty = [r for r in glob.glob(os.path.join(OUT, '**', '*.html'), recursive=True) if os.path.getsize(r) < 200]
+    if empty:
+        raise SystemExit(f'BUILD STOPPED: {len(empty)} empty pages, e.g. {empty[:3]}')
     # sitemap with every language
     urls = [_url_of(r) for r in _en_pages()]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
