@@ -345,7 +345,7 @@ def body_about(preview):
     ]), 'What I do', 'The things I love working on') + \
     section(timeline([
         ('2026', [('Auggie Awards finalist — Best Societal Impact', 'Tanit XR at Augmented World Expo', H('a-auggie-finalist'), 'auggie-finalist'),
-                  ('Presented inside the El Jem Amphitheater', 'El Jem International Conference, Tunisia', H('b-el-jem-colosseum'), 'eljem-conf'),
+                  ('Presented at the El Jem International Conference', 'El Jem Museum, Tunisia', H('b-el-jem-colosseum'), 'eljem-conf'),
                   ('Spoke on the main stage at the Energy Thought Summit', 'San Antonio, TX', H('speaking'), 'ets-stage')]),
         ('2025', [('Founded Tanit XR', "A volunteer community scanning Tunisia's endangered heritage in 3D", H('p-tanit-xr'), 'tanit-birthday'),
                   ('EE 30 Under 30, Class of 2025', 'North American Association for Environmental Education', H('a-ee-30-under-30'), 'ee30')]),
@@ -468,7 +468,7 @@ def body_speaking(preview):
                            ('dmv-panel', 'Beyond the Byte panel'), ('speaker-card', 'AWE USA 2026 speaker card')]),
         'Speaking', 'Keynotes, panels and workshops',
         ["I give keynotes, panels, workshops and university guest lectures, in person or online, in "
-         "<strong>English, Arabic or French</strong>. I've spoken everywhere from AWE to inside a Roman amphitheater in Tunisia!"],
+         "<strong>English, Arabic or French</strong>. I've spoken everywhere from AWE to the El Jem Museum in Tunisia, a few steps from a Roman amphitheater!"],
         ticks=['In 2025 I met more than 11,000 people at 40+ events, from AWE to a classroom in Texas',
                'I always share the events I speak at with my community online',
                "I've worked with teams at Oracle Utilities, Exelon, Vistra, NYPA, the Smithsonian and NEF"],
@@ -476,7 +476,7 @@ def body_speaking(preview):
     recognized('Recent stages', [
         ('AWE USA', 'Speaker · 2022 &amp; 2026', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
         ('Energy Thought Summit', 'Main stage · 2026', 'https://energythoughtsummit.com/'),
-        ('El Jem Conference', 'Inside the amphitheater', 'https://tanitxr.org/el-jem-conference/'),
+        ('El Jem Conference', 'El Jem Museum, Tunisia', 'https://tanitxr.org/el-jem-conference/'),
         ('Games for Change', 'Speaker · 2022', 'https://www.youtube.com/watch?v=RNaUaQgXaio'),
         ('Global XR Conference', 'Speaker · 2022', 'https://www.youtube.com/watch?v=FMcdT8H5ffE'),
         ('Inloco Gallery', 'MetaTalks · 2025', 'https://x.com/InlocoG21235/status/1989010660512985594'),
@@ -492,7 +492,7 @@ def body_speaking(preview):
     section(date_cards([
         ('18', 'Jun 26', 'AWE USA 2026 · Long Beach', 'From Scans to XR: A Practical Pipeline for Cultural Heritage', 'With Margarita Johnson, one of our volunteers at Tanit XR.', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
         ('27', 'Apr 26', 'Energy Thought Summit · San Antonio', 'Photogrammetry for energy &amp; heritage', 'Main stage, with Froliq and Tanit XR.', 'https://energythoughtsummit.com/'),
-        ('Apr', '2026', 'El Jem International Conference', 'Presenting Tanit XR inside the Roman amphitheater', 'Paper published in English, French &amp; Tunisian Arabic.', 'https://tanitxr.org/el-jem-conference/'),
+        ('Apr', '2026', 'El Jem International Conference', 'Presenting Tanit XR at the El Jem Museum', 'Paper published in English, French &amp; Tunisian Arabic.', 'https://tanitxr.org/el-jem-conference/'),
         ('8', 'Apr 26', 'Crystal City, VA', 'XR, AI &amp; immersive technology — panel', 'A D.C.-area panel on the future of immersive tech.', None),
         ('Nov', '2025', 'Inloco Gallery · MetaTalks', 'Immersive art &amp; spatial storytelling', 'Panel hosted by Inloco Gallery.', 'https://x.com/InlocoG21235/status/1989010660512985594'),
         ('2026', 'DMV', 'Beyond the Byte', 'Panel on immersive technology', 'In the Washington, D.C. area.', None),

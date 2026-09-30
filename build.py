@@ -354,6 +354,8 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
   .hero2-pols{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;padding:10px 6px 0}
   .hero2-pols .pol{position:relative;width:auto;top:auto;left:auto;right:auto;bottom:auto}
   .hero2-pols .pol.hp1{transform:rotate(-3deg)}.hero2-pols .pol.hp2{transform:rotate(3deg)}.hero2-pols .pol.hp3{transform:rotate(-2deg);grid-column:1/3;width:60%;margin:0 auto;order:-1}}
+.date-cards.three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.date-cards.three{grid-template-columns:1fr}}
 /* local video embeds */
 .embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
 .book-wrap{max-width:720px;margin:0 auto}
@@ -1000,13 +1002,13 @@ POSTS = [
    gallery=[('awe-entrance', 'Arriving at AWE 2026 in Long Beach.'),
             ('froliq-playground', 'The Froliq crew at the playground. Come play soccer with us!')]),
 
- dict(slug='el-jem-colosseum', title='Presenting inside a Roman colosseum',
+ dict(slug='el-jem-colosseum', title='Presenting Tanit XR at El Jem',
    date='April 2026', tag='Tanit XR', img='el-jem',
-   imgcap='The El Jem Amphitheater, my stage for a day!',
-   excerpt="I couldn't believe I was about to present inside the El Jem Amphitheater, at a conference where more than half the researchers were women.",
+   imgcap='El Jem! The conference was held at the El Jem Museum, a few steps from the amphitheater.',
+   excerpt="I presented Tanit XR at the El Jem International Conference, held at the El Jem Museum, where more than half the researchers were women.",
    paras=[
-     "I couldn't believe I was about to present inside a colosseum! I spoke about Tanit XR at the El Jem International Conference, standing inside the very amphitheater our volunteers had scanned with their phones.",
-     "There's something surreal about showing 3D scans of a monument while standing inside the original. Niantic Spatial later interviewed me about our work there, which still feels unreal.",
+     "I couldn't believe I was going to present in El Jem! The El Jem International Conference took place at the El Jem Museum, a few steps from the amphitheater our volunteers had scanned with their phones. I talked about Tanit XR and the people behind it.",
+     "There's something special about showing 3D scans of a monument with the real thing right outside the door. Niantic Spatial later interviewed me about our work there, which still feels unreal.",
      "Our paper is about how volunteers with phones and XR can help protect heritage in Tunisia. We published it in English, French and Tunisian Arabic, so people back home can actually read it.",
      "My sister came with me, and one of my favorite details: more than half the researchers presenting at the conference were women. That made me so happy."],
    gallery=[('eljem-conf', 'At the El Jem conference with my sister.')]),
@@ -1149,7 +1151,7 @@ def body_home(preview):
   <div class="hero2-pols">
     <a class="pol hp1" href="{href('p-smithsonian-futures', preview)}"><img src="web/futures-wide.jpg" alt="The Smithsonian FUTURES exhibition"><figcaption>600,000 people saw this at the Smithsonian</figcaption></a>
     <a class="pol hp2" href="{href('a-auggie-finalist', preview)}"><img src="web/auggie-finalist.jpg" alt="Tanit XR team, Auggie Awards finalists 2026"><figcaption>Auggie finalists, AWE 2026 &#9825;</figcaption></a>
-    <a class="pol hp3" href="{href('b-el-jem-colosseum', preview)}"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>I presented inside this colosseum</figcaption></a>
+    <a class="pol hp3" href="{href('b-el-jem-colosseum', preview)}"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>I spoke at the El Jem conference</figcaption></a>
   </div>
 </div></section>
 
@@ -1182,25 +1184,12 @@ def body_home(preview):
 
 {SQUIGGLE}
 
-<div class="band soft"><div class="wrap">
-  <h2 class="sec-title">Latest</h2>
-  <p class="sec-sub">What I've been up to lately.</p>
-  <ul class="list">
-    <li><div><span class="t"><a href="https://youtu.be/CY6u3LGEN3E">My episode of Spatial Creator Spotlight is out!</a></span><div class="d">I got to talk about my journey, Tanit XR and using XR for good. The full episode is on YouTube.</div></div><span class="who">New &middot; Sep 2026</span></li>
-    <li><div><span class="t"><a href="{href('b-auggie-finalist-whale', preview)}">We were finalists at the Auggie Awards!</a></span><div class="d">Tanit XR was a finalist for Best Societal Impact at AWE 2026.</div></div><span class="who">AWE &middot; Jun 2026</span></li>
-    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/">Niantic Spatial interviewed me!</a></span><div class="d">Nathan Bowser asked me about Tanit XR and our scans at El Jem, and Niantic published the video. I was so excited!</div></div><span class="who">Niantic Spatial &middot; Jul 2026</span></li>
-    <li><div><span class="t"><a href="https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/">A free 3D scanning course with Tanit XR</a></span><div class="d">Mark Jeffcock, who teaches our Splats With Phones course, shows you how to scan with your phone in six free weeks. No experience needed, just curiosity!</div></div><span class="who">Tanit XR &middot; Dec 2025</span></li>
-    <li><div><span class="t"><a href="{href('b-sunken-city', preview)}">Looking for a sunken Roman city</a></span><div class="d">We went out on a paddle boat at 6 AM near my hometown, Nabeul, to look for the underwater ruins of Neapolis. The water was so clear!</div></div><span class="who">Field notes &middot; Aug 2026</span></li>
-    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/">Tanit XR had its own track at ImmerseGT!</a></span><div class="d">At Georgia Tech's 36-hour XR hackathon, teams built projects with our real scans of Tunisian heritage. Congrats to "From Mystery to History" for winning our track!</div></div><span class="who">ImmerseGT &middot; Apr 2026</span></li>
-  </ul>
-</div></div>
-
 <div class="band deep"><div class="wrap"><div class="two-col" style="align-items:center">
   <div>
     <p class="kicker">Speaking</p>
     <h2 class="sec-title" style="margin-bottom:10px">I'd love to speak at your event!</h2>
     <p style="max-width:56ch;margin:0 0 24px">I speak about heritage, climate and XR. I've spoken at AWE, the Energy Thought Summit
-    and even inside the El Jem amphitheater!</p>
+    and even at the El Jem International Conference in Tunisia!</p>
     <div class="btn-row">
       <a class="btn" href="{href('speaking', preview)}#book">Book me to speak</a>
       <a class="btn ghost" href="{href('speaking', preview)}">Topics &amp; past talks</a>
@@ -1213,6 +1202,16 @@ def body_home(preview):
   <h2 class="sec-title">Life in the field</h2>
   <p class="sec-sub">Some of my favorite moments: ruins, stages, the sea and classrooms.</p>
   {polwall(HOME_WALL)}
+</div></section>
+
+<section class="block tint latest-cards"><div class="wrap">
+  <div class="center" style="margin-bottom:34px"><p class="sec-kicker">Latest</p><h2 class="sec-title">What I've been up to</h2></div>
+  <div class="date-cards three">
+    <a class="date-card" href="https://youtu.be/CY6u3LGEN3E"><div class="d"><b>24</b><span>Sep 26</span></div><div><span class="k">New episode</span><h3>My Spatial Creator Spotlight episode is out!</h3><p>I talked about my journey, Tanit XR and using XR for good. The full episode is on YouTube.</p></div></a>
+    <a class="date-card" href="{href('b-auggie-finalist-whale', preview)}"><div class="d"><b>Jun</b><span>2026</span></div><div><span class="k">AWE · Long Beach</span><h3>We were finalists at the Auggie Awards!</h3><p>Best Societal Impact, for Tanit XR. The next day I saw a whale, just saying.</p></div></a>
+    <a class="date-card" href="{href('b-sunken-city', preview)}"><div class="d"><b>Aug</b><span>2026</span></div><div><span class="k">Field notes</span><h3>Looking for a sunken Roman city</h3><p>A paddle boat at 6 AM near my hometown, Nabeul, to look for the ruins of Neapolis. The water was so clear!</p></div></a>
+  </div>
+  <p style="margin:30px 0 0;text-align:center"><a class="btn ghost" href="{href('blog', preview)}">More stories on my blog</a></p>
 </div></section>
 
 <div class="band blush"><div class="wrap" style="text-align:center">
@@ -1382,7 +1381,7 @@ def body_speaking(preview):
   <p class="kicker">Speaking &amp; Media</p>
   <h1>Invite me to your stage.</h1>
   <p class="sub">I speak about XR for cultural heritage, climate and sustainability through immersive tech,
-  and building XR that changes how people learn — from the Smithsonian to a Roman colosseum.</p>
+  and building XR that changes how people learn — from the Smithsonian to the El Jem Museum in Tunisia.</p>
 </div></div>
 <section class="block" style="padding-top:32px"><div class="wrap">
   <div class="two-col">
@@ -1390,7 +1389,7 @@ def body_speaking(preview):
       <p style="max-width:60ch;margin:0 0 18px">I'm available for <strong>keynotes, panels, workshops, and
       university guest lectures</strong> — in person or virtual, in <strong>English, Arabic, or French</strong>.
       Recent stages include Augmented World Expo, Games for Change, the Global XR Conference, and the
-      El Jem International Conference in Tunisia — where I presented inside the Roman amphitheater itself.</p>
+      El Jem International Conference in Tunisia, held at the El Jem Museum next to the amphitheater.</p>
       <div class="stats" style="text-align:left;grid-template-columns:repeat(2,1fr);gap:18px;margin:0 0 22px">
         <div><b>11,000+</b><span>reached in person in 2025, across 40+ events</span></div>
         <div><b>167K</b><span>LinkedIn impressions this past year</span></div>
@@ -1427,7 +1426,7 @@ def body_speaking(preview):
 
   <h2 class="sec-title" style="margin:64px 0 8px">Talks &amp; appearances</h2>
   <ul class="list">
-    <li><div><span class="t"><a href="https://tanitxr.org/el-jem-conference/">Presenting Tanit XR inside the El Jem Amphitheater</a></span><div class="d">El Jem International Conference — research paper on XR and citizen science for heritage preservation, published in English, French, and Tunisian Arabic</div></div><span class="who">El Jem &middot; 2026</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/el-jem-conference/">Presenting Tanit XR at the El Jem International Conference</a></span><div class="d">El Jem International Conference — research paper on XR and citizen science for heritage preservation, published in English, French, and Tunisian Arabic</div></div><span class="who">El Jem &middot; 2026</span></li>
     <li><div><span class="t"><a href="https://energythoughtsummit.com/">Photogrammetry for Energy &amp; Heritage — main stage</a></span><div class="d">Energy Thought Summit (ETS26), San Antonio — presenting her photogrammetry work with Froliq and Tanit XR</div></div><span class="who">ETS &middot; 2026</span></li>
     <li><div><span class="t"><a href="https://x.com/InlocoG21235/status/1989010660512985594">Inloco Gallery — MetaTalks</a></span><div class="d">Panel on immersive art and spatial storytelling, hosted by Inloco Gallery</div></div><span class="who">Inloco &middot; 2025</span></li>
     <li><div><span class="t">Beyond the Byte — panel</span><div class="d">Panel on immersive technology, in the Washington, D.C. area</div></div><span class="who">DMV &middot; 2026</span></li>

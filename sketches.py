@@ -27,10 +27,10 @@ SKETCH_SPRITE = ('<svg xmlns="http://www.w3.org/2000/svg" style="display:none" a
 
 SKETCH_CSS = '''
 .sk-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.sk{position:absolute;fill:none;stroke:var(--lav);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:.17}
+.sk{position:absolute;fill:none;stroke:var(--lav);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:.2}
 .sk.gold{stroke:var(--gold);opacity:.24}
-.band.deep .sk,.cta-end .sk{stroke:#f3dcd6;opacity:.14}
-.band.deep .sk.gold,.cta-end .sk.gold{stroke:#e8cd96;opacity:.2}
+.band.deep .sk,.cta-end .sk,footer .sk{stroke:#f3dcd6;opacity:.14}
+.band.deep .sk.gold,.cta-end .sk.gold,footer .sk.gold{stroke:#e8cd96;opacity:.2}
 .has-sk{position:relative}
 .has-sk>.wrap{position:relative;z-index:1}
 @media(max-width:820px){.sk{transform:scale(.7)}}
@@ -38,10 +38,11 @@ SKETCH_CSS = '''
 
 # Where each sketch may sit (corner) and how big it is. Positions keep clear of the centred text.
 _SPOTS = [('left:-14px;top:18px', 'tl'), ('right:-10px;top:26px', 'tr'), ('left:2%;bottom:14px', 'bl'),
-          ('right:3%;bottom:10px', 'br'), ('left:1%;top:44%', 'ml'), ('right:1%;top:40%', 'mr')]
-_SIZES = {'column': 92, 'amphora': 84, 'jasmine': 88, 'shell': 84, 'wave': 150, 'headset': 104, 'tanit': 74,
-          'mosaic': 96, 'olive': 120, 'arch': 130, 'fish': 110, 'orange': 74, 'star': 30, 'heart': 46,
-          'phone': 70, 'boat': 110, 'palette': 80}
+          ('right:3%;bottom:10px', 'br'), ('left:1%;top:44%', 'ml'), ('right:1%;top:40%', 'mr'),
+          ('left:8%;top:6px', 'tl2'), ('right:9%;bottom:6px', 'br2')]
+_SIZES = {'column': 104, 'amphora': 96, 'jasmine': 100, 'shell': 96, 'wave': 170, 'headset': 116, 'tanit': 84,
+          'mosaic': 108, 'olive': 136, 'arch': 146, 'fish': 124, 'orange': 84, 'star': 34, 'heart': 52,
+          'phone': 80, 'boat': 124, 'palette': 90}
 _ROT = [-14, -8, -4, 5, 9, 15]
 
 def sketch_svg(name, style='', cls='', rot=0):
@@ -60,7 +61,7 @@ def _pick(seed, n, k):
             break
     return out
 
-def sketch_layer(seed, names=None, count=2):
+def sketch_layer(seed, names=None, count=3):
     """A deterministic little scatter of doodles for one section."""
     pool = names or list(SKETCH_SYMBOLS)
     idx = _pick(seed, len(pool), count)
@@ -86,4 +87,5 @@ def sketchify(page, html):
         tag = tag.replace('class="', 'class="has-sk ', 1)
         return f'<{tag}>' + sketch_layer(f'{page}-{n[0]}')
     html = _SECTION_RE.sub(rep, html)
+    html = html.replace('<footer><div class="wrap">', '<footer class="has-sk">' + sketch_layer(page + '-footer', ['jasmine', 'olive', 'wave', 'shell', 'boat', 'star', 'fish', 'orange']) + '<div class="wrap">', 1)
     return html.replace('<body>', '<body>' + SKETCH_SPRITE, 1)

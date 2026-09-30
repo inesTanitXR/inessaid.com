@@ -101,7 +101,7 @@ y -= 12
 y = section(y, 'Selected stages')
 stages = ['Augmented World Expo (AWE) USA — speaker, 2022 & 2026',
           'Energy Thought Summit (ETS26) — main stage, San Antonio',
-          'El Jem International Conference — inside the Roman amphitheater, Tunisia',
+          'El Jem International Conference, El Jem Museum, Tunisia',
           'Games for Change · Global XR Conference · Inloco Gallery MetaTalks',
           'Smithsonian FUTURES (installation) · MIT Reality Hack · Parsons']
 c.setFont('Helvetica', 9.8)
