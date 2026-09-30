@@ -359,6 +359,10 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .embeds:has(.embed.page){max-width:none;grid-template-columns:1fr}
 .embed.page{grid-column:1/-1}
 .embed.page iframe{width:100%;height:min(82vh,860px);aspect-ratio:auto;border:0;border-radius:16px;background:#fff;box-shadow:0 14px 34px rgba(67,32,58,.16)}
+.nura-card{display:grid;grid-template-columns:200px 1fr;gap:34px;align-items:center;max-width:820px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px 34px;box-shadow:0 12px 30px rgba(67,32,58,.1)}
+.nura-card img{width:100%;border-radius:16px}
+.nura-card h3{font-family:'Yeseva One',serif;font-weight:400;font-size:1.5rem;margin:6px 0 10px;color:var(--ink)}
+@media(max-width:700px){.nura-card{grid-template-columns:1fr;text-align:center}.nura-card img{max-width:220px;margin:0 auto}}
 /* local video embeds */
 .embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
 .book-wrap{max-width:720px;margin:0 auto}
@@ -1637,6 +1641,7 @@ for _title, _sub, _slugs in PROJECT_GROUPS:
 PROJECT_CATS.update(NEW_CATS)
 CAT_LABELS.append(('training', 'VR training'))
 next(p for p in PROJECTS if p['slug'] == 'tanit-xr')['extra'] = tanit_sections
+next(p for p in PROJECTS if p['slug'] == 'tanit-explore')['extra'] = lambda preview: tanit_sections(preview).split('</section>', 1)[0] + '</section>'
 exec(open(os.path.join(ROOT, 'sketches.py'), encoding='utf-8').read())
 CSS += SECTIONS_CSS + SKETCH_CSS
 FOOTER += SECTIONS_JS

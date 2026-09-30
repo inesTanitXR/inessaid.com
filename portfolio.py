@@ -255,6 +255,11 @@ def tanit_sections(preview):
     """The community-first story of Tanit XR, shown on its project page."""
     H = lambda p: href(p, preview)
     out = section(
+        f'<div class="nura-card"><img src="web/tx-nura.jpg" alt="Nura, the Tanit XR guide" loading="lazy"><div>'
+        f'<p class="sec-kicker">Meet Nura</p><h3>Our guide will show you around</h3>'
+        f'<p>Nura floats beside you in the collection and tells you the story of each object. Pick one above, or step into the full experience on tanitxr.org.</p>'
+        f'<a class="btn" href="https://tanitxr.org/explore/">Explore with Nura</a></div></div>')
+    out += section(
         split(collage([('tx-community-1', 'Tanit XR volunteers'), ('tx-community-3', 'Volunteers on a site visit'),
                        ('tx-community-4', 'Scanning together'), ('tx-community-5', 'The community'), ('tx-alyssa-1', 'Illustration by Alyssa George')]),
               'Community', 'We started as an archive. We became a community.',
