@@ -147,20 +147,9 @@ def tanit_sections(preview):
         cls='tint')
     out += section(icon_cards([
         ('column', 'What we scan', 'Objects, one at a time, with our phones: the Punic stela of the Tophet of Salammbo, the Corinthian capital of Byrsa Hill, the mihrab niche of the medina of Tunis, carved fragments with inscriptions.', H('p-tanit-explore'), 'Explore them in 3D'),
-        ('wave', 'Neapolis after the storm', 'In January 2026, Storm Harry stripped the sand off the coast at Nabeul and exposed parts of Neapolis. Within days our volunteer Youssef Lakdhar captured the newly revealed ruins in 3D.', H('b-storm-revealed-ruins'), 'The story'),
         ('globe', 'Beyond Tunisia', 'The Unique Mappers Network, 500+ citizen scientists in Nigeria founded by Victor Sunday, is replicating the Tanit XR model with a mini-grant from our fiscal sponsor. Their first 50 scans are due before the end of 2026.', 'https://tanitxr.org/uniquemappers/', 'Unique Mappers'),
-        ('cube', 'The virtual museum', 'Our volunteers are building a museum in Unity with the real scanned objects placed life-size in hand-modeled rooms. Nura, our guide, will walk you through.', H('p-tanit-virtual-museum'), 'See the museum'),
-        ('gavel', 'Hackathons we sponsored', 'A Tunisian-heritage track at ImmerseGT 2026 (Georgia Tech, 36 hours, winner: From Mystery to History) and two tracks at CityCamp Gainesville Hack Day 2026, where 23 projects were submitted.', 'https://tanitxr.org/immersegt-2026/', 'ImmerseGT 2026'),
         ('people', 'The people', 'Dr. Laura Harrison is our Chief Scientist and Dr. Caroline Nickerson leads partnerships and community. My sister Melek Said is our regional manager in Tunisia. Our fiscal sponsor is Florida Community Innovation, a US 501(c)(3).', 'https://tanitxr.org/our-people/', 'Meet the team'),
     ]), 'How it works', 'Community first, then the objects')
-    out += recognized('Tanit XR in the world', [
-        ('Auggie Awards', 'Finalist, Best Societal Impact · 2026', 'https://www.awexr.com/blog/1382-2026-auggie-awards-finalists-announced'),
-        ('Voices of VR', 'Episode #1728 with Kent Bye', 'https://voicesofvr.com/1728-preserving-tunisian-cultural-heritage-with-tanit-xr-reality-capture'),
-        ('Niantic Spatial', 'Interview with Nathan Bowser', 'https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/'),
-        ('Al Jazeera', 'Culture feature · 2025', 'https://www.aljazeera.net/amp/culture/2025/10/12/%D8%AA%D8%A7%D9%86%D9%8A%D8%AA-%D8%A5%D9%83%D8%B3-%D8%A2%D8%B1-%D9%85%D9%86%D8%B5%D8%A9-%D8%BA%D9%8A%D8%B1-%D8%B1%D8%A8%D8%AD%D9%8A%D8%A9-%D8%AA%D9%88%D8%AB%D9%82'),
-        ('AWE USA 2026', 'Talk with Margarita Johnson', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
-        ('XR Women Museum', 'Two exhibitions', 'https://framevr.io/xrwomenmuseum'),
-    ])
     return out
 
 def body_work(preview):

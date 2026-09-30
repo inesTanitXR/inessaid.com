@@ -381,8 +381,8 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
          'family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">')
 
 PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'opportunities', 'press', 'blog', 'work-with-me']
-NAV_PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'press', 'blog', 'work-with-me']
-LABEL = {'home': 'Home', 'about': 'About', 'projects': 'Projects', 'awards': 'Awards', 'work-with-me': 'Work with me',
+NAV_PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'blog', 'work-with-me']
+LABEL = {'home': 'Home', 'about': 'About', 'projects': 'Projects', 'awards': 'Awards &amp; Press', 'work-with-me': 'Work with me',
          'speaking': 'Speaking', 'opportunities': 'Opportunities', 'press': 'Press', 'blog': 'Blog'}
 TITLE = {'home': 'Ines Said | Immersive artist and XR developer', 'work-with-me': 'Work with me | Ines Said',
          'about': 'About | Ines Said', 'projects': 'Projects | Ines Said',
@@ -492,6 +492,7 @@ FOOTER = """
       <a href="https://www.linkedin.com/in/inessaid/">LinkedIn</a>
       <a href="https://www.instagram.com/inessaidd/">Instagram</a>
       <a href="https://www.facebook.com/ines1said/">Facebook</a>
+      <a href="press.html">Press</a>
       <a href="https://tanitxr.org">tanitxr.org</a>
       <a href="https://sketchfab.com/TanitXR">Sketchfab</a>
       <a href="https://www.researchgate.net/profile/Ines-Said-2">ResearchGate</a>
@@ -534,13 +535,9 @@ PROJECTS = [
           ('Recognition', 'Auggie Awards finalist, Best Societal Impact (AWE 2026); featured by Al Jazeera and Niantic Spatial')],
    embeds_heading='Explore the collection in 3D',
    embeds=[dict(kind='page', id='https://tanitxr.org/explore/', title='Explore every object our volunteers scanned, live from tanitxr.org. Open it full screen')],
-   links=[('Donate (via our fiscal sponsor, Florida Community Innovation, a US 501(c)(3))', 'https://donors.tuesday.app/campaign/CMLPDTO'),
+   links=[('tanitxr.org', 'https://tanitxr.org'),
           ('Volunteer with Tanit XR', 'https://tanitxr.org/volunteer/'),
-          ('Free course: Splats With Phones', 'https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/'),
-          ('Full 3D archive on Sketchfab', 'https://sketchfab.com/TanitXR'),
-          ('tanitxr.org', 'https://tanitxr.org'),
-          ('Al Jazeera feature', 'https://www.aljazeera.net/amp/culture/2025/10/12/%D8%AA%D8%A7%D9%86%D9%8A%D8%AA-%D8%A5%D9%83%D8%B3-%D8%A2%D8%B1-%D9%85%D9%86%D8%B5%D8%A9-%D8%BA%D9%8A%D8%B1-%D8%B1%D8%A8%D8%AD%D9%8A%D8%A9-%D8%AA%D9%88%D8%AB%D9%82'),
-          ('Carthage Magazine', 'https://carthagemagazine.com/tanit-xr-preserving-tunisias-heritage-through-immersive-technology/')],
+          ('Donate via our fiscal sponsor, Florida Community Innovation', 'https://donors.tuesday.app/campaign/CMLPDTO')],
    gallery=[('tanit-archive', 'The open archive: 3D-scanned artifacts, free for everyone.'),
             ('tanit-museum-1', 'Sneak peek: the Tanit XR virtual museum.'),
             ('xrw-museum', 'Tanit XR pieces in the XR Women Global Museum.'),
@@ -805,7 +802,7 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
     head = banner(p['category'], p['title'], img=p.get('img'), img2=g2 if p.get('img') else None, ph=p.get('ph'),
                   crumbs=[('home', 'Home'), (back_page, LABEL[back_page])], preview=preview)
     paras = ''.join(f'<p>{t}</p>' for t in p['paras'])
-    facts = ''.join(f'<li><b>{k}:</b> {v}</li>' for k, v in p['facts'])
+    facts = ''.join(f'<li><b>{k}:</b> {v}</li>' for k, v in p['facts'][:4])
     links = ''
     if p['links']:
         links = ('<h3 style="margin-top:20px">Links</h3><ul>' +
@@ -813,16 +810,14 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
     gallery = ''
     if p['gallery']:
         figs = ''.join(f'<figure><img src="web/{g}.jpg" alt="{cap}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
-                       for g, cap in p['gallery'])
+                       for g, cap in p['gallery'][:6])
         gallery = f'<div class="gallery">{figs}</div>'
     emb = embeds_block(p.get('embeds'), preview, p.get('embeds_heading'))
     if is_award:
         others = [a for a in AWARDS if a['slug'] != p['slug'] and a['paras']][:3]
         rel = related_strip('More recognition', [card_html(a, preview, prefix='a-', more='Read the story') for a in others])
-        cta = cta_band('Speaking', 'Want me to tell this story at your event?',
-                       "I'd love to!",
-                       ('Book me to speak', href('speaking', preview) + ('' if preview else '#book')),
-                       ('See all awards', href('awards', preview)))
+        cta = (f'<div class="wrap" style="text-align:center;padding:10px 0 60px"><p>Want me to tell this story at your event? '
+               f'<a href="{href("work-with-me", preview)}{"" if preview else "#book"}"><strong>I would love to!</strong></a></p></div>')
     else:
         group = next((g for g in PROJECT_GROUPS if p['slug'] in g[2]), None)
         pool = [s for s in (group[2] if group else []) if s != p['slug']]
@@ -832,8 +827,7 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
                             [card_html(by_slug[s], preview) for s in pool[:3]])
         cta = cta_band("Let's work together", 'Have a project in mind?',
                        "I'd love to hear about it! Whether you want to scan a collection or build something in XR, let's talk.",
-                       ('Start a conversation', href('work-with-me', preview) + ('' if preview else '#book')),
-                       ('See all projects', href('projects', preview)))
+                       ('Start a conversation', href('work-with-me', preview) + ('' if preview else '#book')))
     return f"""
 {head}
 <div class="wrap">
@@ -1095,13 +1089,11 @@ def body_post(p, preview):
     paras = ''.join(f'<p>{t}</p>' for t in p['paras'])
     others = [q for q in POSTS if q['slug'] != p['slug']][:3]
     rel = related_strip('Keep reading', [post_card(q, preview) for q in others])
-    cta = cta_band('Newsletter', 'Art, XR &amp; Impact Opportunities',
-                   "Every week I share grants, residencies, fellowships and open calls for creatives. It's free!",
-                   ('Subscribe on LinkedIn', NEWSLETTER_URL), ('See all opportunities', 'https://tanitxr.org/opportunities/'))
+    cta = ''
     gallery = ''
     if p.get('gallery'):
         figs = ''.join(f'<figure><img src="web/{g}.jpg" alt="{cap}" loading="lazy"><figcaption>{cap}</figcaption></figure>'
-                       for g, cap in p['gallery'])
+                       for g, cap in p['gallery'][:6])
         gallery = f'<div class="gallery">{figs}</div>'
     emb = embeds_block(p.get('embeds'), preview)
     return f"""
