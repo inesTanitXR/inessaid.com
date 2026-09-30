@@ -68,7 +68,7 @@ y -= 14
 
 heading('Experience')
 entry('2025 –', 'Founder, Tanit XR', 'Volunteer community scanning Tunisian heritage in 3D, one object at a time, with phones. Weekly community call, history lessons, the free Splats With Phones course, mentoring. Model being replicated in Nigeria with the Unique Mappers Network. Fiscally sponsored by Florida Community Innovation, a US 501(c)(3).')
-entry('2023 –', 'Lead XR Developer, Froliq', 'I lead our AR and VR projects for energy, education and industry: Oracle Connected Hub (iPad, Quest 3, Vision Pro, Windows), NYPA Grid Experience on Apple Vision Pro, the Vistra Energy Hazard Tour, nuclear plant reality capture, the NEF VR mini-games, Sustainaball, lineworker training simulators and the Exelon STEM program.')
+entry('2023 –', 'Lead XR Developer, Froliq', 'I lead our AR and VR projects for energy, education and industry: Oracle Connected Hub (iPad, Quest 3, Vision Pro, Windows), NYPA Grid Experience on Apple Vision Pro, the Vistra Energy Hazard Tour, nuclear plant reality capture, the NEF VR mini-games, Sustainaball, StEVie and the Exelon STEM program.')
 entry('2022 – 23', 'XR Developer, Froliq', 'Future of Energy and Water for the Smithsonian FUTURES exhibition (with Oracle), 600,000+ visitors; VR energy-education games.')
 entry('2023', 'Adjunct Lecturer, University of Florida', 'Taught VR application development for Android and wearables.')
 entry('2021 – 23', 'Software Engineer, University of Florida', 'Covid Reflections (AR public art with mobile health clinics) and spARc (AR animation tool), Digital Worlds Institute.')

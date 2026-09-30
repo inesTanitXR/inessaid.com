@@ -2,126 +2,7 @@
 # richer detail for existing ones, publications, exhibitions, the Tanit XR community sections and the
 # Work-with-me page. Facts come from frlq.co / tanitxr.org only. Items marked CHECK need Ines's confirmation.
 
-FROLIQ_ROLE = 'Lead XR Developer at Froliq. I work on every part of the process, from the first sketch to the demo floor.'
-
 NEW_PROJECTS = [
- dict(slug='lineworker-training', title='Lineworker VR Training', category='VR training',
-   img='fq-pole-climbing', alt='Lineworker pole-climbing simulator in VR',
-   card="Four VR simulators for the toughest jobs in the utility world: climbing the pole, running the bucket truck, repairing a transmission line and a lineman skills challenge.",
-   chips=['VR training', 'Meta Quest', 'Two player'],
-   paras=[
-     "Almost nobody gets to climb a utility pole, so we built the next best thing. Our pole-climbing simulator starts the way the real job does: you check your equipment. Helmet, belt, gloves, hammer. Pick the right gear before you ever leave the ground, then it's up the pole with a task list to work through at height.",
-     "You can train alone, or race a second player side by side. That two-player mode makes it a magnet at career fairs. Kids who would never ask about a lineworker job line up to try it!",
-     "The same family has a bucket truck simulator (a fully working aerial work platform, controls and height and all, without leaving the ground), a transmission line repair experience for practicing high-risk work safely as many times as you need, and the Lineman Challenge, a skills game that puts you in a lineman's boots.",
-     "These are made with Froliq's training partners and go out to schools, career fairs and utility training programs across the country."],
-   facts=[('Role', FROLIQ_ROLE), ('Made with', 'Froliq Training'), ('Tools', 'Unity, Meta Quest, hand tracking'),
-          ('Used at', 'Career fairs, classrooms, utility training days'), ('Formats', 'Single player or two players side by side')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch the simulators',
-   embeds=[dict(kind='youtube', id='-5-Gv570nFc', title='Pole Climbing Simulator'),
-           dict(kind='youtube', id='9gcM_seGdkg', title='Bucket Truck (aerial work platform)'),
-           dict(kind='youtube', id='QuTk28Wv9ug', title='Transmission Line Repair'),
-           dict(kind='youtube', id='JbaT1e1XYbM', title='Lineman Challenge')],
-   gallery=[('fq-lineman-challenge', 'Lineman Challenge.'), ('fq-bucket-truck', 'Up in the bucket truck.'),
-            ('fq-transmission-line', 'Transmission line repair.')]),
-
- dict(slug='current-cruisers', title='Current Cruisers', category='VR game',
-   img='fq-current-cruisers', alt='Current Cruisers electric vehicle VR racing game',
-   card="Our electric vehicle racing game. Steering wheel, dashboard, a timer and a road through the hills. A crowd favorite at every school event!",
-   chips=['VR game', 'Electric vehicles', 'Outreach'],
-   paras=[
-     "Current Cruisers puts you behind the wheel of an electric car for a race through hills and open road, steering wheel, dash and all. Quick laps, a visible timer, and a line of kids waiting for their turn.",
-     "It's one of our easiest icebreakers at school and outreach events. After one lap, it's so natural to start talking about electric vehicles and what the switch to EVs means.",
-     "I love watching students who were shy a minute ago shout their lap times at each other."],
-   facts=[('Role', FROLIQ_ROLE), ('Made with', 'Froliq Originals'), ('Tools', 'Unity, Meta Quest'),
-          ('Used at', 'School and outreach events')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='BPOHyw9lNv4', title='Current Cruisers')], gallery=[]),
-
- dict(slug='electric-drive', title='Electric Drive', category='VR · Austin Energy',
-   img='fq-electric-drive', alt='Electric Drive VR experience with Austin Energy',
-   card="An electric vehicle VR experience built with Austin Energy. You sit in the driver's seat of the EV transition.",
-   chips=['VR', 'Austin Energy', 'Electric vehicles'],
-   paras=[
-     "Electric Drive was made with Austin Energy to help people picture what driving electric actually feels like, before they ever sit in a real EV.",
-     "It's simple on purpose: get in, drive, and learn a few things about charging and range along the way. It travels with Austin Energy to community events."],
-   facts=[('Client', 'Austin Energy'), ('Made at', 'Froliq'), ('Tools', 'Unity, VR headset'),
-          ('Used at', 'Austin Energy community events')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='etZPdetz3YM', title='Electric Drive')], gallery=[]),
-
- dict(slug='water-for-humanity', title='Water for Humanity', category='VR · empathy',
-   img='fq-water-for-humanity', alt='Water for Humanity VR experience',
-   card="An empathy VR experience. You take the perspective of a community without enough water and see what it takes for them to get through the day.",
-   chips=['VR', 'Water', 'Empathy'],
-   paras=[
-     "Water for Humanity is one of the quieter things we've made at Froliq. You take the perspective of a water-starved community and follow their efforts to survive.",
-     "There are no points and no timer. The point is to feel, for a few minutes, what it's like when water isn't a given. It pairs really well with our energy and water education work, like the Smithsonian FUTURES installation."],
-   facts=[('Role', FROLIQ_ROLE), ('Made with', 'Froliq Originals'), ('Tools', 'Unity, VR headset'),
-          ('Theme', 'Water access and conservation')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='ZhWtqANRsO8', title='Water for Humanity')], gallery=[]),
-
- dict(slug='light-bulb-challenge', title='Light Bulb Challenge', category='VR game',
-   img='fq-light-bulb', alt='Light Bulb Challenge VR game about energy efficiency',
-   card="A fast VR game about lighting and energy efficiency. Small choices, and you see the impact right away.",
-   chips=['VR game', 'Energy efficiency'],
-   paras=[
-     "The Light Bulb Challenge is quick and a little frantic, which is exactly why it works with students. You make small choices about lighting, and the game shows you the impact right away.",
-     "It's the kind of game where someone plays once to try it and three times to beat their friend."],
-   facts=[('Role', FROLIQ_ROLE), ('Made with', 'Froliq Originals'), ('Tools', 'Unity, VR headset'),
-          ('Used at', 'Classrooms and outreach events')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='5RKfX1Lu_xM', title='Light Bulb Challenge')], gallery=[]),
-
- dict(slug='history-of-energy', title='History of Energy', category='VR · education',
-   img='fq-history-of-energy', alt='History of Energy VR experience',
-   card="How humans have made and used energy, told in VR, from the first fires to the modern grid.",
-   chips=['VR', 'Education', 'Energy'],
-   paras=[
-     "History of Energy walks you through how people have made and used energy over time, from the first fires all the way to today's grid.",
-     "I love this one for classrooms because it gives students the big picture before they dive into our hands-on games."],
-   facts=[('Role', FROLIQ_ROLE), ('Made at', 'Froliq'), ('Tools', 'Unity, VR headset'), ('Audience', 'Students and the public')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='Xa_Zfa1RtRs', title='History of Energy')], gallery=[]),
-
- dict(slug='solar-tracker', title='Solar Tracker', category='VR · education',
-   img='fq-solar-tracker', alt='Solar Tracker VR experience',
-   card="A VR experience about capturing solar energy and what it takes to follow the sun.",
-   chips=['VR', 'Solar'],
-   paras=[
-     "Solar Tracker shows how solar panels capture energy and why some of them move to follow the sun during the day.",
-     "It's short and hands-on, and it makes a very abstract idea (angles, sunlight, output) into something you can see happen in front of you."],
-   facts=[('Role', FROLIQ_ROLE), ('Made at', 'Froliq'), ('Tools', 'Unity, VR headset'), ('Theme', 'Solar energy')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='Buht7EHT2Wk', title='Solar Tracker')], gallery=[]),
-
- dict(slug='electrify-san-antonio', title='Electrify San Antonio', category='AR · CPS Energy',
-   img='fq-electrify-san-antonio', alt='Electrify San Antonio augmented reality experience',
-   card="An AR experience about electrifying San Antonio. The power system comes out of the substation and into your hands.",
-   chips=['Mobile AR', 'CPS Energy', 'The grid'],
-   paras=[
-     "Electrify San Antonio brings the power system out of the substation and into your hands. In AR, you follow electricity from where it's generated, along transmission lines, all the way to distribution in a neighborhood.",
-     "It was made with CPS Energy, San Antonio's utility, and it's a great example of what I love about AR: a giant, invisible system suddenly fits on a table."],
-   facts=[('Client', 'CPS Energy, San Antonio'), ('Made at', 'Froliq'), ('Tools', 'Unity, mobile AR'),
-          ('Shows', 'Generation, transmission and distribution')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch', embeds=[dict(kind='youtube', id='M1GIMDRdtUw', title='Electrify San Antonio')], gallery=[]),
-
- dict(slug='froliq-labs', title='Froliq Labs: avatars and a VR short film', category='Experiments',
-   img='fq-virtual-avatar', alt='Froliq Labs virtual avatar experiment',
-   card="The experiments: a real-time virtual avatar test and Not It, a short cinematic VR film you sit inside of.",
-   chips=['VR film', 'Avatars', 'Froliq Labs'],
-   paras=[
-     "Not everything we make at Froliq is for a client. Froliq Labs is where we try things. Virtual Avatar is an experiment in real-time avatars and character presence: how much does a digital character need to feel like someone is there with you?",
-     "Not It is a short cinematic VR film from the team. Storytelling you sit inside of. I'm so happy we made time for it."],
-   facts=[('Role', FROLIQ_ROLE), ('Made with', 'Froliq Labs'), ('Tools', 'Unity, motion capture, VR headset')],
-   links=[('Froliq apps', 'https://frlq.co/apps/')],
-   embeds_heading='Watch',
-   embeds=[dict(kind='youtube', id='OzOYFWjIEqM', title='Virtual Avatar (Froliq Labs)'),
-           dict(kind='youtube', id='HdmBgofsnm4', title='Not It, a short VR film')],
-   gallery=[('fq-not-it', 'Not It, our short VR film.')]),
-
  dict(slug='tanit-virtual-museum', title='Tanit XR Virtual Museum', category='Cultural heritage · in progress',
    img='tx-museum-dome', alt='The domed hall of the Tanit XR virtual museum, built in Unity',
    card="The first community-led virtual museum of Tunisian heritage. Real scanned objects, life-size, in hand-modeled whitewashed rooms. Built in Unity by our volunteers.",
@@ -198,16 +79,9 @@ ENRICH = {
 
 NEW_GROUP_SLUGS = {
  'Cultural heritage': ['tanit-virtual-museum', 'tanit-explore'],
- 'Energy & industry': ['lineworker-training', 'electrify-san-antonio'],
- 'Learning & play': ['current-cruisers', 'electric-drive', 'light-bulb-challenge', 'history-of-energy', 'solar-tracker', 'water-for-humanity'],
- 'Immersive art & installations': ['froliq-labs'],
 }
 NEW_CATS = {
- 'tanit-virtual-museum': 'heritage', 'tanit-explore': 'heritage', 'lineworker-training': 'energy training',
- 'electrify-san-antonio': 'energy', 'current-cruisers': 'learning', 'electric-drive': 'learning energy',
- 'light-bulb-challenge': 'learning', 'history-of-energy': 'learning', 'solar-tracker': 'learning',
- 'water-for-humanity': 'learning art', 'froliq-labs': 'art',
-}
+ 'tanit-virtual-museum': 'heritage', 'tanit-explore': 'heritage', }
 
 PUBLICATIONS = [
  ('2026', 'Digital documentation, XR and citizen science for community-led heritage preservation in Tunisia and beyond',
@@ -306,7 +180,7 @@ def body_work(preview):
         ('Smithsonian', 'FUTURES exhibition', H('p-smithsonian-futures')), ('Oracle', 'Connected Hub', H('p-oracle-connected-hub')),
         ('Exelon', 'STEM program', H('p-exelon-stem')), ('Vistra', 'Plant tours and scans', H('p-vistra-tour')),
         ('NYPA', 'Vision Pro app', H('p-nypa-vision-pro')), ('NEF', 'VR mini-games', H('p-froliq-minigames')),
-        ('Austin Energy', 'Sustainaball, Electric Drive', H('p-sustainaball')), ('CPS Energy', 'Electrify San Antonio', H('p-electrify-san-antonio')),
+        ('Austin Energy', 'Sustainaball', H('p-sustainaball')),
     ])
     downloads = section(icon_cards([
         ('book', 'My CV (PDF)', 'Experience, education, publications, exhibitions and awards on two pages.', 'web/ines-said-cv.pdf', 'Download'),

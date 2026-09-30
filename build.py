@@ -1639,7 +1639,6 @@ for _p in PROJECTS + AWARDS:
 for _title, _sub, _slugs in PROJECT_GROUPS:
     _slugs.extend(NEW_GROUP_SLUGS.get(_title, []))
 PROJECT_CATS.update(NEW_CATS)
-CAT_LABELS.append(('training', 'VR training'))
 next(p for p in PROJECTS if p['slug'] == 'tanit-xr')['extra'] = tanit_sections
 next(p for p in PROJECTS if p['slug'] == 'tanit-explore')['extra'] = lambda preview: tanit_sections(preview).split('</section>', 1)[0] + '</section>'
 exec(open(os.path.join(ROOT, 'sketches.py'), encoding='utf-8').read())
