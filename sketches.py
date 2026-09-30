@@ -20,6 +20,12 @@ SKETCH_SYMBOLS = {
  'phone': '''<symbol id="sk-phone" viewBox="0 0 90 100"><path d="M28 6h30c4 0 6 2 6 6v76c0 4-2 6-6 6H28c-4 0-6-2-6-6V12c0-4 2-6 6-6zM38 10h10M40 88h6M22 30c-8 4-12 10-12 20s4 16 12 20M64 30c8 4 12 10 12 20s-4 16-12 20M14 22c-10 6-12 16-12 28s2 22 12 28M72 22c10 6 12 16 12 28s-2 22-12 28"/></symbol>''',
  'boat': '''<symbol id="sk-boat" viewBox="0 0 120 70"><path d="M10 40h100l-14 20H24zM60 40V8M60 12c14 4 24 10 28 24H60M56 24c-10-6-20-8-30 4M2 66c10-6 20-6 30 0s20 6 30 0 20-6 30 0 18 6 26 0"/></symbol>''',
  'ines': '''<symbol id="sk-ines" viewBox="0 0 100 120"><path d="M35 34c-3-7 2-13 8-11 1-6 8-9 13-5 5-4 12-1 13 5 6-2 11 4 8 11"/><path d="M27 42c-4-2-8 2-6 7-4 2-4 8 0 10-4 3-3 9 2 10-3 4 0 9 5 9-1 5 4 8 8 6M73 42c4-2 8 2 6 7 4 2 4 8 0 10 4 3 3 9-2 10 3 4 0 9-5 9 1 5-4 8-8 6"/><path d="M30 44c-3 3-2 7 1 8M70 44c3 3 2 7-1 8M26 62c-2 3 0 7 3 7M74 62c2 3 0 7-3 7M31 78c-1 4 2 6 5 5M69 78c1 4-2 6-5 5"/><path d="M36 38c2-4 7-6 14-6s12 2 14 6"/><path d="M28 50c8-1 12 3 22 3s14-4 22-3M30 56c4 6 10 8 20 8s16-2 20-8"/><path d="M28 50c-3 0-5 3-5 6s2 6 5 6M72 50c3 0 5 3 5 6s-2 6-5 6"/><path d="M44 72c3 3 9 3 12 0"/><path d="M40 82c-10 4-16 12-18 24M60 82c10 4 16 12 18 24M50 84v22"/><path d="M22 106c18 6 38 6 56 0"/><path d="M38 84c4 3 8 4 12 4s8-1 12-4"/></symbol>''',
+ 'khamsa': '''<symbol id="sk-khamsa" viewBox="0 0 90 110"><path d="M30 60V30c0-4 3-7 6-7s6 3 6 7v22M42 52V18c0-4 3-7 6-7s6 3 6 7v34M54 52V26c0-4 3-7 6-7s6 3 6 7v30M66 56V38c0-3 3-6 6-6s6 3 6 6v26c0 22-14 36-33 36S12 88 12 66V50c0-4 3-7 7-7s7 3 7 7v14M30 60c-2-6-6-8-11-6"/><path d="M32 74c6-6 20-6 26 0-6 6-20 6-26 0zM45 71a3 3 0 1 0 .1 0"/><path d="M40 92c3 3 7 3 10 0"/></symbol>''',
+ 'khlala': '''<symbol id="sk-khlala" viewBox="0 0 90 110"><path d="M45 10a9 9 0 1 0 .1 0M45 19v10"/><path d="M45 29L14 90h62z"/><path d="M45 44L26 82h38z"/><path d="M45 56l-8 18h16zM45 64a3 3 0 1 0 .1 0"/><path d="M30 90c0 6 6 10 15 10s15-4 15-10M45 100v8M36 99l-4 8M54 99l4 8"/><path d="M20 84h50"/></symbol>''',
+ 'yaz': '''<symbol id="sk-yaz" viewBox="0 0 90 110"><path d="M14 20c6 12 14 20 22 26M76 20c-6 12-14 20-22 26M14 100c6-12 14-20 22-26M76 100c-6-12-14-20-22-26M36 46c-4 4-4 24 0 28M54 46c4 4 4 24 0 28M36 46h18M36 74h18M45 8v14M45 98v10"/></symbol>''',
+ 'berber': '''<symbol id="sk-berber" viewBox="0 0 110 90"><path d="M55 8l40 37-40 37-40-37zM55 24l24 21-24 21-24-21zM55 38l8 7-8 7-8-7z"/><path d="M4 46h10M96 46h10M18 12l6 6M92 12l-6 6M18 80l6-6M92 80l-6-6M55 84v6"/></symbol>''',
+ 'door': '''<symbol id="sk-door" viewBox="0 0 90 120"><path d="M14 116V44c0-20 14-32 31-32s31 12 31 32v72M8 116h74M45 20v96M22 40h46M22 60h46M22 80h46M22 100h46"/><path d="M28 50a1.5 1.5 0 1 0 .1 0M36 50a1.5 1.5 0 1 0 .1 0M54 50a1.5 1.5 0 1 0 .1 0M62 50a1.5 1.5 0 1 0 .1 0M28 70a1.5 1.5 0 1 0 .1 0M36 70a1.5 1.5 0 1 0 .1 0M54 70a1.5 1.5 0 1 0 .1 0M62 70a1.5 1.5 0 1 0 .1 0M28 90a1.5 1.5 0 1 0 .1 0M36 90a1.5 1.5 0 1 0 .1 0M54 90a1.5 1.5 0 1 0 .1 0M62 90a1.5 1.5 0 1 0 .1 0"/><path d="M38 66a4 4 0 1 0 .1 0M52 66a4 4 0 1 0 .1 0"/></symbol>''',
+ 'eye': '''<symbol id="sk-eye" viewBox="0 0 110 60"><path d="M6 30c14-18 30-26 49-26s35 8 49 26c-14 18-30 26-49 26S20 48 6 30z"/><path d="M55 14a16 16 0 1 0 .1 0M55 22a8 8 0 1 0 .1 0"/><path d="M28 12l-4-6M82 12l4-6M55 4V0M28 48l-4 6M82 48l4 6"/></symbol>''',
  'palette': '''<symbol id="sk-palette" viewBox="0 0 90 80"><path d="M44 6C22 6 6 20 6 40s16 30 32 30c8 0 8-6 6-10s0-8 6-8h10c14 0 24-8 24-22C84 16 66 6 44 6zM26 30a4 4 0 1 0 .1 0M40 18a4 4 0 1 0 .1 0M58 18a4 4 0 1 0 .1 0M68 32a4 4 0 1 0 .1 0M62 62l22-24"/></symbol>''',
 }
 
@@ -43,7 +49,7 @@ _SPOTS = [('left:-14px;top:18px', 'tl'), ('right:-10px;top:26px', 'tr'), ('left:
           ('left:8%;top:6px', 'tl2'), ('right:9%;bottom:6px', 'br2')]
 _SIZES = {'column': 104, 'amphora': 96, 'jasmine': 100, 'shell': 96, 'wave': 170, 'headset': 116, 'tanit': 84,
           'mosaic': 108, 'olive': 136, 'arch': 146, 'fish': 124, 'orange': 84, 'star': 34, 'heart': 52,
-          'phone': 80, 'boat': 124, 'palette': 90, 'ines': 96}
+          'phone': 80, 'boat': 124, 'palette': 90, 'ines': 96, 'khamsa': 84, 'khlala': 80, 'yaz': 76, 'berber': 100, 'door': 82, 'eye': 96}
 _ROT = [-14, -8, -4, 5, 9, 15]
 
 def sketch_svg(name, style='', cls='', rot=0):
@@ -90,5 +96,5 @@ def sketchify(page, html):
         tag = tag.replace('class="', 'class="has-sk ', 1)
         return f'<{tag}>' + sketch_layer(f'{page}-{n[0]}', force='ines' if n[0] in (1, 4) else None)
     html = _SECTION_RE.sub(rep, html)
-    html = html.replace('<footer><div class="wrap">', '<footer class="has-sk">' + sketch_layer(page + '-footer', ['jasmine', 'olive', 'wave', 'shell', 'boat', 'star', 'fish', 'orange', 'ines'], force='ines') + '<div class="wrap">', 1)
+    html = html.replace('<footer><div class="wrap">', '<footer class="has-sk">' + sketch_layer(page + '-footer', ['jasmine', 'olive', 'wave', 'shell', 'boat', 'star', 'fish', 'orange', 'ines', 'khamsa', 'khlala', 'eye'], force='ines') + '<div class="wrap">', 1)
     return html.replace('<body>', '<body>' + SKETCH_SPRITE, 1)
