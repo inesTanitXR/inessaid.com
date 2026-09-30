@@ -328,6 +328,32 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .related{background:var(--soft);padding:64px 0 72px;margin-top:72px}
 .related .cards .card-body p{font-size:.9rem}
 .cta-end{margin-top:0}
+
+/* entrance */
+.hero2{background:var(--deep);color:#f3dcd6;padding:56px 0 64px;overflow:hidden;position:relative}
+.hero2-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;min-height:520px}
+.hero2 .kicker{color:#e8cd96}
+.hero2 h1{font-size:clamp(2.8rem,5.6vw,4.4rem);line-height:1.05;color:#fdf3ee;margin:14px 0 22px}
+.hero2 h1 em{font-style:normal;color:#e8cd96}
+.hero2 h1::after{content:"";display:block;width:170px;height:12px;margin-top:14px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' preserveAspectRatio='none'><path d='M0 7 Q 10 1,20 7 T 40 7 T 60 7 T 80 7 T 100 7 T 120 7 T 140 7 T 160 7' fill='none' stroke='%23c08a2e' stroke-width='3' stroke-linecap='round'/></svg>") no-repeat}
+.hero2 .lede{font-size:1.12rem;line-height:1.7;max-width:52ch;margin:0 0 18px;color:#f3dcd6}
+.hero2 .roles{font-size:.92rem;margin:0 0 28px;color:#d9b7c5}
+.hero2 .roles a{color:#fdf3ee;font-weight:700;border-bottom:1px solid #c08a2e}
+.hero2 .btn.ghost{background:transparent;color:#fdf3ee;border:2px solid #fdf3ee88}
+.hero2 .btn.ghost:hover{background:#fdf3ee1a;border-color:#fdf3ee}
+.hero2-pols{position:relative;height:490px}
+.hero2-pols .pol{text-decoration:none;color:inherit;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
+.hero2-pols .pol figcaption{font-size:1.15rem;font-size:8.6cqi;line-height:1.05}
+.hero2-pols .pol.hp1{width:50%;bottom:0;left:0;transform:rotate(-4deg);z-index:1}
+.hero2-pols .pol.hp2{width:50%;bottom:6px;right:0;transform:rotate(4deg);z-index:2}
+.hero2-pols .pol.hp2 figcaption{color:var(--lav)}
+.hero2-pols .pol.hp3{width:42%;top:0;left:29%;transform:rotate(1.5deg);z-index:3}
+.hero2-pols .pol:hover{transform:rotate(0) scale(1.05);z-index:5}
+.hero2 .sk{stroke:#f3dcd6}
+@media(max-width:900px){.hero2-grid{grid-template-columns:1fr;gap:34px;min-height:0}.hero2{padding:40px 0 48px}.hero2 h1{font-size:2.6rem}
+  .hero2-pols{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;padding:10px 6px 0}
+  .hero2-pols .pol{position:relative;width:auto;top:auto;left:auto;right:auto;bottom:auto}
+  .hero2-pols .pol.hp1{transform:rotate(-3deg)}.hero2-pols .pol.hp2{transform:rotate(3deg)}.hero2-pols .pol.hp3{transform:rotate(-2deg);grid-column:1/3;width:60%;margin:0 auto;order:-1}}
 /* local video embeds */
 .embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
 .book-wrap{max-width:720px;margin:0 auto}
@@ -1109,24 +1135,23 @@ def polwall(items):
 def body_home(preview):
     featured = ''.join(card_html(p, preview) for p in PROJECTS[:3])
     return f"""
-<div class="hero-pols"><div class="wrap">
-  <a class="pol h1" href="{href('about', preview)}"><img src="web/statue-pose.jpg" alt="Ines Said matching poses with an ancient statue at a Tunisian dig site"><figcaption>striking a pose</figcaption></a>
-  <a class="pol h2" href="{href('p-tanit-xr', preview)}"><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"><figcaption>mosaic love &#9825;</figcaption></a>
-  <a class="pol h3" href="{href('speaking', preview)}"><img src="web/ets-fireside.jpg" alt="Ines Said speaking on the Energy Thought Summit stage"><figcaption>fireside chat at ETS</figcaption></a>
-  <a class="pol h4" href="{href('b-el-jem-colosseum', preview)}"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater in Tunisia"><figcaption>El Jem, Tunisia</figcaption></a>
-</div></div>
-
-<div class="intro-home">
-  <p class="kicker">Immersive artist and XR developer</p>
-  <h1>Hello, I'm <em>Ines Said</em>.</h1>
-  <p class="lede">I grew up a 15-minute walk from the Roman ruins of Neapolis in Tunisia. Now I scan our heritage in 3D,
-  one object at a time, with volunteers from all over the world! I'm the founder of <strong>Tanit XR</strong> and the Lead XR Developer
-  at <strong>Froliq</strong>, and my work on heritage and climate has been shown at places like the Smithsonian and MIT.</p>
-  <div class="btn-row">
-    <a class="btn" href="{href('projects', preview)}">Explore my work</a>
-    <a class="btn ghost" href="{href('about', preview)}">More about me</a>
+<section class="hero2"><div class="wrap hero2-grid">
+  <div class="hero2-text">
+    <p class="kicker">Immersive artist &amp; XR developer &middot; Tunisia</p>
+    <h1>Hello, I'm <em>Ines Said</em>.</h1>
+    <p class="lede">I grew up a 15-minute walk from a Roman city. Now I scan Tunisia's heritage in 3D with volunteers all over the world, and I build AR and VR that has been shown at the Smithsonian and MIT.</p>
+    <p class="roles">Founder of <a href="{href('p-tanit-xr', preview)}">Tanit XR</a> &nbsp;&middot;&nbsp; Lead XR Developer at <a href="{href('projects', preview)}">Froliq</a></p>
+    <div class="btn-row">
+      <a class="btn" href="{href('projects', preview)}">Explore my work</a>
+      <a class="btn ghost" href="{href('work-with-me', preview)}">Work with me</a>
+    </div>
   </div>
-</div>
+  <div class="hero2-pols">
+    <a class="pol hp1" href="{href('p-smithsonian-futures', preview)}"><img src="web/futures-wide.jpg" alt="The Smithsonian FUTURES exhibition"><figcaption>600,000 people saw this at the Smithsonian</figcaption></a>
+    <a class="pol hp2" href="{href('a-auggie-finalist', preview)}"><img src="web/auggie-finalist.jpg" alt="Tanit XR team, Auggie Awards finalists 2026"><figcaption>Auggie finalists, AWE 2026 &#9825;</figcaption></a>
+    <a class="pol hp3" href="{href('b-el-jem-colosseum', preview)}"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>I presented inside this colosseum</figcaption></a>
+  </div>
+</div></section>
 
 <div class="band lav"><div class="wrap"><div class="stats five">
   <a href="{href('p-smithsonian-futures', preview)}"><b>600,000+</b><span>people saw my work at the Smithsonian's FUTURES exhibition</span></a>

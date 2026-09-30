@@ -73,7 +73,7 @@ def sketch_layer(seed, names=None, count=2):
         parts.append(sketch_svg(name, _SPOTS[spots[j]][0], cls, _ROT[rots[j]]))
     return '<div class="sk-layer">' + ''.join(parts) + '</div>'
 
-_SECTION_RE = re.compile(r'<(section class="(?:block|recognized|related|statement)[^"]*"|div class="band [^"]*"|header class="phead")>')
+_SECTION_RE = re.compile(r'<(section class="(?:block|recognized|related|statement|hero2)[^"]*"|div class="band [^"]*"|header class="phead")>')
 
 def sketchify(page, html):
     """Give every block/band/page header on a page a faint doodle layer, then add the sprite once."""
