@@ -181,7 +181,7 @@ def body_work(preview):
 
 def body_work_page(preview):
     form = re.search(r'<form class="contact-form".*?</form>', _OLD_SPEAKING(preview), re.S).group(0)
-    booking = section(f'<div id="book" class="book-wrap">{form}</div>', 'Book me', 'Tell me about your event or project',
+    booking = section(f'<div id="book" class="book-wrap">{form}<p style="text-align:center;margin:18px 0 0;font-size:.95rem">Or just email me: <a href="mailto:ines@tanitxr.org"><strong>ines@tanitxr.org</strong></a></p></div>', 'Book me', 'Tell me about your event or project',
                       'I read every message myself and reply within a few days.')
     return body_work(preview) + booking
 

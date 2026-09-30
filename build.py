@@ -466,7 +466,8 @@ def nav_html(active, preview, lang='en'):
     switch = '' if preview else lang_switch('en', '')
     return ('<header class="site-header"><div class="wrap">'
             f'<a class="brand" href="{href("home", preview)}">Ines Said<em>&thinsp;&#10022;</em></a>'
-            '<nav>' + ''.join(links) + '</nav>' + switch + '</div></header>')
+            '<nav>' + ''.join(links) + '</nav>' + switch +
+            '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button></div></header>')
 
 FOOTER = """
 <footer><div class="wrap">
@@ -1633,9 +1634,70 @@ for _title, _sub, _slugs in PROJECT_GROUPS:
 PROJECT_CATS.update(NEW_CATS)
 next(p for p in PROJECTS if p['slug'] == 'tanit-xr')['extra'] = tanit_sections
 next(p for p in PROJECTS if p['slug'] == 'tanit-explore')['extra'] = lambda preview: tanit_sections(preview).split('</section>', 1)[0] + '</section>'
+FORM_JS = r'''
+<script>
+(function(){
+  var h=document.querySelector('.site-header'),b=h&&h.querySelector('.menu-btn');
+  if(b){b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);});}
+  var f=document.querySelector('form.contact-form');
+  if(f){f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var fd=new FormData(f),o={};fd.forEach(function(v,k){o[k]=v;});
+    var btn=f.querySelector('[type=submit]');if(btn){btn.disabled=true;btn.dataset.t=btn.textContent;btn.textContent='Sending…';}
+    var mail='mailto:ines@tanitxr.org?subject='+encodeURIComponent(o._subject||'Message from inessaid.com')+'&body='+encodeURIComponent(Object.keys(o).filter(function(k){return k[0]!=='_';}).map(function(k){return k+': '+o[k];}).join('\n'));
+    var done=false,t=setTimeout(function(){if(!done){done=true;location.href=mail;}},8000);
+    fetch(f.action.replace('formsubmit.co/','formsubmit.co/ajax/'),{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(o)})
+      .then(function(r){return r.ok?r.json():Promise.reject();})
+      .then(function(){if(!done){done=true;clearTimeout(t);location.href=o._next||'/thanks/';}})
+      .catch(function(){if(!done){done=true;clearTimeout(t);location.href=mail;}});
+  });}
+})();
+</script>'''
+MOBILE_CSS = r'''
+/* ---- phones ---- */
+.menu-btn{display:none}
+@media(max-width:820px){
+  .site-header .wrap{flex-wrap:nowrap;min-height:56px;gap:10px;position:relative}
+  .site-header .brand{font-size:1.25rem}
+  .menu-btn{display:inline-block;margin-left:auto;order:3;background:var(--deep);color:#fdf3ee;border:0;border-radius:999px;padding:8px 16px;font:700 .78rem/1 "Bitter",serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .site-header .lang-switch{order:2;margin-left:auto;font-size:.72rem;gap:8px}
+  .site-header nav{display:none;order:4;position:absolute;left:0;right:0;top:100%;background:#fdf3ee;border-bottom:1px solid var(--line);box-shadow:0 18px 30px rgba(67,32,58,.12);padding:8px 20px 14px;flex-direction:column;gap:0}
+  .site-header.open nav{display:flex}
+  .site-header nav a{display:block;padding:12px 4px;border-bottom:1px solid var(--line);font-size:.86rem}
+  .site-header nav a:last-child{border-bottom:0}
+  section.block{padding:44px 0}.band{padding:40px 0}
+  .phead .page-head{padding:28px 0 8px}.phead .page-head h1{font-size:2rem}
+  .phead .crumbs{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sec-title{font-size:1.6rem}
+  .cards{grid-template-columns:1fr;gap:12px}
+  .cards .card-inner{display:grid;grid-template-columns:92px 1fr;align-items:center;border-radius:16px}
+  .cards .thumb{aspect-ratio:1;width:92px;height:92px;border-radius:12px;margin:12px 0 12px 12px;overflow:hidden}
+  .cards .thumb.ph b{font-size:.9rem}.cards .thumb.ph span{display:none}
+  .cards .cat-tag{display:none}
+  .cards .card-body{padding:12px 14px 12px 14px;gap:4px}
+  .cards .card-body h3{font-size:1rem;line-height:1.25;margin:0}
+  .cards .card-body p{font-size:.82rem;line-height:1.4;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .cards .chips{display:none}
+  .cards .card-more{font-size:.7rem;margin-top:2px}
+  a.card:hover .card-inner{transform:none}
+  .filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:0 0 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filters button{white-space:nowrap}
+  .stats.five{grid-template-columns:1fr 1fr;gap:20px 14px}.stats b{font-size:1.6rem}.stats span{font-size:.82rem}
+  .date-cards{grid-template-columns:1fr}
+  .recognized .row{gap:14px 18px}
+  .gallery{grid-template-columns:1fr 1fr;gap:26px 16px}.gallery figcaption{font-size:1rem;min-height:40px}
+  .polwall{grid-template-columns:1fr 1fr;gap:24px 16px}
+  .embed.page iframe{height:70vh}
+  .detail-grid{gap:26px}.fact-card{padding:18px}
+  .hero2 h1{font-size:2.4rem}.hero2 .lede{font-size:1rem}
+  .btn-row .btn{width:100%;text-align:center}
+  .wrap{padding-left:16px;padding-right:16px}
+}
+'''
 exec(open(os.path.join(ROOT, 'sketches.py'), encoding='utf-8').read())
-CSS += SECTIONS_CSS + SKETCH_CSS
-FOOTER += SECTIONS_JS
+CSS += SECTIONS_CSS + SKETCH_CSS + MOBILE_CSS
+FOOTER += SECTIONS_JS + FORM_JS
 
 BODIES = {'home': body_home, 'about': body_about, 'projects': body_projects, 'work-with-me': body_work_page,
           'awards': body_awards, 'speaking': body_speaking,
