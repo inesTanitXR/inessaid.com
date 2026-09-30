@@ -299,8 +299,8 @@ def halfbleed(img, pos, kicker, title, blocks, buttons=None, rev=False):
     return (f'<section class="halfbleed{" rev" if rev else ""}"><div class="hb-img" style="background-image:url(web/{img}.jpg);background-position:{pos}"></div>'
             f'<div class="hb-text"><p class="sec-kicker">{kicker}</p><h2>{title}</h2>{body}{bt}</div></section>')
 
-def filters(target, cats, counts):
-    total = sum(counts.values())
+def filters(target, cats, counts, total=None):
+    total = total if total is not None else sum(counts.values())
     btns = f'<button class="on" data-filter="all">All<span class="n">{total}</span></button>' + ''.join(
         f'<button data-filter="{k}">{lbl}<span class="n">{counts.get(k, 0)}</span></button>' for k, lbl in cats)
     return f'<div class="filters" data-target="{target}">{btns}</div>'
@@ -314,18 +314,17 @@ def head_block(kicker, h1, sub):
 
 def body_about(preview):
     H = lambda p: href(p, preview)
-    return head_block('About', 'Art, technology &amp; a little bit of magic.',
-                      'Immersive artist and XR developer from Tunisia.') + \
+    return head_block('About', 'A little about me', '') + \
     statement('Hi, I\'m Ines!', "I grew up a 15-minute walk from Roman ruins.",
-        "Today I help preserve places like them in 3D. I'm an immersive artist and XR developer from Tunisia, and I love "
+        "Today I scan the statues, mosaics and stones from places like them in 3D, with volunteers all over the world. I'm an immersive artist and XR developer from Tunisia, and I love "
         "using art and technology to protect our heritage, talk about climate change and make learning more fun.") + \
     section(split(collage([('statue-pose', 'Ines matching poses with an ancient statue'),
                            ('mosaic-portrait', 'Ines in front of an ancient mosaic'),
                            ('el-jem', 'Ines at the El Jem Amphitheater'),
                            ('neapolis-swim', 'Searching for sunken Neapolis')]),
-        'What I do', 'Heritage, climate and a lot of heart',
-        ["I founded <strong>Tanit XR</strong>, Tunisia's first open-source heritage archive. With our amazing volunteers, "
-         "we've scanned more than 80 artifacts across 20 sites, including the El Jem Amphitheater!",
+        'What I do', 'What I work on',
+        ["I founded <strong>Tanit XR</strong>, a volunteer community that scans Tunisia's endangered heritage in 3D, one object at a time. "
+         "Our volunteers have already published more than 100 free 3D models!",
          "At <strong>Froliq</strong>, I'm the Lead XR Developer. I build VR and AR experiences that teach people about "
          "energy and sustainability, from the Smithsonian's FUTURES exhibition to Oracle's Connected Hub."],
         ticks=['Founder, Tanit XR (2025–)', 'Lead XR Developer, Froliq (2023–)',
@@ -333,12 +332,12 @@ def body_about(preview):
                'Living between Washington, D.C. and Tunisia, and I speak English, Arabic and French'],
         buttons=[('See my projects', H('projects')), ('Invite me to speak', H('speaking'))])) + \
     stats_photo('el-jem', [('600K+', 'visitors to the Smithsonian exhibition featuring my work'),
-                           ('80+', 'artifacts preserved in 3D with Tanit XR'),
-                           ('11K+', 'people reached in 2025 across 40+ events'),
-                           ('3', 'languages I present in')]) + \
+                           ('100+', '3D models of Tunisian heritage, free for everyone'),
+                           ('85+', 'Tanit XR volunteers on four continents'),
+                           ('11K+', 'people I met in 2025 at 40+ events')]) + \
     section(icon_cards([
         ('tanit', 'Heritage preservation', "Scanning Tunisia's mosaics, statues and ruins before we lose them.", H('p-tanit-xr'), 'Tanit XR'),
-        ('wave', 'Climate art', 'Installations that help people feel climate change, not just read about it.', H('p-shadows-of-tomorrow'), 'Shadows of Tomorrow'),
+        ('wave', 'Climate art', 'Installations about climate change that you step into with your whole body.', H('p-shadows-of-tomorrow'), 'Shadows of Tomorrow'),
         ('headset', 'XR development', 'Apple Vision Pro, Meta Quest, mobile AR and WebXR for museums and industry.', H('p-oracle-connected-hub'), 'Connected Hub'),
         ('game', 'Learning &amp; play', 'VR games and even a soccer game that teach kids about energy.', H('p-froliq-minigames'), 'The mini-games'),
         ('book', 'Research', 'Published in ACM and IEEE, including a 2023 Best Paper Award.', H('a-ieee-best-paper'), 'The paper'),
@@ -348,26 +347,24 @@ def body_about(preview):
         ('2026', [('Auggie Awards finalist — Best Societal Impact', 'Tanit XR at Augmented World Expo', H('a-auggie-finalist'), 'auggie-finalist'),
                   ('Presented inside the El Jem Amphitheater', 'El Jem International Conference, Tunisia', H('b-el-jem-colosseum'), 'eljem-conf'),
                   ('Spoke on the main stage at the Energy Thought Summit', 'San Antonio, TX', H('speaking'), 'ets-stage')]),
-        ('2025', [('Founded Tanit XR', "Tunisia's first open-source heritage archive", H('p-tanit-xr'), 'tanit-birthday'),
+        ('2025', [('Founded Tanit XR', "A volunteer community scanning Tunisia's endangered heritage in 3D", H('p-tanit-xr'), 'tanit-birthday'),
                   ('EE 30 Under 30, Class of 2025', 'North American Association for Environmental Education', H('a-ee-30-under-30'), 'ee30')]),
-        ('2023', [('Lead XR Developer at Froliq', 'Leading immersive projects for energy and education', H('projects'), 'oracle-booth'),
+        ('2023', [('Lead XR Developer at Froliq', 'I lead our VR and AR projects for energy companies and schools', H('projects'), 'oracle-booth'),
                   ('IEEE Best Paper Award', 'Mini VR game engines as a way to learn', H('a-ieee-best-paper'), 'vr-portrait')]),
         ('2022', [('Joined Froliq · Smithsonian FUTURES', 'Future of Energy &amp; Water installation', H('p-smithsonian-futures'), 'futures-wide'),
                   ('Covid Reflections launches', 'AR public art toured Florida, California &amp; Japan', H('p-covid-reflections'), 'covid-truck')]),
         ('2020–21', [("M.S. Digital Arts &amp; Sciences", 'University of Florida — Digital Worlds Institute', None, None)]),
         ('2015–19', [('B.E. Computer Science', 'University of South Florida · exchange at Deakin University', None, None),
-                     ('3D Virtualization Lab', 'My very first 3D scans, and the dream of doing this for Tunisia', None, None)]),
+                     ('3D Virtualization Lab', 'My very first 3D scans! I already wanted to do this in Tunisia one day.', None, None)]),
     ]), 'My journey', 'How I got here', cls='tint') + \
-    '<div class="wrap"><div class="pull"><p>"Education should make people feel connected to the planet, not just informed about it."</p>' \
-    '<span>From her EE 30 Under 30 profile — NAAEE</span></div></div>' + \
     halfbleed('coast-walk', 'center 40%', 'Outside of work', "When I'm not in a headset", [
         ("I'm a certified scuba diver", "The ocean is my happy place. Tunisia even has sunken cities to look for!"),
         ('I love hiking &amp; spotting wildlife', "I'm happiest on a trail, looking for animals I've never seen before."),
         ('I paint and make things by hand', 'Watercolor, drawing and little crafts. It feels so good to make something you can hold.'),
     ], buttons=[('Read my blog', H('blog'))]) + \
     section('<div class="two-col"><div><h2 class="sec-title" style="font-size:1.5rem">Experience</h2><ul class="list">'
-        '<li><div><span class="t">Founder — Tanit XR</span><div class="d">Open-source digital heritage archive; 80+ artifacts across 20 sites</div></div><span class="who">2025–</span></li>'
-        '<li><div><span class="t">Lead XR Developer — Froliq</span><div class="d">Leading XR projects from concept to execution</div></div><span class="who">2023–</span></li>'
+        '<li><div><span class="t">Founder — Tanit XR</span><div class="d">A volunteer community scanning Tunisia\'s heritage in 3D. 100+ free models, 85+ volunteers on four continents</div></div><span class="who">2025–</span></li>'
+        '<li><div><span class="t">Lead XR Developer — Froliq</span><div class="d">I run our XR projects from the first idea to the demo floor</div></div><span class="who">2023–</span></li>'
         '<li><div><span class="t">XR Developer — Froliq</span><div class="d">Smithsonian FUTURES installation and VR energy-education games</div></div><span class="who">2022–23</span></li>'
         '<li><div><span class="t">Adjunct Lecturer — University of Florida</span><div class="d">Taught VR application development for Android and wearables</div></div><span class="who">2023</span></li>'
         '<li><div><span class="t">Software Engineer — University of Florida</span></div><span class="who">2021–23</span></li>'
@@ -399,6 +396,8 @@ def body_projects(preview):
     H = lambda p: href(p, preview)
     counts = {}
     for s, c in PROJECT_CATS.items():
+        if s == 'tanit-xr':
+            continue
         for k in c.split():
             counts[k] = counts.get(k, 0) + 1
     label = {k: re.sub('&amp;', '&', v) for k, v in CAT_LABELS}
@@ -407,23 +406,21 @@ def body_projects(preview):
     return head_block('Portfolio', 'Projects', 'Heritage, art, energy and education. Here is some of the work I\'m most proud of.') + \
     section(split(collage([('el-jem', 'El Jem Amphitheater'), ('tanit-archive', 'Tanit XR scanned artifacts'),
                            ('tanit-museum-1', 'Tanit XR virtual museum'), ('site-visit', 'Scouting sites in Tunisia')]),
-        'My heart project', 'Tanit XR',
-        ["Tunisia's first open-source archive of endangered artifacts. Our volunteers scan statues, mosaics and ruins "
-         "with their phones, and our community turns them into 3D models, a virtual museum and AR experiences."],
-        ticks=['80+ artifacts across 20 sites', 'Largest reconstruction of the El Jem Amphitheater to date',
+        'The project I care about most', 'Tanit XR',
+        ["A volunteer community scanning Tunisia's endangered heritage in 3D. Our volunteers scan statues, mosaics and stelae "
+         "with their phones, one object at a time, and our community turns them into 3D models, AR lessons and a virtual museum."],
+        ticks=['100+ 3D models, free for everyone', '85+ volunteers on four continents, meeting every week',
                'Auggie Awards finalist, Best Societal Impact (2026)', 'Featured by Al Jazeera and Niantic Spatial'],
         buttons=[('Read the full story', H('p-tanit-xr')), ('Visit tanitxr.org', 'https://tanitxr.org')])) + \
-    section(filters('#proj-grid', CAT_LABELS, {k: counts.get(k, 0) for k, _ in CAT_LABELS}) +
+    section(filters('#proj-grid', CAT_LABELS, {k: counts.get(k, 0) for k, _ in CAT_LABELS}, total=len(PROJECTS) - 1) +
             f'<div class="cards" id="proj-grid">{cards}</div>',
             'Explore', 'All my projects', 'Pick a topic, and click any project to read the full story.', cls='tint') + \
-    stats_photo('futures-wide', [('13', 'projects and counting'), ('600K+', 'museum visitors reached'),
-                                 ('5', 'platforms, from Vision Pro to the web'), ('4', 'countries exhibited')]) + \
     section('<div class="platforms"><span>Apple Vision Pro</span><span>Meta Quest 3</span><span>iPad &amp; iPhone AR</span>'
             '<span>WebXR</span><span>Unity</span><span>Photogrammetry</span><span>Gaussian splats</span><span>Projection mapping</span></div>',
             'What I work with', 'My favorite tools') + \
     cta_band("Let's work together", 'Have a project in mind?',
              "I'd love to hear about it! Whether you want to scan a collection or build something in XR, let's talk.",
-             ('Start a conversation', H('speaking') + ('' if preview else '#book')), ('Download my one-pager', 'web/ines-said-speaker.pdf'))
+             ('Start a conversation', H('work-with-me') + ('' if preview else '#book')), ('All the ways we can work together', H('work-with-me')))
 
 
 def body_awards(preview):
@@ -435,30 +432,21 @@ def body_awards(preview):
         ('NAAEE', 'EE 30 Under 30 · 2025', H('a-ee-30-under-30')),
         ('IEEE', 'Best Paper · 2023', H('a-ieee-best-paper')),
         ('GFAA', 'Excellence Award', H('a-gfaa-excellence')),
-        ('Smithsonian', 'FUTURES exhibition', H('p-smithsonian-futures')),
         ('AWE XR Prize', 'MVP finalist', H('a-awe-xr-prize')),
     ]) + \
     section(split(collage([('auggie-finalist', 'Tanit XR team, Auggie finalists'), ('auggie-night', 'Auggie Awards night'),
                            ('vision-board', 'The Auggies on the vision board'), ('awe-entrance', 'Arriving at AWE 2026')]),
         'Latest news · 2026', 'We were finalists at the Auggie Awards!',
-        ["I put the Auggies on my vision board in January, and by May, Tanit XR was a finalist for <strong>Best Societal "
-         "Impact</strong>! The Auggies are the biggest awards in XR, presented at Augmented World Expo in Long Beach."],
-        ticks=['Thank you so much to everyone who voted for us', 'Our team got one of the loudest cheers in the room', 'And the next day, I saw a whale jump out of the ocean!'],
+        ["Tanit XR was a finalist for <strong>Best Societal Impact</strong> at the Auggie Awards, the biggest awards in XR, at AWE 2026 in Long Beach."],
         buttons=[('Read the story', H('a-auggie-finalist')), ('The whale post', H('b-auggie-finalist-whale'))])) + \
     section(timeline([
-        ('2026', [('Auggie Awards Finalist — Best Societal Impact', 'Augmented World Expo · Tanit XR', H('a-auggie-finalist'), 'auggie-finalist'),
-                  ('Judge — EE 30 Under 30, Class of 2026', 'NAAEE', 'https://naaee.org/programs/ee-30-under-30', 'ee30-class'),
-                  ]),
-        ('2025', [('EE 30 Under 30 — Class of 2025', 'North American Association for Environmental Education', H('a-ee-30-under-30'), 'ee30'),
-                  ('Judge — HICC', 'Heavener International Case Competition, University of Florida, Gainesville', 'https://warrington.ufl.edu/undergraduate/hicc/', None)]),
+        ('2026', [('Auggie Awards Finalist — Best Societal Impact', 'Augmented World Expo · Tanit XR', H('a-auggie-finalist'), 'auggie-finalist')]),
+        ('2025', [('EE 30 Under 30 — Class of 2025', 'North American Association for Environmental Education', H('a-ee-30-under-30'), 'ee30')]),
         ('2023', [('Best Paper Award — IEEE ISEC', 'With Dr. Angelos Barmpoutis and Wenbin Guo', H('a-ieee-best-paper'), 'vr-portrait')]),
         ('Along the way', [('Excellence Award — GFAA Biennial', 'For Shadows of Tomorrow', H('a-gfaa-excellence'), 'heat'),
                            ('XR Prize Challenge — MVP Finalist', 'Augmented World Expo', H('a-awe-xr-prize'), 'heat-door'),
-                           ('Hackathon wins — Google, IBM &amp; MIT', 'MiDAS cohort and MIT Reality Hack', H('a-hackathon-wins'), 'rh-printed-award'),
-                           ('Smithsonian FUTURES', '600,000+ visitors', H('p-smithsonian-futures'), 'futures-wide')]),
+                           ('Hackathon wins — Google, IBM &amp; MIT', 'MiDAS cohort and MIT Reality Hack', H('a-hackathon-wins'), 'rh-printed-award')]),
     ]), 'Timeline', 'All my awards', 'Click any of them to read the story behind it.', cls='tint') + \
-    stats_photo('auggie-night', [('7', 'honors &amp; recognitions'), ('4', 'judging roles'),
-                                 ('3', 'continents where my work has been shown'), ('1', 'whale sighting, just saying')]) + \
     section(icon_cards([
         ('gavel', 'Games for Change Awards', 'Judging the top industry honors for games with real-world impact.', 'https://www.gamesforchange.org/', 'Games for Change'),
         ('game', 'G4C Student Challenge', 'The largest student game-design competition in the U.S.', 'https://www.gamesforchange.org/studentchallenge/', 'The challenge'),
@@ -467,7 +455,7 @@ def body_awards(preview):
         ('spark', 'Need a judge?', "I'd love to help judge your competition or hackathon!", H('speaking') + ('' if preview else '#book'), 'Invite me to judge'),
     ]), 'Judging', 'I also love being a judge') + \
     cta_band('Speaking', 'Want me to speak at your event?',
-             "I'd love to share these stories with your audience, in English, Arabic or French.",
+             "I'd love to share these stories with your audience!",
              ('Book me to speak', H('speaking') + ('' if preview else '#book')), ('See my projects', H('projects')))
 
 
@@ -478,11 +466,11 @@ def body_speaking(preview):
                       'I talk about heritage, climate and how XR can make learning more fun.') + \
     section(split(collage([('ets-stage', 'Ines on the Energy Thought Summit main stage'), ('stage', 'Ines on stage at ELLEvate'),
                            ('dmv-panel', 'Beyond the Byte panel'), ('speaker-card', 'AWE USA 2026 speaker card')]),
-        'Keynotes · Panels · Workshops', 'Let\'s work together',
+        'Speaking', 'Keynotes, panels and workshops',
         ["I give keynotes, panels, workshops and university guest lectures, in person or online, in "
          "<strong>English, Arabic or French</strong>. I've spoken everywhere from AWE to inside a Roman amphitheater in Tunisia!"],
-        ticks=['In 2025, I got to meet more than 11,000 people at 40+ events',
-               'My LinkedIn posts reached 167K views this past year, so I always share the events I speak at',
+        ticks=['In 2025 I met more than 11,000 people at 40+ events, from AWE to a classroom in Texas',
+               'I always share the events I speak at with my community online',
                "I've worked with teams at Oracle Utilities, Exelon, Vistra, NYPA, the Smithsonian and NEF"],
         buttons=[('Book me to speak', '#book'), ('Speaker one-pager (PDF)', 'web/ines-said-speaker.pdf')])) + \
     recognized('Recent stages', [
@@ -494,16 +482,15 @@ def body_speaking(preview):
         ('Inloco Gallery', 'MetaTalks · 2025', 'https://x.com/InlocoG21235/status/1989010660512985594'),
     ]) + \
     section(icon_cards([
-        ('column', 'XR for cultural heritage', 'How a phone and a group of volunteers can save 3,000 years of history.', '#book', 'Book this talk'),
+        ('column', 'XR for cultural heritage', 'How volunteers with phones are scanning Tunisia\'s heritage, one object at a time.', '#book', 'Book this talk'),
         ('wave', 'Climate and art', 'How immersive art can help people feel climate change in a personal way.', '#book', 'Book this talk'),
         ('cube', 'From scans to XR', 'My step-by-step process for 3D scanning, from phone to headset.', '#book', 'Book this talk'),
         ('headset', 'XR for industry', 'How VR and AR help energy companies train people and share their work.', '#book', 'Book this talk'),
         ('game', 'Learning through play', 'Why students learn best by building, with games, VR and hackathons.', '#book', 'Book this talk'),
-        ('people', 'Women in XR', 'My journey in immersive tech, and building a community of women around it.', '#book', 'Book this talk'),
+        ('people', 'Women in XR', 'How I got into XR, and the women who helped me on the way.', '#book', 'Book this talk'),
     ]), 'Topics', 'What I love talking about') + \
     section(date_cards([
-        ('24', 'Sep 26', 'Video · Spatial Creator Spotlight', 'My episode premieres!', 'I talked about my journey, Tanit XR and XR for good. Come watch!', 'https://youtu.be/CY6u3LGEN3E'),
-        ('18', 'Jun 26', 'AWE USA 2026 · Long Beach', 'From Scans to XR: A Practical Pipeline for Cultural Heritage', 'With Margarita Johnson of Tanit XR.', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
+        ('18', 'Jun 26', 'AWE USA 2026 · Long Beach', 'From Scans to XR: A Practical Pipeline for Cultural Heritage', 'With Margarita Johnson, one of our volunteers at Tanit XR.', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
         ('27', 'Apr 26', 'Energy Thought Summit · San Antonio', 'Photogrammetry for energy &amp; heritage', 'Main stage, with Froliq and Tanit XR.', 'https://energythoughtsummit.com/'),
         ('Apr', '2026', 'El Jem International Conference', 'Presenting Tanit XR inside the Roman amphitheater', 'Paper published in English, French &amp; Tunisian Arabic.', 'https://tanitxr.org/el-jem-conference/'),
         ('8', 'Apr 26', 'Crystal City, VA', 'XR, AI &amp; immersive technology — panel', 'A D.C.-area panel on the future of immersive tech.', None),
@@ -511,13 +498,10 @@ def body_speaking(preview):
         ('2026', 'DMV', 'Beyond the Byte', 'Panel on immersive technology', 'In the Washington, D.C. area.', None),
     ]), 'Where I\'ve been', 'Recent talks', cls='tint') + \
     section(icon_cards([
-        ('mic', 'Keynote', 'A 30 to 45 minute talk, made for your audience.', None, 'from $2,000'),
-        ('camera', 'Workshop', 'A hands-on half day of 3D scanning or XR with your team.', None, 'from $2,500'),
-        ('people', 'Panel or lecture', 'Panels, fireside chats and guest lectures at universities.', None, 'from $750'),
-        ('screen', 'Virtual talk', 'Any topic, live online, wherever you are.', None, 'from $500'),
-        ('bulb', 'XR development', 'I can help you build your idea for Vision Pro, Quest, phones or the web.', '#book', "Let's talk"),
-        ('tanit', 'Heritage scanning', 'Scanning, 3D archives and virtual museums for your collection, like we do at Tanit XR.', '#book', "Let's talk"),
-    ]), 'Work with me', 'Ways we can work together', 'I offer lower rates for community groups, nonprofits and students, so please just ask!') + \
+        ('mic', 'Talks and workshops', 'Keynotes, hands-on scanning workshops, panels and virtual talks, with rates.', H('work-with-me'), 'See rates'),
+        ('headset', 'XR development', 'Vision Pro, Quest, mobile AR and WebXR, from prototype to demo floor.', H('work-with-me'), "Let's talk"),
+        ('tanit', 'Heritage projects', 'Start a scanning community like Tanit XR where you live.', H('work-with-me'), "Let's talk"),
+    ]), 'Work with me', 'Everything else I can help with', 'Rates and downloads are on the Work with me page.') + \
     section(embeds_block([
         dict(kind='youtube', id='CY6u3LGEN3E', title='NEW: My episode of Spatial Creator Spotlight (2026)'),
         dict(kind='youtube', id='88-GTiDBTCc', title='Faster Iteration in AR Using Unity — AWE 2022'),
@@ -543,26 +527,26 @@ def body_press(preview):
         ('Carthage Magazine', 'Feature', 'https://carthagemagazine.com/tanit-xr-preserving-tunisias-heritage-through-immersive-technology/'),
     ]) + \
     halfbleed('site-visit', 'center 40%', 'Featured story · Al Jazeera', "A non-profit platform documenting Tunisia's heritage", [
-        (None, "In 2025, Al Jazeera wrote about Tanit XR and how our volunteers are using their phones to build Tunisia's "
-               "first open 3D archive of endangered heritage. I was so happy to see our story shared in Arabic!"),
+        (None, "In 2025, Al Jazeera wrote about Tanit XR, a volunteer community scanning Tunisia's endangered heritage in 3D "
+               "with their phones. I was so happy to see our story shared in Arabic!"),
     ], buttons=[('Read on Al Jazeera', AJ), ('About Tanit XR', href('p-tanit-xr', preview))]) + \
     section(quote_cards([
         ('Video · Spatial Creator Spotlight · 2026', 'My episode of Spatial Creator Spotlight', 'A conversation about my journey, Tanit XR and using XR for good. The full episode is on YouTube!', 'https://youtu.be/CY6u3LGEN3E', 'Watch'),
-        ('Video · Niantic Spatial · 2026', 'El Jem "sets a benchmark for large-scale reality capture"', "Niantic Spatial featured Tanit XR's multi-scan reconstruction of the El Jem Amphitheater.", 'https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/', 'Watch'),
+        ('Video · Niantic Spatial · 2026', 'Nathan Bowser interviews Ines about Tanit XR', "Niantic Spatial talked to me about our volunteer community and our scans at the El Jem Amphitheater.", 'https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/', 'Watch'),
         ('Magazine · Carthage Magazine', "Preserving Tunisia's heritage through immersive technology", 'A feature on Tanit XR, its volunteers and its open archive.', 'https://carthagemagazine.com/tanit-xr-preserving-tunisias-heritage-through-immersive-technology/', 'Read'),
         ('TV · ABC 20 WCJB · 2022', 'UF launches "Covid Reflections"', 'Local TV covers the AR public art project paired with vaccine clinics.', 'https://www.wcjb.com/2022/04/11/university-florida-launches-covid-reflections-project-utilizing-ai-increase-vaccination/', 'Watch'),
         ('TV · CBS4 News', 'University of Florida vaccine exhibit', 'CBS4 visits Covid Reflections on the road in Florida.', 'https://mycbs4.com/news/local/university-of-florida-vaccine-exhibit', 'Watch'),
         ('News · UF News · 2022', 'Using AI in the arts to promote COVID-19 vaccines', "The university's story on Covid Reflections.", 'https://news.ufl.edu/2022/04/covid-reflections/', 'Read'),
-        ('TV · CBS4 News', 'UF artists host "In the Machine" at 4Most Gallery', 'An exhibition at the convergence of technology and art.', 'https://mycbs4.com/news/local/uf-artists-host-in-the-machine-exhibit-at-4most-gallery', 'Watch'),
+        ('TV · CBS4 News', 'UF artists host "In the Machine" at 4Most Gallery', 'A tech-and-art show at 4Most Gallery in Gainesville.', 'https://mycbs4.com/news/local/uf-artists-host-in-the-machine-exhibit-at-4most-gallery', 'Watch'),
         ('Blog · UF Digital Worlds', '"In the Machine": technology converges with art', 'Faculty and alumni collaborate on a technology-and-art exhibition.', 'https://ufdigitalworlds.medium.com/uf-digital-worlds-faculty-and-alumni-collaborate-for-in-the-machine-exhibition-showcasing-the-e9b3f8fd2582', 'Read'),
         ('News · UF College of the Arts', 'MiDAS cohort builds a track record of hackathon success', 'Hackathon wins backed by Google and IBM.', 'https://arts.ufl.edu/in-the-loop/news/midas-cohort-builds-track-record-of-hackathon-success/', 'Read'),
-        ('Writing · Medium — Women Write', 'Tanit XR, in my own words', 'Why I started Tunisia\'s first open-source heritage archive.', 'https://medium.com/women-write/tanit-xr-preserving-tunisias-heritage-through-immersive-technology-c9238dab7675', 'Read'),
+        ('Writing · Medium — Women Write', 'Tanit XR, in my own words', 'Why I started Tanit XR.', 'https://medium.com/women-write/tanit-xr-preserving-tunisias-heritage-through-immersive-technology-c9238dab7675', 'Read'),
     ]), 'Coverage', 'Stories about our work', cls='tint') + \
     section('<div class="media-strip"><figure><img src="web/news-abc.jpg" alt="TV news segment on Covid Reflections"><figcaption>Covid Reflections on the evening news.</figcaption></figure>'
             '<figure><img src="web/carthage-mag.jpg" alt="Carthage Magazine feature on Tanit XR"><figcaption>Tanit XR in Carthage Magazine.</figcaption></figure></div>',
             'Clippings', 'On TV and in print') + \
     cta_band('Media kit', 'Writing a story?',
-             "I'd love to help! Download my one-pager, or reach out for an interview in English, Arabic or French.",
+             "I'd love to help! Download my one-pager, or reach out for an interview.",
              ('Download the one-pager', 'web/ines-said-speaker.pdf'), ('Contact me', href('speaking', preview) + ('' if preview else '#book')))
 
 
@@ -596,7 +580,7 @@ def body_opportunities(preview):
                       'Every week I share grants, residencies, fellowships and open calls. It all lives on the Tanit XR board!') + \
     statement('Why I do this', 'I know how hard it is to find opportunities.',
         "When I was starting out, I spent hours looking for grants and calls for artists who work with technology. "
-        "So now I collect them every week and share them with everyone, for free. I hope they help you find your next big thing!") + \
+        "So now I collect them every week and share them with everyone, for free. I hope one of them is yours!") + \
     section(split(collage([('workshop', 'Ines leading a workshop'), ('awe-team', 'The Tanit XR team at AWE'),
                            ('rh-hack-table', 'Hacking at MIT Reality Hack'), ('ee30-class', 'EE 30 Under 30 class')]),
         'The board', 'Everything is on the Tanit XR opportunities board',
@@ -606,17 +590,16 @@ def body_opportunities(preview):
                'Deadlines that count down so you never miss one',
                'New opportunities added every week',
                'You can even submit an opportunity you found'],
-        buttons=[('Open the opportunities board', TANIT_OPPS), ('Subscribe on LinkedIn', NEWSLETTER_URL)])) + \
-    stats_photo('awe-team', [('7,000+', 'people follow along on LinkedIn'), ('50+', 'opportunities on the board'),
-                             ('Weekly', 'new editions'), ('Free', 'always')]) + \
+        buttons=[('Open the opportunities board', TANIT_OPPS)])) + \
+    stats_photo('awe-team', [('50+', 'open opportunities on the board'), ('Weekly', 'a new edition every week'),
+                             ('4', 'kinds: grants, residencies, calls and jobs'), ('Free', 'always, for everyone')]) + \
     section(icon_cards([
         ('trophy', 'Grants &amp; awards', 'Funding and prizes for art, XR and social impact projects.', TANIT_OPPS, 'See grants'),
         ('pin', 'Residencies', 'Time and space to make your work, all around the world.', TANIT_OPPS, 'See residencies'),
         ('people', 'Fellowships', 'Programs that support you as an artist, founder or leader.', TANIT_OPPS, 'See fellowships'),
         ('mic', 'Calls for speakers', 'Conferences looking for speakers, demos and exhibits.', TANIT_OPPS, 'See calls'),
-        ('news', 'The newsletter', 'Get the new opportunities every week, right on LinkedIn.', NEWSLETTER_URL, 'Subscribe'),
         ('spark', 'Share one with us', 'Found something great? Send it and we\'ll add it to the board.', TANIT_OPPS, 'Submit an opportunity'),
     ]), "What you'll find", 'All kinds of opportunities') + \
-    cta_band('Tanit XR', 'Ready to find your next opportunity?',
+    cta_band('Tanit XR', 'The board',
              'The full board, with every deadline, lives on the Tanit XR website.',
              ('Go to the board', TANIT_OPPS), ('Subscribe to the newsletter', NEWSLETTER_URL))

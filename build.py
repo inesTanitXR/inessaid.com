@@ -43,11 +43,19 @@ h1,h2,h3{font-weight:400 !important}
   background:radial-gradient(closest-side,#ecd9a866,transparent 70%);
   border-radius:44% 56% 38% 62%/58% 44% 56% 42%}
 /* scrapbook photos */
-.gallery figure{transition:transform .2s}
-.gallery figure:nth-child(odd){transform:rotate(-1.3deg)}
-.gallery figure:nth-child(even){transform:rotate(1.1deg)}
-.gallery figure:hover{transform:rotate(0) scale(1.02)}
-.gallery img{border:8px solid #fff;box-shadow:0 8px 24px rgba(67,32,58,.16);border-radius:4px}
+.gallery figure{transition:transform .2s;background:linear-gradient(160deg,#fffefa,#f8f4ea);padding:10px 10px 0;border-radius:2px;position:relative;
+  box-shadow:0 1px 2px rgba(67,32,58,.12),0 14px 30px rgba(67,32,58,.18)}
+.gallery figure::before{content:"";position:absolute;top:-11px;left:50%;width:78px;height:22px;margin-left:-39px;background:rgba(232,205,150,.72);border-radius:2px;z-index:1;transform:rotate(-3deg)}
+.gallery figure:nth-child(even)::before{transform:rotate(4deg);width:64px;margin-left:-20px}
+.gallery figure:nth-child(3n)::before{background:rgba(214,170,190,.55)}
+.gallery figure:nth-child(odd){transform:rotate(-1.6deg)}
+.gallery figure:nth-child(even){transform:rotate(1.4deg)}
+.gallery figure:nth-child(4n){transform:rotate(-.6deg)}
+.gallery figure:hover{transform:rotate(0) scale(1.03);z-index:2}
+.gallery img{border:0;box-shadow:none;border-radius:0;outline:1px solid rgba(40,20,30,.08);outline-offset:-1px}
+.gallery figcaption{font-family:"Caveat",cursive;font-weight:600;font-size:1.25rem;line-height:1.15;color:var(--deep);text-align:center;padding:10px 4px 12px;min-height:52px;display:flex;align-items:center;justify-content:center}
+.gallery figure:nth-child(even) figcaption{color:var(--lav)}
+[dir="rtl"] .gallery figcaption{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:1.05rem}
 .media-strip figure:nth-child(odd){transform:rotate(-.8deg)}
 .media-strip figure:nth-child(even){transform:rotate(.7deg)}
 .media-strip img{border:8px solid #fff;box-shadow:0 8px 24px rgba(67,32,58,.14);border-radius:4px}
@@ -89,6 +97,18 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 .page-head p.sub{max-width:62ch;color:var(--muted);font-size:1.08rem;margin:0}
 
 /* hero (home) — Xiye-style photo band + personal intro */
+.hero-pols{background:var(--deep);padding:44px 0 34px;overflow:hidden;position:relative}
+.hero-pols .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:end;max-width:1120px}
+.hero-pols .pol{position:relative;width:auto;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
+.hero-pols .pol.h1{transform:rotate(-5deg) translateY(10px)}
+.hero-pols .pol.h2{transform:rotate(2.5deg) translateY(-14px) scale(1.06);z-index:2}
+.hero-pols .pol.h3{transform:rotate(-2deg) translateY(4px)}
+.hero-pols .pol.h4{transform:rotate(4.5deg) translateY(14px)}
+.hero-pols .pol:hover{transform:rotate(0) scale(1.06);z-index:3}
+.hero-pols .pol.h1::before{transform:rotate(-7deg)}
+.hero-pols .pol.h3::before{transform:rotate(5deg);background:rgba(214,170,190,.7)}
+.hero-pols .pol.h2 figcaption,.hero-pols .pol.h4 figcaption{color:var(--lav)}
+@media(max-width:760px){.hero-pols .wrap{grid-template-columns:1fr 1fr;gap:22px 18px;padding:0 24px}.hero-pols .pol{transform:none!important}.hero-pols .pol:nth-child(odd){transform:rotate(-3deg)!important}.hero-pols .pol:nth-child(even){transform:rotate(3deg)!important}}
 .photo-band{background:var(--deep);padding:30px 0}
 .photo-band .strip{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:14px;max-width:1160px;margin:0 auto;padding:0 20px;align-items:center}
 .photo-band img{display:block;width:100%;height:360px;object-fit:cover;border-radius:6px}
@@ -194,10 +214,10 @@ a.card:hover .card-inner{transform:translateY(-4px);box-shadow:0 14px 34px #8a63
 .fact-card li:first-child{border-top:none;padding-top:0}
 .fact-card li b{color:var(--ink)}
 .backlink{display:inline-block;margin:28px 0 0;font-weight:800;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:52px 0 0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 26px;margin:56px 0 0;padding:14px 6px 0}
 .gallery figure{margin:0}
-.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
-.gallery figcaption{font-size:.8rem;color:var(--muted);padding-top:8px}
+.gallery img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+
 @media(max-width:820px){.detail-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}}
 
 /* embeds: videos + 3D models */
@@ -306,6 +326,9 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .related{background:var(--soft);padding:64px 0 72px;margin-top:72px}
 .related .cards .card-body p{font-size:.9rem}
 .cta-end{margin-top:0}
+/* local video embeds */
+.embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
+.book-wrap{max-width:720px;margin:0 auto}
 /* gallery lightbox */
 .gallery img,.media-strip img,.polwall img{cursor:zoom-in}
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,10,24,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
@@ -320,10 +343,11 @@ FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
          'family=Bitter:ital,wght@0,400;0,600;0,700;1,400&'
          'family=Aref+Ruqaa:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">')
 
-PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'opportunities', 'press', 'blog']
-LABEL = {'home': 'Home', 'about': 'About', 'projects': 'Projects', 'awards': 'Awards',
+PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'opportunities', 'press', 'blog', 'work-with-me']
+NAV_PAGES = ['home', 'about', 'projects', 'awards', 'speaking', 'press', 'blog', 'work-with-me']
+LABEL = {'home': 'Home', 'about': 'About', 'projects': 'Projects', 'awards': 'Awards', 'work-with-me': 'Work with me',
          'speaking': 'Speaking', 'opportunities': 'Opportunities', 'press': 'Press', 'blog': 'Blog'}
-TITLE = {'home': 'Ines Said | XR Immersive Artist and Technologist',
+TITLE = {'home': 'Ines Said | Immersive artist and XR developer', 'work-with-me': 'Work with me | Ines Said',
          'about': 'About | Ines Said', 'projects': 'Projects | Ines Said',
          'awards': 'Awards & Recognition | Ines Said', 'speaking': 'Speaking & Media | Ines Said',
          'opportunities': 'Art, XR & Impact Opportunities | Ines Said',
@@ -356,6 +380,12 @@ def embed_html(e, preview):
         src = f'https://www.linkedin.com/embed/feed/update/urn:li:activity:{eid}'
         watch = f'https://www.linkedin.com/feed/update/urn:li:activity:{eid}/'
         style = ' style="aspect-ratio:1/1;max-width:560px"'
+    elif kind == 'video':
+        if preview:
+            return f'<div class="embed"><a class="embed-ph" href="{BASE_URL}/web/video/{eid}.mp4">&#9658;&nbsp; {title}</a></div>'
+        poster = f' poster="web/{e["poster"]}.jpg"' if e.get('poster') else ''
+        return (f'<div class="embed"><figure><video controls preload="metadata" playsinline{poster} src="web/video/{eid}.mp4"></video>'
+                f'<figcaption>{title}</figcaption></figure></div>')
     else:  # sketchfab
         src, watch = f'https://sketchfab.com/models/{eid}/embed', f'https://sketchfab.com/3d-models/{eid}'
     if preview:
@@ -387,7 +417,7 @@ def lang_switch(current='en', prefix=''):
 
 def nav_html(active, preview, lang='en'):
     links = []
-    for p in PAGES:
+    for p in NAV_PAGES:
         cls = ' class="active"' if p == active else ''
         links.append(f'<a href="{href(p, preview)}"{cls}>{LABEL[p]}</a>')
     switch = '' if preview else lang_switch('en', '')
@@ -413,7 +443,6 @@ FOOTER = """
     <div>
       <h3>Contact</h3>
       <a href="mailto:ines@tanitxr.org">ines@tanitxr.org</a>
-      <a href="mailto:inessaid88@gmail.com">inessaid88@gmail.com</a>
     </div>
     <div>
       <h3>Follow</h3>
@@ -421,6 +450,8 @@ FOOTER = """
       <a href="https://www.instagram.com/inessaidd/">Instagram</a>
       <a href="https://www.facebook.com/ines1said/">Facebook</a>
       <a href="https://tanitxr.org">tanitxr.org</a>
+      <a href="https://sketchfab.com/TanitXR">Sketchfab</a>
+      <a href="https://www.researchgate.net/profile/Ines-Said-2">ResearchGate</a>
     </div>
   </div>
   <div class="legal"><span>&copy; 2026 Ines Said. All rights reserved.</span><span>Made with love, between Tunisia &amp; D.C. &#10022;</span></div>
@@ -446,25 +477,25 @@ FOOTER = """
 PROJECTS = [
  dict(slug='tanit-xr', title='Tanit XR', category='Cultural Heritage',
    img='el-jem', alt='Ines Said at the El Jem Amphitheater in Tunisia',
-   card="Tunisia's first open-source digital heritage archive — 80+ artifacts documented across 20 archaeological sites, from mosaics to the El Jem Amphitheater.",
+   card="Tunisia's first open-source digital heritage archive: 100+ 3D models of statues, mosaics and stelae, scanned by volunteers and free for everyone, from mosaics to the El Jem Amphitheater.",
    chips=['Photogrammetry', 'Gaussian splats', '!Auggie finalist'],
    paras=[
-     "Tanit XR is Tunisia's first open-source archive of endangered artifacts, named after the Carthaginian goddess of protection. Volunteers on the ground scan endangered sculptures, mosaics, and archaeological sites across Carthage and Tunisia — heritage spanning nearly 3,000 years — and a global community turns those scans into interactive digital artworks and VR/AR museum experiences that help Tunisians celebrate and share their cultural legacy with the world.",
-     "Since its founding in 2025, the volunteer team of technologists, artists, and heritage enthusiasts has documented more than 80 artifacts across 20 sites, published openly on tanitxr.org and Sketchfab. Its multi-scan reconstruction of the El Jem Amphitheater — the largest to date — was featured by Niantic Spatial as a benchmark for large-scale reality capture.",
-     "Beyond scanning, Tanit XR runs free education programs — including a Gaussian Splats course teaching anyone to capture and publish explorable 3D environments — because preserving heritage also means spreading the skills to do it."],
-   facts=[('Founded', '2025 — nonprofit, volunteer-driven; core team of 7 plus volunteers worldwide'),
-          ('Archive', '80+ artifacts, 20 sites, open access'),
+     "Tanit XR is Tunisia's first open-source archive of endangered artifacts, named after the Carthaginian goddess of protection. Volunteers on the ground scan endangered sculptures, mosaics and stelae, one object at a time, across Carthage and Tunisia — heritage spanning nearly 3,000 years — and a global community turns those scans into interactive digital artworks and VR/AR museum experiences that help Tunisians celebrate and share their cultural legacy with the world.",
+     "Since its founding in 2025, the volunteer team of technologists, artists, and heritage enthusiasts has published more than 100 models openly on tanitxr.org and Sketchfab, and 85+ volunteers on four continents meet every week. Niantic Spatial interviewed Ines about the community and its scans at El Jem.",
+     "Beyond scanning, Tanit XR runs free education programs — including a Gaussian Splats course teaching anyone to capture and publish 3D models with a phone — because preserving heritage also means spreading the skills to do it."],
+   facts=[('Founded', '2025 — nonprofit, volunteer-driven; 85+ volunteers on four continents'),
+          ('Archive', '100+ 3D models, free to download; 34 modelled by volunteers by hand'),
           ('Partners', "Sketchfab Cultural Heritage Program, USF, INP, Tunisian Federation of Travel Agencies, AAAS, Unique Mappers"),
-          ('Education', 'Free "Splats With Phones" course by Mark Jeffcock; research paper published in English, French &amp; Tunisian Arabic'),
+          ('Education', 'Free "Splats With Phones" course, taught by Mark Jeffcock; research paper published in English, French &amp; Tunisian Arabic'),
           ('Hackathons', "Sponsored a Tunisian-heritage track at ImmerseGT 2026, Georgia Tech's 36-hour XR hackathon"),
           ('Recognition', 'Auggie Awards finalist, Best Societal Impact (AWE 2026); featured by Al Jazeera and Niantic Spatial')],
    embeds_heading='Watch &amp; explore in 3D',
-   embeds=[dict(kind='linkedin', id='7488488682652495873', title='Niantic Spatial features our El Jem Amphitheater reconstruction'),
+   embeds=[dict(kind='linkedin', id='7488488682652495873', title='Niantic Spatial interviews Ines about Tanit XR and El Jem'),
            dict(kind='sketchfab', id='e7bfb3b0767248f5b4064ca8c57dc6e4', title='Tanit Stela — Tophet of Salammbô, Carthage'),
            dict(kind='sketchfab', id='afe868bfb0454b0faa7d95d7961a5ba6', title='Corinthian Capital — Byrsa Hill, Carthage'),
            dict(kind='sketchfab', id='5766b06d2fc44df8bdc8319b11d49e7c', title='Bird of Prey Statue — Roman Villas of Carthage'),
            dict(kind='sketchfab', id='9027a243275242a19956a84a297d1e1e', title='Roman Column — Byrsa Hill, Carthage')],
-   links=[('Donate (via fiscal sponsor FCIF)', 'https://donors.tuesday.app/campaign/CMLPDTO'),
+   links=[('Donate (via our fiscal sponsor, Florida Community Innovation, a US 501(c)(3))', 'https://donors.tuesday.app/campaign/CMLPDTO'),
           ('Volunteer with Tanit XR', 'https://tanitxr.org/volunteer/'),
           ('Free course: Splats With Phones', 'https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/'),
           ('Full 3D archive on Sketchfab', 'https://sketchfab.com/TanitXR'),
@@ -475,7 +506,7 @@ PROJECTS = [
             ('tanit-museum-1', 'Sneak peek: the Tanit XR virtual museum.'),
             ('xrw-museum', 'Tanit XR pieces in the XR Women Global Museum.'),
             ('site-visit', 'Scouting sites across Tunisia.'),
-            ('site-column', 'Ancient columns, documented before they erode.'),
+            ('site-column', 'Roman columns on Byrsa Hill.'),
             ('carthage-mag', 'Tanit XR featured in Carthage Magazine.')]),
 
  dict(slug='shadows-of-tomorrow', title='Shadows of Tomorrow', category='Climate · XR Installation',
@@ -515,7 +546,7 @@ PROJECTS = [
      "The app family spans iPad AR, Windows, Meta Quest 3 mixed-reality passthrough, and Apple Vision Pro, and travels with the hubs to the industry's biggest stages — DISTRIBUTECH (Orlando and Dallas), Oracle Edge, Oracle CloudWorld, and the Energy Thought Summit — reaching thousands of utility professionals.",
      "It's my favorite kind of project: the same instinct as my heritage work, pointed at the future instead of the past. Complex systems people can't normally see, made touchable."],
    facts=[('Client', 'Oracle Utilities, with Froliq'),
-          ('Role', 'Lead XR Developer — the AR digital-twin app family'),
+          ('Role', 'I lead the AR apps (iPad, Quest 3, Vision Pro, Windows)'),
           ('Platforms', 'iPad AR, Windows, Meta Quest 3 passthrough, Apple Vision Pro'),
           ('Shown at', 'DISTRIBUTECH, Oracle Edge, Oracle CloudWorld, Energy Thought Summit')],
    links=[], gallery=[('oracle-demo', 'Demoing the grid simulator on the conference floor.'),
@@ -599,7 +630,7 @@ PROJECTS = [
    chips=['LiDAR', 'Gaussian splats', 'Training'],
    paras=[
      "Some places are too critical, too controlled, or too complex to train in casually — a nuclear power plant is all three. At Froliq, we 3D-scanned facilities at the Davis-Besse nuclear power plant, including the turbine deck and cooling tower, using the PortalCam LiDAR scanner.",
-     "The scans render into Gaussian splats — the same technique behind Tanit XR's heritage captures — producing photoreal, explorable environments that can be deployed to web, VR, or AR for training and visual simulation. Staff can learn a space before they ever set foot in it.",
+     "The scans render into Gaussian splats — the same technique behind Tanit XR's heritage captures — producing photoreal, explorable spaces that can be deployed to web, VR, or AR for training and visual simulation. Staff can learn a space before they ever set foot in it.",
      "It's the perfect symmetry of my work: the exact pipeline I use to preserve almost 2,000-year-old amphitheaters, pointed at the most modern infrastructure there is."],
    facts=[('Client project', 'Froliq — Davis-Besse Nuclear Power Station'),
           ('Captured', 'Turbine deck, cooling tower, and other facilities'),
@@ -749,8 +780,8 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
     if is_award:
         others = [a for a in AWARDS if a['slug'] != p['slug'] and a['paras']][:3]
         rel = related_strip('More recognition', [card_html(a, preview, prefix='a-', more='Read the story') for a in others])
-        cta = cta_band('Speaking', 'Want me to share this story at your event?',
-                       "I'd love to speak about it, in English, Arabic or French.",
+        cta = cta_band('Speaking', 'Want me to tell this story at your event?',
+                       "I'd love to!",
                        ('Book me to speak', href('speaking', preview) + ('' if preview else '#book')),
                        ('See all awards', href('awards', preview)))
     else:
@@ -762,7 +793,7 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
                             [card_html(by_slug[s], preview) for s in pool[:3]])
         cta = cta_band("Let's work together", 'Have a project in mind?',
                        "I'd love to hear about it! Whether you want to scan a collection or build something in XR, let's talk.",
-                       ('Start a conversation', href('speaking', preview) + ('' if preview else '#book')),
+                       ('Start a conversation', href('work-with-me', preview) + ('' if preview else '#book')),
                        ('See all projects', href('projects', preview)))
     return f"""
 {head}
@@ -775,6 +806,7 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
   {gallery}
   <a class="backlink" href="{href(back_page, preview)}">&larr; {back_label}</a>
 </div>
+{p['extra'](preview) if p.get('extra') else ''}
 {rel}
 {cta}
 """
@@ -793,7 +825,7 @@ AWARDS = [
    facts=[('Category', 'Best Societal Impact'), ('For', 'Tanit XR'), ('Year', '2026, Long Beach, CA')],
    links=[('Official finalists announcement', 'https://www.awexr.com/blog/1382-2026-auggie-awards-finalists-announced')],
    gallery=[('vision-board', 'January 2026: the Auggies on the vision board.'),
-            ('auggie-night', 'Auggie Awards night at AWE.'),
+            ('auggie-night', 'Auggie Awards night at AWE. Whale sightings the next day: 1, just saying.'),
             ('awe-entrance', 'With the team at AWE 2026.')]),
 
  dict(slug='ee-30-under-30', title='EE 30 Under 30 — Class of 2025',
@@ -808,7 +840,7 @@ AWARDS = [
    facts=[('Organization', 'North American Association for Environmental Education'),
           ('Class', '2025 honoree'), ('And then', 'Judge for the Class of 2026'),
           ('For', 'XR for environmental & cultural education')],
-   links=[('Her EE 30 Under 30 profile', 'https://naaee.org/people/ines-said')],
+   links=[('My EE 30 Under 30 profile', 'https://naaee.org/people/ines-said')],
    gallery=[('ee30-class', 'Meet the Class of 2025.')]),
 
  dict(slug='gfaa-excellence', title='Excellence Award — GFAA Biennial',
@@ -899,9 +931,9 @@ POSTS = [
    imgcap='Testing the PortalCam by XGRIDS with Kelly at Froliq.',
    excerpt="We just got the PortalCam by XGRIDS at Froliq, and I'm amazed at how fast this technology is moving.",
    paras=[
-     "We're so excited to finally have the PortalCam by XGRIDS! Kelly and I have been testing it at Froliq, and we can't wait to put it to work on our upcoming projects.",
+     "We're so excited to finally have the PortalCam by XGRIDS! Kelly, my teammate at Froliq, and I have been testing it, and we can't wait to put it to work on our upcoming projects.",
      "What amazes me most is the pace of this technology. Just a couple of years ago, it used to take me days and days to scan a single spot. Now it's a matter of minutes.",
-     "For heritage work, speed changes everything: more sites, more artifacts, more chances to document something before it's gone. If you've been using the PortalCam and have tips or suggestions, I'm happy to hear them!"]),
+     "For Tanit XR this is huge. We can scan many more objects in one trip, before they're gone. If you've been using the PortalCam and have tips or suggestions, I'm happy to hear them!"]),
 
  dict(slug='sunken-city', title='Looking for a sunken city before breakfast',
    date='August 2026', tag='Tanit XR', img='neapolis-swim',
@@ -909,9 +941,9 @@ POSTS = [
    imgcap='Scanning the surface of the sea above Neapolis at 6 AM.',
    excerpt='We took a paddle boat out at 6 AM to look for the underwater ruins of ancient Neapolis, a Roman city 15 minutes from my house.',
    paras=[
-     "We went looking for the underwater ruins of ancient Neapolis in Tunisia! Laura K. Harrison (archaeologist and digital heritage expert) and Caroline Nickerson (citizen-science leader) flew all the way from Florida, and we took a paddle boat out along the coast of Neapolis at 6 AM, hoping to catch a glimpse of the submerged city from the surface.",
+     "We went looking for the underwater ruins of ancient Neapolis in Tunisia! Dr. Laura Harrison, our Chief Scientist, and Dr. Caroline Nickerson, who leads our partnerships and community, flew all the way from Florida, and we took a paddle boat out along the coast of Neapolis at 6 AM, hoping to catch a glimpse of the submerged city from the surface.",
      "For reference: there is nothing that points you to the ruins. We went out twice, and the second time the water was so clear that we believe we could finally see them below us: fragments of roads, walls, and stairs from a coastal settlement that was once a hub for manufacturing garum, the Romans' beloved fermented fish sauce.",
-     "Neapolis was destroyed by an earthquake in 365 AD. It sits near my hometown, Nabeul, just a 15-minute walk from my house. Moments like this are why I love what we do at Tanit XR: Tunisia holds so many incredible stories, on land and underwater, and getting to share them with the world is the best part.",
+     "Neapolis was destroyed by an earthquake in 365 AD. It sits near my hometown, Nabeul, just a 15-minute walk from my house. This is why I love Tanit XR. Tunisia has so many stories, on land and under the sea, and sharing them is the best part!",
      "(My GoPro broke the second it touched the water, so no underwater shots this time.)"],
    gallery=[('neapolis-2', 'Out on the water at 6 AM.'),
             ('neapolis-3', 'Scanning the surface for shapes below.'),
@@ -923,55 +955,55 @@ POSTS = [
    imgcap='One year of Tanit XR.',
    excerpt='A year ago I started Tanit XR to preserve the Tunisian heritage I grew up with. Here is what a year of volunteers and phone scans can do.',
    paras=[
-     "A year ago, I started Tanit XR to preserve the Tunisian heritage I grew up with. Volunteers on the ground scan endangered sites with their phones, and our global community turns those scans into XR preservation and education tools.",
-     "We named it after Tanit, the Carthaginian goddess of protection, because that's what we do.",
-     "So far, the leadership team and I have self-funded everything, with a few small grants here and there. If you'd like to support the work, you can donate through our fiscal sponsor, the Florida Community Innovation Foundation, or just come join us! Love history? Curious about XR? All are welcome.",
+     "A year ago, I started Tanit XR to preserve the Tunisian heritage I grew up with. Volunteers in Tunisia scan endangered objects with their phones, one at a time, and volunteers around the world turn the scans into free 3D models, AR lessons and our virtual museum.",
+     "Happy birthday, Tanit!",
+     "So far, the leadership team and I have self-funded everything, with a few small grants here and there. If you'd like to support the work, you can donate through our fiscal sponsor, Florida Community Innovation, a US 501(c)(3), or just come join us! Love history? Curious about XR? All are welcome.",
      "Honestly, I already got my wish: I do what I love with people I care about."]),
 
  dict(slug='auggie-finalist-whale', title="We didn't win the Auggie, but I saw a whale!",
    date='June 2026', tag='Field notes', img='auggie-night',
    imgcap='Auggie Awards night at AWE 2026.',
-   excerpt='Tanit XR was a finalist for Best Societal Impact at the Auggie Awards. We got one of the loudest cheers in the room, and the next day the ocean had a surprise for me.',
+   excerpt='Tanit XR was a finalist for Best Societal Impact at the Auggie Awards. We got one of the loudest cheers in the room, and the next day I saw a whale!',
    paras=[
      "It was an honor for the Tanit XR team to be finalists at the Auggie Awards this year at AWE, in the Best Societal Impact category. We didn't win, but I can tell you we got one of the loudest cheers in the room.",
      "And then, the next day, a giant whale fully jumped out of the ocean in front of me. Witnessing that has long been on my bucket list. I'm taking it as a sign, and we'll see you at the Auggies again next year!",
-     "Thank you to everyone who voted for Tanit XR, and to everyone who came up at AWE to say they've been following our work, especially the community at XR Women Global. One of our amazing volunteers, Margarita Johnson, joined me on stage to co-present our talk on the scan-to-XR pipeline, and Kelly and I had the best time running Froliq's sustainability soccer game on the playground.",
+     "Thank you to everyone who voted for Tanit XR, and to everyone who came up at AWE to say they've been following our work, especially the community at XR Women Global. One of our amazing volunteers, Margarita Johnson, joined me on stage to co-present our talk on the scan-to-XR pipeline, and Kelly, my teammate at Froliq, and I had the best time running our sustainability soccer game on the playground.",
      "AWE was incredible this year. Already can't wait for the next one."],
    gallery=[('awe-entrance', 'Arriving at AWE 2026 in Long Beach.'),
             ('froliq-playground', 'The Froliq crew at the playground. Come play soccer with us!')]),
 
  dict(slug='el-jem-colosseum', title='Presenting inside a Roman colosseum',
    date='April 2026', tag='Tanit XR', img='el-jem',
-   imgcap='The El Jem Amphitheater: our largest reconstruction, and my stage for a day!',
+   imgcap='The El Jem Amphitheater, my stage for a day!',
    excerpt="I couldn't believe I was about to present inside the El Jem Amphitheater, at a conference where more than half the researchers were women.",
    paras=[
-     "I couldn't believe I was about to present inside a colosseum! I spoke about Tanit XR at the El Jem International Conference, standing inside the very amphitheater our team had scanned for our largest 3D reconstruction to date.",
-     "There's something surreal about showing a digital twin of a monument while standing inside the original. The El Jem reconstruction, stitched together from many scans, was later featured by Niantic Spatial as a benchmark for large-scale reality capture.",
-     "Our paper explored how digital documentation, XR, and citizen science can support community-driven heritage preservation in Tunisia and beyond. We published it in English, French, and Tunisian Arabic, so the communities it's about can actually read it.",
-     "My sister came with me, and one of my favorite details: more than half the researchers presenting at the conference were women. The future of digital heritage in Tunisia looks bright."],
+     "I couldn't believe I was about to present inside a colosseum! I spoke about Tanit XR at the El Jem International Conference, standing inside the very amphitheater our volunteers had scanned with their phones.",
+     "There's something surreal about showing 3D scans of a monument while standing inside the original. Niantic Spatial later interviewed me about our work there, which still feels unreal.",
+     "Our paper is about how volunteers with phones and XR can help protect heritage in Tunisia. We published it in English, French and Tunisian Arabic, so people back home can actually read it.",
+     "My sister came with me, and one of my favorite details: more than half the researchers presenting at the conference were women. That made me so happy."],
    gallery=[('eljem-conf', 'At the El Jem conference with my sister.')]),
 
  dict(slug='virtual-museum-sneak-peek', title='A sneak peek at the Tanit XR virtual museum',
    date='Spring 2026', tag='Tanit XR', img='tanit-museum-1',
    imgcap='Inside the Tanit XR virtual museum.',
-   excerpt='A virtual space where the artifacts we scan go on display. You can wander Tunisian streets and courtyards from anywhere in the world!',
+   excerpt='A virtual space where the artifacts we scan go on display. The streets and courtyards are modeled by our volunteers, and you can wander them from anywhere in the world!',
    paras=[
-     "A little sneak peek of our Tanit XR virtual museum! This space will display the artifacts and places our volunteers have scanned across Tunisia, in whitewashed streets and courtyards just like the ones back home.",
-     "Visitors explore together from anywhere in the world. A kid in Tunis, a researcher in Boston, and a grandmother in Nabeul can wander the same alleys and stand in front of the same 3,000-year-old pieces at the same time.",
+     "A little sneak peek of our Tanit XR virtual museum! This space will display the objects our volunteers have scanned across Tunisia, in hand-modeled whitewashed streets and courtyards just like the ones back home.",
+     "You can visit with friends from anywhere. I love imagining my grandmother in Nabeul and a volunteer in Boston looking at the same stela together!",
      "Our scanned artifacts are also on display in the XR Women Global Museum, which makes me so happy!"],
    gallery=[('tanit-museum-2', 'Your guide through the museum.'),
-            ('tanit-museum-3', 'Courtyards built for wandering.'),
+            ('tanit-museum-3', 'The courtyards.'),
             ('tanit-museum-4', 'Streets modeled on the real Tunisia.'),
             ('xrw-museum', 'Tanit XR pieces in the XR Women Global Museum.')]),
 
  dict(slug='storm-revealed-ruins', title='The storm that revealed 2,000-year-old ruins',
    date='February 2026', tag='Field notes', img='storm-ruins-1',
    imgcap='After the storm: newly exposed ruins on the coast near Nabeul.',
-   excerpt="My hometown flooded in Tunisia's worst rainfall in 70 years. When the water receded, the coast had given something back.",
+   excerpt="My hometown flooded in Tunisia's worst rainfall in 70 years. When the water went down, there were Roman walls on the beach that nobody had seen before.",
    paras=[
      "The last few days were stressful and heartbreaking: my hometown was severely flooded in Tunisia's worst rainfall in 70 years. Schools closed across the capital and the coastal towns, and I watched from afar as the streets I grew up on filled with water.",
-     "And then, when the storm passed, something unexpected happened. The floods had revealed a new archaeological site near my house, dating back more than 2,000 years, with walls no one alive had ever seen.",
-     "Climate change is hard on heritage. The same storms that destroy ancient sites sometimes uncover new ones, just for a little while. That's exactly why Tanit XR exists: to scan what the earth shows us before it disappears again."],
+     "And then, when the storm passed, something unexpected happened. When the water went down, the storm had stripped the sand off the coast and exposed parts of Neapolis, the Roman city a 15-minute walk from my house.",
+     "Storms like this damage old sites, and sometimes they uncover new ones for a little while. Within days our volunteers were out there scanning the newly revealed ruins in 3D, before the sea covers them again."],
    gallery=[('storm-ruins-2', 'Structures exposed by the receding water.')]),
 
  dict(slug='mit-reality-hack-2026', title='Snow, friends, and a 3D-printed award',
@@ -979,9 +1011,9 @@ POSTS = [
    imgcap='Boston in January.',
    excerpt="MIT Reality Hack got cut short this year, so my team printed our own award! Hacking is better with friends.",
    paras=[
-     "MIT Reality Hack got cut short this year, but wow, what an amazing time! I came back to Boston for the community hack with Caroline, her first Reality Hack, and hacking really is better with friends.",
+     "MIT Reality Hack got cut short this year, but wow, what an amazing time! I came back to Boston for the community hack with Caroline (Dr. Caroline Nickerson, who leads partnerships and community at Tanit XR), her first Reality Hack, and hacking really is better with friends.",
      "When the event ended early, my teammates and I refused to leave without a ceremony: we 3D-printed ourselves our own little award. It is possibly my favorite trophy on the shelf.",
-     "Between the snow, the late-night prototyping, and the people who come back year after year, Reality Hack remains my favorite way to start a year in XR."],
+     "Snow, late nights and friends who come back every year. It's my favorite way to start the year!"],
    gallery=[('rh-printed-award', 'The prestigious self-printed award.'),
             ('rh-hack-table', 'Community hacking.'),
             ('rh-snow-2', 'Worth every snowflake.')]),
@@ -1075,17 +1107,18 @@ def polwall(items):
 def body_home(preview):
     featured = ''.join(card_html(p, preview) for p in PROJECTS[:3])
     return f"""
-<div class="photo-band"><div class="strip">
-  <figure><img src="web/statue-pose.jpg" alt="Ines Said matching poses with an ancient statue at a Tunisian dig site"></figure>
-  <figure><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"></figure>
-  <figure><img src="web/ets-fireside.jpg" alt="Ines Said speaking on the Energy Thought Summit stage"></figure>
+<div class="hero-pols"><div class="wrap">
+  <figure class="pol h1"><img src="web/statue-pose.jpg" alt="Ines Said matching poses with an ancient statue at a Tunisian dig site"><figcaption>striking a pose</figcaption></figure>
+  <figure class="pol h2"><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"><figcaption>mosaic love &#9825;</figcaption></figure>
+  <figure class="pol h3"><img src="web/ets-fireside.jpg" alt="Ines Said speaking on the Energy Thought Summit stage"><figcaption>fireside chat at ETS</figcaption></figure>
+  <figure class="pol h4"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater in Tunisia"><figcaption>El Jem, Tunisia</figcaption></figure>
 </div></div>
 
 <div class="intro-home">
-  <p class="kicker">XR Immersive Artist &amp; Technologist</p>
+  <p class="kicker">Immersive artist and XR developer</p>
   <h1>Hello, I'm <em>Ines Said</em>.</h1>
-  <p class="lede">I grew up a 15-minute walk from the Roman ruins of Neapolis in Tunisia, and now I get
-  to help preserve places like it in 3D! I'm the founder of <strong>Tanit XR</strong> and the Lead XR Developer
+  <p class="lede">I grew up a 15-minute walk from the Roman ruins of Neapolis in Tunisia. Now I scan our heritage in 3D,
+  one object at a time, with volunteers from all over the world! I'm the founder of <strong>Tanit XR</strong> and the Lead XR Developer
   at <strong>Froliq</strong>, and my work on heritage and climate has been shown at places like the Smithsonian and MIT.</p>
   <div class="btn-row">
     <a class="btn" href="{href('projects', preview)}">Explore my work</a>
@@ -1093,15 +1126,11 @@ def body_home(preview):
   </div>
 </div>
 
-<div class="band lav"><div class="wrap"><div class="stats">
-  <a href="{href('p-smithsonian-futures', preview)}"><b>600,000+</b><span>visitors to the Smithsonian exhibition that featured my work</span></a>
-  <a href="https://naaee.org/people/ines-said"><b>30 Under 30</b><span>EE 30 Under 30, Class of 2025 — NAAEE</span></a>
-  <a href="{href('projects', preview)}"><b>11,000+</b><span>people reached in 2025 across 40+ events</span></a>
-  <a href="https://www.awexr.com/blog/1382-2026-auggie-awards-finalists-announced"><b>Auggie Finalist</b><span>Best Societal Impact — Tanit XR, AWE 2026</span></a>
-  <a href="https://www.linkedin.com/in/inessaid/"><b>7,000+</b><span>people following along on LinkedIn</span></a>
-  <a href="{NEWSLETTER_URL}"><b>167K</b><span>views on my LinkedIn posts this past year</span></a>
-  <a href="{href('speaking', preview)}"><b>1 in 4</b><span>of my audience are founders, executives or directors</span></a>
-  <a href="{href('about', preview)}"><b>3 languages</b><span>I speak English, Arabic &amp; French</span></a>
+<div class="band lav"><div class="wrap"><div class="stats four">
+  <a href="{href('p-smithsonian-futures', preview)}"><b>600,000+</b><span>people saw my work at the Smithsonian's FUTURES exhibition</span></a>
+  <a href="{href('p-tanit-xr', preview)}"><b>100+</b><span>3D models of Tunisian heritage, free for everyone, with Tanit XR</span></a>
+  <a href="{href('p-tanit-xr', preview)}"><b>85+</b><span>volunteers on four continents scanning with me</span></a>
+  <a href="{href('speaking', preview)}"><b>11,000+</b><span>people I met in 2025 at 40+ events</span></a>
 </div>
 <p style="text-align:center;margin:44px 0 0;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">As featured in</p>
 <p style="text-align:center;margin:10px 0 0;font-family:'Yeseva One',serif;font-weight:400;font-size:1.05rem">
@@ -1118,7 +1147,7 @@ def body_home(preview):
 
 <section class="block"><div class="wrap">
   <h2 class="sec-title">Featured work</h2>
-  <p class="sec-sub">A few of the projects closest to my heart.</p>
+  <p class="sec-sub">Some of my favorite projects.</p>
   <div class="cards">{featured}</div>
   <p style="margin:34px 0 0"><a class="btn ghost" href="{href('projects', preview)}">See all projects</a></p>
 </div></section>
@@ -1129,12 +1158,12 @@ def body_home(preview):
   <h2 class="sec-title">Latest</h2>
   <p class="sec-sub">What I've been up to lately.</p>
   <ul class="list">
-    <li><div><span class="t"><a href="https://youtu.be/CY6u3LGEN3E">My episode of Spatial Creator Spotlight is out!</a></span><div class="d">I got to talk about my journey, Tanit XR and using XR for good. The full episode premieres on YouTube on September 24. Come watch!</div></div><span class="who">New &middot; Sep 2026</span></li>
-    <li><div><span class="t"><a href="{href('b-auggie-finalist-whale', preview)}">We were finalists at the Auggie Awards!</a></span><div class="d">Tanit XR was a finalist for Best Societal Impact at the biggest awards in XR. Thank you so much to everyone who voted for us!</div></div><span class="who">AWE &middot; 2026</span></li>
-    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/">Niantic Spatial shared our El Jem scan!</a></span><div class="d">Our volunteers scanned the El Jem Amphitheater, our biggest reconstruction so far, and Niantic Spatial made a video about it. I was so excited!</div></div><span class="who">Niantic Spatial</span></li>
-    <li><div><span class="t"><a href="https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/">A free 3D scanning course with Tanit XR</a></span><div class="d">Mark Jeffcock led our free 6-week course on scanning with your phone. No experience needed, just curiosity!</div></div><span class="who">Tanit XR</span></li>
-    <li><div><span class="t"><a href="{href('b-sunken-city', preview)}">Looking for a sunken Roman city</a></span><div class="d">We went out on a paddle boat at 6 AM near my hometown, Nabeul, to look for the underwater ruins of Neapolis. The water was so clear!</div></div><span class="who">Field notes</span></li>
-    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/">Tanit XR had its own track at ImmerseGT!</a></span><div class="d">At Georgia Tech's 36-hour XR hackathon, teams built projects with our real scans of Tunisian heritage. Congrats to "From Mystery to History" for winning our track!</div></div><span class="who">ImmerseGT &middot; 2026</span></li>
+    <li><div><span class="t"><a href="https://youtu.be/CY6u3LGEN3E">My episode of Spatial Creator Spotlight is out!</a></span><div class="d">I got to talk about my journey, Tanit XR and using XR for good. The full episode is on YouTube.</div></div><span class="who">New &middot; Sep 2026</span></li>
+    <li><div><span class="t"><a href="{href('b-auggie-finalist-whale', preview)}">We were finalists at the Auggie Awards!</a></span><div class="d">Tanit XR was a finalist for Best Societal Impact at AWE 2026.</div></div><span class="who">AWE &middot; Jun 2026</span></li>
+    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/">Niantic Spatial interviewed me!</a></span><div class="d">Nathan Bowser asked me about Tanit XR and our scans at El Jem, and Niantic published the video. I was so excited!</div></div><span class="who">Niantic Spatial &middot; Jul 2026</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/">A free 3D scanning course with Tanit XR</a></span><div class="d">Mark Jeffcock, who teaches our Splats With Phones course, shows you how to scan with your phone in six free weeks. No experience needed, just curiosity!</div></div><span class="who">Tanit XR &middot; Dec 2025</span></li>
+    <li><div><span class="t"><a href="{href('b-sunken-city', preview)}">Looking for a sunken Roman city</a></span><div class="d">We went out on a paddle boat at 6 AM near my hometown, Nabeul, to look for the underwater ruins of Neapolis. The water was so clear!</div></div><span class="who">Field notes &middot; Aug 2026</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/">Tanit XR had its own track at ImmerseGT!</a></span><div class="d">At Georgia Tech's 36-hour XR hackathon, teams built projects with our real scans of Tunisian heritage. Congrats to "From Mystery to History" for winning our track!</div></div><span class="who">ImmerseGT &middot; Apr 2026</span></li>
   </ul>
 </div></div>
 
@@ -1142,9 +1171,8 @@ def body_home(preview):
   <div>
     <p class="kicker">Speaking</p>
     <h2 class="sec-title" style="margin-bottom:10px">I'd love to speak at your event!</h2>
-    <p style="max-width:56ch;margin:0 0 24px">I give keynotes, panels and workshops about heritage, climate and
-    immersive technology. I've spoken everywhere from AWE to inside a Roman amphitheater in Tunisia, in person or
-    online, in English, Arabic or French.</p>
+    <p style="max-width:56ch;margin:0 0 24px">I speak about heritage, climate and XR. I've spoken at AWE, the Energy Thought Summit
+    and even inside the El Jem amphitheater!</p>
     <div class="btn-row">
       <a class="btn" href="{href('speaking', preview)}#book">Book me to speak</a>
       <a class="btn ghost" href="{href('speaking', preview)}">Topics &amp; past talks</a>
@@ -1162,9 +1190,9 @@ def body_home(preview):
 <div class="band blush"><div class="wrap" style="text-align:center">
   <p class="kicker" style="justify-content:center">Nonprofit</p>
   <h2 class="sec-title" style="margin-bottom:10px">Support Tanit XR 🏺</h2>
-  <p style="max-width:58ch;margin:0 auto 24px">Tunisia's heritage is disappearing faster than we can protect it.
+  <p style="max-width:58ch;margin:0 auto 24px">So much of Tunisia's heritage has never been documented, and it's eroding.
   Tanit XR is run by volunteers, and so far we've funded everything ourselves. You can donate through our fiscal
-  sponsor, the Florida Community Innovation Foundation, or come volunteer with us. Love history? Curious about XR?
+  sponsor, Florida Community Innovation, a US 501(c)(3), or come volunteer with us. Love history? Curious about XR?
   Everyone is welcome!</p>
   <div class="btn-row" style="justify-content:center">
     <a class="btn" href="https://donors.tuesday.app/campaign/CMLPDTO">Donate to Tanit XR</a>
@@ -1188,10 +1216,8 @@ def body_about(preview):
       <p>Through <strong>Tanit XR</strong> — Tunisia's first open-source digital heritage
       archive, named after the Carthaginian goddess of protection — I use 3D scanning to
       preserve mosaics, statues, and archaeological sites dating back nearly 3,000 years.
-      Since founding it in 2025, our volunteer team has documented 80+ artifacts across 20
-      sites, built partnerships with the Tunisian Federation of Travel Agencies and
-      Sketchfab's Cultural Heritage Program, and produced the largest reconstruction of the
-      El Jem Amphitheater to date, featured by Niantic Spatial. I grew up a 15-minute walk
+      Since founding it in 2025, our volunteer team has published 100+ 3D models, built partnerships with the Tunisian Federation of Travel Agencies and
+      Sketchfab's Cultural Heritage Program, and was interviewed by Niantic Spatial about our scans at El Jem. I grew up a 15-minute walk
       from the ruins of Roman Neapolis in Nabeul — this work is personal.</p>
       <p>My climate installation <strong>Shadows of Tomorrow</strong> received an Excellence
       Award presented by Miami's Chief Heat Officer Jane Gilbert and author Jeff Goodell, and
@@ -1238,7 +1264,7 @@ def body_about(preview):
     <div>
       <h2 class="sec-title" style="font-size:1.5rem">Experience</h2>
       <ul class="list">
-        <li><div><span class="t">Founder — Tanit XR</span><div class="d">Open-source digital heritage archive; 80+ artifacts across 20 sites</div></div><span class="who">2025–</span></li>
+        <li><div><span class="t">Founder — Tanit XR</span><div class="d">Open-source digital heritage archive; 100+ 3D models, 85+ volunteers</div></div><span class="who">2025–</span></li>
         <li><div><span class="t">Lead XR Developer — Froliq</span><div class="d">Leading XR projects from concept to execution across a multidisciplinary team</div></div><span class="who">2023–</span></li>
         <li><div><span class="t">XR Developer — Froliq</span><div class="d">Smithsonian FUTURES installation and VR energy-education games</div></div><span class="who">2022–23</span></li>
         <li><div><span class="t">Adjunct Lecturer — University of Florida</span><div class="d">Taught VR application development for Android and wearables</div></div><span class="who">2023</span></li>
@@ -1257,7 +1283,7 @@ def body_about(preview):
   </div>
   <div class="media-strip">
     <figure><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"><figcaption>A mosaic wall thousands of years old, smart glasses on standby.</figcaption></figure>
-    <figure><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>El Jem — our largest reconstruction, and a 3rd-century office view.</figcaption></figure>
+    <figure><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater"><figcaption>El Jem, a 3rd-century office view.</figcaption></figure>
     <figure><img src="web/workshop.jpg" alt="Ines Said leading a classroom workshop"><figcaption>Workshops and mentoring for emerging artists and technologists.</figcaption></figure>
     <figure><img src="web/ets-fireside.jpg" alt="Ines Said on stage at the Energy Thought Summit"><figcaption>Talking energy and photogrammetry at ETS 2026.</figcaption></figure>
     <figure><img src="web/coast-walk.jpg" alt="Ines Said walking coastal ruins in Tunisia"><figcaption>Field walks — half survey, half joy.</figcaption></figure>
@@ -1462,7 +1488,7 @@ def body_press(preview):
 <section class="block" style="padding-top:36px"><div class="wrap">
   <ul class="list">
     <li><div><span class="t"><a href="https://www.aljazeera.net/amp/culture/2025/10/12/%D8%AA%D8%A7%D9%86%D9%8A%D8%AA-%D8%A5%D9%83%D8%B3-%D8%A2%D8%B1-%D9%85%D9%86%D8%B5%D8%A9-%D8%BA%D9%8A%D8%B1-%D8%B1%D8%A8%D8%AD%D9%8A%D8%A9-%D8%AA%D9%88%D8%AB%D9%82">Tanit XR: a non-profit platform documenting Tunisia's heritage</a></span></div><span class="who">Al Jazeera &middot; 2025</span></li>
-    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/">Tanit XR's El Jem reconstruction "sets a benchmark for large-scale reality capture"</a></span></div><span class="who">Niantic Spatial &middot; 2026</span></li>
+    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/">Niantic Spatial interviews Ines Said about Tanit XR and El Jem</a></span></div><span class="who">Niantic Spatial &middot; 2026</span></li>
     <li><div><span class="t"><a href="https://carthagemagazine.com/tanit-xr-preserving-tunisias-heritage-through-immersive-technology/">Preserving Tunisia's heritage through immersive technology</a></span></div><span class="who">Carthage Magazine</span></li>
     <li><div><span class="t"><a href="https://news.ufl.edu/2022/04/covid-reflections/">Using AI in the arts to promote COVID-19 vaccines</a></span></div><span class="who">UF News &middot; 2022</span></li>
     <li><div><span class="t"><a href="https://www.wcjb.com/2022/04/11/university-florida-launches-covid-reflections-project-utilizing-ai-increase-vaccination/">UF launches "Covid Reflections"</a></span></div><span class="who">ABC 20 WCJB &middot; 2022</span></li>
@@ -1564,18 +1590,34 @@ def body_opportunities(preview):
 _OLD_SPEAKING = body_speaking
 exec(open(os.path.join(ROOT, 'voice.py'), encoding='utf-8').read())
 exec(open(os.path.join(ROOT, 'sections.py'), encoding='utf-8').read())
-CSS += SECTIONS_CSS
+exec(open(os.path.join(ROOT, 'portfolio.py'), encoding='utf-8').read())
+PROJECTS.extend(NEW_PROJECTS)
+for _p in PROJECTS + AWARDS:
+    _e = ENRICH.get(_p['slug'])
+    if _e:
+        _p['facts'] = _p['facts'] + _e.get('facts_add', [])
+        _p['gallery'] = _p['gallery'] + _e.get('gallery_add', [])
+        if _e.get('embeds_add'):
+            _p['embeds'] = (_p.get('embeds') or []) + _e['embeds_add']
+            _p.setdefault('embeds_heading', 'Watch')
+for _title, _sub, _slugs in PROJECT_GROUPS:
+    _slugs.extend(NEW_GROUP_SLUGS.get(_title, []))
+PROJECT_CATS.update(NEW_CATS)
+CAT_LABELS.append(('training', 'VR training'))
+next(p for p in PROJECTS if p['slug'] == 'tanit-xr')['extra'] = tanit_sections
+exec(open(os.path.join(ROOT, 'sketches.py'), encoding='utf-8').read())
+CSS += SECTIONS_CSS + SKETCH_CSS
 FOOTER += SECTIONS_JS
 
-BODIES = {'home': body_home, 'about': body_about, 'projects': body_projects,
+BODIES = {'home': body_home, 'about': body_about, 'projects': body_projects, 'work-with-me': body_work_page,
           'awards': body_awards, 'speaking': body_speaking,
           'opportunities': body_opportunities, 'press': body_press, 'blog': body_blog}
 
 HEAD = ('<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">')
 
 BASE_URL = 'https://www.inessaid.com'
-DEFAULT_DESC = ('Ines Said — Tunisian immersive artist and XR technologist. Founder of Tanit XR, '
-                "Tunisia's first open-source heritage archive, and Lead XR Developer at Froliq. "
+DEFAULT_DESC = ('Ines Said — Tunisian immersive artist and XR developer. Founder of Tanit XR, '
+                "a volunteer community scanning Tunisia's endangered heritage in 3D, and Lead XR Developer at Froliq. "
                 'Exhibited at the Smithsonian and MIT.')
 
 PERSON_JSONLD = """<script type="application/ld+json">
@@ -1585,7 +1627,7 @@ PERSON_JSONLD = """<script type="application/ld+json">
   "name": "Ines Said",
   "url": "https://www.inessaid.com",
   "image": "https://www.inessaid.com/web/portrait.jpg",
-  "jobTitle": "XR Immersive Artist and Technologist",
+  "jobTitle": "Immersive artist and XR developer",
   "worksFor": {"@type": "Organization", "name": "Froliq"},
   "founder": {"@type": "Organization", "name": "Tanit XR", "url": "https://tanitxr.org"},
   "alumniOf": [
@@ -1652,10 +1694,10 @@ def build_site():
     for page in PAGES:
         name = 'index.html' if page == 'home' else page + '.html'
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
-            f.write(page_html(page))
+            f.write(sketchify(page, page_html(page)))
     for p in PROJECTS:
         with open(os.path.join(OUT, f'project-{p["slug"]}.html'), 'w', encoding='utf-8') as f:
-            f.write(detail_page_html(p))
+            f.write(sketchify(p['slug'], detail_page_html(p)))
     for p in POSTS:
         name = f'blog-{p["slug"]}.html'
         html = (f'<!doctype html><html lang="en"><head>{HEAD}'
@@ -1663,7 +1705,7 @@ def build_site():
                 f'{FONTS}<style>{CSS}</style></head><body>'
                 f'{nav_html("blog", False)}{body_post(p, False)}{FOOTER}</body></html>')
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
-            f.write(html)
+            f.write(sketchify(p['slug'], html))
     for a in AWARDS:
         if not a['paras']:
             continue
@@ -1673,7 +1715,7 @@ def build_site():
                 f'{FONTS}<style>{CSS}</style></head><body>'
                 f'{nav_html("awards", False)}{body_detail(a, False, "awards", "All awards")}{FOOTER}</body></html>')
         with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
-            f.write(html)
+            f.write(sketchify(a['slug'], html))
     # legacy Wix URL redirects (protect indexed URLs + knowledge panel)
     LEGACY = {
         'about': 'about.html', 'projects': 'projects.html',

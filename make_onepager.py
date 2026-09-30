@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Speaker one-pager PDF for Ines Said — lavender brand, letter size."""
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.colors import HexColor
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 
-LAV = HexColor('#8a63d2'); LAV_DEEP = HexColor('#6a44b8'); TINT = HexColor('#f1ebfb')
-BLUSH = HexColor('#fdeff5'); PINK = HexColor('#d1518f'); INK = HexColor('#31264a')
-BODY = HexColor('#4c4160'); MUTED = HexColor('#907fa8'); GOLD = HexColor('#b8923f')
+LAV = HexColor('#8e3a63'); LAV_DEEP = HexColor('#5e2246'); TINT = HexColor('#f8e6e4')
+BLUSH = HexColor('#f9eeda'); PINK = HexColor('#b9486b'); INK = HexColor('#43203a')
+BODY = HexColor('#5c3a4e'); MUTED = HexColor('#a4808f'); GOLD = HexColor('#c08a2e')
 
 W, H = letter
 c = canvas.Canvas('web/ines-said-speaker.pdf', pagesize=letter)
@@ -47,8 +47,8 @@ c.drawString(28, y, 'English  ·  Arabic  ·  French'); y -= 30
 y = label(28, y, '✦  By the numbers')
 stats = [
     ('600,000+', 'visitors to the Smithsonian FUTURES\nexhibition featuring her installation'),
-    ('11,000+', 'people reached in 2025\nacross 40+ events'),
-    ('167K', 'LinkedIn impressions in the past year\n(7,000+ followers)'),
+    ('100+', 'free 3D models of Tunisian heritage\npublished by Tanit XR volunteers'),
+    ('85+', 'Tanit XR volunteers on four continents'),
     ('30 Under 30', 'EE 30 Under 30, Class of 2025 (NAAEE)'),
     ('Auggie Finalist', 'Best Societal Impact, AWE 2026'),
 ]
@@ -66,15 +66,15 @@ y = H - 64
 c.setFont('Helvetica-Bold', 30); c.setFillColor(INK)
 c.drawString(x, y, 'Ines Said'); y -= 20
 c.setFont('Helvetica-Bold', 11.5); c.setFillColor(LAV_DEEP)
-c.drawString(x, y, 'XR Immersive Artist & Technologist  ·  Speaker'); y -= 26
+c.drawString(x, y, 'Immersive artist and XR developer  ·  Speaker'); y -= 26
 
 c.setFont('Helvetica', 9.8); c.setFillColor(BODY)
-intro = ('Tunisian immersive artist and XR technologist. Founder of Tanit XR — '
-         "Tunisia's first open-source archive of endangered artifacts — and Lead XR "
-         'Developer at Froliq. Her installations on heritage and climate have been '
-         'exhibited internationally, including at the Smithsonian and MIT, with research '
-         'published in ACM and IEEE (Best Paper Award). She has presented everywhere '
-         'from the Energy Thought Summit main stage to the inside of a Roman colosseum.')
+intro = ('Tunisian immersive artist and XR developer. Founder of Tanit XR, a volunteer '
+         "community scanning Tunisia's endangered heritage in 3D, and Lead XR Developer "
+         'at Froliq. Her installations on heritage and climate have been shown at the '
+         'Smithsonian and MIT, and her research is published in ACM and IEEE (Best Paper '
+         'Award). She has presented everywhere from the Energy Thought Summit main stage '
+         'to the inside of a Roman amphitheater.')
 import textwrap
 for ln in textwrap.wrap(intro, 74):
     c.drawString(x, y, ln); y -= 13
@@ -88,7 +88,7 @@ def section(y, title):
     return y - 22
 
 y = section(y, 'Speaking topics')
-topics = ['XR for cultural heritage — from 3,000-year-old mosaics to Gaussian splats',
+topics = ['XR for cultural heritage: volunteers, phones and Gaussian splats',
           'Climate & sustainability through immersive technology',
           'From scans to XR: practical photogrammetry pipelines',
           'AR for public health · Women in XR · STEM education through games']

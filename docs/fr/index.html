@@ -1,11 +1,11 @@
-<!doctype html><html lang="fr" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ines Said | Artiste immersive et technologue XR</title><meta name="description" content="Ines Said, artiste immersive et technologue XR tunisienne. Fondatrice de Tanit XR, la première archive patrimoniale open source de Tunisie, et Lead XR Developer chez Froliq. Exposée au Smithsonian et au MIT."><link rel="canonical" href="https://www.inessaid.com/fr/"><meta property="og:type" content="website"><meta property="og:title" content="Ines Said | Artiste immersive et technologue XR"><meta property="og:description" content="Ines Said, artiste immersive et technologue XR tunisienne. Fondatrice de Tanit XR, la première archive patrimoniale open source de Tunisie, et Lead XR Developer chez Froliq. Exposée au Smithsonian et au MIT."><meta property="og:url" content="https://www.inessaid.com/fr/"><meta property="og:image" content="https://www.inessaid.com/web/portrait.jpg"><meta property="og:site_name" content="Ines Said"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">
+<!doctype html><html lang="fr" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ines Said | Artiste immersive et développeuse XR</title><meta name="description" content="Ines Said, artiste immersive et développeuse XR tunisienne. Fondatrice de Tanit XR, une communauté de bénévoles qui scanne en 3D le patrimoine menacé de la Tunisie, et Lead XR Developer chez Froliq. Exposée au Smithsonian et au MIT."><link rel="canonical" href="https://www.inessaid.com/fr/"><meta property="og:type" content="website"><meta property="og:title" content="Ines Said | Artiste immersive et développeuse XR"><meta property="og:description" content="Ines Said, artiste immersive et développeuse XR tunisienne. Fondatrice de Tanit XR, une communauté de bénévoles qui scanne en 3D le patrimoine menacé de la Tunisie, et Lead XR Developer chez Froliq. Exposée au Smithsonian et au MIT."><meta property="og:url" content="https://www.inessaid.com/fr/"><meta property="og:image" content="https://www.inessaid.com/web/portrait.jpg"><meta property="og:site_name" content="Ines Said"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Ines Said",
   "url": "https://www.inessaid.com",
   "image": "https://www.inessaid.com/web/portrait.jpg",
-  "jobTitle": "XR Immersive Artist and Technologist",
+  "jobTitle": "Immersive artist and XR developer",
   "worksFor": {"@type": "Organization", "name": "Froliq"},
   "founder": {"@type": "Organization", "name": "Tanit XR", "url": "https://tanitxr.org"},
   "alumniOf": [
@@ -61,11 +61,19 @@ h1,h2,h3{font-weight:400 !important}
   background:radial-gradient(closest-side,#ecd9a866,transparent 70%);
   border-radius:44% 56% 38% 62%/58% 44% 56% 42%}
 /* scrapbook photos */
-.gallery figure{transition:transform .2s}
-.gallery figure:nth-child(odd){transform:rotate(-1.3deg)}
-.gallery figure:nth-child(even){transform:rotate(1.1deg)}
-.gallery figure:hover{transform:rotate(0) scale(1.02)}
-.gallery img{border:8px solid #fff;box-shadow:0 8px 24px rgba(67,32,58,.16);border-radius:4px}
+.gallery figure{transition:transform .2s;background:linear-gradient(160deg,#fffefa,#f8f4ea);padding:10px 10px 0;border-radius:2px;position:relative;
+  box-shadow:0 1px 2px rgba(67,32,58,.12),0 14px 30px rgba(67,32,58,.18)}
+.gallery figure::before{content:"";position:absolute;top:-11px;left:50%;width:78px;height:22px;margin-left:-39px;background:rgba(232,205,150,.72);border-radius:2px;z-index:1;transform:rotate(-3deg)}
+.gallery figure:nth-child(even)::before{transform:rotate(4deg);width:64px;margin-left:-20px}
+.gallery figure:nth-child(3n)::before{background:rgba(214,170,190,.55)}
+.gallery figure:nth-child(odd){transform:rotate(-1.6deg)}
+.gallery figure:nth-child(even){transform:rotate(1.4deg)}
+.gallery figure:nth-child(4n){transform:rotate(-.6deg)}
+.gallery figure:hover{transform:rotate(0) scale(1.03);z-index:2}
+.gallery img{border:0;box-shadow:none;border-radius:0;outline:1px solid rgba(40,20,30,.08);outline-offset:-1px}
+.gallery figcaption{font-family:"Caveat",cursive;font-weight:600;font-size:1.25rem;line-height:1.15;color:var(--deep);text-align:center;padding:10px 4px 12px;min-height:52px;display:flex;align-items:center;justify-content:center}
+.gallery figure:nth-child(even) figcaption{color:var(--lav)}
+[dir="rtl"] .gallery figcaption{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:1.05rem}
 .media-strip figure:nth-child(odd){transform:rotate(-.8deg)}
 .media-strip figure:nth-child(even){transform:rotate(.7deg)}
 .media-strip img{border:8px solid #fff;box-shadow:0 8px 24px rgba(67,32,58,.14);border-radius:4px}
@@ -107,6 +115,18 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 .page-head p.sub{max-width:62ch;color:var(--muted);font-size:1.08rem;margin:0}
 
 /* hero (home) — Xiye-style photo band + personal intro */
+.hero-pols{background:var(--deep);padding:44px 0 34px;overflow:hidden;position:relative}
+.hero-pols .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:end;max-width:1120px}
+.hero-pols .pol{position:relative;width:auto;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
+.hero-pols .pol.h1{transform:rotate(-5deg) translateY(10px)}
+.hero-pols .pol.h2{transform:rotate(2.5deg) translateY(-14px) scale(1.06);z-index:2}
+.hero-pols .pol.h3{transform:rotate(-2deg) translateY(4px)}
+.hero-pols .pol.h4{transform:rotate(4.5deg) translateY(14px)}
+.hero-pols .pol:hover{transform:rotate(0) scale(1.06);z-index:3}
+.hero-pols .pol.h1::before{transform:rotate(-7deg)}
+.hero-pols .pol.h3::before{transform:rotate(5deg);background:rgba(214,170,190,.7)}
+.hero-pols .pol.h2 figcaption,.hero-pols .pol.h4 figcaption{color:var(--lav)}
+@media(max-width:760px){.hero-pols .wrap{grid-template-columns:1fr 1fr;gap:22px 18px;padding:0 24px}.hero-pols .pol{transform:none!important}.hero-pols .pol:nth-child(odd){transform:rotate(-3deg)!important}.hero-pols .pol:nth-child(even){transform:rotate(3deg)!important}}
 .photo-band{background:var(--deep);padding:30px 0}
 .photo-band .strip{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:14px;max-width:1160px;margin:0 auto;padding:0 20px;align-items:center}
 .photo-band img{display:block;width:100%;height:360px;object-fit:cover;border-radius:6px}
@@ -212,10 +232,10 @@ a.card:hover .card-inner{transform:translateY(-4px);box-shadow:0 14px 34px #8a63
 .fact-card li:first-child{border-top:none;padding-top:0}
 .fact-card li b{color:var(--ink)}
 .backlink{display:inline-block;margin:28px 0 0;font-weight:800;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:52px 0 0}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:34px 26px;margin:56px 0 0;padding:14px 6px 0}
 .gallery figure{margin:0}
-.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
-.gallery figcaption{font-size:.8rem;color:var(--muted);padding-top:8px}
+.gallery img{display:block;width:100%;aspect-ratio:1;object-fit:cover}
+
 @media(max-width:820px){.detail-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr 1fr}}
 
 /* embeds: videos + 3D models */
@@ -324,6 +344,9 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .related{background:var(--soft);padding:64px 0 72px;margin-top:72px}
 .related .cards .card-body p{font-size:.9rem}
 .cta-end{margin-top:0}
+/* local video embeds */
+.embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
+.book-wrap{max-width:720px;margin:0 auto}
 /* gallery lightbox */
 .gallery img,.media-strip img,.polwall img{cursor:zoom-in}
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(30,10,24,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px}
@@ -498,32 +521,38 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
 .gallery{grid-auto-flow:dense}
 .gallery figure:first-child{grid-column:span 2;grid-row:span 2}
 .gallery figure:first-child img{aspect-ratio:auto;height:100%;min-height:320px}
-</style><link rel="alternate" hreflang="en" href="https://www.inessaid.com/"><link rel="alternate" hreflang="fr" href="https://www.inessaid.com/fr/"><link rel="alternate" hreflang="ar" href="https://www.inessaid.com/ar/"><link rel="alternate" hreflang="x-default" href="https://www.inessaid.com/"></head><body><header class="site-header"><div class="wrap"><a class="brand" href="/fr/">Ines Said<em> ✦</em></a><nav><a href="/fr/" class="active">Accueil</a><a href="/fr/about/">À propos</a><a href="/fr/projects/">Projets</a><a href="/fr/awards/">Prix</a><a href="/fr/speaking/">Conférences</a><a href="/fr/opportunities/">Opportunités</a><a href="/fr/press/">Presse</a><a href="/fr/blog/">Blog</a></nav><div class="lang-switch"><a href="/" hreflang="en">EN</a><a href="/fr/" hreflang="fr" class="on">FR</a><a href="/ar/" hreflang="ar">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
-<div class="photo-band"><div class="strip">
-  <figure><img src="/web/statue-pose.jpg" alt="Ines Said imitant la pose d'une statue antique sur un site de fouilles en Tunisie"></figure>
-  <figure><img src="/web/mosaic-portrait.jpg" alt="Ines Said devant un mur de mosaïque antique"></figure>
-  <figure><img src="/web/ets-fireside.jpg" alt="Ines Said sur la scène de l'Energy Thought Summit"></figure>
+
+.sk-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.sk{position:absolute;fill:none;stroke:var(--lav);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;opacity:.17}
+.sk.gold{stroke:var(--gold);opacity:.24}
+.band.deep .sk,.cta-end .sk{stroke:#f3dcd6;opacity:.14}
+.band.deep .sk.gold,.cta-end .sk.gold{stroke:#e8cd96;opacity:.2}
+.has-sk{position:relative}
+.has-sk>.wrap{position:relative;z-index:1}
+@media(max-width:820px){.sk{transform:scale(.7)}}
+</style><link rel="alternate" hreflang="en" href="https://www.inessaid.com/"><link rel="alternate" hreflang="fr" href="https://www.inessaid.com/fr/"><link rel="alternate" hreflang="ar" href="https://www.inessaid.com/ar/"><link rel="alternate" hreflang="x-default" href="https://www.inessaid.com/"></head><body><svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="sk-column" viewbox="0 0 60 120"><path d="M12 14c6-3 12-3 18-1s12 2 18-1M10 20h40M14 20l2 88M46 20l-2 88M20 24l1 80M30 23v82M40 24l-1 80M9 110c8 3 34 3 42 0M7 116c10 3 36 3 46 0M15 13c-3-5 1-9 5-8s5 4 3 7M45 13c3-5-1-9-5-8s-5 4-3 7"></path></symbol><symbol id="sk-amphora" viewbox="0 0 70 110"><path d="M24 10c6-2 16-2 22 0M22 15c8-2 18-2 26 0M25 16c-2 8-10 12-12 24s4 26 8 34 5 14 4 22c-1 4 8 6 10 6s11-2 10-6c-1-8 0-14 4-22s10-22 8-34-10-16-12-24M20 24c-8 2-12 8-10 16s8 8 10 6M50 24c8 2 12 8 10 16s-8 8-10 6M26 40c6 2 12 2 18 0M23 60c8 3 16 3 24 0"></path></symbol><symbol id="sk-jasmine" viewbox="0 0 80 100"><path d="M40 44c-2-10 0-16 6-18s10 6 6 12M40 44c8-6 16-6 18 0s-4 10-10 8M40 44c10 2 14 8 10 14s-10 2-12-4M40 44c-2 10-8 14-14 10s-2-12 4-12M40 44c-10-2-14-8-10-14s10-2 12 4M38 44a3 3 0 1 0 4 0M38 56c-2 14-4 26-6 40M32 74c-8-2-14 2-16 8s6 6 12 2M34 84c8-4 14-2 16 4s-6 6-12 2"></path></symbol><symbol id="sk-shell" viewbox="0 0 90 80"><path d="M46 40c-2-8 8-12 14-6s4 18-6 22-24 0-28-12 6-28 22-30 30 10 32 26-8 30-24 34-34-6-40-22 4-34 20-40"></path><path d="M28 60l-8 10M36 66l-4 10M48 66l2 10M58 60l6 8M20 46l-10 4"></path></symbol><symbol id="sk-wave" viewbox="0 0 160 40"><path d="M2 12c12-10 22-10 34 0s22 10 34 0 22-10 34 0 22 10 34 0 14-6 20-4M8 30c12-10 22-10 34 0s22 10 34 0 22-10 34 0 22 10 34 0"></path></symbol><symbol id="sk-headset" viewbox="0 0 110 70"><path d="M14 22c6-8 20-12 41-12s35 4 41 12c4 6 4 22 0 28-6 8-18 6-24 0-4-4-10-6-17-6s-13 2-17 6c-6 6-18 8-24 0-4-6-4-22 0-28zM10 30H4c-2 0-2 8 0 8h6M100 30h6c2 0 2 8 0 8h-6M30 8c8-3 18-4 25-4s17 1 25 4M46 24c4-2 14-2 18 0"></path></symbol><symbol id="sk-tanit" viewbox="0 0 70 90"><path d="M35 8a9 9 0 1 0 .1 0M20 30c8 0 22 0 30 0M12 26c-4 0-4 8 0 8M58 26c4 0 4 8 0 8M35 30v8M22 38h26L58 80H12z"></path></symbol><symbol id="sk-mosaic" viewbox="0 0 100 70"><path d="M6 8l14-2 2 12-14 3zM24 6l12-2 2 12-12 2zM40 4l14-1 1 12-14 2zM58 5l12-2 2 12-12 2zM76 6l14-1 0 12-14 1zM4 24l12-2 2 12-12 2zM22 22l14-1 1 12-14 2zM42 20l12-2 2 12-12 2zM60 22l12-1 0 12-12 1zM78 23l12-2 2 12-12 2zM8 42l12-2 2 12-12 2zM26 40l12-1 2 12-12 2zM44 38l14-1 0 12-14 2zM62 40l12-1 1 12-12 1z"></path></symbol><symbol id="sk-olive" viewbox="0 0 120 70"><path d="M4 50c30-16 60-26 110-30M30 40c-4-10 0-18 8-20s10 8 4 16M44 34c-2-12 4-18 12-18s8 10 0 16M60 28c0-12 8-16 16-14s6 12-2 16M78 22c2-10 12-14 18-10s2 12-6 14M22 50c-10 2-18-2-20-10s8-8 14-2M40 46c-8 6-16 4-20-2s6-10 12-6M58 40c-6 8-14 8-18 2s4-10 10-8M76 34c-4 8-12 10-16 4s2-10 8-8M90 48a5 6 0 1 0 .1 0M100 40a5 6 0 1 0 .1 0"></path></symbol><symbol id="sk-arch" viewbox="0 0 140 90"><path d="M6 88V40c0-20 14-32 30-32s30 12 30 32v48M72 88V40c0-20 14-32 30-32s30 12 30 32v48M2 88h136M14 84V44c0-14 10-22 22-22s22 8 22 22v40M80 84V44c0-14 10-22 22-22s22 8 22 22v40M6 40h10M60 40h12M126 40h10"></path></symbol><symbol id="sk-fish" viewbox="0 0 120 60"><path d="M10 30c16-20 40-26 64-22 12 2 22 10 30 22-8 12-18 20-30 22-24 4-48-2-64-22zM104 30l14-14v28zM40 22l4-12 10 10M40 38l4 12 10-10M30 30a3 3 0 1 0 .1 0M56 20c2 6 2 14 0 20M70 18c2 8 2 16 0 24M84 20c2 6 2 14 0 20"></path></symbol><symbol id="sk-orange" viewbox="0 0 80 90"><path d="M40 30a26 26 0 1 0 .1 0M40 30c-2-8 0-14 6-18M46 12c8-6 16-4 20 2-6 6-14 6-20-2M34 20c-8-6-16-4-20 2 6 6 14 6 20-2M28 56c4 4 20 4 24 0"></path></symbol><symbol id="sk-star" viewbox="0 0 40 40"><path d="M20 4c2 8 6 12 16 16-10 4-14 8-16 16-2-8-6-12-16-16 10-4 14-8 16-16z"></path></symbol><symbol id="sk-heart" viewbox="0 0 60 56"><path d="M30 50C14 38 4 30 4 18 4 10 10 4 18 4c6 0 10 4 12 8 2-4 6-8 12-8 8 0 14 6 14 14 0 12-10 20-26 32z"></path></symbol><symbol id="sk-phone" viewbox="0 0 90 100"><path d="M28 6h30c4 0 6 2 6 6v76c0 4-2 6-6 6H28c-4 0-6-2-6-6V12c0-4 2-6 6-6zM38 10h10M40 88h6M22 30c-8 4-12 10-12 20s4 16 12 20M64 30c8 4 12 10 12 20s-4 16-12 20M14 22c-10 6-12 16-12 28s2 22 12 28M72 22c10 6 12 16 12 28s-2 22-12 28"></path></symbol><symbol id="sk-boat" viewbox="0 0 120 70"><path d="M10 40h100l-14 20H24zM60 40V8M60 12c14 4 24 10 28 24H60M56 24c-10-6-20-8-30 4M2 66c10-6 20-6 30 0s20 6 30 0 20-6 30 0 18 6 26 0"></path></symbol><symbol id="sk-palette" viewbox="0 0 90 80"><path d="M44 6C22 6 6 20 6 40s16 30 32 30c8 0 8-6 6-10s0-8 6-8h10c14 0 24-8 24-22C84 16 66 6 44 6zM26 30a4 4 0 1 0 .1 0M40 18a4 4 0 1 0 .1 0M58 18a4 4 0 1 0 .1 0M68 32a4 4 0 1 0 .1 0M62 62l22-24"></path></symbol></svg><header class="site-header"><div class="wrap"><a class="brand" href="/fr/">Ines Said<em> ✦</em></a><nav><a href="/fr/" class="active">Accueil</a><a href="/fr/about/">À propos</a><a href="/fr/projects/">Projets</a><a href="/fr/awards/">Prix</a><a href="/fr/speaking/">Conférences</a><a href="/fr/press/">Presse</a><a href="/fr/blog/">Blog</a><a href="/fr/work-with-me/">Travaillons ensemble</a></nav><div class="lang-switch"><a href="/" hreflang="en">EN</a><a href="/fr/" hreflang="fr" class="on">FR</a><a href="/ar/" hreflang="ar">&#1593;&#1585;&#1576;&#1610;</a></div></div></header>
+<div class="hero-pols"><div class="wrap">
+  <figure class="pol h1"><img src="/web/statue-pose.jpg" alt="Ines Said imitant la pose d'une statue antique sur un site de fouilles en Tunisie"><figcaption>prendre la pose</figcaption></figure>
+  <figure class="pol h2"><img src="/web/mosaic-portrait.jpg" alt="Ines Said devant un mur de mosaïque antique"><figcaption>fan de mosaïques ♡</figcaption></figure>
+  <figure class="pol h3"><img src="/web/ets-fireside.jpg" alt="Ines Said sur la scène de l'Energy Thought Summit"><figcaption>discussion au coin du feu, ETS</figcaption></figure>
+  <figure class="pol h4"><img src="/web/el-jem.jpg" alt="Ines Said à l'amphithéâtre d'El Jem en Tunisie"><figcaption>El Jem, Tunisie</figcaption></figure>
 </div></div>
 
 <div class="intro-home">
-  <p class="kicker">Artiste immersive et technologue XR</p>
+  <p class="kicker">Artiste immersive et développeuse XR</p>
   <h1>Bonjour, je suis <em>Ines Said</em>.</h1>
-  <p class="lede">J'ai grandi à 15 minutes à pied des ruines romaines de Néapolis, en Tunisie, et aujourd'hui j'ai la chance d'aider à préserver des lieux comme celui-ci en 3D ! Je suis la fondatrice de <strong>Tanit XR</strong> et Lead XR Developer chez <strong>Froliq</strong>, et mon travail sur le patrimoine et le climat a été présenté dans des lieux comme le Smithsonian et le MIT.</p>
+  <p class="lede">J'ai grandi à 15 minutes à pied des ruines romaines de Néapolis, en Tunisie. Aujourd'hui, je scanne notre patrimoine en 3D, un objet à la fois, avec des bénévoles du monde entier ! Je suis la fondatrice de <strong>Tanit XR</strong> et Lead XR Developer chez <strong>Froliq</strong>, et mon travail sur le patrimoine et le climat a été exposé dans des lieux comme le Smithsonian et le MIT.</p>
   <div class="btn-row">
     <a class="btn" href="/fr/projects/">Découvrir mon travail</a>
     <a class="btn ghost" href="/fr/about/">En savoir plus sur moi</a>
   </div>
 </div>
 
-<div class="band lav"><div class="wrap"><div class="stats">
-  <a href="/fr/projects/smithsonian-futures/"><b>600,000+</b><span>visiteurs à l'exposition du Smithsonian qui présentait mon travail</span></a>
-  <a href="https://naaee.org/people/ines-said" target="_blank" rel="noopener"><b>30 Under 30</b><span>EE 30 Under 30, promotion 2025 · NAAEE</span></a>
-  <a href="/fr/projects/"><b>11,000+</b><span>personnes touchées en 2025 lors de plus de 40 événements</span></a>
-  <a href="https://www.awexr.com/blog/1382-2026-auggie-awards-finalists-announced" target="_blank" rel="noopener"><b>Finaliste Auggie</b><span>Best Societal Impact · Tanit XR, AWE 2026</span></a>
-  <a href="https://www.linkedin.com/in/inessaid/" target="_blank" rel="noopener"><b>7,000+</b><span>personnes qui me suivent sur LinkedIn</span></a>
-  <a href="https://www.linkedin.com/newsletters/art-xr-impact-opportunities-7370189407523454976/" target="_blank" rel="noopener"><b>167K</b><span>vues sur mes posts LinkedIn sur l'année écoulée</span></a>
-  <a href="/fr/speaking/"><b>1 sur 4</b><span>dans mon audience est fondateur, dirigeant ou directeur</span></a>
-  <a href="/fr/about/"><b>3 langues</b><span>Je parle anglais, arabe et français</span></a>
+<div class="has-sk band lav"><div class="sk-layer"><svg class="sk gold" style="right:3%;bottom:10px;width:104px;transform:rotate(-14deg)" aria-hidden="true"><use href="#sk-headset"></use></svg><svg class="sk " style="left:2%;bottom:14px;width:92px;transform:rotate(9deg)" aria-hidden="true"><use href="#sk-column"></use></svg></div><div class="wrap"><div class="stats four">
+  <a href="/fr/projects/smithsonian-futures/"><b>600,000+</b><span>personnes ont vu mon travail à l'exposition FUTURES du Smithsonian</span></a>
+  <a href="/fr/projects/tanit-xr/"><b>100+</b><span>modèles 3D du patrimoine tunisien, gratuits pour tous, avec Tanit XR</span></a>
+  <a href="/fr/projects/tanit-xr/"><b>85+</b><span>bénévoles sur quatre continents qui scannent avec moi</span></a>
+  <a href="/fr/speaking/"><b>11,000+</b><span>personnes rencontrées en 2025 lors de 40+ événements</span></a>
 </div>
 <p style="text-align:center;margin:44px 0 0;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Vu dans</p>
 <p style="text-align:center;margin:10px 0 0;font-family:'Yeseva One',serif;font-weight:400;font-size:1.05rem">
@@ -538,33 +567,33 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
 
 <svg class="squiggle" viewbox="0 0 1200 22" preserveaspectratio="none" aria-hidden="true"><path d="M0 11 Q 25 0, 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11 T 650 11 T 700 11 T 750 11 T 800 11 T 850 11 T 900 11 T 950 11 T 1000 11 T 1050 11 T 1100 11 T 1150 11 T 1200 11"></path></svg>
 
-<section class="block"><div class="wrap">
+<section class="has-sk block"><div class="sk-layer"><svg class="sk gold" style="right:3%;bottom:10px;width:130px;transform:rotate(-4deg)" aria-hidden="true"><use href="#sk-arch"></use></svg><svg class="sk " style="left:-14px;top:18px;width:88px;transform:rotate(-14deg)" aria-hidden="true"><use href="#sk-jasmine"></use></svg></div><div class="wrap">
   <h2 class="sec-title">Projets à la une</h2>
-  <p class="sec-sub">Quelques-uns des projets qui me tiennent le plus à cœur.</p>
-  <div class="cards"><a class="card" href="/fr/projects/tanit-xr/"><div class="card-inner"><div class="thumb"><img src="/web/el-jem.jpg" alt="Ines Said à l'amphithéâtre d'El Jem en Tunisie" loading="lazy"></div><div class="card-body"><h3>Tanit XR</h3><p>Mon projet de cœur ! La première archive patrimoniale open source de Tunisie. Nos bénévoles ont scanné plus de 80 objets sur 20 sites, et tout est gratuit, accessible à tous.</p><div class="chips"><span class="chip">Photogrammétrie</span><span class="chip">Gaussian splats</span><span class="chip blush">Finaliste Auggie</span></div><span class="card-more">Voir le projet →</span></div></div></a><a class="card" href="/fr/projects/shadows-of-tomorrow/"><div class="card-inner"><div class="thumb"><img src="/web/heat.jpg" alt="Ines Said devant le mur de l'exposition HEAT pour Shadows of Tomorrow" loading="lazy"></div><div class="card-body"><h3>Shadows of Tomorrow</h3><p>Une installation sur le climat où vous voyez un monde abîmé quand vous êtes seul, et un monde restauré dès que vous tenez la main de quelqu'un.</p><div class="chips"><span class="chip">Suivi corporel</span><span class="chip">Unity</span><span class="chip blush">Prix d'excellence</span></div><span class="card-more">Voir le projet →</span></div></div></a><a class="card" href="/fr/projects/smithsonian-futures/"><div class="card-inner"><div class="thumb"><img src="/web/futures-wide.jpg" alt="La salle d'exposition FUTURES du Smithsonian" loading="lazy"></div><div class="card-body"><h3>Smithsonian FUTURES · Future of Energy &amp; Water</h3><p>J'ai co-créé l'expérience Future of Energy &amp; Water pour l'exposition FUTURES du Smithsonian à Washington, D.C. L'exposition a accueilli plus de 600 000 visiteurs !</p><div class="chips"><span class="chip">Smithsonian</span><span class="chip">VR</span><span class="chip">Durabilité</span></div><span class="card-more">Voir le projet →</span></div></div></a></div>
+  <p class="sec-sub">Quelques-uns de mes projets préférés.</p>
+  <div class="cards"><a class="card" href="/fr/projects/tanit-xr/"><div class="card-inner"><div class="thumb"><img src="/web/el-jem.jpg" alt="Ines Said à l'amphithéâtre d'El Jem en Tunisie" loading="lazy"></div><div class="card-body"><h3>Tanit XR</h3><p>Le projet qui me tient le plus à cœur. Des bénévoles en Tunisie et dans le monde entier scannent notre patrimoine menacé en 3D, un objet à la fois. 100+ modèles gratuits jusqu'ici !</p><div class="chips"><span class="chip">Photogrammétrie</span><span class="chip">Gaussian splats</span><span class="chip blush">Finaliste Auggie</span></div><span class="card-more">Voir le projet →</span></div></div></a><a class="card" href="/fr/projects/shadows-of-tomorrow/"><div class="card-inner"><div class="thumb"><img src="/web/heat.jpg" alt="Ines Said devant le mur de l'exposition HEAT pour Shadows of Tomorrow" loading="lazy"></div><div class="card-body"><h3>Shadows of Tomorrow</h3><p>Une installation sur le climat où vous voyez un monde abîmé quand vous êtes seul, et un monde restauré dès que vous tenez la main de quelqu'un.</p><div class="chips"><span class="chip">Suivi corporel</span><span class="chip">Unity</span><span class="chip blush">Prix d'excellence</span></div><span class="card-more">Voir le projet →</span></div></div></a><a class="card" href="/fr/projects/smithsonian-futures/"><div class="card-inner"><div class="thumb"><img src="/web/futures-wide.jpg" alt="La salle d'exposition FUTURES du Smithsonian" loading="lazy"></div><div class="card-body"><h3>Smithsonian FUTURES · Future of Energy &amp; Water</h3><p>J'ai co-créé l'expérience Future of Energy &amp; Water pour l'exposition FUTURES du Smithsonian à Washington, D.C. L'exposition a accueilli plus de 600 000 visiteurs !</p><div class="chips"><span class="chip">Smithsonian</span><span class="chip">VR</span><span class="chip">Durabilité</span></div><span class="card-more">Voir le projet →</span></div></div></a></div>
   <p style="margin:34px 0 0"><a class="btn ghost" href="/fr/projects/">Voir tous les projets</a></p>
 </div></section>
 
 <svg class="squiggle" viewbox="0 0 1200 22" preserveaspectratio="none" aria-hidden="true"><path d="M0 11 Q 25 0, 50 11 T 100 11 T 150 11 T 200 11 T 250 11 T 300 11 T 350 11 T 400 11 T 450 11 T 500 11 T 550 11 T 600 11 T 650 11 T 700 11 T 750 11 T 800 11 T 850 11 T 900 11 T 950 11 T 1000 11 T 1050 11 T 1100 11 T 1150 11 T 1200 11"></path></svg>
 
-<div class="band soft"><div class="wrap">
+<div class="has-sk band soft"><div class="sk-layer"><svg class="sk gold" style="right:3%;bottom:10px;width:46px;transform:rotate(-8deg)" aria-hidden="true"><use href="#sk-heart"></use></svg><svg class="sk " style="left:-14px;top:18px;width:104px;transform:rotate(5deg)" aria-hidden="true"><use href="#sk-headset"></use></svg></div><div class="wrap">
   <h2 class="sec-title">Récemment</h2>
   <p class="sec-sub">Ce que je fais ces derniers temps.</p>
   <ul class="list">
-    <li><div><span class="t"><a href="https://youtu.be/CY6u3LGEN3E" target="_blank" rel="noopener">Mon épisode de Spatial Creator Spotlight est sorti !</a></span><div class="d">J'ai pu parler de mon parcours, de Tanit XR et de la XR au service du bien. L'épisode complet sera diffusé en avant-première sur YouTube le 24 septembre. Venez le regarder !</div></div><span class="who">Nouveau · sept. 2026</span></li>
-    <li><div><span class="t"><a href="/fr/blog/auggie-finalist-whale/">Nous étions finalistes aux Auggie Awards !</a></span><div class="d">Tanit XR était finaliste dans la catégorie Best Societal Impact, aux plus grands prix de la XR. Merci beaucoup à toutes celles et ceux qui ont voté pour nous !</div></div><span class="who">AWE · 2026</span></li>
-    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/" target="_blank" rel="noopener">Niantic Spatial a partagé notre scan d'El Jem !</a></span><div class="d">Nos bénévoles ont scanné l'amphithéâtre d'El Jem, notre plus grande reconstruction à ce jour, et Niantic Spatial en a fait une vidéo. J'étais tellement contente !</div></div><span class="who">Niantic Spatial</span></li>
-    <li><div><span class="t"><a href="https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/" target="_blank" rel="noopener">Un cours gratuit de scan 3D avec Tanit XR</a></span><div class="d">Mark Jeffcock a animé notre cours gratuit de 6 semaines pour apprendre à scanner avec son téléphone. Aucune expérience nécessaire, juste de la curiosité !</div></div><span class="who">Tanit XR</span></li>
-    <li><div><span class="t"><a href="/fr/blog/sunken-city/">À la recherche d'une cité romaine engloutie</a></span><div class="d">Nous sommes partis en pédalo à 6 h du matin près de ma ville natale, Nabeul, pour chercher les ruines sous-marines de Néapolis. L'eau était si claire !</div></div><span class="who">Carnet de terrain</span></li>
-    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/" target="_blank" rel="noopener">Tanit XR avait son propre track à ImmerseGT !</a></span><div class="d">Pendant le hackathon XR de 36 heures de Georgia Tech, les équipes ont créé des projets avec nos vrais scans du patrimoine tunisien. Bravo à « From Mystery to History » qui a gagné notre track !</div></div><span class="who">ImmerseGT · 2026</span></li>
+    <li><div><span class="t"><a href="https://youtu.be/CY6u3LGEN3E" target="_blank" rel="noopener">Mon épisode de Spatial Creator Spotlight est sorti !</a></span><div class="d">J'ai pu parler de mon parcours, de Tanit XR et de la XR au service du bien commun. L'épisode complet est sur YouTube.</div></div><span class="who">Nouveau · sept. 2026</span></li>
+    <li><div><span class="t"><a href="/fr/blog/auggie-finalist-whale/">Nous étions finalistes aux Auggie Awards !</a></span><div class="d">Tanit XR était finaliste dans la catégorie Best Societal Impact à l'AWE 2026.</div></div><span class="who">AWE · juin 2026</span></li>
+    <li><div><span class="t"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7488488682652495873/" target="_blank" rel="noopener">Niantic Spatial m'a interviewée !</a></span><div class="d">Nathan Bowser m'a interrogée sur Tanit XR et nos scans à El Jem, et Niantic a publié la vidéo. J'étais tellement contente !</div></div><span class="who">Niantic Spatial · juil. 2026</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/" target="_blank" rel="noopener">Un cours gratuit de scan 3D avec Tanit XR</a></span><div class="d">Mark Jeffcock, qui anime notre cours Splats With Phones, vous montre comment scanner avec votre téléphone en six semaines gratuites. Aucune expérience nécessaire, juste de la curiosité !</div></div><span class="who">Tanit XR · déc. 2025</span></li>
+    <li><div><span class="t"><a href="/fr/blog/sunken-city/">À la recherche d'une cité romaine engloutie</a></span><div class="d">Nous sommes partis en pédalo à 6 h du matin près de ma ville natale, Nabeul, pour chercher les ruines sous-marines de Néapolis. L'eau était si claire !</div></div><span class="who">Notes de terrain · août 2026</span></li>
+    <li><div><span class="t"><a href="https://tanitxr.org/immersegt-2026/" target="_blank" rel="noopener">Tanit XR avait son propre track à ImmerseGT !</a></span><div class="d">Pendant le hackathon XR de 36 heures de Georgia Tech, les équipes ont créé des projets avec nos vrais scans du patrimoine tunisien. Bravo à « From Mystery to History » qui a gagné notre track !</div></div><span class="who">ImmerseGT · avr. 2026</span></li>
   </ul>
 </div></div>
 
-<div class="band deep"><div class="wrap"><div class="two-col" style="align-items:center">
+<div class="has-sk band deep"><div class="sk-layer"><svg class="sk gold" style="right:-10px;top:26px;width:110px;transform:rotate(-4deg)" aria-hidden="true"><use href="#sk-boat"></use></svg><svg class="sk " style="left:-14px;top:18px;width:84px;transform:rotate(5deg)" aria-hidden="true"><use href="#sk-amphora"></use></svg></div><div class="wrap"><div class="two-col" style="align-items:center">
   <div>
     <p class="kicker">Conférences</p>
     <h2 class="sec-title" style="margin-bottom:10px">Je serais ravie d'intervenir à votre événement !</h2>
-    <p style="max-width:56ch;margin:0 0 24px">Je donne des keynotes, des tables rondes et des ateliers sur le patrimoine, le climat et les technologies immersives. J'ai pris la parole partout, de AWE jusqu'à l'intérieur d'un amphithéâtre romain en Tunisie, en présentiel ou en ligne, en anglais, en arabe ou en français.</p>
+    <p style="max-width:56ch;margin:0 0 24px">Je parle de patrimoine, de climat et de XR. J'ai donné des conférences à AWE, à l'Energy Thought Summit et même dans l'amphithéâtre d'El Jem !</p>
     <div class="btn-row">
       <a class="btn" href="/fr/speaking/#book">Réserver une intervention</a>
       <a class="btn ghost" href="/fr/speaking/">Thèmes et interventions passées</a>
@@ -573,16 +602,16 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
   <div class="polaroids"><figure class="pol p1"><img src="/web/ets-stage.jpg" alt=""><figcaption>Grande scène d'ETS</figcaption></figure><figure class="pol p2"><img src="/web/stage.jpg" alt=""><figcaption>Intervention à ELLEvate</figcaption></figure></div>
 </div></div></div>
 
-<section class="block"><div class="wrap">
+<section class="has-sk block"><div class="sk-layer"><svg class="sk gold" style="left:2%;bottom:14px;width:130px;transform:rotate(-8deg)" aria-hidden="true"><use href="#sk-arch"></use></svg><svg class="sk " style="right:3%;bottom:10px;width:120px;transform:rotate(15deg)" aria-hidden="true"><use href="#sk-olive"></use></svg></div><div class="wrap">
   <h2 class="sec-title">La vie sur le terrain</h2>
   <p class="sec-sub">Quelques-uns de mes moments préférés : des ruines, des scènes, la mer et des salles de classe.</p>
   <div class="polwall"><figure class="pol" data-note="Looking for a sunken city near my hometown."><img src="/web/neapolis-swim.jpg" alt="À la recherche de la cité engloutie de Néapolis en mer" loading="lazy"><figcaption>on cherche Néapolis</figcaption></figure><figure class="pol" data-note="The El Jem Amphitheater, one of my favorite places."><img src="/web/el-jem.jpg" alt="Ines Said à l'amphithéâtre d'El Jem en Tunisie" loading="lazy"><figcaption>El Jem, Tunisie</figcaption></figure><figure class="pol" data-note="Soccer day with the Froliq team at AWE!"><img src="/web/froliq-playground.jpg" alt="L'équipe Froliq au playground d'AWE" loading="lazy"><figcaption>l'heure du foot !</figcaption></figure><figure class="pol" data-note="Teaching a workshop."><img src="/web/workshop.jpg" alt="Un atelier en classe" loading="lazy"><figcaption>jour d'atelier</figcaption></figure><figure class="pol" data-note="Auggie Awards night. We were finalists!"><img src="/web/auggie-night.jpg" alt="La soirée des Auggie Awards à AWE 2026" loading="lazy"><figcaption>la soirée des Auggies</figcaption></figure><figure class="pol" data-note="At the El Jem conference with my sister."><img src="/web/eljem-conf.jpg" alt="Ines Said et sa sœur à la conférence d'El Jem" loading="lazy"><figcaption>avec ma sœur ♡</figcaption></figure><figure class="pol" data-note="Boston in January for MIT Reality Hack. Worth it!"><img src="/web/rh-snow-1.jpg" alt="Boston sous la neige pendant le MIT Reality Hack" loading="lazy"><figcaption>Boston sous la neige</figcaption></figure><figure class="pol" data-note="Tanit XR turned one!"><img src="/web/tanit-birthday.jpg" alt="On fête le premier anniversaire de Tanit XR" loading="lazy"><figcaption>joyeux anniversaire Tanit !</figcaption></figure></div>
 </div></section>
 
-<div class="band blush"><div class="wrap" style="text-align:center">
+<div class="has-sk band blush"><div class="sk-layer"><svg class="sk gold" style="left:2%;bottom:14px;width:70px;transform:rotate(15deg)" aria-hidden="true"><use href="#sk-phone"></use></svg><svg class="sk " style="right:3%;bottom:10px;width:88px;transform:rotate(-4deg)" aria-hidden="true"><use href="#sk-jasmine"></use></svg></div><div class="wrap" style="text-align:center">
   <p class="kicker" style="justify-content:center">Association</p>
   <h2 class="sec-title" style="margin-bottom:10px">Soutenez Tanit XR 🏺</h2>
-  <p style="max-width:58ch;margin:0 auto 24px">Le patrimoine tunisien disparaît plus vite que nous ne pouvons le protéger. Tanit XR fonctionne grâce à des bénévoles, et jusqu'ici nous avons tout financé nous-mêmes. Vous pouvez faire un don via notre sponsor fiscal, la Florida Community Innovation Foundation, ou venir nous rejoindre comme bénévole. Vous aimez l'histoire ? La XR vous intrigue ? Tout le monde est le bienvenu !</p>
+  <p style="max-width:58ch;margin:0 auto 24px">Une grande partie du patrimoine tunisien n'a jamais été documentée, et il s'abîme. Tanit XR est portée par des bénévoles, et jusqu'ici nous avons tout financé nous-mêmes. Vous pouvez faire un don via notre sponsor fiscal, Florida Community Innovation, une organisation américaine 501(c)(3), ou venir faire du bénévolat avec nous. Vous aimez l'histoire ? La XR vous intrigue ? Tout le monde est bienvenu !</p>
   <div class="btn-row" style="justify-content:center">
     <a class="btn" href="https://donors.tuesday.app/campaign/CMLPDTO" target="_blank" rel="noopener">Faire un don à Tanit XR</a>
     <a class="btn ghost" href="https://tanitxr.org/volunteer/" target="_blank" rel="noopener">Devenir bénévole</a>
@@ -605,7 +634,6 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
     <div>
       <h3>Contact</h3>
       <a href="mailto:ines@tanitxr.org">ines@tanitxr.org</a>
-      <a href="mailto:inessaid88@gmail.com">inessaid88@gmail.com</a>
     </div>
     <div>
       <h3>Me suivre</h3>
@@ -613,6 +641,8 @@ a.quote-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(94,34,
       <a href="https://www.instagram.com/inessaidd/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/ines1said/" target="_blank" rel="noopener">Facebook</a>
       <a href="https://tanitxr.org" target="_blank" rel="noopener">tanitxr.org</a>
+      <a href="https://sketchfab.com/TanitXR" target="_blank" rel="noopener">Sketchfab</a>
+      <a href="https://www.researchgate.net/profile/Ines-Said-2" target="_blank" rel="noopener">ResearchGate</a>
     </div>
   </div>
   <div class="legal"><span>© 2026 Ines Said. Tous droits réservés.</span><span>Fait avec amour, entre la Tunisie et D.C. ✦</span></div>
