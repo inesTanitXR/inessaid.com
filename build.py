@@ -604,7 +604,7 @@ PROJECTS = [
    links=[], gallery=[]),
 
  dict(slug='vistra-tour', title='Vistra Energy Hazard Tour', category='Safety · WebXR',
-   img=None, alt='', ph=('WebXR', 'Power plant tour', 'blush'),
+   img='fq-vistra', alt='The gas turbine room in the Vistra plant tour',
    card='A guided virtual safety tour of the Vistra Midlothian power plant — four interactive hazard zones, running in any browser and in VR.',
    chips=['WebXR', 'Needle Engine', 'Unity'],
    paras=[
@@ -617,7 +617,7 @@ PROJECTS = [
    links=[], gallery=[]),
 
  dict(slug='froliq-minigames', title='Froliq VR Mini-Game Series', category='STEM Education · VR',
-   img=None, alt='', ph=('STEM &times; VR', 'Educational games', 'lav'),
+   img='fq-nef-hub', alt='The Froliq VR mini-game hub for the National Energy Foundation',
    card='VR games that teach energy and the environment: sort waste in Recyclotopia, audit home energy in BungaLoad, power towns with wind in Fantastic Winds.',
    chips=['VR', 'Unity', 'Education'],
    paras=[
@@ -653,7 +653,7 @@ PROJECTS = [
    links=[], gallery=[]),
 
  dict(slug='exelon-stem', title='Exelon STEM Program', category='Workforce · VR Simulations',
-   img=None, alt='', ph=('STEM', 'Six utilities', 'blush'),
+   img='fq-exelon', alt='Students trying utility jobs in VR with the Exelon STEM program',
    card="XR simulations of real utility careers for Exelon's five-year STEM program across all six of its utilities — from career fairs to classrooms.",
    chips=['VR', 'Workforce development'],
    paras=[
