@@ -332,8 +332,8 @@ def body_about(preview):
                'Living between Washington, D.C. and Tunisia, and I speak English, Arabic and French'],
         buttons=[('See my projects', H('projects')), ('Invite me to speak', H('speaking'))])) + \
     stats_photo('el-jem', [('600K+', 'visitors to the Smithsonian exhibition featuring my work'),
-                           ('100+', '3D models of Tunisian heritage, free for everyone'),
-                           ('85+', 'Tanit XR volunteers on four continents'),
+                           ('30 Under 30', 'NAAEE EE 30 Under 30, Class of 2025'),
+                           ('Auggie finalist', 'Best Societal Impact, AWE 2026'),
                            ('11K+', 'people I met in 2025 at 40+ events')]) + \
     section(icon_cards([
         ('tanit', 'Heritage preservation', "Scanning Tunisia's mosaics, statues and ruins before we lose them.", H('p-tanit-xr'), 'Tanit XR'),

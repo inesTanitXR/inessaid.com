@@ -86,7 +86,7 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 /* hero (home) — Xiye-style photo band + personal intro */
 .hero-pols{background:var(--deep);padding:44px 0 34px;overflow:hidden;position:relative}
 .hero-pols .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:end;max-width:1120px}
-.hero-pols .pol{position:relative;width:auto;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
+.hero-pols .pol{position:relative;width:auto;text-decoration:none;color:inherit;cursor:pointer;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
 .hero-pols .pol.h1{transform:rotate(-5deg) translateY(10px)}
 .hero-pols .pol.h2{transform:rotate(2.5deg) translateY(-14px) scale(1.06);z-index:2}
 .hero-pols .pol.h3{transform:rotate(-2deg) translateY(4px)}
@@ -150,6 +150,8 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 .band.deep .btn.ghost{background:transparent;color:#fff;border:2px solid #ffffff88}
 .band.deep .btn.ghost:hover{background:#ffffff1e;border-color:#fff}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stats.five{grid-template-columns:repeat(5,1fr);gap:22px}
+@media(max-width:900px){.stats.five{grid-template-columns:repeat(2,1fr)}}
 .stats b{display:block;font-family:"Yeseva One",serif;font-weight:700;font-size:2rem;color:var(--lav-deep)}
 .stats span{display:block;font-size:.9rem;margin-top:6px}
 .stats a{display:block;color:inherit;border-radius:16px;padding:14px 10px;transition:background .15s,transform .15s}

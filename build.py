@@ -99,7 +99,7 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 /* hero (home) — Xiye-style photo band + personal intro */
 .hero-pols{background:var(--deep);padding:44px 0 34px;overflow:hidden;position:relative}
 .hero-pols .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;align-items:end;max-width:1120px}
-.hero-pols .pol{position:relative;width:auto;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
+.hero-pols .pol{position:relative;width:auto;text-decoration:none;color:inherit;cursor:pointer;box-shadow:0 2px 3px rgba(0,0,0,.2),0 26px 50px rgba(20,5,15,.45)}
 .hero-pols .pol.h1{transform:rotate(-5deg) translateY(10px)}
 .hero-pols .pol.h2{transform:rotate(2.5deg) translateY(-14px) scale(1.06);z-index:2}
 .hero-pols .pol.h3{transform:rotate(-2deg) translateY(4px)}
@@ -163,6 +163,8 @@ nav a.active{color:var(--lav-deep);border-bottom:2px solid var(--lav);padding-bo
 .band.deep .btn.ghost{background:transparent;color:#fff;border:2px solid #ffffff88}
 .band.deep .btn.ghost:hover{background:#ffffff1e;border-color:#fff}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stats.five{grid-template-columns:repeat(5,1fr);gap:22px}
+@media(max-width:900px){.stats.five{grid-template-columns:repeat(2,1fr)}}
 .stats b{display:block;font-family:"Yeseva One",serif;font-weight:700;font-size:2rem;color:var(--lav-deep)}
 .stats span{display:block;font-size:.9rem;margin-top:6px}
 .stats a{display:block;color:inherit;border-radius:16px;padding:14px 10px;transition:background .15s,transform .15s}
@@ -1108,10 +1110,10 @@ def body_home(preview):
     featured = ''.join(card_html(p, preview) for p in PROJECTS[:3])
     return f"""
 <div class="hero-pols"><div class="wrap">
-  <figure class="pol h1"><img src="web/statue-pose.jpg" alt="Ines Said matching poses with an ancient statue at a Tunisian dig site"><figcaption>striking a pose</figcaption></figure>
-  <figure class="pol h2"><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"><figcaption>mosaic love &#9825;</figcaption></figure>
-  <figure class="pol h3"><img src="web/ets-fireside.jpg" alt="Ines Said speaking on the Energy Thought Summit stage"><figcaption>fireside chat at ETS</figcaption></figure>
-  <figure class="pol h4"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater in Tunisia"><figcaption>El Jem, Tunisia</figcaption></figure>
+  <a class="pol h1" href="{href('about', preview)}"><img src="web/statue-pose.jpg" alt="Ines Said matching poses with an ancient statue at a Tunisian dig site"><figcaption>striking a pose</figcaption></a>
+  <a class="pol h2" href="{href('p-tanit-xr', preview)}"><img src="web/mosaic-portrait.jpg" alt="Ines Said in front of an ancient mosaic wall"><figcaption>mosaic love &#9825;</figcaption></a>
+  <a class="pol h3" href="{href('speaking', preview)}"><img src="web/ets-fireside.jpg" alt="Ines Said speaking on the Energy Thought Summit stage"><figcaption>fireside chat at ETS</figcaption></a>
+  <a class="pol h4" href="{href('b-el-jem-colosseum', preview)}"><img src="web/el-jem.jpg" alt="Ines Said at the El Jem Amphitheater in Tunisia"><figcaption>El Jem, Tunisia</figcaption></a>
 </div></div>
 
 <div class="intro-home">
@@ -1126,10 +1128,11 @@ def body_home(preview):
   </div>
 </div>
 
-<div class="band lav"><div class="wrap"><div class="stats four">
+<div class="band lav"><div class="wrap"><div class="stats five">
   <a href="{href('p-smithsonian-futures', preview)}"><b>600,000+</b><span>people saw my work at the Smithsonian's FUTURES exhibition</span></a>
-  <a href="{href('p-tanit-xr', preview)}"><b>100+</b><span>3D models of Tunisian heritage, free for everyone, with Tanit XR</span></a>
-  <a href="{href('p-tanit-xr', preview)}"><b>85+</b><span>volunteers on four continents scanning with me</span></a>
+  <a href="{href('a-ee-30-under-30', preview)}"><b>30 Under 30</b><span>NAAEE EE 30 Under 30, Class of 2025</span></a>
+  <a href="{href('a-auggie-finalist', preview)}"><b>Auggie Finalist</b><span>Best Societal Impact at AWE 2026, for Tanit XR</span></a>
+  <a href="{href('a-ieee-best-paper', preview)}"><b>Best Paper</b><span>IEEE ISEC 2023, for our VR learning research</span></a>
   <a href="{href('speaking', preview)}"><b>11,000+</b><span>people I met in 2025 at 40+ events</span></a>
 </div>
 <p style="text-align:center;margin:44px 0 0;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">As featured in</p>
