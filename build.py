@@ -356,6 +356,9 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
   .hero2-pols .pol.hp1{transform:rotate(-3deg)}.hero2-pols .pol.hp2{transform:rotate(3deg)}.hero2-pols .pol.hp3{transform:rotate(-2deg);grid-column:1/3;width:60%;margin:0 auto;order:-1}}
 .date-cards.three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.date-cards.three{grid-template-columns:1fr}}
+.embeds:has(.embed.page){max-width:none;grid-template-columns:1fr}
+.embed.page{grid-column:1/-1}
+.embed.page iframe{width:100%;height:min(82vh,860px);aspect-ratio:auto;border:0;border-radius:16px;background:#fff;box-shadow:0 14px 34px rgba(67,32,58,.16)}
 /* local video embeds */
 .embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
 .book-wrap{max-width:720px;margin:0 auto}
@@ -410,6 +413,12 @@ def embed_html(e, preview):
         src = f'https://www.linkedin.com/embed/feed/update/urn:li:activity:{eid}'
         watch = f'https://www.linkedin.com/feed/update/urn:li:activity:{eid}/'
         style = ' style="aspect-ratio:1/1;max-width:560px"'
+    elif kind == 'page':
+        if preview:
+            return f'<div class="embed"><a class="embed-ph" href="{eid}">&#127963;&nbsp; {title}</a></div>'
+        return (f'<div class="embed page"><figure><iframe src="{eid}" title="{title}" loading="lazy" '
+                f'allow="xr-spatial-tracking; fullscreen; camera; accelerometer; gyroscope" allowfullscreen></iframe>'
+                f'<figcaption><a href="{eid}">{title} &rarr;</a></figcaption></figure></div>')
     elif kind == 'video':
         if preview:
             return f'<div class="embed"><a class="embed-ph" href="{BASE_URL}/web/video/{eid}.mp4">&#9658;&nbsp; {title}</a></div>'
@@ -519,12 +528,8 @@ PROJECTS = [
           ('Education', 'Free "Splats With Phones" course, taught by Mark Jeffcock; research paper published in English, French &amp; Tunisian Arabic'),
           ('Hackathons', "Sponsored a Tunisian-heritage track at ImmerseGT 2026, Georgia Tech's 36-hour XR hackathon"),
           ('Recognition', 'Auggie Awards finalist, Best Societal Impact (AWE 2026); featured by Al Jazeera and Niantic Spatial')],
-   embeds_heading='Watch &amp; explore in 3D',
-   embeds=[dict(kind='linkedin', id='7488488682652495873', title='Niantic Spatial interviews Ines about Tanit XR and El Jem'),
-           dict(kind='sketchfab', id='e7bfb3b0767248f5b4064ca8c57dc6e4', title='Tanit Stela — Tophet of Salammbô, Carthage'),
-           dict(kind='sketchfab', id='afe868bfb0454b0faa7d95d7961a5ba6', title='Corinthian Capital — Byrsa Hill, Carthage'),
-           dict(kind='sketchfab', id='5766b06d2fc44df8bdc8319b11d49e7c', title='Bird of Prey Statue — Roman Villas of Carthage'),
-           dict(kind='sketchfab', id='9027a243275242a19956a84a297d1e1e', title='Roman Column — Byrsa Hill, Carthage')],
+   embeds_heading='Explore the collection in 3D',
+   embeds=[dict(kind='page', id='https://tanitxr.org/explore/', title='Explore every object our volunteers scanned, live from tanitxr.org. Open it full screen')],
    links=[('Donate (via our fiscal sponsor, Florida Community Innovation, a US 501(c)(3))', 'https://donors.tuesday.app/campaign/CMLPDTO'),
           ('Volunteer with Tanit XR', 'https://tanitxr.org/volunteer/'),
           ('Free course: Splats With Phones', 'https://tanitxr.org/photogrammetry-with-phones-by-mark-jeffcock/'),
@@ -1160,7 +1165,7 @@ def body_home(preview):
   <a href="{href('a-ee-30-under-30', preview)}"><b>30 Under 30</b><span>NAAEE EE 30 Under 30, Class of 2025</span></a>
   <a href="{href('a-auggie-finalist', preview)}"><b>Auggie Finalist</b><span>Best Societal Impact at AWE 2026, for Tanit XR</span></a>
   <a href="{href('a-ieee-best-paper', preview)}"><b>Best Paper</b><span>IEEE ISEC 2023, for our VR learning research</span></a>
-  <a href="{href('speaking', preview)}"><b>11,000+</b><span>people I met in 2025 at 40+ events</span></a>
+  <a href="{href('a-gfaa-excellence', preview)}"><b>Excellence Award</b><span>GFAA Biennial, presented by Miami's Chief Heat Officer Jane Gilbert and author Jeff Goodell</span></a>
 </div>
 <p style="text-align:center;margin:44px 0 0;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">As featured in</p>
 <p style="text-align:center;margin:10px 0 0;font-family:'Yeseva One',serif;font-weight:400;font-size:1.05rem">

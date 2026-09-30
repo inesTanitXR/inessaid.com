@@ -156,8 +156,8 @@ NEW_PROJECTS = [
           ('Tools', 'WebXR, Three.js, Gaussian splats, Sketchfab'), ('Launched', '2026'),
           ('Collection', '69 objects in the browser (September 2026), 100+ models published in total')],
    links=[('Open Explore on tanitxr.org', 'https://tanitxr.org/explore/'), ('Tanit XR on Sketchfab', 'https://sketchfab.com/TanitXR')],
-   embeds_heading='A few of the objects',
-   embeds=[dict(kind='sketchfab', id='69c17d81b8054f5ca7c447f582bd8634', title='Neapolis ruins revealed by Storm Harry, captured by Youssef Lakdhar')],
+   embeds_heading='Try it right here',
+   embeds=[dict(kind='page', id='https://tanitxr.org/explore/', title='This is the live Explore page on tanitxr.org. Open it full screen')],
    gallery=[('tx-explore-gallery', "A volunteer's gallery."), ('tx-alyssa-3', 'Illustration by our volunteer Alyssa George.')]),
 ]
 

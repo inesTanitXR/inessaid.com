@@ -47,7 +47,7 @@ c.drawString(28, y, 'English  ·  Arabic  ·  French'); y -= 30
 y = label(28, y, '✦  By the numbers')
 stats = [
     ('600,000+', 'visitors to the Smithsonian FUTURES\nexhibition featuring her installation'),
-    ('11,000+', 'people met in 2025\nacross 40+ events'),
+    ('Excellence Award', 'GFAA Biennial, presented by Jane Gilbert\nand Jeff Goodell'),
     ('Best Paper', 'IEEE ISEC 2023'),
     ('30 Under 30', 'EE 30 Under 30, Class of 2025 (NAAEE)'),
     ('Auggie Finalist', 'Best Societal Impact, AWE 2026'),

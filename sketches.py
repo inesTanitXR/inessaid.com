@@ -19,6 +19,7 @@ SKETCH_SYMBOLS = {
  'heart': '''<symbol id="sk-heart" viewBox="0 0 60 56"><path d="M30 50C14 38 4 30 4 18 4 10 10 4 18 4c6 0 10 4 12 8 2-4 6-8 12-8 8 0 14 6 14 14 0 12-10 20-26 32z"/></symbol>''',
  'phone': '''<symbol id="sk-phone" viewBox="0 0 90 100"><path d="M28 6h30c4 0 6 2 6 6v76c0 4-2 6-6 6H28c-4 0-6-2-6-6V12c0-4 2-6 6-6zM38 10h10M40 88h6M22 30c-8 4-12 10-12 20s4 16 12 20M64 30c8 4 12 10 12 20s-4 16-12 20M14 22c-10 6-12 16-12 28s2 22 12 28M72 22c10 6 12 16 12 28s-2 22-12 28"/></symbol>''',
  'boat': '''<symbol id="sk-boat" viewBox="0 0 120 70"><path d="M10 40h100l-14 20H24zM60 40V8M60 12c14 4 24 10 28 24H60M56 24c-10-6-20-8-30 4M2 66c10-6 20-6 30 0s20 6 30 0 20-6 30 0 18 6 26 0"/></symbol>''',
+ 'ines': '''<symbol id="sk-ines" viewBox="0 0 100 120"><path d="M50 14c-9 0-16 6-18 14-6 2-10 9-8 16-5 4-6 12-2 17-3 6 0 13 5 15-1 6 4 11 10 10 2 5 8 7 13 5 5 2 11 0 13-5 6 1 11-4 10-10 5-2 8-9 5-15 4-5 3-13-2-17 2-7-2-14-8-16-2-8-9-14-18-14z"/><path d="M36 40c4-4 10-6 14-6s10 2 14 6"/><path d="M28 52c8 0 12 4 22 4s14-4 22-4M31 58c4 6 10 8 19 8s15-2 19-8"/><path d="M28 52c-2 0-4 2-4 5s2 5 4 5M72 52c2 0 4 2 4 5s-2 5-4 5"/><path d="M44 74c3 3 9 3 12 0"/><path d="M40 82c-10 4-16 12-18 24M60 82c10 4 16 12 18 24M50 84v22"/><path d="M22 106c18 6 38 6 56 0"/></symbol>''',
  'palette': '''<symbol id="sk-palette" viewBox="0 0 90 80"><path d="M44 6C22 6 6 20 6 40s16 30 32 30c8 0 8-6 6-10s0-8 6-8h10c14 0 24-8 24-22C84 16 66 6 44 6zM26 30a4 4 0 1 0 .1 0M40 18a4 4 0 1 0 .1 0M58 18a4 4 0 1 0 .1 0M68 32a4 4 0 1 0 .1 0M62 62l22-24"/></symbol>''',
 }
 
@@ -42,7 +43,7 @@ _SPOTS = [('left:-14px;top:18px', 'tl'), ('right:-10px;top:26px', 'tr'), ('left:
           ('left:8%;top:6px', 'tl2'), ('right:9%;bottom:6px', 'br2')]
 _SIZES = {'column': 104, 'amphora': 96, 'jasmine': 100, 'shell': 96, 'wave': 170, 'headset': 116, 'tanit': 84,
           'mosaic': 108, 'olive': 136, 'arch': 146, 'fish': 124, 'orange': 84, 'star': 34, 'heart': 52,
-          'phone': 80, 'boat': 124, 'palette': 90}
+          'phone': 80, 'boat': 124, 'palette': 90, 'ines': 96}
 _ROT = [-14, -8, -4, 5, 9, 15]
 
 def sketch_svg(name, style='', cls='', rot=0):
@@ -61,10 +62,12 @@ def _pick(seed, n, k):
             break
     return out
 
-def sketch_layer(seed, names=None, count=3):
+def sketch_layer(seed, names=None, count=3, force=None):
     """A deterministic little scatter of doodles for one section."""
     pool = names or list(SKETCH_SYMBOLS)
     idx = _pick(seed, len(pool), count)
+    if force and force in pool and pool.index(force) not in idx:
+        idx[0] = pool.index(force)
     spots = _pick(seed + 's', len(_SPOTS), count)
     rots = _pick(seed + 'r', len(_ROT), count)
     parts = []
@@ -85,7 +88,7 @@ def sketchify(page, html):
         if 'has-sk' in tag:
             return m.group(0)
         tag = tag.replace('class="', 'class="has-sk ', 1)
-        return f'<{tag}>' + sketch_layer(f'{page}-{n[0]}')
+        return f'<{tag}>' + sketch_layer(f'{page}-{n[0]}', force='ines' if n[0] in (1, 4) else None)
     html = _SECTION_RE.sub(rep, html)
-    html = html.replace('<footer><div class="wrap">', '<footer class="has-sk">' + sketch_layer(page + '-footer', ['jasmine', 'olive', 'wave', 'shell', 'boat', 'star', 'fish', 'orange']) + '<div class="wrap">', 1)
+    html = html.replace('<footer><div class="wrap">', '<footer class="has-sk">' + sketch_layer(page + '-footer', ['jasmine', 'olive', 'wave', 'shell', 'boat', 'star', 'fish', 'orange', 'ines'], force='ines') + '<div class="wrap">', 1)
     return html.replace('<body>', '<body>' + SKETCH_SPRITE, 1)

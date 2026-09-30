@@ -343,6 +343,9 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
   .hero2-pols .pol.hp1{transform:rotate(-3deg)}.hero2-pols .pol.hp2{transform:rotate(3deg)}.hero2-pols .pol.hp3{transform:rotate(-2deg);grid-column:1/3;width:60%;margin:0 auto;order:-1}}
 .date-cards.three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.date-cards.three{grid-template-columns:1fr}}
+.embeds:has(.embed.page){max-width:none;grid-template-columns:1fr}
+.embed.page{grid-column:1/-1}
+.embed.page iframe{width:100%;height:min(82vh,860px);aspect-ratio:auto;border:0;border-radius:16px;background:#fff;box-shadow:0 14px 34px rgba(67,32,58,.16)}
 /* local video embeds */
 .embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
 .book-wrap{max-width:720px;margin:0 auto}

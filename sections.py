@@ -334,7 +334,7 @@ def body_about(preview):
     stats_photo('el-jem', [('600K+', 'visitors to the Smithsonian exhibition featuring my work'),
                            ('30 Under 30', 'NAAEE EE 30 Under 30, Class of 2025'),
                            ('Auggie finalist', 'Best Societal Impact, AWE 2026'),
-                           ('11K+', 'people I met in 2025 at 40+ events')]) + \
+                           ('Excellence Award', 'GFAA Biennial, for Shadows of Tomorrow')]) + \
     section(icon_cards([
         ('tanit', 'Heritage preservation', "Scanning Tunisia's mosaics, statues and ruins before we lose them.", H('p-tanit-xr'), 'Tanit XR'),
         ('wave', 'Climate art', 'Installations about climate change that you step into with your whole body.', H('p-shadows-of-tomorrow'), 'Shadows of Tomorrow'),
@@ -469,7 +469,7 @@ def body_speaking(preview):
         'Speaking', 'Keynotes, panels and workshops',
         ["I give keynotes, panels, workshops and university guest lectures, in person or online, in "
          "<strong>English, Arabic or French</strong>. I've spoken everywhere from AWE to the El Jem Museum in Tunisia, a few steps from a Roman amphitheater!"],
-        ticks=['In 2025 I met more than 11,000 people at 40+ events, from AWE to a classroom in Texas',
+        ticks=['In 2025 my work reached more than 11,000 people at 40+ events, from AWE to a classroom in Texas',
                'I always share the events I speak at with my community online',
                "I've worked with teams at Oracle Utilities, Exelon, Vistra, NYPA, the Smithsonian and NEF"],
         buttons=[('Book me to speak', '#book'), ('Speaker one-pager (PDF)', 'web/ines-said-speaker.pdf')])) + \
