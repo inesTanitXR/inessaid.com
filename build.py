@@ -1206,7 +1206,7 @@ def body_home(preview):
     <p class="kicker">Speaking</p>
     <h2 class="sec-title" style="margin-bottom:10px">I'd love to speak at your event!</h2>
     <p style="max-width:56ch;margin:0 0 24px">I speak about heritage, climate and XR. I've spoken at AWE, the Energy Thought Summit
-    and even at the El Jem International Conference in Tunisia!</p>
+    and even at the El Jem International Conference in Tunisia! I also love <a href="{href('awards', preview)}" style="color:#e8cd96;font-weight:700">judging</a>, from Games for Change to EE 30 Under 30.</p>
     <div class="btn-row">
       <a class="btn" href="{href('speaking', preview)}#book">Book me to speak</a>
       <a class="btn ghost" href="{href('speaking', preview)}">Topics &amp; past talks</a>

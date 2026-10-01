@@ -190,10 +190,10 @@ def body_work(preview):
     head = banner('Work with me', "Let's make something together", 'Talks, workshops, XR development and heritage scanning. Here is how we can work together.',
                   img='workshop', img2='oracle-demo', preview=preview)
     services = section(icon_cards([
-        ('mic', 'Keynotes and talks', 'Heritage, climate and XR, told through the projects on this site. In person or online, in English, Arabic or French.', '#book', 'from $2,000'),
+        ('mic', 'Keynotes and talks', 'Heritage, climate and XR, told through the projects on this site. In person, or online from $500. In English, Arabic or French.', '#book', 'from $2,000'),
         ('camera', 'Scanning workshops', 'Half-day or full-day workshops on 3D scanning with phones, photogrammetry and Gaussian splats. We have been asked to train groups of 200!', '#book', 'from $2,500'),
         ('people', 'Panels and guest lectures', 'University classes, panels and podcasts about XR, heritage and STEM education.', '#book', 'from $750'),
-        ('screen', 'Virtual talks', 'A 30 to 60 minute session for your team, class or community, anywhere in the world.', '#book', 'from $500'),
+        ('gavel', 'Judging', "Competitions, hackathons and award juries. I've judged for Games for Change, EE 30 Under 30, UF's Heavener competition and the E4 Youth Showcase.", '#book', "Let's talk"),
         ('headset', 'XR development', 'Apple Vision Pro, Meta Quest, mobile AR and WebXR. From a first prototype to a demo that travels to conferences.', '#book', "Let's talk"),
         ('tanit', 'Heritage and community projects', 'Want to start a scanning community like Tanit XR where you live, or bring our method to your museum or school? I would love to help.', '#book', "Let's talk"),
     ]), 'What I can do for you', 'Ways we can work together',

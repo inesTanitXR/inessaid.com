@@ -329,6 +329,7 @@ def body_about(preview):
          "energy and sustainability, from the Smithsonian's FUTURES exhibition to Oracle's Connected Hub."],
         ticks=['Founder, Tanit XR (2025–)', 'Lead XR Developer, Froliq (2023–)',
                'Author of the weekly <a href="%s">Art, XR &amp; Impact Opportunities</a> newsletter' % NEWSLETTER_URL,
+               'Judge for Games for Change, EE 30 Under 30, UF\'s Heavener competition and the E4 Youth Showcase',
                'Living between Washington, D.C. and Tunisia, and I speak English, Arabic and French'],
         buttons=[('See my projects', H('projects')), ('Invite me to speak', H('speaking'))])) + \
     halfbleed('coast-walk', 'center 40%', 'Outside of work', "When I'm not in a headset", [
