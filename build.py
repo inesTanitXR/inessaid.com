@@ -363,6 +363,20 @@ html[lang="en"] .prose.lead p:first-child::first-letter{float:left;font-family:"
 .nura-card img{width:100%;border-radius:16px}
 .nura-card h3{font-family:'Yeseva One',serif;font-weight:400;font-size:1.5rem;margin:6px 0 10px;color:var(--ink)}
 @media(max-width:700px){.nura-card{grid-template-columns:1fr;text-align:center}.nura-card img{max-width:220px;margin:0 auto}}
+/* projects page tiers */
+.feat-cards{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.feat-cards .thumb{aspect-ratio:16/10}
+.feat-cards .card-body{padding:24px 26px 26px}
+.feat-cards .card-body h3{font-size:1.55rem}
+.feat-cards .card-body p{font-size:1rem}
+.cards.small{grid-template-columns:repeat(4,1fr);gap:18px}
+.cards.small .thumb{aspect-ratio:16/10}
+.cards.small .card-body{padding:14px 16px 16px;gap:6px}
+.cards.small .card-body h3{font-size:1.02rem;line-height:1.25}
+.cards.small .card-body p{font-size:.84rem;line-height:1.45}
+.cards.small .chips{display:none}
+@media(max-width:1000px){.cards.small{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:820px){.cards.small{grid-template-columns:1fr;gap:12px}.feat-cards{grid-template-columns:1fr;gap:18px}.feat-cards .card-body h3{font-size:1.3rem}.feat-cards .thumb{aspect-ratio:16/9}}
 /* local video embeds */
 .embed video{display:block;width:100%;border-radius:14px;background:#1a0a14;aspect-ratio:16/9}
 .book-wrap{max-width:720px;margin:0 auto}
@@ -824,7 +838,7 @@ def body_detail(p, preview, back_page='projects', back_label='All projects'):
         pool = [s for s in (group[2] if group else []) if s != p['slug']]
         pool += [q['slug'] for q in PROJECTS if q['slug'] not in pool and q['slug'] != p['slug']]
         by_slug = {q['slug']: q for q in PROJECTS}
-        rel = related_strip(f'More {group[0].lower()}' if group else 'More projects',
+        rel = related_strip(f'More {group[0]}' if group else 'More projects',
                             [card_html(by_slug[s], preview) for s in pool[:3]])
         cta = cta_band("Let's work together", 'Have a project in mind?',
                        "I'd love to hear about it! Whether you want to scan a collection or build something in XR, let's talk.",
@@ -1632,6 +1646,14 @@ for _p in PROJECTS + AWARDS:
 for _title, _sub, _slugs in PROJECT_GROUPS:
     _slugs.extend(NEW_GROUP_SLUGS.get(_title, []))
 PROJECT_CATS.update(NEW_CATS)
+FEATURED_SLUGS = ['tanit-xr', 'smithsonian-futures']
+PERSONAL_SLUGS = ['tanit-virtual-museum', 'tanit-explore', 'shadows-of-tomorrow', 'covid-reflections', 'sparc']
+FROLIQ_SLUGS = ['oracle-connected-hub', 'nypa-vision-pro', 'vistra-tour', 'nuclear-capture',
+                'froliq-minigames', 'sustainaball', 'stevie', 'exelon-stem']
+PROJECT_GROUPS[:] = [
+    ('of my own projects', '', ['tanit-xr'] + PERSONAL_SLUGS),
+    ('work with Froliq', '', ['smithsonian-futures'] + FROLIQ_SLUGS),
+]
 next(p for p in PROJECTS if p['slug'] == 'tanit-xr')['extra'] = tanit_sections
 next(p for p in PROJECTS if p['slug'] == 'tanit-explore')['extra'] = lambda preview: tanit_sections(preview).split('</section>', 1)[0] + '</section>'
 FORM_JS = r'''

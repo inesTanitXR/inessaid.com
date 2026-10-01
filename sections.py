@@ -368,19 +368,17 @@ def card_cat(p, preview, cat_label):
 
 def body_projects(preview):
     H = lambda p: href(p, preview)
-    counts = {}
-    for s, c in PROJECT_CATS.items():
-        if s == 'tanit-xr':
-            continue
-        for k in c.split():
-            counts[k] = counts.get(k, 0) + 1
-    label = {k: re.sub('&amp;', '&', v) for k, v in CAT_LABELS}
-    cards = ''.join(card_cat(p, preview, label.get(PROJECT_CATS.get(p['slug'], '').split()[0], '').replace('&', '&amp;'))
-                    for p in PROJECTS if p['slug'] != 'tanit-xr')
-    return head_block('Portfolio', 'Projects', 'Heritage, art, energy and education. Here is some of the work I\'m most proud of.') + \
-    section(filters('#proj-grid', [(k, l) for k, l in CAT_LABELS if counts.get(k, 0) >= 2], {k: counts.get(k, 0) for k, _ in CAT_LABELS}, total=len(PROJECTS) - 1) +
-            f'<div class="cards" id="proj-grid">{cards}</div>',
-            'Explore', 'All my projects', 'Pick a topic, and click any project to read the full story.', cls='tint') + \
+    by = {p['slug']: p for p in PROJECTS}
+    feat = ''.join(card_html(by[s], preview) for s in FEATURED_SLUGS if s in by)
+    mine = ''.join(card_html(by[s], preview) for s in PERSONAL_SLUGS if s in by)
+    froliq = ''.join(card_html(by[s], preview) for s in FROLIQ_SLUGS if s in by)
+    return head_block('Portfolio', 'Projects',
+                      'My own art, heritage and research projects, and the XR I build as Lead XR Developer at Froliq.') + \
+    section(f'<div class="feat-cards">{feat}</div>', 'Closest to my heart', 'Tanit XR and the Smithsonian') + \
+    section(f'<div class="cards">{mine}</div>', 'My own work', 'Art, heritage and research',
+            'Projects I started myself, as an artist, a researcher and the founder of Tanit XR.', cls='tint') + \
+    section(f'<div class="cards small">{froliq}</div>', 'With Froliq', 'Client work as Lead XR Developer',
+            'AR and VR for energy companies, museums and schools, built with my amazing team at <a href="https://frlq.co">Froliq</a>.') + \
     cta_band("Let's work together", 'Have a project in mind?',
              "I'd love to hear about it! Whether you want to scan a collection or build something in XR, let's talk.",
              ('Start a conversation', H('work-with-me') + ('' if preview else '#book')))
