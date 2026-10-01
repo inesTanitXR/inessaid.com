@@ -408,7 +408,7 @@ def body_awards(preview):
         '<li><div><span class="t"><a href="https://www.gamesforchange.org/studentchallenge/">Games for Change Student Challenge</a></span><div class="d">The largest student game-design competition in the U.S.</div></div></li>'
         '<li><div><span class="t"><a href="https://naaee.org/programs/ee-30-under-30">EE 30 Under 30, Class of 2026</a></span><div class="d">Selecting the next class of environmental-education leaders.</div></div></li>'
         '<li><div><span class="t"><a href="https://warrington.ufl.edu/undergraduate/hicc/">Heavener International Case Competition, 2025</a></span><div class="d">Student teams from around the world, and a case all about virtual reality.</div></div></li>'
-        '<li><div><span class="t"><a href="https://www.e4youth.org/">E4 Youth Showcase</a></span><div class="d">Judging the projects of young creators at E4 Youth in Austin.</div></div></li>'
+        '<li><div><span class="t"><a href="https://www.e4youth.org/">E4 Youth Showcase, 2025</a></span><div class="d">Judging the projects of young creators at E4 Youth in Austin.</div></div></li>'
         '</ul><p style="margin:24px 0 0">Need a judge for your competition or hackathon? <a href="%s">I would love to help.</a></p>' % (H('work-with-me') + ('' if preview else '#book')),
         'Judging', 'I also love being a judge') + \
     cta_band('Speaking', 'Want me to speak at your event?',
