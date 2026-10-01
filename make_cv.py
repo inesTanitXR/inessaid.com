@@ -94,9 +94,12 @@ new_page()
 heading('Publications')
 for left, t, s in [
     ('2026', 'Digital documentation, XR and citizen science for community-led heritage preservation in Tunisia and beyond', 'Tanit XR. El Jem International Conference. Published in English, French and Tunisian Arabic.'),
-    ('2023', 'Developing Mini VR Game Engines as an Engaging Learning Method for Digital Arts and Sciences', 'A. Barmpoutis, W. Guo, I. Said. IEEE Integrated STEM Education Conference. Best Paper Award.'),
-    ('2022', 'Covid Reflections: augmented reality public art alongside mobile health clinics', 'Published with ACM; presented at the AI and Society Symposium, University of Florida.'),
-    ('', 'spARc: two-handed AR animation with a radial time slider', 'HCI research, designed with focus groups.'),
+    ('2023', 'Immersive Climate Narratives: Using Extended Reality to Raise Climate Change Awareness', 'I. Said, A. J. Stanbury, E. Delhagen, H. Kang. ACM VRST.'),
+    ('2023', 'Developing Mini VR Game Engines as an Engaging Learning Method for Digital Arts and Sciences', 'A. Barmpoutis, W. Guo, I. Said. IEEE ISEC. Best Paper Award.'),
+    ('2022', 'Covid Reflections: AR in Public Health Communications', 'I. Said, A. J. Stanbury, E. Delhagen, A. Winger-Bearskin. ACM VRST.'),
+    ('2021', 'HoloKeys: Interactive Piano Education Using Augmented Reality and IoT', 'A. J. Stanbury, I. Said, H. J. Kang. ACM VRST. Cited 18 times.'),
+    ('2021', 'SpArc: A VR Animating Tool at Your Fingertips', 'B. Li, I. Said, L. Kirova, M. Blokhina, H. J. Kang. ACM VRST.'),
+    ('2021', 'Immersive learning with an AI-enhanced virtual standardized patient to improve dental students\u2019 communication', 'A. Gowthaman, L. Kirova, B. Li, P. Molen, I. Said, J. Smith, C. Sukotjo. ACHI 2021.'),
 ]:
     entry(left, t, s)
 

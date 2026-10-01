@@ -3,6 +3,25 @@
 # Work-with-me page. Facts come from frlq.co / tanitxr.org only. Items marked CHECK need Ines's confirmation.
 
 NEW_PROJECTS = [
+ dict(slug='holokeys', title='HoloKeys', category='Research · AR + IoT', img='holokeys',
+   alt='The HoloKeys piano-playing hardware: a servo driver board and microcontroller',
+   card="Piano lessons from anywhere: a teacher plays holographic keys in a Magic Leap headset, and servo motors press the same keys on the student's real piano. My most cited paper!",
+   chips=['Magic Leap', 'IoT', 'Music education', '!ACM VRST 2021'],
+   paras=[
+     "When lessons moved online during COVID, music teachers had a real problem: you can't really learn piano from a laptop camera. HoloKeys lets a teacher physically play a student's piano from anywhere.",
+     "The teacher puts on a Magic Leap headset and a holographic copy of the student's piano appears in front of them. They play it with their hands, and every key they pinch is sent over the internet to the student's home, where little servo motors clipped onto the real keys press the same notes. The student sees and hears the demonstration on their own keyboard, just like a lesson in person.",
+     "The clips attach to any keyboard with no permanent changes, and the whole student side is cheap and connects over wifi. It was funded by a University of Florida College of the Arts grant.",
+     "We presented it at ACM VRST 2021 in Osaka, Japan, and it has become my most cited paper. I love that researchers in music education and mixed reality keep building on it! I made it with Austin Stanbury and Dr. Hyo Jeong Kang at the Digital Worlds Institute."],
+   facts=[('Team', 'Austin Stanbury, Ines Said and Dr. Hyo Jeong Kang, University of Florida'),
+          ('Tools', 'Unity, Magic Leap hand tracking, PubNub, ESP8266, servo motors'),
+          ('Published', 'ACM VRST 2021, Osaka · cited 18 times'),
+          ('Funding', 'UF College of the Arts Strategic Opportunity Fund')],
+   links=[('The paper (ACM)', 'https://doi.org/10.1145/3489849.3489921'),
+          ("Austin Stanbury's project page", 'https://austinstanbury.com/projects/holokeys/'),
+          ('My Google Scholar', 'https://scholar.google.com/citations?user=mlBbelYAAAAJ&hl=en')],
+   embeds_heading='Watch', embeds=[dict(kind='youtube', id='tG27mN53Pms', title='HoloKeys at ACM VRST 2021')],
+   gallery=[]),
+
  dict(slug='tanit-virtual-museum', title='Tanit XR Virtual Museum', category='Cultural heritage · in progress',
    img='tx-museum-dome', alt='The domed hall of the Tanit XR virtual museum, built in Unity',
    card="The first community-led virtual museum of Tunisian heritage. Real scanned objects, life-size, in hand-modeled whitewashed rooms. Built in Unity by our volunteers.",
@@ -75,6 +94,9 @@ ENRICH = {
    gallery_add=[('tx-community-2', 'Volunteers together.'), ('tx-immersegt-1', 'Our track at ImmerseGT 2026, Georgia Tech.'),
                 ('tx-awe-talk', 'AWE USA 2026 with Margarita Johnson.'), ('tx-alyssa-2', 'One archive, volunteers on every continent. Illustration by Alyssa George.')]),
  'ee-30-under-30': dict(gallery_add=[('tx-ee30-photo', 'EE 30 Under 30, Class of 2025.')]),
+ 'shadows-of-tomorrow': dict(links_add=[('The paper: Immersive Climate Narratives (ACM VRST 2023)', 'https://doi.org/10.1145/3611659.3617195')]),
+ 'sparc': dict(links_add=[('The paper: SpArc (ACM VRST 2021)', 'https://doi.org/10.1145/3489849.3489920')]),
+ 'covid-reflections': dict(links_add=[('The paper: Covid Reflections (ACM VRST 2022)', 'https://scholar.google.com/citations?user=mlBbelYAAAAJ&hl=en')]),
 }
 
 NEW_GROUP_SLUGS = {
@@ -83,19 +105,30 @@ NEW_GROUP_SLUGS = {
 NEW_CATS = {
  'tanit-virtual-museum': 'heritage', 'tanit-explore': 'heritage', }
 
+SCHOLAR_URL = 'https://scholar.google.com/citations?user=mlBbelYAAAAJ&hl=en'
+
 PUBLICATIONS = [
  ('2026', 'Digital documentation, XR and citizen science for community-led heritage preservation in Tunisia and beyond',
-  'Tanit XR team. El Jem International Conference, April 2026. Published in English, French and Tunisian Arabic.',
+  'Tanit XR team. El Jem International Conference. Published in English, French and Tunisian Arabic.',
   [('English (PDF)', 'web/el-jem-2026-paper-english.pdf'), ('Français (PDF)', 'web/el-jem-2026-paper-french.pdf'), ('العربية (PDF)', 'web/el-jem-2026-paper-arabic.pdf')]),
+ ('2023', 'Immersive Climate Narratives: Using Extended Reality to Raise Climate Change Awareness',
+  'I. Said, A. J. Stanbury, E. Delhagen, H. Kang. ACM Symposium on Virtual Reality Software and Technology (VRST). The paper behind Shadows of Tomorrow.',
+  [('ACM', 'https://doi.org/10.1145/3611659.3617195')]),
  ('2023', 'Developing Mini VR Game Engines as an Engaging Learning Method for Digital Arts &amp; Sciences',
-  'A. Barmpoutis, W. Guo, I. Said. IEEE Integrated STEM Education Conference (ISEC) 2023. Best Paper Award.',
+  'A. Barmpoutis, W. Guo, I. Said. IEEE Integrated STEM Education Conference (ISEC). Best Paper Award.',
   [('IEEE Xplore', 'https://ieeexplore.ieee.org/document/10402239')]),
- ('2022', 'Covid Reflections: augmented reality public art alongside mobile health clinics',
-  'Published with ACM. Presented at the AI &amp; Society Symposium (University of Florida).',
-  [('UF News', 'https://news.ufl.edu/2022/04/covid-reflections/')]),
- ('', 'spARc: two-handed AR animation with a radial time slider',
-  'HCI research on an immersive animation tool, designed with focus groups.',
-  [('ResearchGate', 'https://www.researchgate.net/profile/Ines-Said-2')]),
+ ('2022', 'Covid Reflections: AR in Public Health Communications',
+  'I. Said, A. J. Stanbury, E. Delhagen, A. Winger-Bearskin. ACM Symposium on Virtual Reality Software and Technology (VRST).',
+  [('Google Scholar', SCHOLAR_URL)]),
+ ('2021', 'HoloKeys: Interactive Piano Education Using Augmented Reality and IoT',
+  'A. J. Stanbury, I. Said, H. J. Kang. ACM VRST. My most cited paper, cited 18 times.',
+  [('ACM', 'https://doi.org/10.1145/3489849.3489921')]),
+ ('2021', 'SpArc: A VR Animating Tool at Your Fingertips',
+  'B. Li, I. Said, L. Kirova, M. Blokhina, H. J. Kang. ACM VRST.',
+  [('ACM', 'https://doi.org/10.1145/3489849.3489920')]),
+ ('2021', 'Immersive learning with an AI-enhanced virtual standardized patient (VSP) to improve dental students\u2019 communication',
+  'A. Gowthaman, L. Kirova, B. Li, P. Molen, I. Said, J. Smith, C. Sukotjo. ACHI 2021, International Conference on Advances in Computer-Human Interactions.',
+  [('Google Scholar', SCHOLAR_URL)]),
 ]
 
 EXHIBITIONS = [
@@ -114,7 +147,7 @@ def publications_html(preview):
         items += (f'<li><div><span class="t">{title}</span><div class="d">{meta}<br>{ln}</div></div>'
                   f'<span class="who">{year}</span></li>')
     return section(f'<ul class="list">{items}</ul>', 'Research', 'Publications',
-                   'I love that my work gets to live in papers too. Here are the ones you can read.')
+                   f'Six papers so far, cited 33 times. <a href="{SCHOLAR_URL}">See my Google Scholar profile.</a>')
 
 def exhibitions_html(preview):
     H = lambda p: href(p, preview)

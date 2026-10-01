@@ -510,6 +510,7 @@ FOOTER = """
       <a href="press.html">Press</a>
       <a href="https://tanitxr.org">tanitxr.org</a>
       <a href="https://sketchfab.com/TanitXR">Sketchfab</a>
+      <a href="https://scholar.google.com/citations?user=mlBbelYAAAAJ&hl=en">Google Scholar</a>
       <a href="https://www.researchgate.net/profile/Ines-Said-2">ResearchGate</a>
     </div>
   </div>
@@ -1640,14 +1641,16 @@ for _p in PROJECTS + AWARDS:
     if _e:
         _p['facts'] = _p['facts'] + _e.get('facts_add', [])
         _p['gallery'] = _p['gallery'] + _e.get('gallery_add', [])
+        _p['links'] = _p['links'] + _e.get('links_add', [])
         if _e.get('embeds_add'):
             _p['embeds'] = (_p.get('embeds') or []) + _e['embeds_add']
             _p.setdefault('embeds_heading', 'Watch')
 for _title, _sub, _slugs in PROJECT_GROUPS:
     _slugs.extend(NEW_GROUP_SLUGS.get(_title, []))
 PROJECT_CATS.update(NEW_CATS)
+PROJECT_CATS['holokeys'] = 'art research'
 FEATURED_SLUGS = ['tanit-xr', 'smithsonian-futures']
-PERSONAL_SLUGS = ['tanit-virtual-museum', 'tanit-explore', 'shadows-of-tomorrow', 'covid-reflections', 'sparc']
+PERSONAL_SLUGS = ['tanit-virtual-museum', 'tanit-explore', 'shadows-of-tomorrow', 'holokeys', 'covid-reflections', 'sparc']
 FROLIQ_SLUGS = ['oracle-connected-hub', 'nypa-vision-pro', 'vistra-tour', 'nuclear-capture',
                 'froliq-minigames', 'sustainaball', 'stevie', 'exelon-stem']
 PROJECT_GROUPS[:] = [
