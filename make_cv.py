@@ -120,7 +120,7 @@ for left, t, s in [
     ('2026', 'Energy Thought Summit, San Antonio', 'Main stage: photogrammetry for energy and heritage.'),
     ('2026', 'El Jem International Conference, Tunisia', 'Presented Tanit XR at the El Jem Museum, a few steps from the amphitheater.'),
     ('2026', 'Spatial Creator Spotlight; Voices of VR #1728', 'Full episode on Tanit XR; interview with Kent Bye at AWE.'),
-    ('', 'Judge', 'Games for Change Awards and Student Challenge; EE 30 Under 30 Class of 2026 selection; Heavener International Case Competition 2025 (University of Florida).'),
+    ('', 'Judge', 'Games for Change Awards and Student Challenge; EE 30 Under 30 Class of 2026 selection; Heavener International Case Competition 2025 (University of Florida); E4 Youth Showcase (Austin).'),
     ('', 'Hackathon tracks organized', 'Tunisian-heritage track at ImmerseGT 2026 (Georgia Tech); two tracks at CityCamp Gainesville Hack Day 2026.'),
 ]:
     entry(left, t, s)
