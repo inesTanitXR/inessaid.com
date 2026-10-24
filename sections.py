@@ -422,8 +422,9 @@ def body_speaking(preview):
     form = re.search(r'<form class="contact-form".*?</form>', _OLD_SPEAKING(preview), re.S).group(0)
     return head_block('Speaking &amp; Media', "I'd love to speak at your event!",
                       'I talk about heritage, climate and how XR can make learning more fun.') + \
-    section(split(collage([('ets-stage', 'Ines on the Energy Thought Summit main stage'), ('stage', 'Ines on stage at ELLEvate'),
-                           ('dmv-panel', 'Beyond the Byte panel'), ('speaker-card', 'AWE USA 2026 speaker card')]),
+    section(split(collage([('embassy-dc', 'Ines speaking at the Embassy of Tunisia, Washington, D.C.'),
+                           ('ets-stage', 'Ines on the Energy Thought Summit main stage'), ('stage', 'Ines on stage at ELLEvate'),
+                           ('dmv-panel', 'Beyond the Byte panel')]),
         'Speaking', 'Keynotes, panels and workshops',
         ["I give keynotes, panels, workshops and university guest lectures, in person or online, in "
          "<strong>English, Arabic or French</strong>. I've spoken everywhere from AWE to the El Jem Museum in Tunisia, a few steps from a Roman amphitheater!"],
@@ -432,6 +433,7 @@ def body_speaking(preview):
                "I've worked with teams at Oracle Utilities, Exelon, Vistra, NYPA, the Smithsonian and NEF"],
         buttons=[('Book me to speak', '#book'), ('Speaker one-pager (PDF)', 'web/ines-said-speaker.pdf')])) + \
     recognized('Recent stages', [
+        ('Embassy of Tunisia', 'Washington, D.C. · 2026', 'https://tanitxr.org/news/an-evening-at-the-embassy-of-tunisia/'),
         ('AWE USA', 'Speaker · 2022 &amp; 2026', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
         ('Energy Thought Summit', 'Main stage · 2026', 'https://energythoughtsummit.com/'),
         ('El Jem Conference', 'El Jem Museum, Tunisia', 'https://tanitxr.org/el-jem-conference/'),
@@ -448,6 +450,7 @@ def body_speaking(preview):
         ('people', 'Women in XR', 'How I got into XR, and the women who helped me on the way.', None, ''),
     ]), 'Topics', 'What I love talking about') + \
     section(date_cards([
+        ('23', 'Oct 26', 'Embassy of Tunisia · Washington, D.C.', 'Tunisia &amp; America, Learning Together', 'An evening hosted by the embassy with Tanit XR and TAYP. The story of the project, Dr. Caroline Nickerson on her time in Tunisia, and the collection in VR for the guests.', 'https://tanitxr.org/news/an-evening-at-the-embassy-of-tunisia/'),
         ('18', 'Jun 26', 'AWE USA 2026 · Long Beach', 'From Scans to XR: A Practical Pipeline for Cultural Heritage', 'With Margarita Johnson, one of our volunteers at Tanit XR.', 'https://www.awexr.com/usa-2026/speakers/2677-ines-said'),
         ('27', 'Apr 26', 'Energy Thought Summit · San Antonio', 'Photogrammetry for energy &amp; heritage', 'Main stage, with Froliq and Tanit XR.', 'https://energythoughtsummit.com/'),
         ('Apr', '2026', 'El Jem International Conference', 'Presenting Tanit XR at the El Jem Museum', 'Paper published in English, French &amp; Tunisian Arabic.', 'https://tanitxr.org/el-jem-conference/'),
